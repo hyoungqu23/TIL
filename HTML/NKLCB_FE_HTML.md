@@ -256,12 +256,124 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 - 컨텐츠를 문단으로 나누면 페이지의 접근성을 높일 수 있다.
 - 빈 `<p>` 요소를 활용해 문단 사이의 여백을 추가하는 것은 접근성을 감소시킨다.
   ```HTML
-  <p>첫 번째 문단입니다.
+  <p>
     첫 번째 문단입니다.
     첫 번째 문단입니다.
-    첫 번째 문단입니다.</p>
-  <p>두 번째 문단입니다.
+    첫 번째 문단입니다.
+    첫 번째 문단입니다.
+  </p>
+  <p>
     두 번째 문단입니다.
     두 번째 문단입니다.
-    두 번째 문단입니다.</p>
+    두 번째 문단입니다.
+    두 번째 문단입니다.
+  </p>
   ```
+
+### `<br>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/br)
+- 텍스트 내부에 개행을 생성하는 태그이다.(Line-break의 약어)
+- HTML 문서는 여러 개의 띄어쓰기와 개행을 무시하기 때문에 `<br>`를 활용해 개행을 사용하고, `&nbsp`로 공백을 작성해야 한다.
+- 빈 요소
+  ```HTML
+  Mozilla Foundation<br>
+  1981 Landings Drive<br>
+  Building K<br>
+  Mountain View, CA 94043-0801<br>
+  USA
+  ```
+- 다만, 여백을 더 나누기 위해 `<br>`을 여러번 사용하는 것보다 새롭게 `<p>`를 만들어 CSS의 `margin` 속성을 활용해야 한다.
+
+### `<blockquote>`, `<q>`
+- 인용문을 만드는 태그.
+- `<blockquote>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/blockquote)
+  * Block Level Element로, Contents가 긴 인용문을 위해 사용한다. 
+  * 주로 들여쓰기로 그려지며, CSS의 `margin` 속성을 활용해 들여쓰기를 변경할 수 있다.
+  * `cite` 속성(Attributes)으로 인용문의 출처 문서나 메시지를 가리키는 URL을 함께 작성할 수 있다.
+  ```HTML
+  <blockquote cite="https://tools.ietf.org/html/rfc1149">
+    <p>
+      Avian carriers can provide high delay, low throughput, and low altitude service. The connection topology is limited to a single point-to-point path for each carrier, used with standard carriers, but many carriers can be used without significant interference with each other, outside of early spring.
+    </p>
+  </blockquote>
+  ```
+  * 참고로, `<p>`는 내부에 자식 요소로 Block Level Element가 있는 경우, 자동으로 태그가 닫히는 특성 때문에 내부에는 `<blockquote>`를 사용할 수 없다. 
+- `<q>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/q)
+  * Inline Element로, 줄바꿈이 없이 Contents가 짧은 인용문을 위해 사용한다.
+  * 대부분 브라우저에서는 앞과 뒤에 `" "`(큰 따옴표)를 붙인다.
+  * `cite` 속성(Attributes)으로 인용문의 출처 문서나 메시지를 가리키는 URL을 함께 작성할 수 있다.
+  * `<p>` 내부에서는 `<q>`만 사용할 수 있다.
+  ```HTML
+  <p>Mozilla 재단의 웹사이트에 따르면, <q cite="https://www.mozilla.org/en-US/about/history/details/">Firefox 1.0은 2004년 처음 공개되어 큰 성공을 거두었습니다.</q></p>
+  ```
+
+### `<pre>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/pre)
+- 미리 서식을 지정한 텍스트를 HTML에 그대로 표현하는 태그.(preformatted의 약어) 즉, `<pre>`의 내용(Contents)를 하나의 스냅샷처럼 찍어서 보여준다.
+- 따라서, 기존의 HTML에서 무시되던 여러 번의 띄어쓰기와 개행을 그대로 포함하여 표현하는 태그이다.
+- 보통 고정폭 글꼴(monospace)을 통해 렌더링하고, 요소 내 공백 문자를 그대로 유지한다.
+  ```HTML
+  <p>CSS로 글자 색을 바꾸는건 쉽습니다.</p>
+  <pre>
+  body {
+    color:red;
+  }
+  </pre>
+  ```
+
+### `<figure>`, `<figcaption>`
+- `<figure>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/figure)는 독립적인 컨텐츠(`<pre>`의 내용, `<blockquote>` 인용문, 이미지, 비디오 등처럼 문서에서 독립적인 컨텐츠를 의미)를 표현한다.
+- `<figcaption>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/figcaption)은 부모 요소인 `<figure>`가 포함하는 다른 컨텐츠에 대한 설명이나 범례를 나타낸다.
+  ```HTML
+  <figure>
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Necessitatibus, sunt. Debitis minima ipsam eum deleniti eos voluptas sit neque, perferendis ad in, eligendi dignissimos quisquam ipsum tenetur nobis totam non!
+    </p>
+    <figcaption>by Lorem ipsum</figcaption>
+  </figure>
+  ```
+- 그냥 `<p>` 태그 2개를 활용하면, 서로의 연관성을 보여줄 수 없으나, `<figure>`와 `<figcaption>`을 활용하면, 서로 간의 연관성을 파악할 수 있다.
+
+### `<hr>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/hr)
+- `<hr>`은 이야기 장면 전환, 구획 내 주제 변경 등 문단 레벨 요소에서 주제의 분리를 나타낸다.
+- 사실상 수평선, 가로 줄을 그려준다.
+- 빈 요소.
+- HTML의 속성(Attributes)가 아닌 CSS를 활용해 스타일링해야 한다.
+  ```HTML
+  <p>
+    This is the first paragraph of text.
+    This is the first paragraph of text.
+    This is the first paragraph of text.
+    This is the first paragraph of text.
+  </p>
+
+  <hr>
+
+  <p>
+    This is second paragraph of text.
+    This is second paragraph of text.
+    This is second paragraph of text.
+    This is second paragraph of text.
+  </p>
+  ```
+
+### `<abbr>`, `<address>`, `<cite>`, `<bdo>`
+- `<abbr>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/abbr)
+  * 줄임말 또는 머리글자를 나타내는 태그이다.
+  * 전역 속성(Attributes) `title`를 선택 속성으로 특정한 의미로 활용해 준말의 전체 뜻이나 설명을 툴팁으로 제공할 수 있다.
+  * 기본적으로 점선의 밑줄로 작성된다.
+- `<address>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/address)
+  * 가까운 HTML 요소의 사람, 단체, 조직 등에 대한 연락처 정보(주소, e-mail, URL, 전화번호, SNS 등)를 나타내는 태그이다.
+  * '주소'라는 의미를 가지는 태그.
+  * 기본적으로 기울임꼴로 작성된다.
+- `<cite>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/cite)
+  * 저작물의 출처를 표기할 때 사용하는 태그이다.
+  * 반드시 제목을 포함해야 한다.
+  * 적절한 맥락 하에서 출처를 축약해 표기할 수 있다.
+  * 기본적으로 기울임꼴로 작성된다.
+- `<bdo>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/bdo)
+  * 현재 텍스트의 쓰기 방향을 덮어쓰고 다른 방향으로 렌더링할 때 사용하는 태그.(bidirectional override의 약어)
+  * `dir` 속성을 통해 텍스트 쓰기 방향을 설정할 수 있다.
+    * `ltr`: 왼쪽에서 오른쪽(기본)
+    * `rtl`: 오른쪽에서 왼쪽
