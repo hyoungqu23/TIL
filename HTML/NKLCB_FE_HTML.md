@@ -225,3 +225,43 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 
 ---
 ## Text Elements
+### `<h1>` - `<h6>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/Heading_Elements)
+- 웹 브라우저가 제목의 정보를 사용해 자동으로 문서의 목차를 만드는 작업을 수행할 수 있다.
+- 태그의 단계를 역행하거나, 건너뛰는 것을 지양하고, 순차적으로 기입하는 것이 좋다.
+- 글씨 크기를 설정하는 것은 CSS의 `font-size` 속성을 활용해야 한다.
+- 웹 페이지 당 하나의 `<h1>`을 사용하는 것이 검색 엔진 최적화(SEO, Search Engine Optimization)에 유리하다.
+  ```HTML
+  <h1>Heading elements</h1>
+  <h2>Summary</h2>
+  <p>Some text here...</p>
+
+  <h2>Examples</h2>
+  <h3>Example 1</h3>
+  <p>Some text here...</p>
+
+  <h3>Example 2</h3>
+  <p>Some text here...</p>
+
+  <h2>See also</h2>
+  <p>Some text here...</p>
+  ```
+
+### `<p>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/p)
+- 하나의 문단을 나타내는 태그이지만, HTML 문서에서 문단은 이미지나, 입력 폼 등 서로 관련 있는 컨텐츠 모두가 될 수 있다.
+- Block Level Element이고, Container의 역할을 할 수 있다.
+- 내부의 개행은 무시되고, 다수의 space 또한, 하나의 space로 인식된다.
+- `<p>` 문단끼리는 문장의 한 줄 높이가 여백으로 추가되어 분리된다.이러한 여백의 크기를 변경하기 위해서는 CSS를 활용해야 한다.
+- 컨텐츠를 문단으로 나누면 페이지의 접근성을 높일 수 있다.
+- 빈 `<p>` 요소를 활용해 문단 사이의 여백을 추가하는 것은 접근성을 감소시킨다.
+  ```HTML
+  <p>첫 번째 문단입니다.
+    첫 번째 문단입니다.
+    첫 번째 문단입니다.
+    첫 번째 문단입니다.</p>
+  <p>두 번째 문단입니다.
+    두 번째 문단입니다.
+    두 번째 문단입니다.
+    두 번째 문단입니다.</p>
+  ```
