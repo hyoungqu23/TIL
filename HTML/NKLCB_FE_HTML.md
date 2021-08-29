@@ -195,3 +195,33 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 |Phrasing Content|문단에서 텍스트를 마크업할 때 사용하는 요소|
 |Embedded Content|이미지나 비디오 등 외부 소스를 가져오거나 삽입할 때 사용되는 요소|
 |Interactive Content|사용자와의 상호작용을 위한 컨텐츠 요소|
+
+---
+## 실습 환경 구성
+### 웹 에디터와 통합 개발 환경(IDE)
+- 단순히 메모장이 아니라 웹 에디터나 통합 개발 환경을 활용하는 이유는 더 효율적이고 가독성을 높일 수 있기 때문이다.
+- 온라인 웹 에디터: [JS Bin](https://jsbin.com), [Code Pen](https://codepen.io/) [replit](https://replit.com/) 등
+- 통합 개발 환경(IDE, Integrated Development Environment)
+  * 개발할 때 필요한 여러가지 툴을 한 프로그램을 통해 사용할 수 있도록 하는 것.
+  * 코드를 작성하기 위한 소스 코드 편집기, 작성한 코드를 실행하기 위한 빌더, 작성한 코드에 문제가 없는 지 체크해주는 디버거, 추가적인 기능을 제공하는 플러그인.
+
+### VS code 단축키
+||<center>Window</center>|<center>Mac</center>|
+|:-|:-|:-|
+|현재 창 닫기|`ctrl` + `w`||
+|닫은 창 다시 열기|`ctrl` + `shift` + `t`||
+|사이드바 토글|`ctrl` + `b`||
+|사이드바 - 탐색기|`ctrl` + `shift` + `e`||
+|사이드바 - 전체 검색|`ctrl` + `shift` + `f`||
+|에디터 확대/축소|`ctrl` + `+`/`-`||
+|들여쓰기|`Tab` or `ctrl` + `]`||
+|내어쓰기|`shift` + `Tab` or `ctrl` + `[`||
+|아래 행 삽입|`ctrl` + `Enter`||
+|위에 행 삽입|`ctrl` + `shift` + `Enter`||
+|현재 행 이동|`alt` + `↑, ↓`||
+|현재 행 복사|`alt` + `shift` + `↑, ↓`||
+|현재 행 삭제|`ctrl` + `shift` + `k`||
+|주석 처리|`ctrl` + `/`||
+
+---
+## Text Elements
