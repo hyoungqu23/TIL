@@ -60,18 +60,138 @@ HTML(HyperText Markup Language, [wiki](https://ko.wikipedia.org/wiki/HTML))는 �
 - 웹 페이지를 구성하는 요소(element) 각각을 "태그(Tag)"로 표기한다.
 - "태그(Tag)"를 통해 어떤 요소인지 명시할 수 있다.(title, img, video, form 등)
 - "태그(Tag)"의 이름은 HTML 웹 표준에 맞게 작성한다.
-```HTML
-<p>contents</p>
-```
+  ```HTML
+  <p>contents</p>
+  ```
 - 요소(Element)는 3가지로 구성된다.
   * 여는 태그(Opening Tag): <TagName>
   * 닫는 태그(Closing Tag): </TagName>
   * 내용(Contents)
-```HTML
-<h1>Lorem Ipsum</h1>
-<h2>Lorem Ipsum</h2>
-<p>
-  Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-</p>
-```
+  ```HTML
+  <h1>Lorem Ipsum</h1>
+  <h2>Lorem Ipsum</h2>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+  </p>
+  ```
 - 태그의 경우, 대소문자를 구분하지는 않지만 HTML5에서는 모두 소문자로 작성하는 것을 권장한다.
+
+### 빈 요소(Empty elements)
+- 내용(contents)이 없는 요소를 빈 요소라고 하고, 이 경우 닫는 태그를 작성하지 않아도 된다.
+- Empty elements, Self-closing elements, Void elements, Single Tag...
+  ```HTML
+  <br>  <!-- 개행 -->
+  <hr>  <!-- 수평선 -->
+  <img src="imageUrl">
+  <meta charset="utf-8">
+  <input type="text" name="name">
+  ```
+
+### 요소의 중첩(Nesting)
+- 요소 내부에 다른 요소가 들어가는 포함 관계가 성립될 수 있다. 이러한 포함 관계를 보여주기 위해 들여쓰기(indent)를 명확하게 해야 가독성을 높일 수 있다.
+- 즉, 요소의 내용(contents)로는 단순 텍스트와 다른 요소가 모두 가능하다.
+```HTML
+<body>
+  <h1>요소 내부에 다른 요소가 포함되는 것을 <strong>중첩</strong> 관계라고 한다.</h1>
+  <ul>
+    <li>첫 번째</li>
+    <li>두 번째</li>
+    <li>세 번째</li>
+  </ul>
+</body>
+```
+
+### 주석(Comments)
+- 주석(Comments)으로 작성된 내용은 브라우저가 해석하지 않고 무시하여 사용자에게 보이지 않는다.
+- 주석은 코드에 메모를 추가하거나, 사용하지 않는 코드를 임시로 처리하기 위해 사용한다.
+- 보통 `ctrl` + `/` 단축키를 통해 주석 처리를 할 수 있다.
+  ```HTML
+  <!-- 주석의 내용: 메모 혹은 사용하지 않는 코드 -->
+  <p>태그의 내용: 사용자에게 보여지는 텍스트</p>
+  ```
+
+### HTML 문서의 구조
+[WHATWG_DOCTYPE](https://html.spec.whatwg.org/multipage/syntax.html#syntax-doctype) / [MDN_DOCTYPE](https://developer.mozilla.org/ko/docs/Glossary/Doctype)
+[WHATWG_html](https://html.spec.whatwg.org/multipage/semantics.html#the-html-element) / [MDN_html](https://developer.mozilla.org/ko/docs/Web/HTML/Element/html)
+```HTML
+<!DOCTYPE html>
+<HTML>
+  <head>
+    <!-- HEAD 영역 -->
+  </head>
+  <body>
+    <!-- BODY 영역 -->
+  </body>
+</HTML>
+```
+- `<!DOCTYPE html>`: 문서의 유형이 HTML임을 의미한다.
+  HTML5부터 웹 표준을 지키는 문서의 경우 단순히 `html`이라고 유형을 명시하면 브라우저가 HTML5 문서로 해석하기 때문에 생략해도 무관하지만, 작성하는 것이 좋다.
+- `<HTML> </HTML>`: 페이지 전체의 컨텐츠를 감싸는 루트 요소(root element)로, 문서에서 단 한 번만 사용된다.
+  - `<html> </html>`: 브라우저 화면에 직접적으로 나타나지 않는 웹 페이지의 정보를 작성한다.
+    - `<meta>`: 문서의 일반적인 정보와 문자 인코딩 방식 등을 명시하는 태그.
+    - `<title> </title>`: 해당 문서의 제목을 명시하는 태그로, 제목은 브라우저의 탭에서 확인할 수 있다.
+  - `<body> </body>`: 브라우저에 나타나는 모든 컨텐츠를 작성한다.
+
+### `<head>`
+[WHATWG_head](https://html.spec.whatwg.org/multipage/semantics.html#the-head-element) / [MDN_head](https://developer.mozilla.org/ko/docs/Web/HTML/Element/head)
+- `<head>`는 기계가 식별할 수 있는 문서 정보(메타 데이터)를 담고 있다.
+- 즉, 사용자에게 보여야 할 최상위 제목, 목록 등은 `<header>`를 활용하고, `<title>`(제목), `<base>`, `<link>`(스타일 시트 파일), `<style>`(스타일링), `<meta>`, `<script>`(스크립트 파일), `<noscript>`, `<template>` 등을 `<head>`에 작성한다.
+- 단, 하나 이상의 메타 데이터 컨텐츠를 포함해야 하고, `<title>`의 경우 단 하나만 포함해야 한다.
+  ```HTML
+  <html>
+    <head>
+      <title>문서 제목</title>
+    </head>
+  </html>
+  ```
+
+### `<body>`
+[WHATWG_head](https://html.spec.whatwg.org/multipage/sections.html#the-body-element) / [MDN_head](https://developer.mozilla.org/ko/docs/Web/HTML/Element/body)
+- `<body>`는 HTML 문서의 내용을 나타내고, 하나의 문서에 하나만 존재할 수 있다.
+- 여러 속성(Attributes)과 전역 속성(Global Attributes)을 포함하지만, 단독으로 활용되는 경우가 대다수이다.
+  ```HTML
+  <html>
+    <head>
+      <title>문서 제목</title>
+    </head>
+    <body>
+      <p>문단입니다</p>
+    </body>
+  </html>
+  ```
+
+### 태그를 구분짓는 특성
+#### Container와 Contents
+1. 구획을 나누는 태그(Layout)
+   - 단독 사용 시 눈에 보이지 않는다.
+   - 여러가지 요소를 묶어 그룹화하거나, 분리할 수 있다.(Container 역할을 한다.)
+2. 그 자체로 요소인 태그
+   - 단독 사용이더라도 눈으로 확인할 수 있다.
+  
+#### Block과 Inline
+Default로 각 태그가 가진 값이 있으나, CSS의 `display` 속성(property)을 활용해 변경하여 스타일링과 레이아웃을 꾸밀 수 있다.
+즉, 어떻게 웹 페이지 화면에 배치될 지를 결정한다.
+1. Block Level Elements
+   - 이는 언제나 새로운 줄에서 시작한다.
+   - `width` 값을 가지지 않은 경우에는 좌우 양쪽으로 최대한 늘어나 가능한 모든 '너비'(부모 요소가 허용한 최대 너비)를 차지한다.
+   - 다른 블록 요소 혹은 인라인 요소 모두를 포함할 수 있다.
+
+2. Inline Elements
+   - 인라인 요소는 줄의 어느 곳에서나 시작할 수 있다.
+   - 바로 이전 요소가 끝나는 지점부터 시작해 요소의 내용(Contents)의 공간만큼만의 '너비'를 차지한다.
+   - 다른 인라인 요소를 포함할 수 있으나, 블록 요소는 포함할 수 없다.
+
+#### Content Category
+[WHATWG_KindsOfContents](https://html.spec.whatwg.org/multipage/dom.html#kinds-of-content) / [MDN_ContentCategory](https://developer.mozilla.org/ko/docs/Web/Guide/HTML/Content_categories)
+HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화함.
+하나의 요소가 여러 category에 포함될 수도 있다.
+
+|<center>Content Category</center>|<center>Desc</center>|
+|:-|:-|
+|Metadata Content|문서의 메타 데이터(정보), 다른 문서를 가리키는 링크 등을 나타내는 요소|
+|Flow Content|웹 페이지 상의 메타 데이터를 제외하고 거의 모든 요소, 보통 text, embedded contents를 포함한다.|
+|Sectioning Content|웹 문서의 구획(Section)을 구분할 때 사용하는 요소|
+|Heading Content|웹 문서의 구획(Section)의 제목(heading)과 관련된 요소|
+|Phrasing Content|문단에서 텍스트를 마크업할 때 사용하는 요소|
+|Embedded Content|이미지나 비디오 등 외부 소스를 가져오거나 삽입할 때 사용되는 요소|
+|Interactive Content|사용자와의 상호작용을 위한 컨텐츠 요소|
