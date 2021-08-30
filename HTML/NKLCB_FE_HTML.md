@@ -600,3 +600,166 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 - 개발자에게 태그 내부에 채워질 데이터 유형을 제안할 수 있다.(가독성/효율성 향상)
 - 의미론적 마크업은 적절한 사용자 정의 요소, 구성 요소의 이름 짓기를 반영한다.
 
+---
+## List Element & Table Element
+### `<ul>`, `<ol>`, `<li>`
+```HTML
+<ul>
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ul>
+<ol>
+  <li>first item</li>
+  <li>second item</li>
+  <li>third item</li>
+</ol>
+```
+- `<ul>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/ul)
+  * Unordered List의 약어로, 순서나 순위가 없는 비정렬 목록을 나타내는 태그이다.
+  * 항목의 순서를 변경했을 때 의미가 변하지 않고, 순서가 중요하지 않은 경우 사용한다.
+- `<ol>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/ol)
+  * Ordered List의 약어로, 단계, 순서, 순위가 있는 목록을 작성할 때 사용하는 태그이다.
+  * 항목의 순서를 변경했을 때 의미가 변하는 경우 사용한다.
+  * 별도의 설정을 하지 않으면, 숫자 목록으로 구성된다.
+    * `type` 속성(Attribute)
+      항목의 카운터 유형을 의미하는 속성.
+      `a`(소문자 알파벳), `A`(대문자 알파벳), `i`(소문자 로마 숫자), `I`(대문자 로마 숫자), `1`(숫자(기본 값))
+    * `reversed` 속성(Attribute)
+      목록의 순서를 역순으로 배열하는 것을 의미한다.
+    * `start` 속성(Attribute)
+      항목을 셀 때 시작하는 숫자를 의미한다.
+- `<li>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/li)
+  * List Item의 약어로, 목록의 항목을 나타내는 태그이다.
+  * 반드시 `<ul>`, `<ol>` 또는 `<menu>` 내부에 위치해야 한다.
+    * `value` 속성(Attribute)
+      항목의 현재 숫자를 나타내는 정수로, 뒤따르는 다른 항목은 이 값에서부터 번호가 매겨진다.
+- `<ul>`, `<ol>`은 필요한 만큼 중첩할 수 있고, 서로 교차할 수 있다.
+
+### `<dl>`, `<dt>`, `<dd>`
+```HTML
+<dl>
+  <dt>Firefox</dt>
+  <dd>
+    Mozilla 재단과 수 백명의
+    자원봉사자가 개발한 무료
+    오픈소스 크로스 플랫폼
+    그래픽 웹 브라우저.
+  </dd>
+</dl>
+```
+- `<dl>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dl)
+  * Description List의 약어로, 설명 목록을 나타내는 태그.
+  * 어떤 용어를 정의하거나 설명하는 목록으로, 보통 용어 사전이나 메타데이터(key-value 목록)을 표시할 때 사용한다.
+- `<dt>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dt)
+  * Description Term의 약어로, 설명 목록에서 용어를 의미한다.
+  * `<dl>` 내부에 위치하며, 보통 `<dd>`와 함께 사용된다. 다만, 반드시 1:1이 아니어도 무관하다.
+- `<dd>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/dd)
+  * Description Data의 약어로, 설명 목록의 `<dt>`의 용어에 대한 설명, 정의, 또는 값을 제공한다.
+- `<dt>`와 `<dd>`를 `<div>`로 감싸 스타일링할 수 있다. 다만, `<dt>`와 `<dd>`의 형제 요소로 `<div>`를 사용할 수는 없다.(웹 표준에 의거)
+
+### `<table>`, `<tr>`, `<th>`, `<td>`
+```HTML
+<table>
+  <tr>
+    <th scope="col">품목</th>
+    <th scope="col">지출</th>
+  </tr>
+  <tr>
+    <th scope="row">대파</th>
+    <td>3,000</td>
+  </tr>
+  <tr>
+    <th scope="row">달걀</th>
+    <td>4,000</td>
+  </tr>
+  <tr>
+    <th scope="row">봉투</th>
+    <td>50</td>
+  </tr>
+  <tr>
+    <th scope="row">합계</th>
+    <td>7,050</td>
+  </tr>
+</table>
+```
+- `<table>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/table)
+  * 행과 열로 이루어진 표를 나타내는 태그.
+  * 기본적으로 테두리가 없으므로, CSS의 `border` 속성을 활용해야 한다.
+- `<tr>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/tr)
+  * Table Row의 약어로, 표의 행을 정의하는 태그이다.
+- `<th>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/th)
+  * Table Head의 약어로, 표의 행이나 열을 대표하는 컨텐츠를 나타내는 태그.
+  * 기본적으로 굵은 글씨, 가운데 정렬로 설정된다.
+    * `scope` 속성(Attribute)
+      행과 열 중 어떤 것을 대표하는 지를 의미한다.(웹 접근성)
+    * `colspan` 속성(Attribute)
+      해당 셀이 몇 개의 행을 차지할 것인지를 의미한다.(확장)
+    * `rowspan` 속성(Attribute)
+      해당 셀이 몇 개의 열을 차지할 것인지를 의미한다.(확장)
+- `<td>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/td)
+  * Table Data의 약어로, 데이터를 포함하는 표의 셀을 정의하는 태그이다.
+    * `colspan` 속성(Attribute)
+      해당 셀이 몇 개의 행을 차지할 것인지를 의미한다.(확장)
+    * `rowspan` 속성(Attribute)
+      해당 셀이 몇 개의 열을 차지할 것인지를 의미한다.(확장)
+
+### `<thead>`, `<tbody>`, `<tfoot>`
+```HTML
+<table>
+  <thead>
+    <tr>
+      <th scope="col">품목</th>
+      <th scope="col">지출</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th colspan="2">식재료</th>
+    </tr>
+    <tr>
+      <th scope="row">대파</th>
+      <td>3,000</td>
+    </tr>
+    <tr>
+      <th scope="row">달걀</th>
+      <td>4,000</td>
+    </tr>
+  </tbody>
+  <tbody>
+    <tr>
+      <th colspan="2">기타</th>
+    </tr>
+    <tr>
+      <th scope="row">봉투</th>
+      <td>50</td>
+    </tr>
+  </tbody>
+  <tfoot>
+    <tr>
+      <th scope="row">합계</th>
+      <td>7,050</td>
+    </tr>
+  </tfoot>
+</table>
+```
+- `<thead>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/thead)
+  * Table Head의 약어로, 표의 Header를 정의하는 행 집합을 나타내는 태그.
+  * `<table>`의 자식 태그로만 사용되고, 내부에 `<tr>`, `<th>`, `<td>`로 표의 행이나 열을 가진다.
+- `<tbody>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/tbody)
+  * Table Body의 약어로, 표의 Body를 정의하는 행 집합을 나타내는 태그.
+  * `<table>`의 자식 태그로만 사용되고, 내부에 `<tr>`, `<th>`, `<td>`로 표의 행이나 열을 가진다.
+  * `<tbody>`는 하나 이상을 활용할 수 있다.
+- `<tfoot>`[MDN](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/tfoot)
+  * Table Foot의 약어로, 표의 Footer를 정의하는 행 집합을 나타내는 태그.
+  * `<table>`의 자식 태그로만 사용되고, 내부에 `<tr>`, `<th>`, `<td>`로 표의 행이나 열을 가진다.
+- `<thead>`, `<tbody>`, `<tfoot>`를 사용하면, 형제 태그로, `<tr>`을 사용할 수 없다는 점에 유의해야 한다.
+
+### `<caption>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/caption)
+- 표 설명 요소로, 표의 전체를 아우르는 설명이나 제목을 나타내는 태그.
+- `<figcaption>`과 다르게 `<table>`에서만 사용할 수 있다.
+- `<table>`의 첫 번째 자식요소로만 사용할 수 있다. 위치를 변경하기 위해서는 CSS의 `caption-side` 속성을 활용해야 한다.
+
+---
+## Embedded Element
