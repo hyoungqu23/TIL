@@ -377,3 +377,108 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
   * `dir` 속성을 통해 텍스트 쓰기 방향을 설정할 수 있다.
     * `ltr`: 왼쪽에서 오른쪽(기본)
     * `rtl`: 오른쪽에서 왼쪽
+
+> Formatting Element는 다른 태그와 모양을 다르게 만들어, 사용자의 주의를 끌거나, 더 중요도가 높아 보일 수 있게 만들어 다른 내용(Contents)보다 특별한 의미를 갖게된다.
+
+### `<b>`, `<strong>`
+- `<b>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/b)
+  * 굵은 글씨체로 변경하는 태그.
+  * 요약 키워드, 리뷰의 제품명 등, 특별한 중요성을 가지고 있지는 않지만 굵게 표시할 부분에 `<b>`를 사용한다.
+  * 시각적으로 굵게 보여야 하는 듯 하는 부분에 사용한다.
+  * 컨텐츠 전체를 굵게 보이게 하고자 하면 CSS의 `font-weight` 속성을 활용해야 한다.
+  * 해당 컨텐츠를 반드시 우선적으로 확인해야 할 필요는 없다.
+- `<strong>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/strong)
+  * 중대하거나 긴급한 콘텐츠를 나타내는 태그.
+  * '높은 중요도 요소'이다.
+  * 굵은 글씨체로 변경하는 태그.
+  * 해당 컨텐츠를 우선적으로 확인해야 하는 경우에 자주 사용한다.
+
+### `<i>`, `<em>`
+- `<i>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/i)
+  * 텍스트에서 어떤 이유로 주위와 '구분해야 하는 부분'을 나타내는 태그.
+  * 기술 용어, 외국어 구절, 등장인물의 생각 등이 그 예이다.
+  * 보통 기울임꼴로 작성된다.
+  * 일반 산문과 다른 문체를 가진 텍스트에 사용한다. 즉, 주위 텍스트와 다른 의미를 가진 텍스트에 적용하면 된다.
+  * 단순히 기울임꼴을 사용하려면, CSS의 `font-style` 속성을 활용해야 한다.
+  ```HTML
+  <p>라틴어 문구 <i>Veni, vidi, vici</i>는 음악과 예술, 문학에 자주 등장합니다.</p>
+  ```
+- `<em>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/em)
+  * 텍스트의 강세를 나타내는 태그로, 중첩하여 사용하면 더 큰 강세를 뜻한다.
+  * 주위 텍스트에 비해 강조된 부분을 나타내므로, 보통 한 문장에서 하나 혹은 몇 개로 제한된다.
+  * 보통 기울임꼴로 작성된다.
+  * `<i>`와 구분해야 한다.
+  * 단순히 기울임꼴을 사용하려면, CSS의 `font-style` 속성을 활용해야 한다.
+  ```HTML
+  <p>
+    과거에 <em>block-level</em>이라 불렸던 콘텐츠는 HTML 5부터 <em>flow</em> 콘텐츠라고 말합니다.
+  </p>
+  ```
+
+### `<mark>`, `<small>`, `<sub>`, `<sup>`
+- `<mark>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/mark)
+  * 현재 맥락에 관련이 깊거나 중요해 표시 또는 하이라이트한 부분을 나타내는 태그.
+  * 사용자가 검색한 부분을 보여주거나, 강조 표시를 할 때 사용한다.
+  * 단순히 표시만을 위한 용도로 활용하려면, CSS를 활용해야 한다.
+  * 스크린 리더는 `<mark>`의 존재를 표현하지 않기 때문에, CSS `content` 속성과 `::before`, `::after` 가상 요소를 사용해 차이를 둘 수 있다.
+- `<small>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/small)
+  * 덧붙이는 글이나, 저작권과 법률 표기 등의 작은 텍스트를 나타내는 태그.
+  * 기본적으로 자신의 컨텐츠를 한 사이즈 작은 글꼴로 표시한다.
+- `<sub>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/sub)
+  * 활자 배치를 아래 첨자로 해야 하는 인라인 텍스트를 지정하는 태그.
+  * 화학식, 각주, 변수 등을 표기할 때 사용한다.
+- `<sup>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/sup)
+  * 활자 배치를 위 첨자로 해야 하는 인라인 텍스트를 지정하는 태그.
+  * 지수, 서수 등을 표기할 때 사용한다.
+
+### `<del>`, `<ins>`, `<code>`, `<kbd>`
+- `<del>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/del)
+  * 문서에서 제거된 텍스트의 범위를 나타내는 태그.
+  * 문서 혹은 소스코드의 변경점 추적에 사용된다.
+  * 기본적으로 취소선 형태로 작성된다.
+  * 단순히 취소선을 그으려면, CSS의 `font-style` 속성을 활용해야 한다.
+    * `cite` 속성(Attribute): 변경점의 리소스를 나타내는 속성
+    * `datetime` 속성(Attribute): 변경이 발생한 일시를 나타내는 속성
+  * 스크린 리더는 `<del>`의 존재를 표현하지 않기 때문에, CSS `content` 속성과 `::before`, `::after` 가상 요소를 사용해 차이를 둘 수 있다.
+- `<ins>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/ins)
+  * 문서에 추가된 텍스트의 범위를 나타내는 태그.
+  * 기본적으로 밑줄 형태로 작성된다.
+  * 단순히 밑줄을 그으려면, CSS의 `font-style` 속성을 활용해야 한다.
+    * `cite` 속성(Attribute): 변경점의 리소스를 나타내는 속성
+    * `datetime` 속성(Attribute): 변경이 발생한 일시를 나타내는 속성
+  * 스크린 리더는 `<ins>`의 존재를 표현하지 않기 때문에, CSS `content` 속성과 `::before`, `::after` 가상 요소를 사용해 차이를 둘 수 있다.
+- `<code>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/code)
+  * 짧은 코드 조각을 나타내는 스타일을 사용해 자신의 콘텐츠를 표시하는 태그.(Inline Element)
+  * 기본적으로 고정 폭 글꼴로 작성된다.
+  * 여러 줄의 코드를 나타내려면, `<code>` 요소를 `<pre>`로 감싸면 된다.
+- `<kbd>`[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/kbd)
+  * 키보드 입력, 음성 입력 등 임의의 장치를 사용한 사용자의 입력을 나타내는 태그.
+
+### `<a>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/a)
+- `href` 속성(Attribute)을 통해 다른 페이지나 같은 페이지의 어느 위치, 파일, 이메일 주소와 그 외 다른 URL로 연결할 수 있는 하이퍼링크를 만드는 태그.(anchor의 약어)
+- 컨텐츠로 링크 목적지에 대한 설명을 나타내야 한다.
+- 기본적으로 글자 색상이 blue로 변경되고, 밑줄이 그어진다.
+- 해당 링크를 클릭하여 이동하면, 해당 링크의 글자 색상이 변경되고, 이는 방문 기록을 참조하기 때문에 방문 기록을 삭제하는 경우 다시 원 색상으로 변경된다.
+  * `href` 속성
+    Hyperlink Reference의 약어로, 하이퍼링크가 가리키는 URL을 의미한다.
+    절대 경로, 상대 경로(`./`), 이메일 주소(`mailto:주소`), 전화번호(`tel:번호`), 페이지 구획을 가리키는 프래그먼트 URL 등이 가능하다.
+  * `download` 속성
+  * `hreflang` 속성
+  * `target` 속성
+    링크한 URL을 표시할 위치를 설정한다.
+    `_self`(기본값, 현재 탭/창에서 열기), `_blank`(새로운 탭/창에서 열기), `_parent`(현재 브라우징 맥락의 부모), `_top`(최상단 브라우징 맥락)
+
+### Entity references
+[MDN](https://developer.mozilla.org/ko/docs/Learn/HTML/Introduction_to_HTML/Getting_started#entity_references_html%EC%97%90_%ED%8A%B9%EC%88%98_%EB%AC%B8%EC%9E%90_%ED%8F%AC%ED%95%A8)
+- 공백(`' '`), `<`, `>`, `&`, 따옴표(`'`, `"`)는 HTML 문서에서 특수문자로, HTML 구문 자체의 일부이자 예약어이기 때문에 특정 의미가 담긴 문법으로 해석된다.
+- 따라서, 이를 개발자가 사용하고자 하는 텍스트로 작성하려면 Entity로 사용해야 한다.
+  |Literal character|Character reference equivalent|
+  |:-:|:-:|
+  |<|`&lt;`|
+  |>|`&gt;`|
+  |"|`&quot;`|
+  |'|`&apos;`|
+  |&|`&amp;`|
+  |" "|`&nbsp;`|
+- 추가적인 Entity는 [참고자료](https://dev.w3.org/html5/html-author/charref)에서 찾아볼 수 있다.
