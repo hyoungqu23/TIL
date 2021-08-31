@@ -764,3 +764,28 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 ## Embedded Element
 외부의 소스를 가져와서 웹 페이지에 삽입하는 요소(Element).
 ### `<img>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/img)
+- 문서에 이미지를 넣을 때 사용하는 태그(Tag).
+- 내용을 작성하지 않고 빈 요소로 사용하며, 속성(Attribute)를 통해 어떤 이미지를 삽입할 지, 어떻게 삽입할 지 등을 정의한다.
+  * `src` 속성(Attribute)
+    Source의 약어.
+    필수 속성으로, 포함하고자 하는 이미지의 외부 URL이나 경로를 지정하는 속성이다.
+  * `alt` 속성(Attribute)
+    Alternative Text의 약어.
+    이미지에 대한 대체 텍스트 설명이며, 스크린 리더가 `alt`의 값을 읽어 사용자에게 이미지를 설명하기 때문에 웹 접근성을 높일 수 있다.
+    또한, 네트워크 오류, 차단, 링크 삭제 등 이미지를 표시할 수 없는 경우에도 `alt`의 값을 보여준다.
+  * `width` 속성(Attribute)
+    이미지의 픽셀 기준 고유 너비를 지정하는 속성.
+    단위 없는 '정수'로 작성해야 한다.
+    `width`와 `height` 중 하나만 정한다면, 기존 비율로 수정된다.
+  * `height` 속성(Attribute)
+    이미지의 픽셀 기준 고유 높이를 지정하는 속성.
+    단위 없는 '정수'로 작성해야 한다.
+    `width`와 `height` 중 하나만 정한다면, 기존 비율로 수정된다.
+  ```HTML
+  <img src="imgURL", alt="imgDesc" />
+  ```
+
+  #### 웹에서 사용하는 이미지 유형
+  |<center>Abbreviation</center>|<center>MIME type</center>|<center>File extension</center>|<center>Summary</center>|
+  |:-:|:-:|:-:|:-|
