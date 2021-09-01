@@ -782,10 +782,132 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     이미지의 픽셀 기준 고유 높이를 지정하는 속성.
     단위 없는 '정수'로 작성해야 한다.
     `width`와 `height` 중 하나만 정한다면, 기존 비율로 수정된다.
+  * `srcset` 속성(Attribute)
+    브라우저가 사용할 수 있는 이미지 소스의 목록을 나타내는 속성.
+    반응형 이미지를 구현하기 위해 사용한다.
+    이미지 URL과 너비 서술자(선택), 밀도 서술자(선택)를 작성한다.
+    ```HTML
+    <img
+      src="images/large.png"
+      srcset="images/small.png 300w,
+              images/medium.png 450w,
+              images/large.png 600w"
+      alt="responsive images"
+    />
+    ```
+    다만 이 속성은 IE에서는 지원하지 않는다.
+  * `sizes` 속성(Attribute)
+    소스 크기를 나타내는 문자열로, 미디어 조건과 소스 크기의 값으로 구성된다.
+    미디어 조건은 화면 크기(Viewport) 속성을 가리킨다.
+    ```HTML
+    <img
+      src="images/large.png"
+      srcset="images/small.png 300w,
+              images/medium.png 450w,
+              images/large.png 600w"
+      sizes="(min-width: 600px) 600px,
+              (min-width: 450px) 450px,
+              300px"
+      alt="responsive images"
+    />
+    ```
   ```HTML
   <img src="imgURL", alt="imgDesc" />
   ```
 
   #### 웹에서 사용하는 이미지 유형
-  |<center>Abbreviation</center>|<center>MIME type</center>|<center>File extension</center>|<center>Summary</center>|
-  |:-:|:-:|:-:|:-|
+  HTML 표준은 지원해야 하는 이미지 형식을 규정하지 않으므로, 각각 브라우저가 서로 다른 형식을 지원한다. 따라서 해당 브라우저에 맞는 이미지 형식을 활용해야 한다.([참고자료](https://developer.mozilla.org/en-US/docs/Web/Media/Formats/Image_types))
+  웹 페이지에서는 품질보다 저용량이 로딩 속도에 영향을 미친다.
+  |<center>IMG</center>|<center>Abbreviation</center>|<center>MIME type</center>|<center>File extension</center>|<center>Summary</center>|
+  |:-:|:-:|:-:|:-:|:-|
+  |Bitmap|JPEG|`image/jpeg`|`.jpg`, `.jpeg`,`.jfif`, `.pjpeg`, `.pjp`|정지 이미지의 손실 압축에 적합(가장 많이 사용)|
+  |Bitmap|PNG|`image/png`|`.png`|원본 이미지를 보다 정확하게 보여주거나 투명도가 필요한 경우 선호|
+  |Bitmap|GIF|`image/gif`|`.gif`|여러 장의 이미지로 이루어진 애니메이션 표현 가능(지원 색상이 적음)|
+  |Bitmap|WEBP|`image/webp`|`.webp`|구글이 만든 이미지 포맷으로, 품질/압축률 등이 우수하지만, 지원 브라우저가 제한적|
+  |Vector|SVG|`image/svg+xml`|`.svg`|다양한 크기로 정확하게 그려야 하는 아이콘, 다이어그램 등에 사용|
+
+### `<video>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/video)
+- 비디오 플레이백을 지원하는 미디어 플레이어를 문서에 삽입하는 태그(Tag).
+- 오디오 컨텐츠의 경우는 `<audio>` 요소(Element)를 활용하는 것이 더 적합하다.
+- `<img>`와 다르게 빈 요소가 아니고, 내용(Contents)은 브라우저가 `<video>` 요소를 지원하지 않는 경우 보여지게 된다.
+  ```HTML
+  <video src="videos/sample.mp4" controls>
+    Sorry, your browser doesn't support embedded videos, but don't worry, you can <a href="sample.mp4">download it</a> and watch it with your favorite video player!
+  </video>
+  ```
+  * `src` 속성(Attribute)
+    삽입할 동영상의 주소(URL)을 지정하는 속성.
+    선택 속성으로, `<source>` 요소를 자식으로 사용해 삽입할 동영상을 명시할 수 있다.
+  * `controls` 속성(Attribute)
+    소리 조절(volume), 동영상 탐색(seek), 일시 정지(pause)/재시작(resume)할 수 있는 컨트롤러를 제공하는 Boolean 속성.
+  * `autoplay` 속성(Attribute)
+    데이터 로딩이 완료되지 않더라도 재생 가능한 시점에 자동으로 재생이 시작하는 Boolean 속성.
+    다만, 소리가 존재하는 경우에는 브라우저가 재생하지 않도록 만들 수 있다.
+  * `muted` 속성(Attribute)
+    비디오에 포함되어 있는 오디오의 기본 설정을 음소거로 설정하는 Boolean 속성.
+    이를 활용해 음소거 상태에서 자동으로 재생할 수 있게끔 설정할 수 있다.
+  * `loop` 속성(Attribute)
+    동영상 재생이 종료된 후 자동으로 처음부터 다시 재생될 수 있게 설정하는 Boolean 속성.
+  * `width` 속성(Attribute)
+    동영상의 출력 영역 너비를 CSS Pixel 단위로 지정하는 속성.
+    `width`와 `height` 중 하나만 정한다면, 기존 비율로 수정된다.
+  * `height` 속성(Attribute)
+    동영상의 출력 영역 높이를 CSS Pixel 단위로 지정하는 속성.
+    `width`와 `height` 중 하나만 정한다면, 기존 비율로 수정된다.
+  * `poster` 속성(Attribute)
+    사용자가 동영상을 재생하거나 탐색하기 전까지 출력되는 frame 주소를 지정하는 속성.(다른 이미지를 설정할 수 있다.)
+    명시되지 않은 경우에는 첫 번째 frame을 출력한다.
+
+### `<audio>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/audio)
+- 문서에 소리 컨텐츠를 삽입하는 태그(Tag).
+- 대부분 `<video>`와 동일한 속성이 사용된다.(`autoplay`, `src`, `controls`, `loop`, `muted`)
+- 특히, `src` 속성은 선택 속성으로, `<source>` 요소를 자식으로 사용해 한 개 이상의 삽입할 오디오 소스를 명시할 수 있다.
+  * 이 경우 가장 상단에 작성한 `<source>` 요소부터 지원 가능한 형식을 파악하여 재생하고, 모두 지원 불가능한 형식이라면, 마지막 문구가 출력된다.
+  ```HTML
+  <audio controls>
+    <source src="foo.opus" type="audio/ogg; codecs=opus"/>
+    <source src="foo.ogg" type="audio/ogg; codecs=vorbis"/>
+    <source src="foo.mp3" type="audio/mpeg"/>
+    Your browser does not support the <code>audio</code> element.
+  </audio>
+  ```
+- 참고: 오디오 및 오디오를 가진 비디오를 자동으로 재생하는 사이트는 사용자 경험에 악영향을 끼칠 수 있으므로 자동 재생을 지양해야 한다. 반드시 자동 재생을 제공해야 한다면, 사용자의 명시적인 동의를 얻어야 하도록 해야 한다.([자동 재생 안내서](https://developer.mozilla.org/ko/docs/Web/Media/Autoplay_guide))
+- `<audio>`, `<video>`, `<img>` 요소는 `<figure>`와 `<figcaption>`와 함께 사용할 수 있다.
+  ```HTML
+  <figure>
+    <figcaption>Listen to the T-Rex:</figcaption>
+    <audio
+        controls
+        src="/media/cc0-audio/t-rex-roar.mp3">
+            Your browser does not support the
+            <code>audio</code> element.
+    </audio>
+  </figure>
+  ```
+
+### `<canvas>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/canvas)
+- Canvas Scripting API, WebGL API와 함께(javascript) 사용해 그래픽과 애니메이션을 그릴 수 있는 공간을 마크업하는 태그(Tag).
+  * `height` 속성
+    좌표 공간의 높이를 CSS Pixel 단위로 지정하는 속성.(기본값=150)
+  * `width` 속성
+    좌표 공간의 너비를 CSS Pixel 단위로 지정하는 속성.(기본값=300)
+  ```HTML
+  <canvas id="canvas" width="300" height="300">
+    캔버스의 내용을 설명하는 대체 텍스트
+  </canvas>
+  ```
+  ```javascript
+  const canvas = document.getElementById('canvas');
+  const ctx = canvas.getContext('2d');
+  ctx.fillStyle = 'green';
+  ctx.fillRect(10, 10, 100, 100);
+  ```
+
+### `<iframe>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/iframe)
+- 중첩 브라우징 맥락을 나타내는 요소로, 현재 문서 내부에 다른 HTML 페이지를 삽입하는 태그(Tag).
+- Inline Frame Element로, Embedded Element처럼 `src` 속성을 활용해 다른 HTML 문서를 가지고 올 수 있다.
+- 보통 지도를 가져오는데 사용한다.
