@@ -911,3 +911,225 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 - 중첩 브라우징 맥락을 나타내는 요소로, 현재 문서 내부에 다른 HTML 페이지를 삽입하는 태그(Tag).
 - Inline Frame Element로, Embedded Element처럼 `src` 속성을 활용해 다른 HTML 문서를 가지고 올 수 있다.
 - 보통 지도를 가져오는데 사용한다.
+
+## Form Element
+### `<form>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/form)
+- 정보를 제출하기 위한 대화형 컨트롤을 포함하는 문서 구획을 나타내는 태그(Tag).
+- 일방적으로 사용자에게 정보를 제공하는 것이 아닌, 사용자의 입력을 받기 때문에, 상호 작용이 추가된다는 점이 특징이다.
+  * `action` 속성(Attribute)
+    양식 데이터를 처리할 프로그램의 URI(Uniform Resource Identifier, URL, URN 등 하나의 리소스를 가리키는 문자열)를 지정하는 속성.
+    즉, 사용자가 입력한 데이터를 보낼 서버의 '최종 목적지'의 주소를 작성한다.
+  * `method` 속성(Attribute)
+    양식을 제출할 때 사용할 HTTP method를 설정하는 속성,
+    - `POST` method: 양식 데이터를 요청 본문으로 전송.  
+    - `GET` method: 양식 데이터를 `action` URL과 `?` 구분자 뒤에 이어 붙여서 전송.(https://server.com/?`input` 요소의 `name` 속성의 값=사용자가 입력한 값)
+      검색창의 검색어 등 보안이 중요하지 않은 정보를 활용할 때 사용한다.
+    - `dialog`: 양식이 `<dialog>` 내부에 위치한 경우, 제출과 함께 대화 상자를 닫도록 설정.
+
+### `<label>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/label)
+- 사용자 인터페이스 항목의 설명을 나타내는 태그(Tag).
+- `<input>`에 어떤 정보를 입력해야 하는 지에 대한 설명을 작성해 사용자가 잘못된 정보를 입력하는 것을 방지할 수 있다.(웹 접근성 향상)
+  ```HTML
+  <div class="preference">
+    <label for="cheese">Do you like cheese?</label>
+    <input type="checkbox" name="cheese" id="cheese">
+  </div>
+  ```
+- `<label>`을 `<input>` 요소와 연결하기 위해서 `<input>`에 `id` 속성을 부여하고, 이와 동일한 값을 `<label>`의 `for` 속성에 작성해야 한다. 다만, `<label>` 내부에 `<input>`을 작성한 경우 암시적으로 연결되기 때문에, `id`와 `for` 속성을 사용하지 않아도 무관하다.
+
+### `<input>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/input)
+- 웹 기반 양식에서 사용자의 데이터를 받을 수 있는 대화형 컨트롤을 생성하는 태그(Tag).
+- 다양한 `type`이 존재한다. 이러한 `type`에 따라 사용할 수 있는 속성이 각각 존재한다.
+  * `text` type(기본 값)
+    한 줄의 텍스트 필드로, 개행이 불가능하고, `Enter` 입력 시 `<form>`이 제출된다. 
+    - `minlength` 속성(Attribute): 입력 가능한 최소 글자 수
+    - `maxlength` 속성(Attribute): 입력 가능한 최대 글자 수
+    ```HTML
+    <label>TEXT: 
+      <input type="text" name="text" minlength="5" maxlength="10">
+    </label>
+    ```
+  * `password` type
+    값이 가려진 한 줄의 텍스트 필드로, 사이트가 안전하지 않은 경우 사용자에게 경고한다.
+    - `minlength` 속성(Attribute): 입력 가능한 최소 글자 수
+    - `maxlength` 속성(Attribute): 입력 가능한 최대 글자 수
+    ```HTML
+    <label>PW: 
+      <input type="password" name="password" minlength="5" maxlength="10">
+    </label>
+    ```
+  * `email` type
+    이메일 주소를 편집할 수 있는 필드로, 유효성 검증 매개변수가 존재한다.(반드시 `@`를 사용한 형식을 입력)
+    모바일 기기에서는 영문으로 자동으로 변경된다.
+    ```HTML
+    <label>e-mail: 
+      <input type="email" name="email">
+    </label>
+    ```
+  * `tel` type
+    전화번호를 입력하는 컨트롤로, 특정 장치에서는 동적 키패드, 전화번호 입력기를 표시하게 된다.
+    ```HTML
+    <label>TEL: 
+      <input type="tel" name="tel">
+    </label>
+    ```
+  * `number` type
+    숫자를 입력하는 컨트롤로, 스피너를 함께 표시한다.
+    숫자 이외의 문자는 입력이 되지 않는다.
+    ```HTML
+    <label>NUMBER: 
+      <input type="number" name="number">
+    </label>
+    ```
+  * `range` type
+    값이 가려진 숫자를 입력하는 컨트롤로, 중간 값을 기본 값으로 보여준다.
+    기본적으로 `0` ~ `100`을 값으로 갖는다.
+    - `min` 속성(Attribute): 수용 가능한 최소값
+    - `max` 속성(Attribute): 수용 가능한 최대값
+    ```HTML
+    <label>RANGE: 
+      <input type="range" name="range" min="5" max="10">
+    </label>
+    ```
+  * `date` type
+    시간을 제외한 연, 월, 일을 지정할 수 있는 컨트롤로, 브라우저가 지원하는 경우 날짜를 선택할 수 있는 달력 등을 열어준다.
+    ```HTML
+    <label>DATE: 
+      <input type="date" name="date">
+    </label>
+    ```
+  * `month` type
+    연과 월을 지정할 수 있는 컨트롤로, 시간대는 지정할 수 없다.
+    ```HTML
+    <label>MONTH: 
+      <input type="month" name="month">
+    </label>
+    ```
+  * `time` type
+    시간대가 없는 시간 값을 입력하는 컨트롤이다.
+    ```HTML
+    <label>TIME: 
+      <input type="time" name="time">
+    </label>
+    ```
+  * `week` type
+    시간대가 없는 주와 연 값과 주의 값을 구성하는 날짜를 입력하는 컨트롤이다.
+    ```HTML
+    <label>WEEK: 
+      <input type="week" name="week">
+    </label>
+    ```
+  * `submit` type
+    양식을 전송하는 버튼으로, 버튼의 내용은 '제출'이 기본 값으로 설정되어 있다.
+    - `value` 속성(Attribute): 버튼의 내용을 변경하는 속성.
+    ```HTML
+    <form>
+      <input type="submit" value="제출하기~">
+    </form>
+    ```
+    * `button` type
+    기본 행동을 가지지 않고, `value` 값을 버튼의 내용으로 사용하는 버튼이다.
+    - `value` 속성(Attribute): 버튼의 내용을 변경하는 속성.
+    ```HTML
+    <form>
+      <input type="button" value="제출하기~">
+    </form>
+    ```
+    * `reset` type
+    양식의 내용을 기본값으로 초기화하는 버튼이지만, 권장되지는 않는다.
+    버튼의 내용은 '초기화'가 기본 값으로 설정되어 있다.
+    - `value` 속성(Attribute): 버튼의 내용을 변경하는 속성.
+    ```HTML
+    <form>
+      <input type="reset" value="초기화하기~">
+    </form>
+    ```
+    * `checkbox` type
+    단일 값을 선택하거나 선택 해제할 수 있는 체크박스이다.
+    - `checked` 속성(Attribute): 기본 값을 '선택'으로 변경하는 속성.
+    ```HTML
+    <label>CHECKBOX: 
+      <input type="checkbox" name="checkbox">
+    </label>
+    ```
+    * `radio` type
+    같은 `name` 값을 가진 여러 가지의 선택지 중에서 하나의 값만을 선택하게 하는 라디오 버튼이다.
+    - `value` 속성(Attribute): 버튼마다 각각 값을 설정해 어떤 버튼이 선택되었는 지를 파악할 수 있게 하는 속성.
+    - `checked` 속성(Attribute): 기본 값을 '선택'으로 변경하는 속성.
+    ```HTML
+    <label>RADIO: 
+      <input type="radio" name="radio" value="r1">
+      <input type="radio" name="radio" value="r2">
+      <input type="radio" name="radio" value="r3">
+    </label>
+    ```
+- `name` 속성(Attribute)
+  전체 `<form>` 내부에서 해당 필드가 어떤 데이터를 가지고 있는 지를 구별하는 속성.
+  해당 양식 컨트롤의 이름으로, 입력된 데이터와 함께 전송된다.
+- `placeholder` 속성(Attribute)
+  양식 컨트롤이 비어있는 경우 나타내는 내용을 지정하는 속성.
+- `autocomplete` 속성(Attribute)
+  양식의 자동 생성 기능을 활성화하는 속성.
+  Boolean 속성이 아니기 때문에 `on` 값을 지정해야 한다.
+- `required` 속성(Attribute)
+  양식이 전송되기 위해 반드시 입력하거나 확인이 필요한 값으로 지정하는 Boolean 속성.
+- `disabled` 속성(Attribute)
+  양식 컨트롤을 비활성화하는 Boolean 속성.
+  해당 속성이 지정되어 있지 않은 경우에 사용자가 데이터를 입력하지 않고 제출한 경우, `name` 값이 빈 값으로 전송되는데 비해, `disabled` 속성이 설정되어 있는 경우에는 `name` 값도 전송되지 않는다는 차이가 있다.
+- `readonly` 속성(Attribute)
+  해당 양식 컨트롤의 값을 수정할 수 없게 설정하는 Boolean 속성.
+  설정된 양식 컨트롤을 focus할 수 있으나, 수정할 수 없다. 다만, `value` 값으로 설정된 기본 값이 있는 경우에는 해당 값이 그대로 전송된다. 또한, 빈 값이라도 전송되는 점이 `disabled` 속성과의 차이점이다.
+- `step` 속성(Attribute)
+  키보드 방향키나 스피너를 활용해 숫자를 변경할 때의 간격을 설정하는 속성으로, numeric types(number, range 등)에서만 사용 가능하다.
+- `min` 속성(Attribute)
+  최소값을 지정하는 속성으로, numeric types(number, range 등)에서만 사용 가능하다.
+- `max` 속성(Attribute)
+  최대값을 지정하는 속성으로, numeric types(number, range 등)에서만 사용 가능하다.
+
+### `<fieldset>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/fieldset)
+- 웹 양식의 여러 컨트롤과 레이블을 묶을 때 사용한다.
+  ```HTML
+  <form>
+    <fieldset>
+      <legend>Choose your favorite monster</legend>
+
+      <input type="radio" id="kraken" name="monster">
+      <label for="kraken">Kraken</label><br/>
+
+      <input type="radio" id="sasquatch" name="monster">
+      <label for="sasquatch">Sasquatch</label><br/>
+
+      <input type="radio" id="mothman" name="monster">
+      <label for="mothman">Mothman</label>
+    </fieldset>
+  </form>
+  ```
+  * `disabled` 속성(Attribute)
+    모든 자손 컨트롤을 비활성화하는 속성.
+    보통 회색으로 비활성 컨트롤을 표시한다.
+    다만, `<legend>` 내부의 양식 요소는 비활성 상태로 전환되지 않는다.
+
+### `<legend>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/legend)
+- 부모 요소인 `<fieldset>` 내부에서 컨텐츠에 대한 설명을 나타낸다.(범례)
+- 반드시 `<fieldset>`의 첫 번째 자식으로 활용되어야 한다.
+  ```HTML
+  <form action="#">
+    <fieldset>
+      <legend>Simple fieldset</legend>
+      <input type="radio" id="radio">
+      <label for="radio">Spirit of radio</label>
+    </fieldset>
+  </form>
+  ```
+
+### `<button>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)
+
+
+### `<textarea>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea)
