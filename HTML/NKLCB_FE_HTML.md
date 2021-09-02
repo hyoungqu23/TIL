@@ -168,7 +168,7 @@ HTML(HyperText Markup Language, [wiki](https://ko.wikipedia.org/wiki/HTML))는 �
    - 단독 사용이더라도 눈으로 확인할 수 있다.
   
 #### Block과 Inline
-'기본 값'으로 각 태그가 가진 값이 있으나, CSS의 `display` 속성(property)을 활용해 변경하여 스타일링하거나 레이아웃을 꾸밀 수 있다. 즉, 어떻게 웹 페이지 화면에 배치될 지를 결정한다.
+'기본값'으로 각 태그가 가진 값이 있으나, CSS의 `display` 속성(property)을 활용해 변경하여 스타일링하거나 레이아웃을 꾸밀 수 있다. 즉, 어떻게 웹 페이지 화면에 배치될 지를 결정한다.
 1. Block Level Elements
    - 이는 언제나 '새로운 줄'에서 시작한다.
    - `width` 값을 가지지 않은 경우에는 좌우 양쪽으로 최대한 늘어나 '가능한 모든 너비'(부모 요소가 허용한 최대 너비)를 차지한다.(요소의 내용(Contents)과 관계없이)
@@ -623,7 +623,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
   * 별도의 설정을 하지 않으면, 숫자 목록으로 구성된다.
     * `type` 속성(Attribute)
       항목의 카운터 유형을 의미하는 속성.
-      `a`(소문자 알파벳), `A`(대문자 알파벳), `i`(소문자 로마 숫자), `I`(대문자 로마 숫자), `1`(숫자(기본 값))
+      `a`(소문자 알파벳), `A`(대문자 알파벳), `i`(소문자 로마 숫자), `I`(대문자 로마 숫자), `1`(숫자(기본값))
     * `reversed` 속성(Attribute)
       목록의 순서를 역순으로 배열하는 것을 의미한다.
     * `start` 속성(Attribute)
@@ -943,7 +943,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 [MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/input)
 - 웹 기반 양식에서 사용자의 데이터를 받을 수 있는 대화형 컨트롤을 생성하는 태그(Tag).
 - 다양한 `type`이 존재한다. 이러한 `type`에 따라 사용할 수 있는 속성이 각각 존재한다.
-  * `text` type(기본 값)
+  * `text` type(기본값)
     한 줄의 텍스트 필드로, 개행이 불가능하고, `Enter` 입력 시 `<form>`이 제출된다. 
     - `minlength` 속성(Attribute): 입력 가능한 최소 글자 수
     - `maxlength` 속성(Attribute): 입력 가능한 최대 글자 수
@@ -985,7 +985,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     </label>
     ```
   * `range` type
-    값이 가려진 숫자를 입력하는 컨트롤로, 중간 값을 기본 값으로 보여준다.
+    값이 가려진 숫자를 입력하는 컨트롤로, 중간 값을 기본값으로 보여준다.
     기본적으로 `0` ~ `100`을 값으로 갖는다.
     - `min` 속성(Attribute): 수용 가능한 최소값
     - `max` 속성(Attribute): 수용 가능한 최대값
@@ -1023,7 +1023,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     </label>
     ```
   * `submit` type
-    양식을 전송하는 버튼으로, 버튼의 내용은 '제출'이 기본 값으로 설정되어 있다.
+    양식을 전송하는 버튼으로, 버튼의 내용은 '제출'이 기본값으로 설정되어 있다.
     - `value` 속성(Attribute): 버튼의 내용을 변경하는 속성.
     ```HTML
     <form>
@@ -1040,7 +1040,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     ```
     * `reset` type
     양식의 내용을 기본값으로 초기화하는 버튼이지만, 권장되지는 않는다.
-    버튼의 내용은 '초기화'가 기본 값으로 설정되어 있다.
+    버튼의 내용은 '초기화'가 기본값으로 설정되어 있다.
     - `value` 속성(Attribute): 버튼의 내용을 변경하는 속성.
     ```HTML
     <form>
@@ -1049,7 +1049,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     ```
     * `checkbox` type
     단일 값을 선택하거나 선택 해제할 수 있는 체크박스이다.
-    - `checked` 속성(Attribute): 기본 값을 '선택'으로 변경하는 속성.
+    - `checked` 속성(Attribute): 기본값을 '선택'으로 변경하는 속성.
     ```HTML
     <label>CHECKBOX: 
       <input type="checkbox" name="checkbox">
@@ -1058,7 +1058,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
     * `radio` type
     같은 `name` 값을 가진 여러 가지의 선택지 중에서 하나의 값만을 선택하게 하는 라디오 버튼이다.
     - `value` 속성(Attribute): 버튼마다 각각 값을 설정해 어떤 버튼이 선택되었는 지를 파악할 수 있게 하는 속성.
-    - `checked` 속성(Attribute): 기본 값을 '선택'으로 변경하는 속성.
+    - `checked` 속성(Attribute): 기본값을 '선택'으로 변경하는 속성.
     ```HTML
     <label>RADIO: 
       <input type="radio" name="radio" value="r1">
@@ -1081,7 +1081,7 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
   해당 속성이 지정되어 있지 않은 경우에 사용자가 데이터를 입력하지 않고 제출한 경우, `name` 값이 빈 값으로 전송되는데 비해, `disabled` 속성이 설정되어 있는 경우에는 `name` 값도 전송되지 않는다는 차이가 있다.
 - `readonly` 속성(Attribute)
   해당 양식 컨트롤의 값을 수정할 수 없게 설정하는 Boolean 속성.
-  설정된 양식 컨트롤을 focus할 수 있으나, 수정할 수 없다. 다만, `value` 값으로 설정된 기본 값이 있는 경우에는 해당 값이 그대로 전송된다. 또한, 빈 값이라도 전송되는 점이 `disabled` 속성과의 차이점이다.
+  설정된 양식 컨트롤을 focus할 수 있으나, 수정할 수 없다. 다만, `value` 값으로 설정된 기본값이 있는 경우에는 해당 값이 그대로 전송된다. 또한, 빈 값이라도 전송되는 점이 `disabled` 속성과의 차이점이다.
 - `step` 속성(Attribute)
   키보드 방향키나 스피너를 활용해 숫자를 변경할 때의 간격을 설정하는 속성으로, numeric types(number, range 등)에서만 사용 가능하다.
 - `min` 속성(Attribute)
@@ -1129,7 +1129,72 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
 
 ### `<button>`
 [MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/button)
+- 클릭 가능한 버튼을 나타내는 태그(Tag).
+- 버튼은 `<form>` 내부와 외부에서 모두 사용할 수 있다.
+  * `disabled` 속성(Attribute)
+    버튼과 사용자의 상호작용, 즉 누르거나 클릭하는 것을 막는 속성.
+  * `name` 속성(Attribute)
+    버튼의 이름으로, 데이터를 전송할 때 버튼의 `value` 속성의 값과 함께 양식 데이터의 일부를 구성하는 속성.
+  * `type` 속성(Attribute)
+    버튼의 행동 방식을 설정하는 속성.
+    - `submit`(기본값): 서버로 양식 데이터를 제출하는 버튼 타입을 설정.
+    - `reset`: 모든 컨트롤을 초기 값으로 되돌리는 버튼 타입을 설정.
+    - `button`: 기본 행동이 없어 클릭 시 아무 일도 일어나지 않는 버튼 타입을 설정.
+  * `value` 속성(Attribute)
+    버튼의 초기 값으로, 데이터를 전송할 때 `name` 속성의 값과 함께 양식 데이터의 일부를 구성하는 속성.
+- `<button>` 요소는 `<input type="button">` 요소보다 스타일링하기 쉽다. 
+  * `<input type="button">`은 빈 요소이기 때문에 `value` 특성에 텍스트 값밖에 지정할 수 없다.
+  * 이와 달리 `<button>`은 내부 HTML 콘텐츠(`<em>`, `<strong>`, 심지어 `<img>`도)에 더해 `::after`와 `::before` 의사 요소를 사용하는 복잡한 렌더링도 가능하다.
+  * 다만, 아이콘만을 사용해 기능을 표현하는 버튼을 설정하면, 웹 접근성이 부족할 수 있기 때문에 해당 버튼의 기능을 간략히 묘사하는 텍스트를 함께 활용하는 것이 좋다.
+- 양식 제출용 버튼을 설정할 것이 아니라면 반드시 `type` 특성을 `button`으로 지정하는 것이 좋다. 기본값(`submit`)인 경우 버튼을 눌렀을 때 양식 데이터를 제출하고, (존재하지 않는) 응답을 불러오려고 시도하는 과정에서 문서의 현재 상태가 사라질 수 있다.
 
+### `<select>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/select)
+- 옵션 메뉴, 드롭 다운 메뉴를 제공하는 컨트롤을 나타내는 태그(Tag).
+- `<label>`과 연결하기 위한 `id` 속성의 값과 서버로 전송할 데이터의 이름을 설정하기 위한 `name` 속성의 값이 필요하다.
+- 목록의 옵션을 설정하기 위해 자식 요소로 `<option>`을 활용한다.
+- 첫 번째 `<option>` 값이 목록에 기본값으로 출력된다.
+- `required` 속성을 활용하면 반드시 하나를 선택해야 하는데, 맨 위에 작성한 `please choose one`인 상태로 제출하면 전송이 된다. 이는 `value` 값이 존재하기 때문인데, `value`값을 빈 값으로 설정하려면 반드시 `value=""` 명시해야 한다.
 
+### `<option>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/option)
+- `<select>`, `<optgroup>`, `<datalist>` 요소의 항목을 정의하는 태그(Tag).
+- 모든 `<option>`은 자신이 선택됐을 때 값으로써 사용할 `value` 특성이 필요하지만, `value` 특성을 지정하지 않은 경우, 대신 자기 안의 텍스트를 값으로 사용한다.
+
+### `<optgroup>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/optgroup)
+- `<select>` 요소의 옵션을 하나의 그룹으로 설정하는 태그(Tag).
+  * `label` 속성(Attribute)
+    옵션 그룹의 이름을 지정하는 속성으로, 필수적으로 지정해야 한다.
+
+### `<datalist>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/datalist)
+- 다른 컨트롤에서 고를 수 있는 가능한, 혹은 추천하는 선택지를 나타내는 `<option>` 요소 여럿을 담는 태그(Tag).
+- `<input>`과 함께 사용되어 목록을 보여준다. 이때, `<input>`과 연결하기 위해 `<input>`의 `list` 속성의 값과 동일한 `<datalist>`의 `id` 속성의 값을 활용해야 한다.
+- `<select>`와 `<option>`을 사용한 목록은 해당 목록 내에서만 선택해야 하고, 값을 수정할 수 없지만, `<datalist>` 값은 목록 이외의 값을 작성하여 사용할 수 있고, 기존 목록의 값을 수정해서 전송할 수 있다.
+- 앞 글자가 일치하는 목록만을 검색할 수도 있다.
+  ```HTML
+  <label for="movie-choice">Favorite movie:</label>
+  <input list="movie-list" id="movie-choice" name="movie-choice" />
+
+  <datalist id="movie-list">
+      <option value="Chocolate">
+      <option value="Coconut">
+      <option value="Mint">
+      <option value="Strawberry">
+      <option value="Vanilla">
+  </datalist>
+  ```
 ### `<textarea>`
 [MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/textarea)
+- 멀티라인 일반 텍스트 편집 컨트롤을 나타내는 태그(Tag).
+- `<pre>`와 동일하게 내부 개행과 공백을 인정한다.
+  ```HTML
+  <label for="story">Tell us your story:</label>
+  <textarea id="story" name="story" rows="5" cols="33">
+    It was a dark and stormy night...
+  </textarea>
+  ```
+  * `row` 속성(Attribute): 세로 폭을 열 수로 설정하는 속성.
+  * `cols` 속성(Attribute): 가로 폭을 글자수로 설정하는 속성.
+  * `disabled`, `readonly`, `required` 등 `<input type="text">`에서 활용하는 속성도 사용할 수 있다.
