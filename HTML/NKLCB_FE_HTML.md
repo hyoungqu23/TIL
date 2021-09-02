@@ -1,4 +1,4 @@
-# HTML/CSS
+# HTML
 > 👍 *기초를 탄탄하게, 발목 잡히지 않도록.*
 
 ---
@@ -1268,17 +1268,50 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
   
 ## Global Attributes
 ### `class`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/class)
+- 공백으로 구분한 클래스 목록을 정의하는 속성(Attribute).
+- 대소문자를 구분하지 않는다.
+- CSS, JavaScript에서 클래스 선택자나 DOM method의 `document.getElementByClassName()` 등을 통해 요소에 접근할 수 있다.
+- 공백을 통해 여러 클래스를 구분할 수 있고, 중복하여 사용할 수 있다.
 
 ### `id`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/id)
+- 문서 전체에서 유일한 고유 식별자(ID)를 정의하는 속성(Attribute).
+- 이러한 고유 식별자는 요소를 식별하기 위해 사용할 수 있다.
+- `id` 값에는 공백을 포함할 수 없다.
+- `id` 값은 숫자, 특수문자로 시작할 수 없다.
 
 ### `style`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/style)
+- 하나의 요소에 적용할 CSS 스타일 선언을 담는 속성(Attribute).
+- 주로 테스트 등 빠른 스타일링을 위한 목적으로 사용된다.
+- 외부 별도의 CSS 파일에 정의하는 것이 권장된다.
 
 ### `title`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/title)
+- 요소와 관련된 추가적인 정보를 제공하는 텍스트를 설정하는 속성(Attribute).
+- 이는 보통 툴팁으로 표시된다.
+- `<pre>` 태그와 유사하게 공백과 개행을 포함한다.
+- 부모 요소와 자식 요소 모두가 `title` 속성을 가지고 있는 경우에는 자식 요소의 `title` 속성이 우선적으로 표시된다.
 
 ### `lang`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/lang)
+- 요소 내의 수정 불가능한 텍스트의 언어와 수정 가능한 텍스트가 사용해야 하는 언어를 정의하는 속성(Attribute).
+- `lang`의 기본값은 "알 수 없음"이므로 항상 적절한 값을 지정해야 한다.(웹 접근성)
+- 각각 태그마다 `lang` 속성에 적합한 값을 지정해야 한다.
 
-### `data`
+### `data-`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/data)
+- `data-`를 활용해 속성을 새롭게 지정해 특정 태그의 정보를 가지고 해당 정보를 JavaScript로 활용할 수 있도록 할 수 있다.
 
 ### `draggable`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/draggable)
+- 요소의 드래그 가능 여부를 나타내는 열거형 속성(Attribute).
+- `true`, `false`를 명시해야 한다.
+- JavaScript를 활용해 드래그 이벤트를 동작시킬 수 있다.
 
 ### `hidden`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Global_attributes/hidden)
+- 해당 요소가 '아직', 혹은 '더 이상' 관련이 없음을 나타내는 Boolean 속성(Attribute).
+- 브라우저는 해당 속성을 가진 요소를 렌더링하지 않지만, 보안을 이유로 보이지 않게 하기 위해서는 사용하면 안된다.
+- `hidden` 속성을 가진 요소의 CSS `display` 속성(property)을 변경하면 화면에 보이게 할 수 있다.
