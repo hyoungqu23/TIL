@@ -1198,3 +1198,87 @@ HTML5부터 유사한 특징을 가진 요소를 7가지 category로 세분화�
   * `row` 속성(Attribute): 세로 폭을 열 수로 설정하는 속성.
   * `cols` 속성(Attribute): 가로 폭을 글자수로 설정하는 속성.
   * `disabled`, `readonly`, `required` 등 `<input type="text">`에서 활용하는 속성도 사용할 수 있다.
+
+---
+## Metadata Element
+- `<head>` 요소의 컨텐츠는 브라우저에 표시되지 않는 정보인 'Metadata'를 포함하는 요소들로, 'Metadata'는 데이터를 설명하는 데이터를 의미한다.
+- HTML 문서 자체도 하나의 데이터이므로, 해당 HTML 문서를 설명하는 데이터가 'Metadata'가 된다.
+
+### `<title>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/title)
+- 브라우저의 제목 표시줄이나 페이지 탭에 보이는 문서 제목을 정의하는 태그(Tag).
+- 텍스트만 포함하며, 태그를 포함하는 경우 무시한다.
+- 하나의 `<head>` 요소 내부에는 `<title>` 하나만 존재할 수 있다.
+- 페이지 제목은 SEO에 큰 영향을 주기 때문에, 보통 길고 상세한 제목이 더 좋은 성과를 가져온다. 또한, 단순 명사로만 나열된 제목은 좋지 않고, 컨텐츠를 설명하는 문장을 삽입하는 것이 좋다.
+
+### `<meta>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta)
+- 다른 메타 관련 요소(`<base>`, `<link>`, `<script>`, `<style>`, `<title>` 등)로 나타낼 수 없는 Metadata를 나타내는 태그(Tag).
+- 빈 요소이므로 속성에 해당 정보를 나열하게 된다.
+- 특히, `name` 속성과 `content` 속성을 함께 사용해 문서의 Metadata 값을 'key-value' 쌍으로 제공할 수 있다.([표준 메타데이터 이름](https://developer.mozilla.org/ko/docs/Web/HTML/Element/meta/name))
+  ```HTML
+  <meta name="application-name" content="TIL" />
+  <meta name="author" content="HM Lee" />
+  <meta name="description" content="HTML, Til I Learned" />
+  ```
+- `charset` 속성을 통해 페이지의 문자 인코딩을 선언할 수 있다. 보통 `utf-8`을 활용한다. 이는 `<head>`의 첫 번째 자식 요소로 작성하는 것이 권장된다.
+- `name="viewport"`를 통해 뷰포트 초기 사이즈에 대해 정의한다.
+  * `width`: 웹 사이트를 렌더링하고자 하는 뷰포트 너비를 정의
+  * `height`: 웹 사이트를 렌더링하고자 하는 뷰포트 높이를 정의
+  * `initial-scale`: 장치 너비와 뷰포트 너비의 비율을 정의
+  * `user-scalable`: 사용자가 웹 페이지를 확대할 수 있을 지를 정의
+  * `maximum-scale`: 가능한 최소 확대 비율을 정의
+  * `minimum-scale`: 가능한 최소 확대 비율을 정의
+
+### `<link>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/link)
+- 현재 문서와 외부 리소스의 관계를 명시하는 태그(Tag).
+- 보통 CSS Stylesheet를 연결할 때 많이 활용하지만, 사이트 아이콘 연결 등에서도 사용할 수 있다.
+  ```HTML
+  <link href="./main.css" rel="stylesheet">
+  <link rel="icon" href="./favicon.ico">
+  ```
+- `href` 속성: 연결할 외부 리소스의 경로를 지정하는 속성.
+- `rel` 속성: 현재 문서와 연결한 리소스의 관계를 설명하는 속성.
+- `type` 속성: 연결된 컨텐츠의 MIME 타입을 정의하는 속성.(ex. `text/html`, `text/css` 등)
+
+### MIME TYPE
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTTP/Basics_of_HTTP/MIME_types)
+- MIME Type이란 클라이언트에게 전송된 파일가 어떤 파일인지 알려주기 위한 정보이다.
+- 일반적인 구조: `type/subtype`
+- 예시: `text/plain`, `text/html`, `image/jpeg`, `image/png`, `audio/mpeg`, `audio/ogg`, `audio/*`, `video/mp4`
+
+### `<style>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/style)
+- 문서나 문서 일부에 대한 스타일 정보를 포함하는 태그(Tag).
+- 일반적으로는 스타일을 적용하기 위해 외부 스타일 시트를 만들고, `<link>` 요소를 활용해 연결하지만, 직접적으로 `<style>` 요소를 활용해 스타일을 설정할 수도 있다.
+- `<style>` 요소는 문서의 `<head>` 안에 위치해야 한다.
+
+### `<script>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/HTML/Element/script)
+- 직접 Javascript 코드를 작성하거나, 외부의 Javascript 코드와 연결하는 태그(Tag).
+  ```HTML
+  <script src="javascript.js"></script>
+
+  <script>
+    alert("Hello World!");
+  </script>
+  ```
+- HTML 문서는 위에서 아래로 실행되는데, `<script>`가 있는 경우 렌더링되는 화면이 멈추고, 스크립트 코드를 해석하게 된다. 따라서 `<body>`의 마지막에 작성하는 것을 권장한다. 혹은 `defer` 속성을 활용해서 사용할 수 있다.
+  
+## Global Attributes
+### `class`
+
+### `id`
+
+### `style`
+
+### `title`
+
+### `lang`
+
+### `data`
+
+### `draggable`
+
+### `hidden`
