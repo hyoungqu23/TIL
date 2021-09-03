@@ -1,3 +1,185 @@
+/* CSS 우선순위 */
 h1#heading3 {
   color:yellow;
+}
+
+/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+/* CSS Selector */
+/* Type Selector */
+h2 {
+  color: green;
+}
+
+/* ID Selector */
+#welcome-title {
+  color: red;
+}
+
+/* Class Selector */
+.blue {
+  color: blue;
+}
+
+.white {
+  color: gray;
+}
+
+/* Attribute Selector */
+a[target] {
+  color: hotpink;
+}
+
+a[href="https://example.org"] {
+  color: tomato;
+}
+
+a[href^="https://"] {
+  font-style: italic;
+}
+
+a[href$=".com"] {
+  font-weight: bold;
+}
+
+a[href*="examples"] {
+  color: deeppink;
+}
+
+/* Pseudo-Class Selector */
+.player:first-child {
+  color:blueviolet;
+}
+
+.player:last-child {
+  color:gold;
+}
+
+.player:nth-child(3) {
+  font-style: italic;
+}
+
+.player:nth-child(2n) {
+  font-weight: bold;
+}
+
+.player:nth-child(odd) {
+  text-decoration: underline;
+}
+
+.sportList p:first-of-type {
+  color: aqua;
+}
+
+.sportList div:last-of-type {
+  color: red;
+}
+
+.sportList p:nth-of-type(odd) {
+  color: greenyellow;
+}
+
+input:not(.pw) {
+  background-color: grey;
+}
+
+a:link {
+  color:gold;
+}
+
+input[type=button] {
+  background-color: lightskyblue;
+  border: none;
+}
+
+input[type=button]:hover {
+  background-color: lime;
+  border: none;
+}
+
+input[type=button]:active {
+  background-color: red;
+  border: none;
+}
+
+input[type=text]:focus {
+  background-color: lime;
+}
+
+input[type=text] {
+  background-color: black;
+}
+
+input[type=text]:enabled {
+  background-color: yellow;
+}
+
+input[type=text]:disabled {
+  background-color: skyblue;
+}
+
+input[type=radio]:checked {
+  outline: 3px solid red;
+}
+
+input[type=checkbox]:checked {
+  outline: 3px solid teal;
+}
+
+.color { 
+  color: indigo;
+}
+
+.color::before { 
+  content: "color ";
+  color: darkorange;
+}
+
+.favorite::before { 
+  content: "😍";
+}
+
+.color::after { 
+  content: " 색";
+  color: olive;
+}
+
+.lorem::first-letter {
+  font-size: 1.5rem;
+}
+
+.lorem::first-line {
+  font-size: 1.5rem;
+  color: red;
+}
+
+.lorem::selection {
+  color: white;
+  background-color: seagreen;
+}
+
+/* Selector Combination */
+ul li:last-of-type {
+  color:aqua;
+}
+
+ol > li:last-of-type {
+  color: red;
+}
+
+code ~ p {
+  color:darkorange;
+}
+
+code + p {
+  background-color: blue;
+}
+
+/* initial */
+div {
+  border: 1px solid black;
+  margin: 10px;
+}
+
+.parent {
+  color: blueviolet;
 }
