@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CSS Example</title>
   <style>
-    h1#heading1 {
+    #priority1 {
       color: red;
     }
   </style>
@@ -14,43 +14,35 @@
 </head>
 <body>
   <!-- CSS 우선순위 -->
-  <h1 id="heading1">Welcome!</h1>
-  <h1 id="heading2" style="color:aqua;">Welcome!</h1>
-  <h1 id="heading3">Welcome!</h1>
-  <hr>
+  <h1>CSS 우선순위 예제</h1>
+  <h2 id="priority1">Welcome!(Embedded)</h2>
+  <h2 id="priority2" style="color:aqua;">Welcome!(Inline)</h2>
+  <h2 id="priority3">Welcome!(External)</h2>
+<hr>
   <!-- CSS Selector -->
-  <h1 id="welcome-title">Welcome!</h1>
-  
-  <h2>List1</h2>
+  <h1>CSS Selector: Type, Id, Class</h1>
+  <h2 id="id-selector">Welcome!</h2>
+  <h2 id="type-selector">Club Team List</h2>
   <ul>
-    <li class="blue white">Everton</li>
-    <li class="white">Tottenham Hotspurs</li>
-    <li class="blue">Chelsea</li>
-    <li class="blue">Manchester City</li>
-    <li class="blue">Liverpool</li>
+    <li class="class-selector blue white">Everton</li>
+    <li class="class-selector white">Tottenham Hotspurs</li>
+    <li class="class-selector blue">Chelsea</li>
+    <li class="class-selector blue">Manchester City</li>
+    <li class="class-selector red">Liverpool</li>
   </ul>
-
-  <h2>List2</h2>
-  <ol>
-    <li>HTML5</li>
-    <li>CSS3</li>
-    <li>JavaScript</li>
-  </ol>
-  <hr>
-  <h3>Lorem Ipsum</h3>
-  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
-  <p class="blue">Quis perferendis iusto veniam libero deserunt tenetur eligendi amet asperiores ipsam,</p>
-  <p>debitis ea recusandae maxime fugiat doloremque cumque mollitia provident ad minima.</p>
-  <hr>
+<hr>
+  <h1>CSS Selector: Attribute</h1>
+  <h2 class="attribute-selector">Link List</h2>
   <ul>
-    <li><a href="http://examples.com" target="_blank">Example Link</a></li>
-    <li><a href="http://examples.org" target="_blank">Example Link</a></li>
-    <li><a href="https://example.com">Example Link</a></li>
-    <li><a href="https://example.org">Example Link</a></li>
+    <li><a class="attribute-selector" href="http://example.com" target="_blank">Example Link</a></li>
+    <li><a class="attribute-selector" href="http://examples.org" target="_blank">Example Link</a></li>
+    <li><a class="attribute-selector" href="https://examples.com">Example Link</a></li>
+    <li><a class="attribute-selector" href="https://example.org">Example Link</a></li>
   </ul>
-  <hr>
+<hr>
   <!-- Pseudo-Class Selector -->
-  <h2>Player List</h2>
+  <h1>CSS Selector: Pseudo-Class</h1>
+  <h2 class="pseudo-class-selector">Player List</h2>
   <ol>
     <li class="player t1">T1 Faker</li>
     <li class="player dk">DK Showmaker</li>
@@ -59,8 +51,8 @@
     <li class="player dk">DK Kann</li>
     <li class="player gen">GEN Clid</li>
   </ol>
-  <hr>
-  <h2>Sport List</h2>
+<hr>
+  <h2 class="pseudo-class-selector">Sport List</h2>
   <section class="sportList">
     <div>Soccer</div>
     <p>Baseball</p>
@@ -68,92 +60,121 @@
     <p>Swimming</p>
     <div>Volleyball</div>
   </section>
-  <hr>
+<hr>
   <form action="#">
-    <input class="name" type="text" name="name" placeholder="name">
-    <input class="email" type="email" name="email" placeholder="email">
-    <input class="pw" type="password" name="pw" placeholder="pw">
+    <input class="input number" type="number" name="number" placeholder="name">
+    <input class="input email" type="email" name="email" placeholder="email">
+    <input class="input pw" type="password" name="pw" placeholder="pw">
     <input class="submit" type="submit">
   </form>
-  <hr>
-  <a href="http://example.com">Example</a>
-  <hr>
+<hr>
+  <a class="pseudo-class-selector" href="http://ex.com">Example</a>
+<hr>
   <div>
-    <input type="button" value="Click Me!">
-    <input type="button" value="Click Me!">
-    <input type="text">
+    <input class="hover active focus" type="button" value="Click Me!">
+    <input class="hover active focus" type="button" value="Click Me!">
+    <input class="hover active focus" type="text">
   </div>
-  <hr>
+<hr>
   <div>
-    <input type="text" placeholder="1">
-    <input type="text" placeholder="2">
-    <input type="text" placeholder="3" disabled>
+    <input class="enabled" type="text" placeholder="1">
+    <input class="enabled" type="text" placeholder="2">
+    <input class="disabled" type="text" placeholder="3" disabled>
   </div>
-  <hr>
+<hr>
   <div>
-    <input type="radio" name="my-input" id="yes">
+    <input class="checked" type="radio" name="my-input" id="yes">
     <label for="yes">Yes</label>
     
-    <input type="radio" name="my-input" id="no">
+    <input class="checked" type="radio" name="my-input" id="no">
     <label for="no">No</label>
   </div>
-  <hr>
+<hr>
   <div>
-    <input type="checkbox" name="check-me" id="check">
+    <input class="checked" type="checkbox" name="check-me" id="check">
     <label for="check">check me</label>
   </div>
-  <hr>
+<hr>
   <!-- Pseudo-Element Selector -->
+  <h1>CSS Selector: Pseudo-Element</h1>
   <div class="color">red</div>
   <div class="color">blue</div>
   <div class="color favorite">black</div>
   <div class="color">yellow</div>
   <div class="color">brown</div>
-  <hr>
-  <p class="lorem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
-  <p class="lorem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
-  <p class="lorem">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
-  <hr>
+<hr>
+  <p class="first-letter">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
+  <p class="first-line">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
+  <p class="selection">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Est aspernatur necessitatibus velit soluta ducimus quidem atque sint animi numquam exercitationem inventore, mollitia quo facilis maxime sapiente natus, dolor sed ea.</p>
+<hr>
   <!-- Selector Combination -->
-  <ul>
-    <li>list1</li>
-    <li>list2</li>
-    <li>list3</li>
-    <li>list4</li>
-    <li>list5</li>
+  <h1>Selector Combination</h1>
+  <h2 class="combination">Combination List1</h2>
+  <ul class="combination">
+    <li>list-items #1</li>
+    <li>list-items #2</li>
+    <li>list-items #3</li>
+    <li>list-items #4</li>
+    <li>list-items #5</li>
   </ul>
-
-  <ol>
-    <li>list1</li>
-    <li>list2
-      <ul>
-        <li>i1</li>
-        <li>i2</li>
-        <li>i3</li>
+<hr>
+  <h2 class="combination">Combination List2</h2>
+  <ol class="combination">
+    <li>list-items #1</li>
+    <li>list-items #2
+      <ul class="combination" >
+        <li>list-items #2-1</li>
+        <li>list-items #2-2</li>
+        <li>list-items #2-3</li>
       </ul>
     </li>
-    <li>list3</li>
-    <li>list4</li>
+    <li>list-items #3</li>
+    <li>list-items #4</li>
   </ol>
 <hr>
-  <h1>Title</h1>
-  <div>
-    <p>P1</p>
-    <span>span</span>
-    <code>Code</code>
-    <p>P2</p>
-    <div>Div</div>
-    <p>p1</p>
-    <p>p2</p>
-    <p>p3</p>
-    <p>p4</p>
+  <h2 class="combination">Combination Section</h2>
+  <div class="combination">
+    <p class="combination">P1</p>
+    <span class="combination">span</span>
+    <code class="combination">Code1</code>
+    <p class="combination">P2</p>
+    <div class="combination">Div</div>
+    <p class="combination">p1</p>
+    <p class="combination">p2</p>
+    <code class="combination">Code2</code>
+    <p class="combination">p3</p>
+    <p class="combination">p4</p>
   </div>
 <hr>
-  <div class="parent">
+  <h2 class="initial">Initial Section</h2>
+  <div class="initial parent">
     parent
-    <div class="child1">child1</div>
-    <div class="child2">child2</div>
+    <div class="initial child1">child1</div>
+    <div class="initial child2">child2</div>
   </div>
-  
+  <h2 class="inherit">Inherit Section</h2>
+  <div class="inherit parent">
+    parent
+    <div class="inherit child1">child1</div>
+    <div class="inherit child2">child2</div>
+  </div>
+  <h2 class="unset">Unset Section</h2>
+  <div class="unset parent">
+    parent
+    <div class="unset child1">child1</div>
+    <div class="unset child2">child2</div>
+  </div>
+<hr>
+  <!-- Font Property -->
+  <h2 class="font">Font Property</h2>
+  <p class="font-default">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, officiis. Non eum fugiat illum est accusamus obcaecati fugit aspernatur possimus deserunt quasi molestiae saepe excepturi expedita culpa alias, distinctio omnis.
+  </p>
+  <p class="font-property">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, officiis. Non eum fugiat illum est accusamus obcaecati fugit aspernatur possimus deserunt quasi molestiae saepe excepturi expedita culpa alias, distinctio omnis.
+  </p>
+  <p class="font-shorthand-property">
+    Lorem ipsum dolor sit amet consectetur adipisicing elit. Tenetur, officiis. Non eum fugiat illum est accusamus obcaecati fugit aspernatur possimus deserunt quasi molestiae saepe excepturi expedita culpa alias, distinctio omnis.
+  </p>
 </body>
 </html>

@@ -1,21 +1,31 @@
+h1 {
+  border: 4px solid black;
+  border-radius: 20px;
+  text-indent: 20px;
+}
+
 /* CSS 우선순위 */
-h1#heading3 {
+#priority3 {
   color:yellow;
 }
 
-/* +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
 /* CSS Selector */
 /* Type Selector */
 h2 {
-  color: green;
+  color: deepskyblue;
+  font-style: italic;
 }
 
 /* ID Selector */
-#welcome-title {
+#id-selector {
   color: red;
 }
 
 /* Class Selector */
+.class-selector {
+  text-transform: uppercase;
+}
+
 .blue {
   color: blue;
 }
@@ -25,24 +35,24 @@ h2 {
 }
 
 /* Attribute Selector */
-a[target] {
+a.attribute-selector[target] {
   color: hotpink;
 }
 
-a[href="https://example.org"] {
+a.attribute-selector[href="https://example.org"] {
   color: tomato;
 }
 
-a[href^="https://"] {
+a.attribute-selector[href^="https://"] {
   font-style: italic;
 }
 
-a[href$=".com"] {
+a.attribute-selector[href$=".com"] {
   font-weight: bold;
 }
 
-a[href*="examples"] {
-  color: deeppink;
+a.attribute-selector[href*="examples"] {
+  color: royalblue;
 }
 
 /* Pseudo-Class Selector */
@@ -67,7 +77,7 @@ a[href*="examples"] {
 }
 
 .sportList p:first-of-type {
-  color: aqua;
+  color: white;
 }
 
 .sportList div:last-of-type {
@@ -75,14 +85,15 @@ a[href*="examples"] {
 }
 
 .sportList p:nth-of-type(odd) {
-  color: greenyellow;
+  background-color: greenyellow;
 }
 
-input:not(.pw) {
+input.input:not(.pw) {
   background-color: grey;
+  color: white;
 }
 
-a:link {
+a.pseudo-class-selector:link {
   color:gold;
 }
 
@@ -91,44 +102,37 @@ input[type=button] {
   border: none;
 }
 
-input[type=button]:hover {
+input.hover[type=button]:hover {
   background-color: lime;
   border: none;
 }
 
-input[type=button]:active {
+input.active[type=button]:active {
   background-color: red;
   border: none;
 }
 
-input[type=text]:focus {
+input.focus[type=text]:focus {
   background-color: lime;
 }
 
-input[type=text] {
-  background-color: black;
-}
-
-input[type=text]:enabled {
+input.enabled[type=text]:enabled {
   background-color: yellow;
 }
 
-input[type=text]:disabled {
+input.disabled[type=text]:disabled {
   background-color: skyblue;
 }
 
-input[type=radio]:checked {
+input.checked[type=radio]:checked {
   outline: 3px solid red;
 }
 
-input[type=checkbox]:checked {
+input.checked[type=checkbox]:checked {
   outline: 3px solid teal;
 }
 
-.color { 
-  color: indigo;
-}
-
+/* Pseudo-Element Selector */
 .color::before { 
   content: "color ";
   color: darkorange;
@@ -143,43 +147,77 @@ input[type=checkbox]:checked {
   color: olive;
 }
 
-.lorem::first-letter {
+.first-letter::first-letter {
   font-size: 1.5rem;
 }
 
-.lorem::first-line {
+.first-line::first-line {
   font-size: 1.5rem;
   color: red;
 }
 
-.lorem::selection {
+.selection::selection {
   color: white;
   background-color: seagreen;
 }
 
 /* Selector Combination */
-ul li:last-of-type {
+ul.combination li:last-of-type {
   color:aqua;
 }
 
-ol > li:last-of-type {
+ol.combination > li:last-of-type {
   color: red;
 }
 
-code ~ p {
+code.combination ~ p.combination {
   color:darkorange;
 }
 
-code + p {
+code.combination + p.combination {
   background-color: blue;
 }
 
 /* initial */
-div {
+div.initial, div.inherit, div.unset {
   border: 1px solid black;
   margin: 10px;
 }
 
-.parent {
+.initial.parent {
   color: blueviolet;
+}
+
+/* Inherit */
+.inherit.parent {
+  font-size: 30px;
+}
+
+.inherit.child2 {
+  all: inherit;
+}
+
+/* unset */
+.unset.parent {
+  font-size: 30px;
+  font-weight: bold;
+  color: red;
+}
+
+.unset.child2 {
+  all: unset;
+}
+
+/* Font Property */
+p.font-property {
+  color:salmon;
+  font-size: 24px;
+  font-style: italic;
+  font-weight: bold;
+  font-family: Times, Times New Roman, Georgia, serif;
+  line-height: 2.5;
+}
+
+p.font-shorthand-property {
+  font: italic bold 24px/2.5 Times, Times New Roman, Georgia, serif;
 }
