@@ -216,8 +216,36 @@ p.font-property {
   font-weight: bold;
   font-family: Times, Times New Roman, Georgia, serif;
   line-height: 2.5;
+  letter-spacing: 15px;
+  word-spacing: 15px;
 }
 
 p.font-shorthand-property {
   font: italic bold 24px/2.5 Times, Times New Roman, Georgia, serif;
+}
+
+p.text-align {
+  text-align: center;
+}
+
+p.text-indent1 {
+  text-indent: 20px;
+}
+
+div.container {
+  text-indent: 50px;
+}
+
+p.text-decoration {
+  text-decoration: line-through red 5px wavy;
+}
+
+p.word-break {
+  width: 100px;
+  background-color: cadetblue;
+  word-break: break-all;
+}
+
+p.text-transform {
+  text-transform: capitalize;
 }
