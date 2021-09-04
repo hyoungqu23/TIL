@@ -563,13 +563,120 @@ p {
 ### `letter-spacing`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/letter-spacing)
 - 글자 사이의 간격을 조절하는 속성(property).
+- 글꼴에 따라 최적 간격이 이미 정해진 값이 있다.
+- `normal`, `px`, `em`, `rem` 등을 사용할 수 있다.
+- 스타일링 목적으로 지나치게 조절하지 않는 것이 가독성이 좋기 때문에 웹 접근성 측면에서 변경하지 않는 것이 좋다.
+    ```CSS
+  p.font-property {
+    letter-spacing: 15px;
+  }
+  ```
 
 ### `word-spacing`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/word-spacing)
 - 단어 혹은 태그(Tag) 사이의 간격을 조절하는 속성(property).
+- 글꼴에 따라 최적 간격이 이미 정해진 값이 있다.
+- `normal`, `px`, `%`, `em`, `rem` 등을 사용할 수 있다.
+- 스타일링 목적으로 지나치게 조절하지 않는 것이 가독성이 좋기 때문에 웹 접근성 측면에서 변경하지 않는 것이 좋다.
   ```CSS
-  p.font-shorthand-property {
-    font: italic bold 24px/2.5 Times, Times New Roman, Georgia, serif;
+  p.font-property {
+    word-spacing: 15px;
   }
   ```
 - Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `text-align`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/text-align)
+- Block Level Element나 표의 칸의 수평 정렬을 설정하는 속성(property).
+- `right`, `left`, `center`, `justify`, `start`, `end` 등 키워드 값을 작성하여 수평 정렬을 설정할 수 있다.
+- 다만, Block Level Element이어야 수평 정렬을 설정할 수 있다. Inline Element의 경우, Block Container를 설정하고, 수평 정렬을 선언해야 한다.
+  ```CSS
+  p.text-align {
+    text-align: center;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+  
+### `text-indent`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-indent)
+- 텍스트의 들여쓰기의 길이를 설정하는 속성(property).
+- Block Level Element에서만 사용할 수 있다.
+- `px`, `%`, `em` 등으로 들여쓰기의 길이를 설정할 수 있다.
+  ```CSS
+    p.text-indent {
+      text-indent: 3px;
+    }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `text-decoration` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/text-decoration)
+- 텍스트의 장식(선)을 지정하는 속성(property).
+- `text-decoration-line`(선의 종류), `text-decoration-color`(선의 색), `text-decoration-style`(선의 스타일), `text-decoration-thickness`(선의 두께)의 단축 속성.
+- `text-decoration-line`은 반드시 작성해야 한다.
+- 기본적으로 텍스트 색상과 동일한 색상으로 설정되지만, `text-decoration-color`를 통해 변경할 수 있다.
+- 순서는 관계 없다.
+  ```CSS
+  p.text-decoration {
+    text-decoration: solid underline purple 4px;
+  }
+  ```
+#### `text-decoration-line`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line)
+- 텍스트 장식의 종류를 설정하는 속성(property).
+- `none`(기본값), `underline`, `overline`, `line-through`(취소선) 등 키워드 값을 활용한다.
+- 동시에 여러 가지 값을 공백으로 구분하여 작성하면, 여러 선을 사용할 수 있다.
+  ```CSS
+  p.text-decoration {
+    text-decoration-line: underline line-through;
+  }
+  ```
+
+#### `text-decoration-style`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-line)
+- 텍스트 장식의 스타일을 설정하는 속성(property).
+- `solid`(기본값), `double`, `dotted`, `dashed`, `wavy` 등 키워드 값을 활용한다.
+  ```CSS
+  p.text-decoration {
+    text-decoration-style: wavy;
+  }
+  ```
+
+#### `text-decoration-thickness`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-decoration-thickness)
+- 텍스트 장식의 굵기를 설정하는 속성(property).
+- `auto`, `from-font`, `px`, `em`, `rem`, `%` 등으로 설정할 수 있다.
+  ```CSS
+  p.text-decoration {
+    text-decoration-thickness: 3px;
+  }
+  ```
+
+### `word-break`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/word-break)
+- 텍스트가 자신의 컨텐츠 박스 외부로 넘쳐 흐르는 경우, 줄을 바꿀 지 여부를 지정하는 속성(property).
+- `normal`, `break-all`(영문, 컨텐츠 박스 너비를 넘으면 줄 바꿈), `keep-all`(한글, 컨텐츠 박스 너비를 넘어도 줄 바꾸지 않음, 공백이 있는 경우 줄 바꿈) 값으로 설정할 수 있다.
+  ```CSS
+  p.word-break[lang="en"] {
+    word-break: keep-all;
+  }
+
+  p.word-break[lang="ko"] {
+    word-break: keep-all;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `text-transform`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/text-transform)
+- 텍스트를 대문자로 변경하는 방법을 지정하는 속성(property).
+- 영어, 터키어, 독일어 등 특정 언어에서만 사용할 수 있다.
+- `capitalize`(단어의 첫 문자 대문자로 변경), `none`, `lowercase`(모두 소문자로 변경), `uppercase`(모두 대문자로 변경) 등의 값으로 설정할 수 있다.
+  ```CSS
+  p.text-transform {
+    text-transform: capitalize;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+## Unit & Value
