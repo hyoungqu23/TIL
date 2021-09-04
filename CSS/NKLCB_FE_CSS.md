@@ -442,7 +442,7 @@ p {
   }
   ```
 
-### 스타일 우선순위
+## 스타일 우선순위
 특정 요소에 하나의 속성에 대해 여러가지의 선언을 한 경우, 스타일 우선순위에 따라 하나의 선언만을 적용한다.
 - **선언된 위치**
   동일한 스타일이라도, 해당 HTML 문서에서 선언된 위치에 따라 우선순위가 달라진다.(코드는 위에서 아래로 해석하기 때문.)
@@ -457,3 +457,119 @@ p {
   ```
 - **코드의 순서**
   뒤에 작성된 코드의 스타일이 우선순위가 높다.
+
+## Font-Property
+### `color`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/color)
+- 요소(Element)의 텍스트 및 그 장식의 현재 색상을 설정하는 속성(property).
+  ```CSS
+  p.font-property {
+    color:salmon;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `font-size`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/font-size)
+- 요소(Element)의 텍스트의 크기를 변경하는 속성(property).
+- 브라우저마다 다르지만, 보통 `16px`이 기본값으로 설정되어 있다.
+  ```CSS
+  p.font-property {
+    font-size: 24px;
+  }
+  ```
+- 크기 값으로, `em`, `rem`, `x-size`, `smaller`, `larger`, `px`, `%` 등을 활용할 수 있다.([참고](#Unit))
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `font-style`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/font-style)
+- 요소(Element)의 font-family의 일반, 기울임꼴 등의 글꼴 스타일을 설정하는 속성(property).
+- `oblique`(필기체), `italic`(기울임꼴), `normal`(기본값) 등의 값을 가진다.
+- 강조의 의미를 담아 기울임꼴을 사용하는 경우에는 HTML의 `<em>` 태그(Tag)를 사용해야 한다.
+  ```CSS
+  p.font-property {
+    font-style: italic;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `font-weight`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/font-weight)
+- 요소(Element)의 텍스트의 가중치나 굵기를 설정하는 속성(property).
+- `normal`(=`400`, 기본값), `bold`(=`700`), `lighter`, `bolder` 등의 키워드 값과 `100`, `200`, ... , `900`의 숫자 값을 가진다.
+- 글꼴에 따라 지원하는 가중치 값이 다를 수 있다.
+- 강조의 의미를 담아 굵은 글씨체를 사용하는 경우에는 HTML의 `<strong>` 태그(Tag)를 사용해야 한다.
+  ```CSS
+  p.font-property {
+    font-weight: bold;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `font-family`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/font-family)
+- 요소(Element)에 우선 순위가 지정된 `font-family`와 `generic-family`를 지정하는 속성(property).
+- `generic-family`: 일반 글꼴은 지정된 글꼴이 없는 경우 대체 사용할 글꼴을 의미한다.(`serif`, `sans-serif`, `monospace`, `cursive`, `system-ui` 등이 있다.)
+- `,`를 활용해 대체될 값을 추가로 지정할 수 있다.
+  ```CSS
+  .serif {
+    font-family: Times, Times New Roman, Georgia, serif;
+  }
+  .sansserif {
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+  }
+  .monospace {
+    font-family: Lucida Console, Courier, monospace;
+  }
+  .cursive {
+    font-family: cursive;
+  }
+  .fantasy {
+    font-family: fantasy;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+- [Google Font](https://fonts.google.com/)를 활용해 웹 font를 활용할 수 있다.
+
+### `line-height`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/line-height)
+- 요소(Element)의 텍스트 행 사이의 거리를 설정하는 속성(property).
+- Block Level Element의 경우 내부의 line-box의 최소 높이를 설정하고, Inline Element의 경우 
+- 각 font-family에 따라 기본값인 `normal`이 `1.0` ~ `1.2`배로 차이가 있다.
+- `normal`(기본값)과 같은 키워드 값과 `3.5`와 같이 숫자를 활용해 해당 텍스트의 크기에 비례한 값을 작성할 수 있고, 추가적으로 `em`, `rem`, `%` 단위도 사용할 수 있다.
+  ```CSS
+  line-height: normal;
+  line-height: 3.5;
+  line-height: 3em;
+  line-height: 34%;
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `font` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/font)
+- `font-style`, `font-variant`, `font-weight`, `font-size`, `line-height`, `font-family`의 단축 속성(Shorthand property).
+  * 다만, `font-size`와 `font-family`의 값은 반드시 포함해야 한다.
+  * `font-style`, `font-variant`, `font-weight`는 `font-size`의 앞에 작성해야 한다.
+  * `line-height`는 `font-size` 바로 다음에 작성하며 `/`로 구분해야 한다.
+  * `font-family`는 마지막으로 작성해야 한다.
+- 단축 속성의 특성 상, 생략한 속성은 초기값으로 설정하며, 이 과정에서 이후에 해당 속성을 설정해 덮어 쓸 수도 있다.(참고로, `font` 단축 속성으로 설정할 수 없는 `font-stretch`, `font-size-adjust`, `font-kerning`의 값도 초기값으로 설정된다.)
+  ```CSS
+  p.font-shorthand-property {
+    font: italic bold 24px/2.5 Times, Times New Roman, Georgia, serif;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
+
+### `letter-spacing`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/letter-spacing)
+- 글자 사이의 간격을 조절하는 속성(property).
+
+### `word-spacing`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/word-spacing)
+- 단어 혹은 태그(Tag) 사이의 간격을 조절하는 속성(property).
+  ```CSS
+  p.font-shorthand-property {
+    font: italic bold 24px/2.5 Times, Times New Roman, Georgia, serif;
+  }
+  ```
+- Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
