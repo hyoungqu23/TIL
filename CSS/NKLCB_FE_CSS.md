@@ -679,4 +679,103 @@ p {
   ```
 - Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
 
-## Unit & Value
+---
+## Unit
+[MDN](https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/Values_and_units)
+
+### Number
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/number)
+- 숫자, 즉 정수 또는 실수를 의미한다.
+- 대다수의 표기법이 유효하며, 소수점의 일의 자리수가 0인 경우 생략 가능하다.(예: `.5`)
+
+### Length
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/length)
+- `width`, `height`, `margin`, `padding`, `border-width`, `font-size`, `text-shadow` 등 다양한 속성(property)에 사용하는 '거리 값'을 의미한다.
+- `Number + Unit`로 구성되고, `0` 뒤에는 단위를 붙이지 않아도 무방하다.
+- Unit은 [Absolute Length](#absolute-length)와 [Relative Length](#relative-length)로 구분된다.
+
+#### Absolute Length
+- `px`, `cm`, `mm`, `in`, `pt` 등과 같은 물리적 측정 거리(고정 값, 화면에 보이는 거리)를 의미한다.
+- 주로 `px`만 사용한다.
+- 다만, `font-size`의 경우, 절대 길이로 설정하는 경우에 브라우저의 설정을 통해 변경할 수 없게 되므로, 접근성을 약화시킬 수 있으므로, `em`, `rem`과 같은 상대 길이를 활용해야 한다.
+
+#### Relative Length
+- 특정 `font-size`, `line-height`, viewport 등과 같은 어떠한 다른 거리와의 상대적 비율을 표현하는 단위이다.
+- Font-relative Lengths
+  * 특정 `font-size`를 기준으로 상대적 비율을 표현한다.
+  * `em`: 부모의 `font-size`를 기준으로 상대적 비율을 표현하는 단위.(`1em` === parent `font-size`)
+    사실상 `%`를 사용하는 것과 동일하다.
+    ```CSS
+    div.length-child {
+      font-size: 1.5em;
+    }
+    ```
+  * `rem`: Root 요소(보통 `<html>`)의 `font-size`를 기준으로 상대적 비율을 표현하는 단위.(`1rem` === `<html>`의 `font-size` === 브라우저 기본값(`16px`))
+    브라우저에서 사용자가 글꼴 크기(`font-size`)를 변경하는 경우 그에 비례해 `rem`의 기준이 변경되므로, 웹 접근성 문제를 해결할 수 있다.
+    ```CSS
+    div.length-child {
+      font-size: .5rem;
+    }
+    ```
+- Viewport-relative Lengths
+  * Viewport, 즉 문서에서 볼 수 있는 부분의 크기를 기준으로 상대적 백분율 길이를 설정하는 단위이다.
+    장치에 따라 반응형으로 웹 페이지를 구현할 때 유용하게 사용된다.
+  * `vh`
+    Viewport의 높이 1%를 의미한다.
+    ```CSS
+    div.length-child {
+      font-size: 10vh;
+    }
+    ```
+  * `vw`
+    Viewport의 너비 1%를 의미한다.
+    ```CSS
+    div.length-child {
+      font-size: 10vw;
+    }
+    ```
+  * `vmax`
+    `vh`, `vw` 중 큰 값을 의미한다.
+    즉, 세로 모드인 경우, `100vh`가 `vmax`, `100vw`가 `vmin`이 된다. 
+    ```CSS
+    div.length-child {
+      font-size: 10vmax;
+    }
+    ```
+  * `vmin`
+    `vh`, `vw` 중 작은 값을 의미한다.
+    즉, 가로 모드인 경우, `100vw`가 `vmax`, `100vh`가 `vmin`이 된다. 
+    ```CSS
+    div.length-child {
+      font-size: 10vmin;
+    }
+    ```
+
+### Percentage
+- 보통 부모 요소와의 상대적 크기를 지정할 때 사용하는 단위이다.
+- `width`, `height`, `margin`, `padding`, `font-size` 등에서 활용할 수 있다.
+- `Number + %`로 구성되고, `0` 뒤에는 단위를 붙이지 않아도 무방하다.
+  ```CSS
+  div.percentage {
+    width: 50%;
+    height: 30%;
+  }
+
+### Function
+#### `calc()`
+- CSS 속성 값(`<length>`, `<frequency>`, `<angle>`, `<time>`, `<percentage>`, `<number>`, 또는 `<integer>`)으로 계산식을 지정할 수 있는 함수이다.
+- `calc(expression)`으로 활용하고, 내부 연산식은 표준 연산자 순위를 따른다.
+- 연산자 앞 뒤로 공백을 입력하는 것이 권장된다.
+  ```CSS
+  p.function {
+    width: calc(100% - 80px);
+  }
+  ```
+
+#### `max()`, `min()`
+- `,`로 구분된 식 목록에서 가장 크거나 작은 값을 CSS의 속성 값으로 설정하는 함수이다.
+  ```CSS
+  p.function {
+    height: min(100%, 500px);
+  }
+  ```
