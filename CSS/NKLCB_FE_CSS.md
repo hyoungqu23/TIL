@@ -779,3 +779,73 @@ p {
     height: min(100%, 500px);
   }
   ```
+
+## Box Model
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) / [MDN-tutorial](https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/The_box_model)
+- 브라우저는 표준 CSS Box Model에 따라 각각의 요소를 사각형 박스로 표현한다. 따라서, CSS를 활용해 Box의 크기, 위치, 속성(색상, 배경, 테두리 모양 등)을 결정해야 한다.
+- 하나의 박스는 4가지 영역으로 구성된다.
+  ![Box-Model](https://mdn.mozillademos.org/files/16558/box-model.png)
+  * **Content Area**
+    요소의 실제 내용을 포함하는 영역
+    - `box-sizing` 속성(property)의 값이 기본값인 `content-box`이다.
+      ![content-box](https://mdn.mozillademos.org/files/16559/standard-box-model.png)
+    - Block Level Element인 경우, 콘텐츠 영역의 크기를 `width`, `min-width`, `max-width`, `height`, `min-height`, `max-height` 속성(property)을 사용해 사용해 명시적으로 설정할 수 있다.
+  * **Padding Area**
+    내부 여백 경계가 감싼 영역(컨텐츠와 테두리 사이의 여백을 의미한다.)
+    - 내부 여백의 크기는 `padding-top`, `padding-right`, `padding-bottom`, `padding-left`와 단축 속성인 `padding` 속성(property)이 결정한다.
+  * **Border Area**
+    테두리 경계가 감싼 영역(내부 여백과 외부 여백 사이를 의미한다.)
+    - 테두리의 두께는 `border-width`와 단축 속성인 `border` 속성(property)이 결정한다.(기본적으로 `0px`이기 때문에 별도로 설정하지 않는 경우에 보이지 않는다.)
+    - `box-sizing` 속성(property)의 값을 `border-box`로 설정하면, Border Area의 크기를 `width`, `min-width`, `max-width`, `height`, `min-height`, `max-height` 속성(property)을 사용해 사용해 명시적으로 설정할 수 있다.
+      ![border-box](https://mdn.mozillademos.org/files/16557/alternate-box-model.png)
+  * **Margin Area**
+    외부 여백 경계가 감싼 영역(테두리 외부 여백을 의미한다.)
+    - 외부 여백의 크기는 `margin-top`, `margin-right`, `margin-bottom`, `margin-left`와 단축 속성인 `margin`이 결정한다.
+    - 이러한 외부 여백을 활용해 다른 Box와의 간격을 설정할 수 있다.
+    - 다만, 여백 상쇄(margin collapsing)가 발생하는 경우 요소 외부 여백이 공유되므로, 여백 영역이 명확하지 않을 수 있다.
+
+### `width`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/width)
+- Block Level Element의 너비를 설정하는 속성(property).
+- Inline Element의 경우 너비를 설정할 수 없다.
+- 기본적으로 `content-box`의 너비를 설정하지만, `box-sizing` 속성(property)이 `border-box`인 경우, `border-box`의 너비를 설정할 수 있다.
+- 기본값으로 `auto`로 설정되어 있고, `100%`와 동일하게 동작한다. 이외에 `min-content`, `max-content`, `fit-content`, `<length>`, `<percentage>` 값을 가질 수 있다.
+- 상속이 불가능한 속성이다.
+
+### `height`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/height)
+- Block Level Element의 높이를 설정하는 속성(property).
+- Inline Element의 경우 높이를 설정할 수 없다.
+- 기본적으로 `content-box`의 높이를 설정하지만, `box-sizing` 속성(property)이 `border-box`인 경우, `border-box`의 높이를 설정할 수 있다.
+- 기본값으로 `auto`로 설정되어 있고, `100%`와 동일하게 동작한다. 이외에 `min-content`, `max-content`, `fit-content`, `<length>`, `<percentage>` 값을 가질 수 있다.
+- 상속이 불가능한 속성이다.
+
+### `max-width`, `min-width`, `max-height`, `min-height`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/max-width), [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/min-width), [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/max-height), [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/min-height)
+
+- 기본적으로 `width`, `height` 속성과 동일한 값을 가지고, 동일하게 동작한다.
+- 자식 요소가 `%` 값을 가져 부모 요소의 `width`나 `height` 값에 따라 자식 요소의 `width`나 `height` 값이 변경되더라도, 특정 최대 너비/높이 혹은 특정 최소 너비/높이 이후로는 변경되지 않도록 설정할 수 있다.
+  ```CSS
+  #parent { 
+    width: 500px;
+    height: 500px;
+  }
+
+  #child { 
+    width: 50%;
+    max-width: 300px;
+    height: 50%;
+    min-height: 100px;
+  }
+  ```
+
+### `margin` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/margin)
+- 요소(Element)의 외부 여백 영역을 설정한다.
+- `margin-top`, `margin-right`, `margin-bottom`, `margin-left`의 단축 속성(Shorthand)으로, 모두 `0`을 기본값으로 가지고 있다.
+- 상속이 불가능하다.
+  ```CSS
+  div.margin {
+    margin: 1em;
+  }
+  ```
