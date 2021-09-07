@@ -1,8 +1,8 @@
 # CSS
-> 👍 *기초를 탄탄하게, 발목 잡히지 않도록.*
+> 👍 *기초를 탄탄하게🧱, 발목 잡히지 않도록.*
 
 ---
-## CSS이란?
+## 🧱 CSS이란?
 ### 개요
 - Cascading Style Sheets의 약어.
 
@@ -99,7 +99,7 @@ p {
    - 상속이 되지 않는 `background-color`, `background` 등의 속성(property)도 있다.
 
 ---
-## CSS Selector
+## 🧱 CSS Selector
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Selectors) / [MDN-learn](https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/Selectors)
 - CSS Selector를 활용해 CSS 규칙을 적용할 웹 페이지의 HTML 요소를 선택한다.
 
@@ -442,7 +442,7 @@ p {
   }
   ```
 
-## 스타일 우선순위
+## 🧱 스타일 우선순위
 특정 요소에 하나의 속성에 대해 여러가지의 선언을 한 경우, 스타일 우선순위에 따라 하나의 선언만을 적용한다.
 - **선언된 위치**
   동일한 스타일이라도, 해당 HTML 문서에서 선언된 위치에 따라 우선순위가 달라진다.(코드는 위에서 아래로 해석하기 때문.)
@@ -458,7 +458,7 @@ p {
 - **코드의 순서**
   뒤에 작성된 코드의 스타일이 우선순위가 높다.
 
-## Font-Property
+## 🧱 Font-Property
 ### `color`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/color)
 - 요소(Element)의 텍스트 및 그 장식의 현재 색상을 설정하는 속성(property).
@@ -680,7 +680,7 @@ p {
 - Global value인 `inherit`, `initial`, `unset`도 사용할 수 있다.(상속 가능)
 
 ---
-## Unit
+## 🧱 Unit
 [MDN](https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/Values_and_units)
 
 ### Number
@@ -780,7 +780,7 @@ p {
   }
   ```
 
-## Box Model
+## 🧱 Box Model
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/CSS_Box_Model/Introduction_to_the_CSS_box_model) / [MDN-tutorial](https://developer.mozilla.org/ko/docs/Learn/CSS/Building_blocks/The_box_model)
 - 브라우저는 표준 CSS Box Model에 따라 각각의 요소를 사각형 박스로 표현한다. 따라서, CSS를 활용해 Box의 크기, 위치, 속성(색상, 배경, 테두리 모양 등)을 결정해야 한다.
 - 하나의 박스는 4가지 영역으로 구성된다.
@@ -796,13 +796,13 @@ p {
   * **Border Area**
     테두리 경계가 감싼 영역(내부 여백과 외부 여백 사이를 의미한다.)
     - 테두리의 두께는 `border-width`와 단축 속성인 `border` 속성(property)이 결정한다.(기본적으로 `0px`이기 때문에 별도로 설정하지 않는 경우에 보이지 않는다.)
-    - `box-sizing` 속성(property)의 값을 `border-box`로 설정하면, Border Area의 크기를 `width`, `min-width`, `max-width`, `height`, `min-height`, `max-height` 속성(property)을 사용해 사용해 명시적으로 설정할 수 있다.
+    - [`box-sizing` 속성(property)](#box-sizing) 값을 `border-box`로 설정하면, Border Area의 크기를 `width`, `min-width`, `max-width`, `height`, `min-height`, `max-height` 속성(property)을 사용해 사용해 명시적으로 설정할 수 있다.
       ![border-box](https://mdn.mozillademos.org/files/16557/alternate-box-model.png)
   * **Margin Area**
     외부 여백 경계가 감싼 영역(테두리 외부 여백을 의미한다.)
     - 외부 여백의 크기는 `margin-top`, `margin-right`, `margin-bottom`, `margin-left`와 단축 속성인 `margin`이 결정한다.
     - 이러한 외부 여백을 활용해 다른 Box와의 간격을 설정할 수 있다.
-    - 다만, 여백 상쇄(margin collapsing)가 발생하는 경우 요소 외부 여백이 공유되므로, 여백 영역이 명확하지 않을 수 있다.
+    - 다만, 여백 상쇄([margin collapsing](#margin-collapsing))가 발생하는 경우 요소 외부 여백이 공유되므로, 여백 영역이 명확하지 않을 수 있다.
 
 ### `width`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/width)
@@ -841,11 +841,122 @@ p {
 
 ### `margin` Shorthand(단축 속성)
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/margin)
-- 요소(Element)의 외부 여백 영역을 설정한다.
+- 요소(Element)의 외부 여백 영역을 설정하는 속성(property).
 - `margin-top`, `margin-right`, `margin-bottom`, `margin-left`의 단축 속성(Shorthand)으로, 모두 `0`을 기본값으로 가지고 있다.
 - 상속이 불가능하다.
   ```CSS
-  div.margin {
-    margin: 1em;
+  div.margin-child {
+    margin: 1rem;
   }
   ```
+  * 1개의 값 작성: "상+우+하+좌" 모두 동일한 값의 `margin`
+  * 2개의 값 작성: "상+하", "좌+우" 각각의 값의 `margin`
+  * 3개의 값 작성: "상", "좌+우", "하" 각각의 값의 `margin`
+  * 4개의 값 작성: "상", "우", "하", "좌" 각각의 값의 `margin`
+  * `%` 값의 경우, **부모 요소의 `width` 값**에 대한 비율을 의미한다.
+  
+#### `margin` collapsing
+- 여러 Block Level Element들의 "상", "하" `margin`이 경우에 따라 가장 큰 크기를 가진 `margin`으로 결합(상쇄)되는 현상.
+  1. 인접 형제 간
+     두 형제 요소의 `margin-top`과 `margin-bottom`이 서로 상쇄된다.
+  2. 부모-자식 요소 간
+     - 부모 요소에 `border`, `padding`, Inline contents이 없어 부모 요소와 자식 요소의 `margin-top`이 만나는 경우
+     - 부모 요소에 `border`, `padding`, Inline contents이 없고, 부모 요소와 자식 요소를 분리할 `height`(`min-height`, `max-height` 포함) 속성의 값이 지정되지 않아 부모 요소와 자식 요소의 `margin-bottom`이 만나는 경우
+     - 두 경우 모두 상쇄된 여백이 부모 요소 외부에 위치한다.
+  3. 빈 Block
+     `border`, `padding`, Inline contents, `height`(`min-height`, `max-height` 포함) 속성이 없는 경우 요소 자기 자신의 `margin-top`과 `margin-bottom`이 서로 상쇄된다.
+
+### `padding` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/padding)
+- 요소(Element)의 내부 여백 영역을 설정하는 속성(property).
+- `padding-top`, `padding-right`, `padding-bottom`, `padding-left`의 단축 속성(Shorthand)으로, 모두 `0`을 기본값으로 가지고 있다.
+- 상속이 불가능하다.
+  ```CSS
+  div.padding-child {
+    padding: 1rem;
+  }
+  ```
+  * 1개의 값 작성: "상+우+하+좌" 모두 동일한 값의 `padding`
+  * 2개의 값 작성: "상+하", "좌+우" 각각의 값의 `padding`
+  * 3개의 값 작성: "상", "좌+우", "하" 각각의 값의 `padding`
+  * 4개의 값 작성: "상", "우", "하", "좌" 각각의 값의 `padding`
+  * `%` 값의 경우, **부모 요소의 `width` 값**에 대한 비율을 의미한다.
+- `margin`과 달리 padding collapsing 현상은 존재하지 않고, 음수 값을 활용할 수 없다.
+
+### `border` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/border)
+- 요소(Element)의 `border`를 설정하는 속성(property).
+- 보통 `border-width`, `border-style`, `border-color` 순서로 값을 설정한다.
+- 생략한 속성(property)은 각각의 기본값인 `medium`, `none`, `currentColor`으로 설정된다. 따라서, 스타일을 지정하지 않으면 `border`가 보이지 않는다.
+  ```css
+  div.border {
+    border: 1px solid rgba(170, 50, 200, .6);
+  }
+- 참고로, `outline` 속성을 통해 외곽선을 설정할 수 있지만, `outline`의 경우 절대 공간을 차지하지 않고 요소 외부에 그려지므로, Box-model에 포함되지 않는다.
+
+#### `border-style` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/border-style)
+- 요소(Element)의 `border` 네 면의 스타일을 지정하는 속성(property)으로, 기본값은 `none`이다.
+- `none`인 경우 다른 `width`나 `color` 속성(property)이 설정되어 있음에도 불구하고, 화면에 `border`가 보이지 않는다.
+- `solid`, `hidden`, `dotted`, `dashed`, `double`, `groove`, `ridge`, `inset`, `outset` 등 키워드 값을 활용해 스타일을 지정할 수 있다.
+  * 1개의 값 작성: "상+우+하+좌" 모두 동일한 값의 `border-style`
+  * 2개의 값 작성: "상+하", "좌+우" 각각의 값의 `border-style`
+  * 3개의 값 작성: "상", "좌+우", "하" 각각의 값의 `border-style`
+  * 4개의 값 작성: "상", "우", "하", "좌" 각각의 값의 `border-style`
+  ```css
+  div.border-style {
+    border-top-style: none;
+    border-right-style: dotted;
+    border-bottom-style: dashed;
+    border-left-style: inset;
+  }
+  ```
+
+#### `border-width` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/border-width)
+- 요소(Element)의 `border`의 너비를 설정하는 속성(property)으로, 기본값은 `medium`이다.
+- `thin`, `thick`, `medium` 키워드 값 혹은 `<length>` 값을 활용해 너비를 지정할 수 있다.
+- 다만, 키워드 값을 활용하면 정확한 명세가 없기 때문에 브라우저별로 다르게 구현될 수 있다는 점에 유의해야 한다.
+  * 1개의 값 작성: "상+우+하+좌" 모두 동일한 값의 `border-width`
+  * 2개의 값 작성: "상+하", "좌+우" 각각의 값의 `border-width`
+  * 3개의 값 작성: "상", "좌+우", "하" 각각의 값의 `border-width`
+  * 4개의 값 작성: "상", "우", "하", "좌" 각각의 값의 `border-width`
+  ```css
+  div.border-width {
+    border-top-width: medium;
+    border-right-width: thick;
+    border-bottom-width: 2px;
+    border-left-width: 1.25em;
+  }
+  ```
+
+#### `border-color` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/border-color)
+- 요소(Element)의 `border`의 색상을 설정하는 속성(property)으로, `currentColor`가 기본값이다.
+- 색상 키워드 값(`<color>`)를 활용해 색상을 지정할 수 있다.
+  * 1개의 값 작성: "상+우+하+좌" 모두 동일한 값의 `border-width`
+  * 2개의 값 작성: "상+하", "좌+우" 각각의 값의 `border-width`
+  * 3개의 값 작성: "상", "좌+우", "하" 각각의 값의 `border-width`
+  * 4개의 값 작성: "상", "우", "하", "좌" 각각의 값의 `border-width`
+  ```css
+  div.border-color {
+    border-top-color: black;
+    border-right-color: red;
+    border-bottom-color: blue;
+    border-left-color: white;
+  }
+  ```
+
+### `border-radius`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/border-radius)
+- 요소(Element)의 border 경계의 꼭지점을 둥글게 만드는 속성(property).
+
+### `box-sizing`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/box-sizing)
+- 요소(Element)의 너비와 높이를 계산하는 방법을 지정하는 속성(property).
+- 지정한 `width`와 `height`는 요소의 `content-box` 크기에만 적용되기 때문에 `border`, `padding`을 지정하는 경우에는 기존 요소의 `width`와 `height`에 더해서 화면에 그리게 된다.
+- 따라서 `border`, `padding`을 지정하는 요소의 크기를 설정할 때, 원하는 크기를 얻으려면 테두리나 안쪽 여백을 고려해야 한다.
+
+
+
+## 🧱 Layout
