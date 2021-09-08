@@ -1234,3 +1234,78 @@ div.background {
 ---
 ## 🧱 Transform
 ### `transform`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/transform)
+- 요소(Element)에 회전, 크기 조절, 기울이기, 이동 효과를 부여하는 속성(property).
+- 원본 요소의 레이아웃은 유지하되, 그 상태에서 효과를 부여하는 것이다.
+- '함수 표기법'을 활용해 해당 효과를 부여할 수 있고, `,`를 활용해 여러 효과를 동시에 부여할 수 있다.
+  * `none`(기본값): 아무런 변형도 적용하지 않는다.
+  * `<transform-function>`[참고](https://developer.mozilla.org/ko/docs/Web/CSS/transform-function): 하나 이상의 변형 함수로, 우측에 작성된 함수가 먼저 적용된다는 특징이 있다.
+    - X 좌표(가로 좌표)와 Y 좌표(세로 좌표)를 사용해 표현하고, 좌측 상단이 원점`(0, 0)`이 되기에 Y축은 아래로 커지게 된다.
+    - 해당 자료형은 '요소의 외형에 영향을 주는 변형'을 설정하는데, 이러한 변형 함수는 2D 또는 3D 공간 내에서 요소를 회전하고, 크기를 바꾸고, 왜곡하고, 이동할 수 있다.
+  
+#### `scale()`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/scale())
+- 2D에서 요소의 크기를 조절하는 변환하는 함수.
+- `<number>` 값을 활용해 너비(x축)와 높이(y축)를 각각 다른 값으로 크기를 조절할 수 있다.
+```css
+div.scale {
+  transform: scale(1, 1.2);
+}
+```
+- `scaleX()`, `scaleY()`의 경우 해당 축으로만 크기를 조절할 수 있다.
+
+#### `rotate()`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/rotate())
+- 2D 평면에서 요소를 회전시키는 변환하는 함수.
+- `<angle>` 값을 활용해 요소의 회전 각도를 설정해 회전시킬 수 있다.
+  * 양수 값인 경우 시계 방향으로, 음수 값인 경우 반시계 방향으로 회전시킨다.
+  * `deg`(각도), `grad`, `rad`, `turn`(회전) 등의 단위를 사용한다.
+    (예: `90deg` = `100grad` = `0.25turn` = `1.5708rad`)
+```css
+div.rotate {
+  transform: rotate(45deg);
+}
+```
+
+#### `translate()`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skew())
+- 요소를 수평 또는 수직으로 이동하는 함수.
+![MDN ref](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/translate()/translate.png)
+- `<length>`, `<percentage>` 값을 활용해 요소를 이동시킬 거리를 나타낸다.
+  * 값을 하나만 작성한 경우: x축으로만 이동한다.
+  * 값을 `,`로 구분해 두 개를 작성한 경우: x축, y축으로 이동한다.
+  * `px`, `vh`, `vw`, `em`, `rem`, `%` 등의 단위를 사용한다.
+```css
+div.translate {
+  transform: translate(100%, -400px);
+}
+```
+
+#### `skew()`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-function/skew())
+- 2D에서 요소를 기울이는 함수.
+- `<angle>` 값을 활용해 요소를 기울일 수 있다.
+  * 양수 값인 경우 시계 방향으로, 음수 값인 경우 반시계 방향으로 회전시킨다.
+  * `deg`(각도), `grad`, `rad`, `turn`(회전) 등의 단위를 사용한다.
+    (예: `90deg` = `100grad` = `0.25turn` = `1.5708rad`)
+  * 값을 하나만 작성한 경우: x축으로만 기울인다.
+  * 값을 `,`로 구분해 두 개를 작성한 경우: x축, y축으로 기울인다.
+```css
+div.skew {
+  transform: skew(45deg);
+}
+```
+
+### `transform-origin`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transform-origin)
+- 요소(Element)의 변환 원점을 설정하는 속성(property).
+- `center`(기본값, `50% 50%`와 동일), `left`, `top`, `bottom`, `right` 등 키워드 값을 활용할 수 있고, `<length>`, `<percentage>`도 사용할 수 있다.
+```css
+div.transform-origin {
+  transform-origin: top left;
+}
+```
+
+---
+## 🧱 Transition
+### 
