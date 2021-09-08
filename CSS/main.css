@@ -394,3 +394,13 @@ div.overflow {
   background-color: lightpink;
   overflow: auto;
 }
+
+div.background {
+  height: 500px;
+  background-color: blue;
+  background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-origin: border-box;
+  background-size: cover;
+}
