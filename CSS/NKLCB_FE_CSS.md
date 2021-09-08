@@ -1116,4 +1116,121 @@ div.zindex {
 - 기본적인 쌓임 맥락은 **코드 순서**에 따라 결정되지만, `position` 속성이 `static`인 요소보다 **`static`이 아닌 요소**가 z축 기준으로 상단에 위치하고, **`z-index` 속성의 값이 클수록** z축 기준으로 상단에 위치한다.
 
 ---
-## Color & Background
+## 🧱 Color & Background
+
+### `<color>`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/color_value)
+- 키워드 값, `# + 16진수`, `rgb()`, `rgba()`, `hsl()`, `hsla()`를 값을 활용해 색상을 지정할 수 있다.
+  예시
+  * `black` = #000000 = rgb(0, 0, 0) = hsl(0, 0%, 0%)
+  * `white` = #FFFFFF = rgb(255, 255, 255) = hsl(0, 0%, 100%)
+  * `transparent`: 투명하게 설정하는 키워드 값
+
+### `opacity`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/color_value)
+- 요소(Element)의 불투명도를 설정하는 속성(property).
+- 0 ~ 1 사이의 실수값(`<number>`) 혹은 0% ~ 100%의 `<percentage>` 값을 가지며, `1`(`100%`)가 기본값으로 불투명한 요소를 의미한다.
+- `opacity` 속성은 해당 요소 내부의 모든 요소에 영향을 주지만, 자식 요소가 상속하지는 않는다. 즉, 요소 내부의 모든 요소의 불투명도를 조절하기 위해서는 `opacity` 속성을 활용하고, 배경만 불투명도를 조절하기 위해서는 `background-color`에서 `alpha` 값을 지정해야 한다.
+  ```css
+  div.opacity {
+    opacity: 0.5;
+  }
+  ```
+
+### `background-color`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background-color)
+- 요소(Element)의 배경 색상을 지정하는 속성(property).
+- `<color>` 값인 키워드 값, `# + 16진수`, `rgb()`, `rgba()`, `hsl()`, `hsla()`를 값을 사용해 색상을 지정할 수 있다.
+- 다만, `background-image`가 있는 경우에는 `background-color`가 뒤에 렌더링 되기 때문에 이미지가 투명한 부분을 가지고 있어야 `background-color`를 확인할 수 있다.
+```css
+div.background {
+  background-color: black;
+}
+```
+
+### `background-image`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background-image)
+- 요소(Element)의 배경 이미지를 하나 이상 지정하는 속성(property).
+- `none` 키워드 값(기본값)이나 쉼표로 구분한 다수의 `<image>` 값으로 지정할 수 있다.
+```css
+div.background {
+  background-image: url("../img/example_img.png");
+}
+```
+
+
+### `background-repeat`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background-repeat)
+- 요소(Element)의 배경 이미지의 반복 방법을 지정하는 속성(property).
+- `repeat-x`(x축 반복), `repeat-y`(y축 반복), `repeat`(기본값), `space`(잘리지 않을 만큼만 반복), `round`(요소 내부를 채울만큼 반복), `no-repeat`(반복 안함) 키워드 값으로 지정할 수 있다.
+```css
+div.background {
+  background-image: url("../img/example_img.png");
+  background-repeat: no-repeat;
+}
+```
+
+### `background-position`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/background-position)
+- 요소(Element)의 배경 이미지의 초기 위치를 설정하는 속성(property).
+- `0 0`(x좌표, y좌표)이 기본값으로, 좌측 상단에 배경 이미지가 위치하게 된다.
+- `top`, `bottom`, `left`, `right`, `center` 등 키워드 값으로 설정할 수도 있다.(키워드는 생략 시 `center`가 된다.)
+- 반복 설정이 되어 있는 경우에는 해당 좌표를 기준으로 이미지를 반복한다.
+- 
+```css
+div.background {
+  background-image: url("../img/example_img.png");
+  background-repeat: no-repeat;
+  background-position: 100px 200px;
+}
+```
+
+### `background-origin`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background-origin)
+- 요소(Element)의 배경의 원점의 시작점을 설정하는 속성(property).
+- `border-box`, `padding-box`(기본값), `content-box` 값을 활용해 설정할 수 있다.
+- 각각 배경 이미지의 원점이 `border` 영역 좌측 상단, `padding` 영역 좌측 상단, `content` 영역 좌측 상단으로 변경된다.
+```css
+div.background {
+  background-image: url("../img/example_img.png");
+  background-repeat: no-repeat;
+  background-origin: border-box;
+}
+```
+
+### `background-size`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background-size)
+- 요소(Element)의 배경 이미지의 크기를 설정하는 속성(property).
+- `contain`, `cover`(비율은 유지하면서, 제일 크게 설정), `auto`(기본값, 원본 크기) 등 키워드 값이나 `<length>`, `<percentage>`값을 활용해 주어진 값으로 늘리거나 줄일 수 있다.
+  * `contain`: 비율은 유지하면서, 전부 보이게 설정.
+  * `cover`: 비율은 유지하면서, 빈 공간 없이 제일 크게 설정.
+  * `auto`(기본값): 이미지의 원본 크기를 유지.
+  * `<length>`, `<percentage>`: 원본 비율을 유지하지 않고 지정된 값으로 변경.(하나만 입력 시 비율 유지하면서 지정된 값으로 변경(빈 공간 생길 수 있음)된다.)
+```css
+div.background {
+  background-image: url("../img/example_img.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+```
+
+### `background` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/background)
+- 요소(Element)의 배경의 색상, 이미지, 원점, 크기, 반복 등 여러 배경 스타일을 한번에 설정하는 단축 속성(property).
+- `background-attachment`, `background-clip`, `background-color`, `background-image`, `background-origin`, `background-position`, `background-repeat` 속성을 설정할 수 있다.
+`background-size`
+- `<background-size>` 값은 `<background-position>` 바로 뒤에만 위치할 수 있으며 '/' 문자로 구분해야 한다.
+- `<background-color>` 값은 반드시 마지막에 작성해야 한다.
+- 생략한 속성은 기본값으로 설정되는 것에 유의해야 한다.
+  * `background-image`: `none`
+  * `background-position`: `0% 0%`
+  * `background-size`: `auto auto`
+  * `background-repeat`: `repeat`
+  * `background-origin`: `padding-box`
+  * `background-clip`: `border-box`
+  * `background-attachment`: `scroll`
+  * `background-color`: `transparent`
+
+---
+## 🧱 Transform
+### `transform`
