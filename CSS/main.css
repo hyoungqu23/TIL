@@ -6,6 +6,7 @@ h1 {
   border: 4px solid black;
   border-radius: 20px;
   text-indent: 20px;
+  margin: 50px;
 }
 
 /* CSS 우선순위 */
@@ -403,4 +404,34 @@ div.background {
   background-position: center;
   background-origin: border-box;
   background-size: cover;
+}
+
+/* Transform */
+div.transform-box {
+  width: 200px;
+  height: 200px;
+  box-sizing: border-box;
+  border: 10px solid gray;
+  background: lightblue;
+  margin: 50px;
+}
+
+div.scale {
+  transform: scale(0.5, 1);
+  transition: 10s;
+}
+
+div.rotate {
+  transform: rotate(45deg);
+  transition: 10s;
+}
+
+div.translate {
+  transform: translate(100%, -50px);
+  transition: 10s;
+}
+
+div.skew {
+  transform: skew(-20deg);
+  transition: 10s;
 }
