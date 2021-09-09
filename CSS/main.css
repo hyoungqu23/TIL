@@ -435,3 +435,39 @@ div.skew {
   transform: skew(-20deg);
   transition: 10s;
 }
+
+/* Transition */
+div.transition1 {
+  margin: 50px;
+  width: 300px;
+  height: 90px;
+  border: 2px dashed turquoise;
+  background-color: teal;
+  font-size: 48px;
+  text-align: center;
+  color: wheat;
+
+  transition-property: font-size, width;
+  transition-duration: 2s;
+}
+
+div.transition1:hover {
+  width: 200px;
+  background-color: cyan;
+  color: black;
+  font-size: 24px;
+}
+
+div.transition2 {
+  width: 100px;
+  height: 100px;
+  border: 10px solid cornflowerblue;
+  background-color: lightskyblue;
+  border-radius: 50%;
+  
+  transition: all 1s ease 2s;
+}
+
+.transition2:hover {
+  transform: rotate(360deg) translate(100px 100px);
+}
