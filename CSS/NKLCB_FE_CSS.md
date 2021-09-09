@@ -1308,4 +1308,57 @@ div.transform-origin {
 
 ---
 ## 🧱 Transition
-### 
+### `transition` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/transition)
+- `transition-property`, `transition-duration`, `transition-timing-function`, `transition-delay`를 설정하는 단축 속성(property).
+- `<time>` 자료형을 두 가지 속성이 활용하고 있기 때문에 먼저 작성된 값이 `transition-duration`, 나중에 작성된 값이 `transition-delay`로 설정된다.
+  * `transition-delay`: `0s`
+  * `transition-duration`: `0s`
+  * `transition-property`: `all`
+  * `transition-timing-function`: `ease`
+```css
+div.transition {
+  transition: all 3s linear 1s;
+}
+```
+
+### `transition-property`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-property)
+- 전환 효과를 적용해야 하는 속성을 설정하는 속성(property).
+- 단축 속성을 설정하면 하위 모든 속성에 전환 효과가 적용된다.
+- `none`, `all` 등 키워드 값과 해당 속성 값을 활용할 수 있다.
+```css
+div.transition {
+  transition-property: all;
+}
+```
+
+### `transition-duration`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-duration)
+- 전환 효과가 완료되는 데 걸리는 시간을 설정한다.
+- `0s`가 기본값이기 때문에 기본적으로는 전환 효과가 발생하지 않는다.
+- `<time>` 값과 `s`, `ms` 단위를 활용해 시간을 설정할 수 있고, 각각 다른 시간을 설정할 수도 있다.
+```css
+div.transition {
+  transition-property: margin-right, color;
+  transition-duration: 3s, 10ms;
+}
+```
+
+### `transition-delay`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/transition-delay)
+- 전환 효과를 적용하는 시간을 지연시키도록 설정하는 속성(property).
+- `0s`가 기본값이기 때문에 기본적으로는 전환 효과가 발생하지 않는다.
+- `<time>` 값과 `s`, `ms` 단위를 활용해 시간을 설정할 수 있고, 각각 다른 시간을 설정할 수도 있다.
+```css
+div.transition {
+  transition-property: margin-right, color;
+  transition-duration: 3s;
+  transition-delay: 3s;
+}
+```
+
+### `transition-timing-function`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
+- 전환 효과가 적용되는 중간 과정의 시간을 설정하는 속성(property).
+- `ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out` 등 키워드 값과 `bezier()` 함수 값, `steps()` 함수 값 등을 활용해 중간 과정을 설정할 수 있다.
