@@ -1362,3 +1362,97 @@ div.transition {
 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/transition-timing-function)
 - 전환 효과가 적용되는 중간 과정의 시간을 설정하는 속성(property).
 - `ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out` 등 키워드 값과 `bezier()` 함수 값, `steps()` 함수 값 등을 활용해 중간 과정을 설정할 수 있다.
+
+---
+## 🧱 Animation
+
+### `animation` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation)
+- 다수의 스타일을 전환하는 애니메이션을 적용하는 단축 속성.
+- `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, `animation-play-state`의 단축 속성이다.
+- 사용자의 상호작용에 따라 움직이는 `transition`과 달리, `hover`, `active` 등의 이벤트가 없다고 해도 자동으로 움직임을 설정하는 것이 `animation`이다.
+- `@keyframes`를 활용해 여러가지 상태를 지정하고 이를 애니메이션 처리할 수 있다.
+
+### `@keyframes`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/@keyframes)
+- 애니메이션 중간중간의 특정 지점들을 거칠 수 있는 keyframes를 설정하여 애니메이션 중간 절차를 제어할 수 있게 하는 규칙이다.
+```css
+@keyframes keyframesName {
+  0% {
+    margin-left: 100%;
+    width: 300%;
+  }
+  50% {
+    margin-left: 0%;
+    width: 100%;
+  }
+  100% {
+    margin-left: 100%;
+    width: 300%;
+  }
+}
+```
+- 반드시 Time Offset(즉, `%`를 활용한 시간에 대한 규칙)을 작성해야 한다.
+- `keyframes`가 여러번 정의된 경우에는 가장 최근에 정의된 `keyframes`에 선언된 값만 유효하다.
+
+### `animation-name`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-name)
+- 요소(element)에 적용할 애니메이션의 `keyframes`의 이름을 지정하는 속성(property).
+- `none`(기본값), `<custom-ident>` 값을 활용할 수 있다.
+  * 대소문자를 구분한다.
+  * `a` - `z`, `0` - `9`, `-`, `_`만 사용할 수 있다.
+
+### `animation-duration`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation-duration)
+- 애니메이션이 한 사이클을 완료하는 데 걸리는 시간을 지정하는 속성(property).
+- `0s`(기본값), `<time>` 값을 활용해 설정할 수 있다.
+  * 음수 값은 유효하지 않으므로, 무시된다.
+  * `s`, `ms`로 지정할 수 있다.
+
+### `animation-delay`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation-delay)
+- 애니메이션이 시작할 시점을 지정하는 속성(property).
+- `0s`(기본값), `<time>` 값을 활용해 설정할 수 있다.
+  * 음수 값을 지정하면, 애니메이션은 즉시 시작되지만, 애니메이션이 진행되는 도중에 시작된다.
+  * `s`, `ms`로 지정할 수 있다.
+
+### `animation-timing-function`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-timing-function)
+- 각 사이클의 지속 시간 동안 애니메이션이 진행되는 방식을 설정하는 속성(property).
+- `ease`, `linear`, `ease-in`, `ease-out`, `ease-in-out` 등 키워드 값과 `bezier()` 함수 값, `steps()` 함수 값 등을 활용해 중간 과정을 설정할 수 있다.
+
+### `animation-iteration-count`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-iteration-count)
+- 애니메이션의 재생 횟수(반복 횟수)를 설정하는 속성(property).
+- `1`(기본값), `<number>`, `infinite` 값을 활용해 설정할 수 있다.
+  `infinite`을 설정하면 무한대로 재생이 반복된다.
+
+### `animation-direction`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation-direction)
+- 애니메이션을 어떤 방향으로 재생할 지 여부를 설정하는 속성(property).
+- `normal`(기본값), `reverse`, `alternate`, `alternate-reverse` 등 키워드 값을 활용해 설정할 수 있다.
+  * `normal`: 정방향 재생.
+  * `reverse`: 역방향 재생.
+  * `alternate`: 정방향 후 역방향 재생.
+  * `alternate-reverse`: 역방향 후 정방향 재생.
+
+### `animation-play-state`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/animation-play-state)
+- 애니메이션의 실행 또는 일시 정지 여부를 설정하는 속성(property).
+- `running`(기본값), `paused`을 활용해 설정할 수 있다.
+```css
+div.animation:hover {
+  animation-play-state: paused;
+}
+```
+
+### `animation-fill-mode`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation-fill-mode)
+- 애니메이션이 실행 전과 후에 대상에 스타일을 적용하는 방법을 지정하는 속성(property).
+- `none`(기본값), `forwards`, `backwards`, `both` 값을 활용해 설정할 수 있다.
+  * `none`: 애니메이션은 실행
+  * `forwards`
+  * `backwards`
+  * `both`
+
+## FLEX
