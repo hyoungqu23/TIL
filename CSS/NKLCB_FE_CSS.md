@@ -1476,3 +1476,99 @@ div.animation {
 
 ---
 ## 🧱 FLEX
+### 개요
+- `display: inline-block;`
+  개행이 공백으로 인정되어, 원치 않는 여백이 존재하게 된다.
+- `float: left;`
+  Normal Flow에서 벗어나기 때문에 높이를 자동으로 갖지 못하게 된 container의 height를 따로 지정해주어야 한다.
+
+- `display: flex;`
+  * 요소의 내부 디스플레이 유형을 설정하는 값으로, `flex`, `grid` 등이 있다.
+  * 요소의 외부 디스플레이 유형을 함께 설정하는 값으로, `inline-flex` 등의 값을 활용할 수 있다.
+  * container와 item에 활용하는 각각의 속성(property)을 적절하게 사용해야 한다.
+  * main-axis(주 축), cross-axis(교차축)
+
+### [flex-container] `flex-direction`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-direction)
+- flex-container 내의 flex-item을 배치할 때 사용할 main-axis 및 방향을 지정하는 속성(property).
+- `row`(기본값), `row-reverse`, `column`, `column-reverse`의 키워드 값으로 설정할 수 있다.
+  * `row`(기본값): main-axis가 **가로 축**이고, 왼쪽에서 오른쪽 방향으로 설정된다.
+  * `row-reverse`: main-axis가 **가로 축**이지만, 오른쪽에서 왼쪽 방향으로 설정된다.
+  * `column`: main-axis가 **세로 축**이고, 위쪽에서 아래쪽 방향으로 설정된다.
+  * `column-reverse`: main-axis가 **세로 축**이지만, 아래쪽에서 위쪽 방향으로 설정된다.
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="" src="https://codepen.io/hyoungqu23/embed/ZEyKdzg?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hyoungqu23/pen/ZEyKdzg">
+  </a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### [flex-container] `flex-wrap`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-wrap)
+- flex-item 요소들을 강제로 한 줄에 배치할 지, 가능한 영역 내에서 벗어나지 않고 여러 행으로 나누어 표현할 것인지를 결정하는 속성(property).
+- `nowrap`(기본값), `wrap`, `wrap-reverse`의 키워드 값을 활용해 설정할 수 있다.
+  * `nowrap`(기본값): flex-item을 한 줄에 배치하고, `flex-direction`에 의해 결정된 방향으로 설정된다.
+  * `wrap`: flex-item을 여러 행에 걸쳐서 배치되고, `flex-direction`에 의해 결정된 방향으로 설정된다.
+  * `wrap-reverse`: flex-item을 여러 행에 걸쳐서 배치되지만, 요소가 나열되는 방향이 반대로 설정된다.
+
+<iframe height="300" style="width: 100%;" scrolling="no" title="FLEX-container || flex-wrap" src="https://codepen.io/hyoungqu23/embed/YzQVopr?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hyoungqu23/pen/YzQVopr">
+  FLEX-container || flex-wrap</a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### [flex-container] `flex-flow` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-flow)
+- `flex-direction`과 `flex-wrap`의 단축 속성(property).
+- 두 속성에 사용할 수 있는 키워드 값을 공백으로 구분하여 작성한다.
+
+### [flex-container] `justify-content`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
+- main-axis을 기준으로 flex-item 여러 줄을 어떻게 정렬하여 배치할 지를 설정하는 속성(property).
+- `normal`(기본값), `center`, `start`, `end`, `flex-start`, `flex-end`, `left`, `right`, `space-between`, `space-around`, `space-evenly`, `safe`, `unsafe` 등의 키워드 값을 활용해 설정할 수 있다.
+  * `normal`(기본값)
+  * `center`: main-axis를 기준으로 중앙 정렬하여 배치.
+  * `flex-start`: main-axis가 시작하는 부분부터 배치.
+  * `flex-end`: main-axis가 끝나는 부분부터 배치.
+  * `space-between`: 요소 간 여백이 동일한 크기로 배치.
+  * `space-around`: 요소 좌, 우로 동일한 여백을 갖도록 배치.
+  * `space-evenly`: 모든 여백이 동일한 크기를 갖도록 배치.
+<iframe height="300" style="width: 100%;" scrolling="no" title="" src="https://codepen.io/hyoungqu23/embed/PojmMpY?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hyoungqu23/pen/PojmMpY">
+  </a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### [flex-container] `align-items`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-items)
+- cross-axis을 기준으로 flex-item 하나의 줄의 위치를 지정하는 속성(property).
+- 모든 하위 flex-item들에 대한 align-self 속성(property)의 값을 지정하는 속성(property).
+- `stretch`(기본값), `center`, `start`, `end`, `flex-start`, `flex-end`, `self-start`, `self-end`, `baseline`, `first baseline`, `last baseline`, `safe`, `unsafe` 등의 키워드 값을 활용해 설정할 수 있다.
+  * `stretch`(기본값)
+  * `center`: cross-axis를 기준으로 중앙 정렬하여 배치.
+  * `flex-start`: cross-axis가 시작하는 부분부터 배치.
+  * `flex-end`: cross-axis가 끝나는 부분부터 배치.
+<iframe height="300" style="width: 100%;" scrolling="no" title="FLEX-container || align-items" src="https://codepen.io/hyoungqu23/embed/ZEyyzpM?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hyoungqu23/pen/ZEyyzpM">
+  FLEX-container || align-items</a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
+
+### [flex-container] `align-content`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/align-content)
+- cross-axis을 기준으로 flex-item 여러 줄을 어떻게 정렬하여 배치할 지를 설정하는 속성(property).
+- 컨텐츠 사이와 주위 빈 공간을 cross-axis에 따라 배치하는 방식을 결정하는 속성(property).
+- `flex-wrap: nowrap;`과 같이 한 줄로만 이루어진 flex-container에는 효과가 없다.
+- `normal`(기본값), `center`, `start`, `end`, `flex-start`, `flex-end`, `baseline`, `first baseline`, `last baseline`, `space-between`, `space-around`, `space-evenly`, `stretch`, `safe`, `unsafe` 등의 키워드 값을 활용해 설정할 수 있다.
+  * `normal`(기본값)
+  * `center`: main-axis를 기준으로 중앙 정렬하여 배치.
+  * `flex-start`: main-axis가 시작하는 부분부터 배치.
+  * `flex-end`: main-axis가 끝나는 부분부터 배치.
+  * `space-between`: 요소 간 여백이 동일한 크기로 배치.
+  * `space-around`: 요소 좌, 우로 동일한 여백을 갖도록 배치.
+  * `space-evenly`: 모든 여백이 동일한 크기를 갖도록 배치.
+<iframe height="300" style="width: 100%;" scrolling="no" title="FLEX-container || align-content" src="https://codepen.io/hyoungqu23/embed/OJggLZx?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
+  See the Pen <a href="https://codepen.io/hyoungqu23/pen/OJggLZx">
+  FLEX-container || align-content</a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
+  on <a href="https://codepen.io">CodePen</a>.
+</iframe>
