@@ -1372,6 +1372,20 @@ div.transition {
 - `animation-name`, `animation-duration`, `animation-timing-function`, `animation-delay`, `animation-iteration-count`, `animation-direction`, `animation-fill-mode`, `animation-play-state`의 단축 속성이다.
 - 사용자의 상호작용에 따라 움직이는 `transition`과 달리, `hover`, `active` 등의 이벤트가 없다고 해도 자동으로 움직임을 설정하는 것이 `animation`이다.
 - `@keyframes`를 활용해 여러가지 상태를 지정하고 이를 애니메이션 처리할 수 있다.
+- 단축 속성의 특성 상 작성하지 않으면 기본 값으로 적용된다.
+  * `animation-name`: `none`
+  * `animation-duration`: `0s`
+  * `animation-timing-function`: `ease`
+  * `animation-delay`: `0s`
+  * `animation-iteration-count`: `1`
+  * `animation-direction`: `normal`
+  * `animation-fill-mode`: `none`
+  * `animation-play-state`: `running`
+```css
+div.animation {
+  animation: 3s linear 1s infinite reverse forwards running my-animation;
+}
+```
 
 ### `@keyframes`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/@keyframes)
@@ -1450,9 +1464,15 @@ div.animation:hover {
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/animation-fill-mode)
 - 애니메이션이 실행 전과 후에 대상에 스타일을 적용하는 방법을 지정하는 속성(property).
 - `none`(기본값), `forwards`, `backwards`, `both` 값을 활용해 설정할 수 있다.
-  * `none`: 애니메이션은 실행
-  * `forwards`
-  * `backwards`
-  * `both`
+  * `none`: 기존에 작성된 스타일을 유지한다.
+  * `forwards`: 끝날 때 애니메이션의 마지막 `keyframes`를 유지한다.
+  * `backwards`: 시작할 때 애니메이션의 첫 `keyframes`를 유지한다.
+  * `both`: `forwards`, `backwards`가 모두 적용된다.
+```css
+div.animation {
+  animation-fill-mode: forwards;
+}
+```
 
-## FLEX
+---
+## 🧱 FLEX
