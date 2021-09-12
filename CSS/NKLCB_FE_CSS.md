@@ -1572,3 +1572,55 @@ div.animation {
   FLEX-container || align-content</a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
   on <a href="https://codepen.io">CodePen</a>.
 </iframe>
+
+### [flex-item] `order`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/align-content)
+- flex-container 혹은 grid-container 내부에서 현재 요소의 배치 순서를 지정하는 속성(property).
+- `<integer>`(`0`이 기본값) 값을 활용해 설정할 수 있고, 오름차순으로 정렬되고 같은 값인 경우 코드 작성 순서대로 정렬된다.
+- 화면에 보이는 순서에만 영향을 미친다.
+```css
+div.flex-item:nth-child(3) {
+  order: -1;
+}
+```
+
+### [flex-item] `flex` Shorthand(단축 속성)
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex)
+- flex-item의 크기를 확대하거나 축소하는 방법을 설정하는 속성(property).
+- `flex-grow`, `flex-shrink`, `flex-basis`의 단축 속성.
+
+### [flex-item] `flex-grow`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow)
+- flex-item이 flex-container 내부에서 할당 가능한 공간의 정도를 선언하는 속성(property).
+- 모든 flex-item의 크기가 flex-container보다 작은 경우(즉, 남는 공간이 있는 경우)에만 사용 가능하다.
+- `<number>` 값(0 이상의 양수값)을 활용해 설정할 수 있고, `0`이 기본값이다.
+- 동일한 값을 가진 flex-item은 모두 동일한 공간 비율을 가진다.
+```css
+div.flex-item.flex-grow {
+  flex-grow: 1;
+}
+```
+
+### [flex-item] `flex-shrink`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-shrink)
+- flex-item의 크기를 축소하는 비율을 설정하는 속성(property).
+- flex-item의 크기가 flex-container보다 큰 경우에만 사용 가능하다.
+- `<number>` 값(0 이상의 양수값)을 활용해 설정할 수 있고, `1`이 기본값이다.
+- `0`인 경우에는 해당 flex-item의 원본 크기를 유지한다.
+```css
+div.flex-item.flex-shrink {
+  flex-shrink: 2;
+}
+```
+
+### [flex-item] `flex-basis`
+[MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-basis)
+- flex-item의 초기 크기를 지정하는 속성(property).
+- `flex-grow`, `flex-shrink` 속성은 `flex-basis` 속성 값을 제외하고 확대되거나 축소된다.
+- `auto`(기본값), `<length>`, `<percentage>` 등의 값을 활용해 설정할 수 있다.
+- `0`으로 설정하면 모든 flex-item이 동일한 크기가 된다.
+```css
+div.flex-item.flex-basis {
+  flex-basis: 0;
+}
+```
