@@ -505,6 +505,11 @@ div.animation3:hover {
   animation-play-state: running;
 }
 
+div.animation4 {
+  animation: fill-mode 3s linear 1s;
+  animation-fill-mode: backwards;
+}
+
 @keyframes my-animation {
   from {
     width: 100px;
@@ -513,5 +518,17 @@ div.animation3:hover {
   to {
     width: 300px;
     font-size: 40px;
+  }
+}
+
+@keyframes fill-mode {
+  0% {
+    background-color: red;
+  }
+  50% {
+    width: 200px;
+  }
+  100% {
+    background-color: black;
   }
 }
