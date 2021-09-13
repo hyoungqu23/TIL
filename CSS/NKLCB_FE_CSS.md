@@ -1587,7 +1587,16 @@ div.flex-item:nth-child(3) {
 ### [flex-item] `flex` Shorthand(단축 속성)
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex)
 - flex-item의 크기를 확대하거나 축소하는 방법을 설정하는 속성(property).
-- `flex-grow`, `flex-shrink`, `flex-basis`의 단축 속성.
+- `flex-grow`(`0`), `flex-shrink`(`1`), `flex-basis`(`auto`)의 단축 속성.
+- 명시적으로 설정하지 않으면 기본값으로 설정되지만, `flex-basis` 속성은 명시하지 않으면, `0`이 된다.
+- 값을 `<number>` 하나만 설정하면, `flex-grow`가 된다.
+- 값을 `<length>` 또는 `<percentage>`를 하나만 지정하면 `flex-basis`이 된다.
+- 값이 두 개일때, 첫 번째 값은 `<number>`여야 하며 `flex-grow`가 된다.
+  * `<number>`를 지정하면 `flex-shrink`가 된다.
+  * `<length>`, `<percentage>`, 또는 `auto`를 지정하면 `flex-basis`가 된다.
+- `initial`은 기본값으로 설정된다.
+- `auto`는 `1`, `1`, `auto`로 설정되어 확대/축소가 된다.
+- `none`은 `0`, `0`, `auto`로 설정되어 확대/축소가 되지 않는다.
 
 ### [flex-item] `flex-grow`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-grow)
@@ -1622,5 +1631,15 @@ div.flex-item.flex-shrink {
 ```css
 div.flex-item.flex-basis {
   flex-basis: 0;
+}
+```
+
+### [flex-item] `align-self`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/align-self)
+- 각 flex-item의 교차축 정렬을 설정하는 속성(property).
+- 다만, 해당 flex-item이 해당 main-axis에서만 설정된다.
+```css
+div.align-self {
+  align-self: flex-start;
 }
 ```
