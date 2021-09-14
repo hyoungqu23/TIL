@@ -1477,50 +1477,62 @@ div.animation {
 ---
 ## 🧱 FLEX
 ### 개요
-- `display: inline-block;`
-  개행이 공백으로 인정되어, 원치 않는 여백이 존재하게 된다.
-- `float: left;`
-  Normal Flow에서 벗어나기 때문에 높이를 자동으로 갖지 못하게 된 container의 height를 따로 지정해주어야 한다.
-
-- `display: flex;`
-  * 요소의 내부 디스플레이 유형을 설정하는 값으로, `flex`, `grid` 등이 있다.
-  * 요소의 외부 디스플레이 유형을 함께 설정하는 값으로, `inline-flex` 등의 값을 활용할 수 있다.
-  * container와 item에 활용하는 각각의 속성(property)을 적절하게 사용해야 한다.
-  * main-axis(주 축), cross-axis(교차축)
+여러 요소(element)를 한 줄로 정렬하는 방법에는 3가지가 있다.
+1. `display: inline-block;`
+   개행이 공백으로 인정되어, 원치 않는 여백이 존재하게 된다.
+2. `float: left;`
+   Normal Flow에서 벗어나기 때문에 높이를 자동으로 갖지 못하게 된 container의 height를 따로 지정해주어야 한다.
+3. `display: flex;`
+   * 요소의 내부 디스플레이 유형을 설정하는 값으로, `flex`, `grid` 등이 있다.
+   * 요소의 외부 디스플레이 유형을 함께 설정하는 값으로, `inline-flex` 등의 값을 활용할 수 있다.
+   * container와 item에 활용하는 각각의 속성(property)을 적절하게 사용해야 한다.
+   * main-axis(주 축), cross-axis(교차축)
 
 ### [flex-container] `flex-direction`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-direction)
-- flex-container 내의 flex-item을 배치할 때 사용할 main-axis 및 방향을 지정하는 속성(property).
-- `row`(기본값), `row-reverse`, `column`, `column-reverse`의 키워드 값으로 설정할 수 있다.
-  * `row`(기본값): main-axis가 **가로 축**이고, 왼쪽에서 오른쪽 방향으로 설정된다.
-  * `row-reverse`: main-axis가 **가로 축**이지만, 오른쪽에서 왼쪽 방향으로 설정된다.
-  * `column`: main-axis가 **세로 축**이고, 위쪽에서 아래쪽 방향으로 설정된다.
-  * `column-reverse`: main-axis가 **세로 축**이지만, 아래쪽에서 위쪽 방향으로 설정된다.
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="" src="https://codepen.io/hyoungqu23/embed/ZEyKdzg?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/hyoungqu23/pen/ZEyKdzg">
-  </a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+- `flex-container`의 내부에 `flex-item`을 배치할 때 사용할 `main-axis`와 정렬 방향을 지정하는 속성(property).
+- 📌 **Value**
+  키워드 값: `row`(기본값), `row-reverse`, `column`, `column-reverse`
+  * `row`(기본값)
+    `main-axis`가 **가로 축**이고, 왼쪽에서 오른쪽 방향으로 정렬된다.
+  * `row-reverse`
+    `main-axis`가 **가로 축**이고, 오른쪽에서 왼쪽 방향으로 정렬된다.
+  * `column`
+    `main-axis`가 **세로 축**이고, 위쪽에서 아래쪽 방향으로 정렬된다.
+  * `column-reverse`
+    `main-axis`가 **세로 축**이고, 아래쪽에서 위쪽 방향으로 정렬된다.
+```css
+div.flex-container.flex-direction {
+  flex-direction: column;
+}
+```
 
 ### [flex-container] `flex-wrap`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-wrap)
-- flex-item 요소들을 강제로 한 줄에 배치할 지, 가능한 영역 내에서 벗어나지 않고 여러 행으로 나누어 표현할 것인지를 결정하는 속성(property).
-- `nowrap`(기본값), `wrap`, `wrap-reverse`의 키워드 값을 활용해 설정할 수 있다.
-  * `nowrap`(기본값): flex-item을 한 줄에 배치하고, `flex-direction`에 의해 결정된 방향으로 설정된다.
-  * `wrap`: flex-item을 여러 행에 걸쳐서 배치되고, `flex-direction`에 의해 결정된 방향으로 설정된다.
-  * `wrap-reverse`: flex-item을 여러 행에 걸쳐서 배치되지만, 요소가 나열되는 방향이 반대로 설정된다.
-
-<iframe height="300" style="width: 100%;" scrolling="no" title="FLEX-container || flex-wrap" src="https://codepen.io/hyoungqu23/embed/YzQVopr?default-tab=css%2Cresult" frameborder="no" loading="lazy" allowtransparency="true" allowfullscreen="true">
-  See the Pen <a href="https://codepen.io/hyoungqu23/pen/YzQVopr">
-  FLEX-container || flex-wrap</a> by hyoungqu23 (<a href="https://codepen.io/hyoungqu23">@hyoungqu23</a>)
-  on <a href="https://codepen.io">CodePen</a>.
-</iframe>
+- `flex-item`을 강제로 한 줄에 배치할 지, 가능한 영역 내에서 벗어나지 않고 여러 행으로 나누어 표현할 것인지를 결정하는 속성(property).
+- 📌 **Value**
+  키워드 값: `nowrap`(기본값), `wrap`, `wrap-reverse`
+  * `nowrap`(기본값)
+    `flex-item`을 한 줄에 배치하고, `flex-direction`에 의해 결정된 방향으로 설정된다.
+  * `wrap`
+    `flex-item`을 여러 행에 걸쳐서 배치되고, `flex-direction`에 의해 결정된 방향으로 설정된다.
+  * `wrap-reverse`
+    `flex-item`을 여러 행에 걸쳐서 배치되지만, 요소가 나열되는 방향이 반대로 설정된다.
+```css
+div.flex-container.flex-wrap {
+  flex-wrap: wrap;
+}
+```
 
 ### [flex-container] `flex-flow` Shorthand(단축 속성)
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/flex-flow)
 - `flex-direction`과 `flex-wrap`의 단축 속성(property).
 - 두 속성에 사용할 수 있는 키워드 값을 공백으로 구분하여 작성한다.
+```css
+div.flex-container.flex-flow {
+  flex-flow: column wrap;
+}
+```
 
 ### [flex-container] `justify-content`
 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/justify-content)
@@ -1643,3 +1655,12 @@ div.align-self {
   align-self: flex-start;
 }
 ```
+
+---
+## 🧱 GRID
+### Grid Unit
+`fr`
+`min-content`
+`max-content`
+`auto-fill`
+`auto-fit`
