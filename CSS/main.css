@@ -2,6 +2,10 @@
   margin: 0;
 }
 
+body {
+  padding: 20px;
+}
+
 h1 {
   border: 4px solid black;
   border-radius: 20px;
@@ -558,4 +562,31 @@ div.flex-item.flex {
 
 div.flex-direction {
   flex-direction: row-reverse;
+}
+
+/* Grid Layout */
+div.grid-container {
+  border: 10px dashed violet;
+}
+
+div.grid-item {
+  background-color: gainsboro;
+  border: 5px solid blueviolet;
+  font-size: 30px;
+}
+
+/* display:grid; */
+div.grid-container.grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* display:grid; */
+div.grid-container.inline-grid {
+  display: inline-grid;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+div.grid-item.inline-grid {
+  width: 50px;
 }

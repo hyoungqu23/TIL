@@ -1657,10 +1657,49 @@ div.align-self {
 ```
 
 ---
-## 🧱 GRID
+## 🧱 GRID Layout
+
+### 개요
+[MDN](https://developer.mozilla.org/ko/docs/Learn/CSS/CSS_layout/Grids)
+- Grid Layout은 웹 페이지를 위한 2차원 Layout System이다.
+- 1차원적인 Flex Box와 달리, `main-axis`와 `cross-axis`에 모두 배치할 수 있다.
+- `columns`(행), `rows`(열), `gutter`/`gap`(공백)
+- `grid-container`와 `grid-item`에 활용하는 각각의 속성(property)을 적절하게 사용해야 한다.
+
 ### Grid Unit
-`fr`
-`min-content`
-`max-content`
-`auto-fill`
-`auto-fit`
+- **`fr`**
+  너비와 높이에 대한 비율을 설정하는 단위.
+  절대 길이(`px` 등)와 함께 사용하는 경우, 전체 너비에서 해당 절대 길이를 제외한 나머지에 대한 비율을 설정한다.
+- **`min-content`**
+  해당 컨텐츠의 가장 긴 단어의 길이에 맞추어 최소의 너비가 설정되는 단위.
+- **`max-content`**
+  해당 컨텐츠의 모든 내용에 맞추어 최대의 너비가 설정되는 단위.
+- **`auto-fill`**
+  열의 개수를 유연하게 활용할 수 있게 설정하는 단위.
+  반응형 웹 페이지를 제작할 때 주로 활용된다.
+  화면이 확대되고 축소될 때 그에 맞추어 설정된 너비 크기를 충족하는 빈 공간이 존재하면 채우는 식으로 변경된다.
+- **`auto-fit`**
+  열의 개수를 유연하게 활용할 수 있게 설정하는 단위.
+  `auto-fill`과 동일한 방식으로 동작하지만, 요소의 개수가 적어 화면 크기가 확대되었을 때 빈 공간이 부득이하게 생기는 것을 방지할 수 있다.
+  반응형 웹 페이지를 제작할 때 주로 활용된다.
+  화면이 확대되고 축소될 때 그에 맞추어 설정된 너비 크기를 충족하는 빈 공간이 존재하면 채우는 식으로 변경된다.
+
+### [Grid-Container] `display`
+- 요소의 내부 디스플레이 유형을 설정하는 값으로, `flex`, `grid` 등이 있다.
+- 요소의 외부 디스플레이 유형을 함께 설정하는 값으로, `inline-grid` 등의 값을 활용할 수 있다.
+
+### [Grid-Container] `grid-template-rows`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows)
+- Grid Layout의 행의 개수와 크기를 지정하는 속성(property).
+
+### [Grid-Container] `grid-template-columns`
+[MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
+- Grid Layout의 열의 개수와 크기를 지정하는 속성(property).
+- 📌 **Value**
+  `none`, `<length>`, `<percentage>`, `<flex>`, `max-content`, `min-content`, `minmax(min, max)`, `auto`, `repeat(integer, value)` 등을 활용할 수 있다.
+  * `none`(기본값)
+  * `<length>`, `<percentage>`, `<flex>`
+  * `max-content`, `min-content`
+  * `minmax(min, max)`
+  * `auto`
+  * `repeat(integer, value)`
