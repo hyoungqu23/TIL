@@ -1691,7 +1691,14 @@ div.align-self {
 ### [Grid-Container] `grid-template-rows`
 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-rows)
 - Grid Layout의 행의 개수와 크기를 지정하는 속성(property).
-
+- 📌 **Value**
+  `none`, `<length>`, `<percentage>`, `<flex>`, `max-content`, `min-content`, `minmax(min, max)`, `auto`, `repeat(integer, value)` 등을 활용할 수 있다.
+  * `none`(기본값)
+  * `<length>`, `<percentage>`, `<flex>`
+  * `max-content`, `min-content`
+  * `minmax(min, max)`
+  * `auto`
+  * `repeat(integer, value)`
 ### [Grid-Container] `grid-template-columns`
 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
 - Grid Layout의 열의 개수와 크기를 지정하는 속성(property).
