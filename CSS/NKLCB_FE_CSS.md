@@ -1700,6 +1700,7 @@ div.align-self {
   * `auto`
   * `repeat(integer, value)`
 ### [Grid-Container] `grid-template-columns`
+
 [MDN](https://developer.mozilla.org/en-US/docs/Web/CSS/grid-template-columns)
 - Grid Layout의 열의 개수와 크기를 지정하는 속성(property).
 - 📌 **Value**
