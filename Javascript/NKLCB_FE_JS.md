@@ -64,7 +64,7 @@ console.log(input);
 ```
 > 이 경우, readFileSync에서 경로를 절대 경로로 지정해야 node.js로 출력이 가능한 것 같다.
 
-## Javascript 문법
+## 📌 Javascript 기초 문법
 ### 코드 구성
 - Javascript 문법은 스크립트 기반의 언어로, 다수의 표현식(Expression)과 하나의 명령문(Statement)로 이루어지며, 명령문으로 프로그램(Application)이 수행된다.
 - 하나의 명령문(Statement)의 끝은 개행(`Enter`) 혹은 **세미콜론(`;`)**으로 표시한다.
@@ -73,7 +73,7 @@ console.log(input);
 [W3Schools](https://www.w3schools.com/js/js_reserved.asp)
 - Javascript 문법을 만들 때 미리 정해진 용도로 동작하기 위해 정의된 단어.
 
-### 식별자
+### 식별자(Identifier)
 - 스크립트에서 변수나 함수에 이름을 붙일 때 사용하는 단어.
 - 대소문자를 구별하며, 유니코드 문자를 이용한다.
 - **Javascript 식별자 규칙**
@@ -81,3 +81,19 @@ console.log(input);
   * 숫자로 시작 불가능
   * 특수문자는 `_`, `$`만 가능
   * 공백 포함 불가능
+
+### 주석(Comments)
+- 프로그램 구현 시 개발자의 설명 및 이해를 쉽게 도와주는 문장으로, 실제 코드의 실행에는 포함되지 않는다.
+  `// 단일 행 주석`
+  `/* 다중 행 주석 */`  
+```javascript
+console.log('hello'); // hello message(single line comments)
+
+console.log("Hello");
+/* Hello Message
+Multi line
+Comments
+*/
+```
+
+## 📌 Javascript 변수와 상수

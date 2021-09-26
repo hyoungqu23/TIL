@@ -15,3 +15,12 @@ let 안녕 = "하세요";
 console.log(hi);
 console.log(HI);
 console.log(안녕);
+
+// (예제) 주석
+console.log('hello'); // hello message(single line comments)
+
+console.log("Hello");
+/* Hello Message
+Multi line
+Comments
+*/
