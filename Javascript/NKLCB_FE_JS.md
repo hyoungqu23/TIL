@@ -36,7 +36,7 @@
 
 ### 코드의 동작 흐름
 - 개발자 -> 스크립트 -> 컴퓨터
-![코드 동작 흐름](/Javascript/img/Untitled.png)
+![코드 동작 흐름](/Javascript/img/CodeFlow.png)
 
 ### Javascript 변환 절차
 - Javascript 코드를 parser가 변환해서 Abstract Syntax Tree(추상 문맥 트리)로 변환되어 의미에 맞게 나누어진 후, 컴파일러 또는 인터프리터를 통해서 실제 컴퓨터가 이해할 수 있는 언어로 변환되고, 이를 CPU가 읽어서 실행한다.
@@ -97,3 +97,31 @@ Comments
 ```
 
 ## 📌 Javascript 변수와 상수
+### 변수
+- **변경 가능**한 값을 저장하기 위한 기억 공간(Memory)
+- 사용하기 전 반드시 선언을 해야 한다.
+- 중복해서 선언할 수 없다.
+  *SyntaxError: Identifier '변수명' has already been declared* 발생
+- 예약어(keyword) `let`을 활용한다.
+![변수](/Javascript/img/Variables.png)
+
+### 상수
+- **변경 불가능**한 값을 저장하기 위한 기억 공간(Memory)
+- 사용하기 전 반드시 선언을 해야 한다.
+- 중복해서 선언할 수 없다.
+  *SyntaxError: Identifier '변수명' has already been declared* 발생
+- 예약어(keyword) `const`을 활용한다.
+- 값을 재할당할 수 없다.
+  *TypeError: Assignment to constant variable.* 발생
+- 상수의 경우 선언과 값 초기화를 동시에 해야한다.
+  *SyntaxError: Missing initializer in const declaration* 발생
+![변수](/Javascript/img/Constants.png)
+
+### Hoisting
+- 코드에 선언된 변수 및 함수를 유효한 범위의 코드 상단으로 끌어올리는 작업을 의미한다.
+- 예약어(keyword) `var`를 사용한 변수/함수의 선언만 위로 올려지고, 할당은 올려지지 않는다.
+- 예약어(keyword) `let`, `const`로 선언한 변수/상수와 함수 표현식에서는 Hoisting 현상이 발생하지 않는다.
+  *ReferenceError: Cannot access '변수명' before initialization* 발생
+
+## 📌 Javascript 자료형
+### 
