@@ -72,3 +72,80 @@ console.log(peanuts_1);   // 스누피
 // let/const
 // console.log(peanuts_2);   // ReferenceError: Cannot access 'peanuts_2' before initialization
 let peanuts_2;
+
+
+// ========== (예제) TYPEOF ==========
+console.log(typeof "string");     // string
+console.log(typeof 123);          // number
+console.log(typeof 456n);         // bigint
+console.log(typeof .789);         // number
+console.log(typeof true);         // boolean
+console.log(typeof false);        // boolean
+console.log(typeof null);         // object
+console.log(typeof undefined);    // undefined
+console.log(typeof Math);         // object
+console.log(typeof Symbol("id")); // symbol
+console.log(typeof console.log);  // function
+
+// ========== (예제) BOOLEAN ==========
+let nameCheck = true;
+let ageCheck = false;
+let valueCheck = 10 > 3;
+
+console.log(nameCheck, ageCheck, valueCheck);
+
+// ========== (예제) NULL ==========
+console.log(typeof null)    // object(하위 버전 호환성 문제 해결을 위함)
+const nullCheck = null;
+console.log(nullCheck === null);  // true
+
+// ========== (예제) UNDEFINED ==========
+let undefinedCheck;
+console.log(undefinedCheck === undefined);    // true
+
+// ========== (예제) NUMBER ==========
+let num_1 = 123.0;
+let num_2 = 123.456;
+let num_3 = 1 / 0;
+
+console.log(num_1 - num_2);                 // -0.45600000000000307
+console.log((num_1 - num_2).toFixed(3));    // -0.456
+console.log(num_1 / num_2);
+console.log(num_1 + num_2);
+console.log(num_1 * num_2);
+console.log(num_3);             // Infinity
+console.log(num_1 / "zero");    // NaN
+
+// ========== (예제) STRING ==========
+let str_1 = "Hello #1";
+let str_2 = 'Hello #2';
+let number = 3
+let str_3 = `Hello #${number}`;
+
+console.log(str_1);
+console.log(str_2);
+console.log(str_3);
+
+// ========== (예제) OBJECT ==========
+let user = {
+  name: 'John',
+  age: 27,
+};
+
+console.log(typeof user)
+console.log(typeof user.name);
+console.log(typeof user.age);
+
+console.log(user);
+console.log(user.name);
+console.log(user.age);
+
+user.age = 30;
+console.log(user.age);
+
+user.height = 188;
+console.log(user);
+console.log(user.height);
+
+delete user.age;
+console.log(user);
