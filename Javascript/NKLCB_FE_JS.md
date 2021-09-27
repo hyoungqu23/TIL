@@ -124,4 +124,65 @@ Comments
   *ReferenceError: Cannot access '변수명' before initialization* 발생
 
 ## 📌 Javascript 자료형
-### 
+- 목적에 따라 특별한 성질이나 정해진 범주를 가지고 있는 데이터의 종류.
+- 7가지의 원시형과 1가지의 객체형으로 구성된다.
+### `typeof`
+- 인수의 자료형을 반환하는 연산자/함수.
+  연산자: `typeof x`
+  함수: `typeof(x)`
+### 자료형의 종류
+
+| <center>DATA TYPE</center> | <center>DESC</center> | <center>CATEGORY</center> |
+|:-:|:-|:-:|
+|Boolean|논리적 값으로, `true`, `false`|원시 자료형(primitive type)|
+|`null`|존재하지 않거나, 유효하지 않은 주소 표시|원시 자료형(primitive type)|
+|`undefined`|선언 후 값을 할당하지 않은 변수|원시 자료형(primitive type)|
+|number|정수, 실수 등의 숫자|원시 자료형(primitive type)|
+|string|빈 문자열이나 글자들을 표현하는 문자열|원시 자료형(primitive type)|
+|symbol|문자열과 함께 객체 property로 사용|원시 자료형(primitive type)|
+|bigint|2<sup>53</sup>이상의 정수|원시 자료형(primitive type)|
+|object|둘 이상의 복잡한 개체 저장 가능|객체형(object type)|
+
+#### Boolean
+- 논리적인 값을 표현하는 자료형.
+- `true`, `false` 두 가지 값만 존재한다.
+- 직접 사용하여 **flag 변수**로 활용할 수 있다.
+- 주로 조건문 등에서 동작 판단의 기준으로 사용한다.
+```javascript
+let nameCheck = true;
+let ageCheck = false;
+let valueCheck = 10 > 3;    // true
+
+console.log(nameCheck, ageCheck, valueCheck);
+```
+
+#### `null`
+- 값이 비어 있음을 표현하는 자료형.
+- 존재하지 않는(nothing), 비어 있는(empty), 알 수 없는(unknown) 값을 나타내는 데 활용한다.
+- 하위 버전과의 호환성 문제를 해결하기 위해 `object` type으로 명시된다.
+
+#### `undefined`
+- 값이 할당되어 있지 않은 상태를 나타내는 자료형.
+- 변수 선언 후 초기화하지 않은 경우에 `undefined`가 자동으로 할당된다.
+
+#### number
+- 정수, 부동소수점 숫자를 표현하는 자료형.
+- 사칙연산을 할 수 있다. 다만, 부동소수점 숫자 연산은 완벽하지 않다.
+- 일반적인 숫자 이외에 `Infinity`, `-Infinity`, `NaN`(Not a Number)와 같은 특수 숫자 값이 존재한다.
+- 2<sup>53</sup>-1보다 큰 값은 bigint 자료형으로 표기한다.
+
+#### string
+- 문자, 문자열을 표현하는 자료형.
+- 3가지 종류의 따옴표로 표현할 수 있다.
+  `"_"` 큰 따옴표
+  `'_'` 작은 따옴표
+  ``_`` 역 따옴표(backtick), 문자열 내부에 변수를 활용할 수 있음.
+
+#### object
+- 다수의 원시 자료형(primitive type) 혹은 복잡한 개체(entity)를 표현하는 자료형.
+- `Object()` 혹은 중괄호(`{}`)를 활용해 생성한다.
+- `key: value` 구조를 가지며, 접근은 `objectName.keyName` 형태로 표현한다.
+![Object](img/Object.png)
+> 객체로 선언한 변수(`User`)에는 해당 데이터(`name`, `age`)가 각각 들어가는 것이 아니라, 해당 데이터를 보유한 Memory의 주소(`0x12341234`)가 할당된다.
+
+- 객체에 개체(entity)를 추가하기 위해서는 `objectName.keyName = value;`으로 할 수 있고, 삭제는 `delete` 명령어를 활용해 할 수 있다.
