@@ -149,3 +149,22 @@ console.log(user.height);
 
 delete user.age;
 console.log(user);
+
+// ========== (예제) OBJECT Copy ==========
+let customer = {
+  name: "James",
+  age: 28,
+};
+
+let admin = customer;
+
+admin.name = "Donald";
+
+console.log(admin.name);      // Donald
+console.log(customer.name);   // Donald가 아니라 James가 나와야 함
+
+customer.age = 33;
+console.log(admin.age);       // 33
+console.log(customer.age);    // 33이 아니라 28이 나와야 함
+
+// ========== (예제) SHALLOW Copy ==========
