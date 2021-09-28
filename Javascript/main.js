@@ -167,4 +167,62 @@ customer.age = 33;
 console.log(admin.age);       // 33
 console.log(customer.age);    // 33이 아니라 28이 나와야 함
 
-// ========== (예제) SHALLOW Copy ==========
+// ========== (예제) SHALLOW Copy #1 ==========
+let customer_SC_1 = {
+  name: "James",
+  age: 28,
+};
+
+let admin_SC_1 = {};
+
+for (let key in customer_SC_1) {
+  admin_SC_1[key] = customer_SC_1[key];
+};
+
+admin_SC_1.name = "Donald";
+
+console.log(admin_SC_1.name);      // Donald
+console.log(customer_SC_1.name);   // James
+
+// ========== (예제) SHALLOW Copy #2 ==========
+let customer_SC_2 = {
+  name: "James",
+  age: 28,
+};
+
+let admin_SC_2 = Object.assign({}, customer_SC_2);
+
+admin_SC_2.name = "Donald";
+
+console.log(admin_SC_2.name);      // Donald
+console.log(customer_SC_2.name);   // James
+
+// ========== (예제) SHALLOW Copy #3 ==========
+let customer_SC_3 = {
+  name: "James",
+  age: 28,
+};
+
+let admin_SC_3 = { ...customer_SC_3 };
+
+admin_SC_3.name = "Donald";
+
+console.log(admin_SC_3.name);      // Donald
+console.log(customer_SC_3.name);   // James
+
+// ========== (예제) SHALLOW Copy #4 ==========
+let customer_SC_4 = {
+  name: "James",
+  age: 28,
+  sizes: {
+    height: 179,
+    weight: 67,
+  },
+};
+
+let admin_SC_4 = { ...customer_SC_4 };
+
+admin_SC_4.sizes.height = 190;
+
+console.log(admin_SC_4.sizes.height);      // 190
+console.log(customer_SC_4.sizes.height);   // 190이 아니라 179가 나와야 함
