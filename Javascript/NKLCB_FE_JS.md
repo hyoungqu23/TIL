@@ -186,3 +186,20 @@ console.log(nameCheck, ageCheck, valueCheck);
 > 객체로 선언한 변수(`User`)에는 해당 데이터(`name`, `age`)가 각각 들어가는 것이 아니라, 해당 데이터를 보유한 Memory의 주소(`0x12341234`)가 할당된다.
 
 - 객체에 개체(entity)를 추가하기 위해서는 `objectName.keyName = value;`으로 할 수 있고, 삭제는 `delete` 명령어를 활용해 할 수 있다.
+
+##### 객체 자료형 복사의 문제
+- 객체의 값을 복사하면, 대상 전체가 아닌, 주소 값만 복사되기 때문에 복사한 객체를 수정하면, 원본 객체도 수정되는 문제가 발생한다.
+- 따라서 가리키는 객체 전체를 복사하기 위해서는 얕은 복사(Shallow Copy), 깊은 복사(Deep Copy)를  사용해야 한다.
+![Copy](img/Copy.png)
+
+##### 얕은 복사(Shallow Copy)
+1. 반복문 `for`문을 활용한 객체의 얕은 복사(Shallow Copy)
+   - ㅁㄴㅇ
+2. objectName.assing() 함수를 활용한 객체의 얕은 복사(Shallow Copy)
+   - ㅁㄴㅇ
+3. Spread Operator를 활용한 객체의 얕은 복사(Shallow Copy)
+   - ㅁㄴㅇ
+4. 얕은 복사(Shallow Copy)의 문제점
+   - ㅁㄴㅇ
+
+##### 깊은 복사(Deep Copy)
