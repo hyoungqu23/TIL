@@ -194,12 +194,14 @@ console.log(nameCheck, ageCheck, valueCheck);
 
 ##### 얕은 복사(Shallow Copy)
 1. 반복문 `for`문을 활용한 객체의 얕은 복사(Shallow Copy)
-   - ㅁㄴㅇ
-2. objectName.assing() 함수를 활용한 객체의 얕은 복사(Shallow Copy)
-   - ㅁㄴㅇ
+   - [참고자료]()
+2. Object.assign(피복사 객체, 복사 객체) 함수를 활용한 객체의 얕은 복사(Shallow Copy)
+   - [참고자료]()
 3. Spread Operator를 활용한 객체의 얕은 복사(Shallow Copy)
-   - ㅁㄴㅇ
+   - [참고자료]()
 4. 얕은 복사(Shallow Copy)의 문제점
-   - ㅁㄴㅇ
-
+   - 객체 내부에 또 다른 객체가 있는 경우, 복사되지 않는다.
+   ![ShallowCopy](img/ShallowCopy.png)
 ##### 깊은 복사(Deep Copy)
+1. 재귀 함수(`for`문)를 이용한 객체의 깊은 복사
+2. JSON.parse(JSON.stringify(원본 객체))를 이용한 객체의 깊은 복사
