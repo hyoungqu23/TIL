@@ -353,3 +353,31 @@ console.log(Boolean(true && 3));        // true
 console.log(Boolean(0 && false));       // false
 console.log(Boolean(!false));           // true
 console.log(Boolean(!123));             // false
+
+// ========== (예제) SCOPE ==========
+let x = 1;
+let y = 2;
+
+console.log(x);
+console.log(y);
+
+{
+  let x = 3;
+  let y = 4;
+
+  console.log(x);
+  console.log(y);
+}
+
+function scope() {
+  let x = 5;
+  let y = 6;
+
+  console.log(x);
+  console.log(y);
+}
+
+scope();
+
+console.log(x);
+console.log(y);
