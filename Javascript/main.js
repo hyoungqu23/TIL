@@ -210,7 +210,7 @@ admin_SC_3.name = "Donald";
 console.log(admin_SC_3.name);      // Donald
 console.log(customer_SC_3.name);   // James
 
-// ========== (예제) SHALLOW Copy #4 ==========
+// ========== (예제) SHALLOW Copy #4 Problem ==========
 let customer_SC_4 = {
   name: "James",
   age: 28,
@@ -226,3 +226,20 @@ admin_SC_4.sizes.height = 190;
 
 console.log(admin_SC_4.sizes.height);      // 190
 console.log(customer_SC_4.sizes.height);   // 190이 아니라 179가 나와야 함
+
+// ========== (예제) DEEP Copy ==========
+let customer_DC = {
+  name: "James",
+  age: 28,
+  sizes: {
+    height: 179,
+    weight: 67,
+  },
+};
+
+let admin_DC = JSON.parse(JSON.stringify(customer_DC));
+
+admin_DC.sizes.height = 190;
+
+console.log(admin_DC.sizes.height);      // 190
+console.log(customer_DC.sizes.height);   // 190이 아니라 179가 나와야 함
