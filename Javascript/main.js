@@ -279,3 +279,77 @@ console.log(Boolean(true));
 console.log(Boolean(false));
 console.log(Boolean(undefined));
 console.log(Boolean(null));
+
+// ========== (예제) 산술 연산자 ==========
+console.log(32 + 8);
+console.log(32 - 8);
+console.log(32 * 8);
+console.log(32 / 8);
+console.log(32 % 8);
+console.log(32 ** 8);
+
+// ========== (예제) 대입 연산자 ==========
+let number_1 = 123;
+let number_2 = 456;
+let string_1 = "Hello, ";
+let string_2 = "World!";
+
+let number_3, string_3;
+number_3 = number_1 + number_2;
+console.log(number_3);
+
+string_3 = string_1 + string_2;
+console.log(string_3);
+
+// ========== (예제) 복합 대입 연산자 ==========
+let result_1, result_2, result_3, result_4;
+result_1 = result_2 = result_3 = result_4 = 25;
+
+console.log(result_1 += 5);
+console.log(result_2 -= 5);
+console.log(result_3 *= 5);
+console.log(result_4 /= 5);
+
+// ========== (예제) 증감 연산자 ==========
+let rst, num;
+
+num = 10;
+rst = num++;
+console.log(rst);     // 10
+console.log(num);     // 11
+
+num = 10;
+rst = ++num;
+console.log(rst);     // 11
+console.log(num);     // 11
+
+num = 10;
+rst = num--;
+console.log(rst);     // 10
+console.log(num);     // 9
+
+num = 10;
+rst = --num;
+console.log(rst);     // 9
+console.log(num);     // 9
+
+// ========== (예제) 비교 연산자 ==========
+console.log(5 > 3);             // true
+console.log(5 < 3);             // false
+console.log(5 >= 10);           // false
+console.log(10 <= 10);          // true
+console.log(5 == '5');          // true
+console.log(5 != '5');          // false
+console.log(5 === '5');         // false
+console.log(5 !== '5');         // true
+
+// ========== (예제) 논리 연산자 ==========
+console.log(true || false);             // true
+console.log(Boolean(0 || false));       // false
+console.log(Boolean(123 || false));     // true
+console.log(Boolean(123 && 0));         // false
+console.log(Boolean(false && true));    // false
+console.log(Boolean(true && 3));        // true
+console.log(Boolean(0 && false));       // false
+console.log(Boolean(!false));           // true
+console.log(Boolean(!123));             // false
