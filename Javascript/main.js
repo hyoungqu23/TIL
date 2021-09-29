@@ -243,3 +243,39 @@ admin_DC.sizes.height = 190;
 
 console.log(admin_DC.sizes.height);      // 190
 console.log(customer_DC.sizes.height);   // 190이 아니라 179가 나와야 함
+
+// ========== (예제) 형 변환 - String ==========
+console.log(String(123));
+console.log(String(1 / 0));
+console.log(String(-1 / 0));
+console.log(String(NaN));
+console.log(String(true));
+console.log(String(false));
+console.log(String(undefined));
+console.log(String(null));
+
+// ========== (예제) 형 변환 - Number, parseInt, parseFloat ==========
+console.log(Number(""));
+console.log(Number("123"));
+console.log(Number('Hello'));
+console.log(Number("123Hello"));
+console.log(Number(true));
+console.log(Number(false));
+console.log(Number(undefined));
+console.log(Number(null));
+
+console.log(parseInt(123.123))
+console.log(parseFloat(123.123))
+
+// ========== (예제) 형 변환 - Boolean ==========
+console.log(Boolean(""));
+console.log(Boolean("123"));
+console.log(Boolean('Hello'));
+console.log(Boolean("0"));
+console.log(Boolean(0));
+console.log(Boolean(123));
+console.log(Boolean(NaN));
+console.log(Boolean(true));
+console.log(Boolean(false));
+console.log(Boolean(undefined));
+console.log(Boolean(null));
