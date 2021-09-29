@@ -241,3 +241,63 @@ console.log(nameCheck, ageCheck, valueCheck);
 6. 논리 연산자
    - 좌항과 우항 사이의 논리 값을 연산해 참 또는 거짓을 결과로 얻는 연산자.
    - `&&`(AND), `||`(OR), `!`(NOT)
+
+## 📌 Javascript SCOPE
+- 변수 혹은 상수에 접근할 수 있는 범위
+- 모듈, 함수 내 코드에서 동일한 변수 사용 시 간섭을 줄이는 용도로 사용한다.
+  * Global Scope: 전역에서 선언되어 어디서나 접근 가능.
+  * Local Scope: 특정 지역에서 선언되어 해당 지역 내에서만 접근 가능.
+    - Block Level Scope
+    - Function Level Scope
+![Scope](img/Scope.png)
+
+- Scope 범위 문제
+```javascript
+let A = 1;
+let B = 2;
+
+{
+  let C = 3;
+  let D = 4;
+
+  console.log(A); // 1
+  console.log(C); // 3
+}
+
+console.log(C); // ReferenceError: C is not defined
+```
+```javascript
+let A = 1;
+{
+  let C = 3;
+  let D = 4;
+
+  console.log(C); // 3
+
+  {
+    let C = 5;
+    let D = 6;
+
+    console.log(C); // 5
+  }
+}
+```
+```javascript
+// Global Scope
+let index = 1000;
+
+function local_func() {
+  // Function Level Scope
+  let index = 100;
+
+  for (let index = 0; index < 10; index++) {
+    // Block Level Scope
+    console.log(index); // 0 ~ 9
+  }
+
+  console.log(index); // 100
+}
+
+local_func();
+console.log(index); // 1000
+```
