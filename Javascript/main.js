@@ -381,3 +381,20 @@ scope();
 
 console.log(x);
 console.log(y);
+
+// ========== (예제) Conditionals ==========
+let apple_price = 9;
+
+if (apple_price >= 10) {
+  console.log("very expensive");
+} else if ( apple_price < 5 ) {
+  console.log("Very Cheap");
+} else {
+  console.log("Reasonable Price.");
+}
+
+let pet_age = 10;
+if (pet_age < 10) 
+  console.log('Young');
+else
+  console.log("old");
