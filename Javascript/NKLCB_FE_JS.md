@@ -301,3 +301,9 @@ function local_func() {
 local_func();
 console.log(index); // 1000
 ```
+
+## 📌 Javascript Conditionals
+- 알고리즘에서 논리적 비교를 할 때 사용되는 조건식
+- `if`, `else if`, `else` 예약어(keyword)를 통해 구성되며, 조건식에 맞는 경우 `{ }`로 구분된 동작문 블록을 수행한다.
+- 단, 동작문이 단일문인 경우 `{ }`를 생략할 수 있다.
+![Conditionals](img/Conditionals.png)
