@@ -330,3 +330,78 @@ console.log(index); // 1000
 > for (Init Expression; Test Expression; Update Expression) {
 > // Statement Block
 > }
+
+### `for`...`in`
+- 객체의 key, value 형태를 반복해 수행하는 데 최적화된 반복문.
+- 첫번째부터 마지막까지 객체의 key를 반복하게 된다.
+> for (key in object) {
+> // Statement Block
+> }
+
+### `for`...`of`
+- Collection 객체 자체가 Symbol.iterator 속성(property)을 가지고 있어야 동작 가능한 반복문.
+- ES6에 추가된 Collection 기반의 반복문.
+> for (variable of iterable) {
+> // Statement Block
+> }
+
+### `while`
+![Loops_while](img/Loops_while.png)
+- 조건문이 참일 때 코드 블록을 계속해서 반복적으로 수행하는 반복문.
+- `for`문에 비해 선언문과 증감문 없이 loop를 수행하며, 무한 loop가 발생할 수 있다.
+> while (Test Expression) {
+> // Statement Block
+> }
+
+### `do`...`while`
+- 조건문을 코드 블록보다 아래에 옮긴 `do`...`while`문도 존재한다.(최소 한 번의 수행이 필요할 때 사용.)
+> do {
+> // Statement Block
+> } while (Test Expression);
+
+### 반복문의 제어
+#### `break`
+- 반복문 수행 시 코드 블록을 탈출할 때 사용되는 식별자.
+- 다중 반복문인 경우 가장 안쪽의 반복문을 종료한다.
+- `Label`(반복문 앞에 `:`과 함께 쓰이는 식별자)을 통해 다중 반복문을 한번에 종료할 수 있다.
+> while (Test Expression) {
+> // Statement Block
+>   if (condition to break) {
+>     break;
+>   }
+> }
+
+> for (Init Expression; Test Expression; Update Expression) {
+> // Statement Block
+>   if (condition to break) {
+>     break;
+>   }
+> }
+
+#### `continue`
+- 반복문 수행 시 코드 블록 실행을 해당 라인에서 중지하고, 코드를 종료시킨 후 반복문 내 명시된 조건을 재판단할 때 사용하는 식별자.
+> while (Test Expression) {
+> // Statement Block
+>   if (condition to continue) {
+>     break;
+>   }
+> }
+
+> for (Init Expression; Test Expression; Update Expression) {
+> // Statement Block
+>   if (condition to continue) {
+>     break;
+>   }
+> }
+
+#### Label 예제
+- 프로그램 내 특정 영역을 지정해 별도의 이름을 붙이는 식별자.
+- `break`, `continue`를 사용하는 반복문 내에서만 사용 가능하며, `break`, `continue` 지시자 위에 있어야 한다.
+
+### 연습 문제 #2
+> 반복문 `for`를 이용하여 0부터 10까지의 정수 중 짝수의 합을 구한 뒤 출력하세요.
+
+### 연습 문제 #3
+> 반복문 `for` 2개를 사용해 구구단(2 ~ 9단)을 출력하세요.
+
+## 📌 Javascript Functions
