@@ -510,3 +510,94 @@ for (let i = 0; i < 3; i++) {
     console.log(`${i} + ${j} = ${i + j}`);
   }
 }
+
+// ========== (예제) Loops_for_in ==========
+const person = {fname: "John", lname: "Bob", age: 25};
+
+let text_forin = "";
+for (let x in person) {
+  text_forin += person[x];
+}
+
+console.log(text_forin);
+
+// ========== (예제) Loops_for_of ==========
+let language = "JavaScript";
+let text_forof = "";
+
+for (let x of language) {
+  text_forof += x;
+  console.log(x);
+}
+
+// ========== (예제) Loops_while ==========
+let i = 0;
+while (i < 3) {
+  console.log(i);
+  i++;
+}
+
+// ========== (예제) Loops_do_while ==========
+i = 0;
+do {
+  console.log(i);
+  i++;
+} while (i < 3);
+
+i = 4;
+do {
+  console.log(i);
+  i++;
+} while (i < 3);
+
+// ========== (예제) Loops_break ==========
+let text_break = '';
+for (let i = 0; i < 10; i++) {
+  if (i === 3) break;
+  text_break += i;
+}
+
+console.log(text_break);
+
+// ========== (예제) Loops_continue ==========
+let text_continue = '';
+for (let i = 0; i < 10; i++) {
+  if (i === 3) continue;
+  text_continue += i;
+}
+
+console.log(text_continue);
+
+// ========== (예제) Loops_label ==========
+for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    console.log(i + " * " + j + " = " + i*j);
+    break;
+  }
+}
+
+end: for (let i = 0; i < 3; i++) {
+  for (let j = 0; j < 3; j++) {
+    console.log(i + " * " + j + " = " + i*j);
+    break end;
+  }
+}
+
+// ========== (연습 문제 #2) ==========
+const UNTIL_NUM = 10;
+let sum = 0;
+
+for (let i = 0; i <= UNTIL_NUM; i++) {
+  if (i % 2 === 0) {
+    sum += i;
+  }
+}
+
+console.log(sum);
+
+// ========== (연습 문제 #3) ==========
+for (let i = 2; i <= 9; i++) {
+  for (j = 1; j <= 9; j++) {
+    console.log(`${i}단: ${i} * ${j} = ${i*j}`);
+  }
+}
