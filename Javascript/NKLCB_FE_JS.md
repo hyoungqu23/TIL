@@ -560,5 +560,52 @@ console.log(a.v);     // 2
 > 두 정수를 입력 받아 가장 큰 값/작은 값을 출력하는 함수를 작성하세요.
 
 ## 📌 Javascript Method
-- 다양한방법으로 함수 정의가 가능하며, 함수 표현식처럼 함수를 정의해 변수에 저장 가능.
-- 배열의 요소 혹은 객체의 속성에 함수를 정의하여 저장 가능.
+- 다양한 방법으로 함수 정의가 가능하며, 함수 표현식처럼 함수를 정의해 변수에 저장 가능.
+- 배열의 요소(Element) 혹은 객체의 속성(Property)에 함수를 정의하여 저장 가능.
+- 객체에 저장된 값이 함수인 경우, 이를 메서드(Method)라고 부른다.
+![Method](img/Method.png)
+
+### Method 변경
+- 객체 내 초기 선언된 함수를 다른 함수로 변경할 수 있다.(함수가 저장된 메모리의 주소값을 변경하는 것.)
+```javascript
+function hi_method() { console.log("hi_method"); }
+function bye_method() { console.log("bye_method"); }
+
+let obj_method = {
+  name: "john",
+  age: 26,
+  func: hi_method,
+}
+
+hi_method();                                      // hi_method
+obj_method.func();                                // hi_method
+console.log(hi_method == obj_method.func);        // true
+
+obj_method.func = bye_method;
+bye_method();                                     // bye_method
+obj_method.func();                                // bye_method
+console.log(hi_method == obj_method.func);        // false
+console.log(bye_method == obj_method.func);       // true
+```
+
+### `this`
+- 메서드에서 객체 내부의 속성(Property) 값에 접근할 수 잇는 지시자.
+- `this`를 사용하는 메서드는 추가 가능하며, 이때 `this`는 런타임에 결정되어 호출한 객체에 따라 다르다.
+![THIS](img/Method_this.png)
+```javascript
+let user_this = { name: 'john' };
+let admin_this = { name: 'admin' };
+
+function this_func() {
+  console.log("hello, " + this.name);
+}
+
+user_this.func = this_func;     // 객체에 메서드 추가
+admin_this.func = this_func;    // 객체에 메서드 추가
+
+user_this.func();         // hello, john
+admin_this.func();        // hello, admin
+
+user_this["func"]();      // hello, john
+admin_this["func"]();     // hello, admin
+```
