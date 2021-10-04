@@ -601,3 +601,107 @@ for (let i = 2; i <= 9; i++) {
     console.log(`${i}단: ${i} * ${j} = ${i*j}`);
   }
 }
+
+// ========== (예제) Function_default_value ==========
+function print_add(x, y = 10) {
+  console.log(x + y);
+}
+
+print_add(10, 20, 30);      // 30
+print_add(10, 20);          // 30
+print_add(10);              // 20
+print_add();                // NaN
+
+// ========== (예제) Function_dynamic_parameters ==========
+function print_min() {
+  console.log(arguments[0] - arguments[1]);
+}
+
+print_min(10, 20, 30);      // -10
+print_min(10, 20);          // -10
+print_min(10);              // NaN
+print_min();                // NaN
+
+// ========== (예제) Function_return ==========
+function mul(x, y) {
+  return x * y;
+  console.log("hello"); // 수행되지 않음.
+}
+
+function dummy() {}
+
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(mul(10, 20));     // 200
+console.log(dummy());         // undefined
+console.log(checkAge(14));    // false
+console.log(checkAge(23));    // true
+
+// ========== (예제) Function_recursive_function ==========
+function recursive(num) {
+  if (num == 0) return 0;
+  return num + recursive(num - 1);
+}
+
+console.log(recursive(3));
+
+function factorial(x) {
+  if (x === 0) return 1;
+
+  return x * factorial(x - 1);
+}
+
+const num_fac = 5;
+let result_fac = factorial(num_fac);
+
+console.log(`The factorial of ${num_fac} is ${result_fac}`);
+
+// ========== (예제) Function_callback ==========
+function add(x, y) {
+  return x + y;
+}
+function sub(x, y) {
+  return x - y;
+}
+function multi(x, y) {
+  return x * y;
+}
+function div(x, y) {
+  return x / y;
+}
+
+function calculator(callback, x, y) {
+  return callback(x, y);
+}
+
+console.log(calculator(add, 8, 4));       // 12
+console.log(calculator(sub, 8, 4));       // 4
+console.log(calculator(multi, 8, 4));     // 32
+console.log(calculator(div, 8, 4));       // 2
+
+// ========== (연습 문제 #4) ==========
+function MAX(x, y) {
+  if (x >= y) { return x; }
+  else { return y; }
+
+  // return (x > y) ? x : y;
+}
+console.log(MAX(0, 3));     // 3
+console.log(MAX(-1, 5));    // 5
+console.log(MAX(100, 7));   // 100
+
+function MIN(x, y) {
+  if (x < y) { return x; }
+  else { return y; }
+
+  // return (x < y) ? x : y;
+}
+console.log(MIN(0, 3));     // 0
+console.log(MIN(-1, 5));    // -1
+console.log(MIN(100, 7));   // 7
