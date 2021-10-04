@@ -705,3 +705,39 @@ function MIN(x, y) {
 console.log(MIN(0, 3));     // 0
 console.log(MIN(-1, 5));    // -1
 console.log(MIN(100, 7));   // 7
+
+// ========== (예제) Method_getOwnPropertyDescriptors ==========
+function div_1(x, y) { return x / y; }
+const div_2 = function (x, y) { return x / y; }
+const div_3 = (x, y) => x / y;
+const div_4 = div_1;
+
+console.log(div_1 == div_2);
+console.log(div_1 == div_4);
+
+console.log(Object.getOwnPropertyDescriptors(div_1));
+console.log(Object.getOwnPropertyDescriptors(div_2));
+console.log(Object.getOwnPropertyDescriptors(div_3));
+console.log(Object.getOwnPropertyDescriptors(div_4));
+
+let list = ["john", 26, function hello() {console.log('hello');}];
+let obj = {
+  name: "john",
+  age: 26,
+  hello() {
+    console.log('hello');
+  },
+}
+
+function hello() { console.log('hello'); }
+
+hello();
+obj.hello();
+list[2]();
+
+console.log(typeof hello);
+console.log(typeof obj.hello);
+console.log(typeof list[2]);
+
+console.log(Object.getOwnPropertyDescriptors(obj));
+console.log(Object.getOwnPropertyDescriptors(list));
