@@ -405,3 +405,158 @@ console.log(index); // 1000
 > 반복문 `for` 2개를 사용해 구구단(2 ~ 9단)을 출력하세요.
 
 ## 📌 Javascript Functions
+- 함수는 다수의 명령문을 코드 블록으로 감싸고, 하나의 실행 단위로 만든 코드의 집합을 의미한다.
+- 유사한 동작을 하는 코드들을 하나의 모듈으로 묶어, 범용성을 확대시킨 코드 블록이다.
+- 정의 부분과 호출 부분으로 구성되며, 함수는 가급적 한 가지 일만 하게끔, 그리고 매개 변수는 최대 3개 이내로 작성하는 것이 권장된다.
+![Function](/Javascript/img/Function.png)
+- `add`: 함수 이름
+- `x`, `y`: 매개 변수(parameter)
+- `x + y`: 반환 결과(return)
+- `10`, `20`: 인자(argument)
+
+### 함수의 정의
+1. 함수 선언식(Function Declarations)
+```javascript
+function add(x, y) {
+  return x + y;
+}
+```
+2. 함수 표현식(Function Expressions)
+```javascript
+const add = function (x, y) {
+  return x + y;
+}
+```
+3. 화살표 함수(Arrow Function)
+```javascript
+const add = (x, y) => { return x + y; }
+```
+
+### 함수의 호출
+- JavaScript 함수는 매개변수와 인수의 개수가 일치하는 지 확인하지 않는다.
+- ES6에 도입된 기본값을 통해 값 초기화 지정이 가능하다.
+```javascript
+function print_add(x, y = 10) {
+  console.log(x + y);
+}
+
+print_add(10, 20, 30);      // 30
+print_add(10, 20);          // 30
+print_add(10);              // 20
+print_add();                // NaN
+```
+- 동적 매개변수 `arguments`를 활용해 함수를 구성할 수도 있다.
+```javascript
+function print_min() {
+  console.log(arguments[0] - arguments[1]);
+}
+
+print_min(10, 20, 30);      // -10
+print_min(10, 20);          // -10
+print_min(10);              // NaN
+print_min();                // NaN
+```
+
+### 함수의 반환
+- `return` 이후의 코드는 수행되지 않는다.
+- 함수의 반환 값의 default 값은 `undefined`이다.
+```javascript
+function mul(x, y) {
+  return x * y;
+  console.log("hello"); // 수행되지 않음.
+}
+
+function dummy() {}
+
+function checkAge(age) {
+  if (age >= 18) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(mul(10, 20));     // 200
+console.log(dummy());         // undefined
+console.log(checkAge(14));    // false
+console.log(checkAge(23));    // true
+```
+
+### 재귀 함수
+- 함수 스스로 자신을 참조해 호출하면서, 동일한 코드가 계속적으로 수행되는 함수 호출 방법
+- 재귀 함수는 특정 조건이 됐을 때 자신을 그만 호출되도록 제한하는 exit code가 필요하다.
+![RecursiveFunction](img/RecursiveFunction.png)
+
+```javascript
+function recursive(num) {
+  if (num == 0) return 0;
+  return num + recursive(num - 1);
+}
+
+console.log(recursive(3));
+
+function factorial(x) {
+  if (x === 0) return 1;
+
+  return x * factorial(x - 1);
+}
+
+const num_fac = 5;
+let result_fac = factorial(num_fac);
+
+console.log(`The factorial of ${num_fac} is ${result_fac}`);
+```
+![recursiveFunction_solution](img/RecursiveFunction_solution.png)
+
+### 콜백 함수(Callback Function)
+- 다른 함수의 매개변수로 전달되어 수행되어지는 함수.
+- 고차 함수(High-order Function)는 매개변수를 통해 함수를 받아 호출하는 함수.
+![CallbackFunction](img/CallbackFunction.png)
+```javascript
+function add(x, y) {
+  return x + y;
+}
+function sub(x, y) {
+  return x - y;
+}
+function multi(x, y) {
+  return x * y;
+}
+function div(x, y) {
+  return x / y;
+}
+
+function calculator(callback, x, y) {
+  return callback(x, y);
+}
+
+console.log(calculator(add, 8, 4));       // 12
+console.log(calculator(sub, 8, 4));       // 4
+console.log(calculator(multi, 8, 4));     // 32
+console.log(calculator(div, 8, 4));       // 2
+```
+
+### `call by`
+1. `call by value`
+   - **값에 의한 복사**로, 함수 내에서 매개변수 값을 변경시켜도 영향을 미치지 않음
+   - 원시 자료형을 매개 변수로 넘겼을 때 발생한다.
+```javascript
+let a = 1;
+let add = function (b) { b = b + 1; };
+add(a);
+console.log(a);       // 1
+```
+2. `call by reference`
+   - **주소에 대한 복사**로, 함수 내에서 매개변수 내부의 값을 변경시키면 원본 데이터에도 영향을 미침.
+   - 객체 자료형을 매개변수로 넘겼을 때 발생한다.
+```javascript
+var a = { v: 1 };
+var add = function (b) { b.v = b.v + 1; };
+add(a);
+console.log(a.v);     // 2
+```
+
+### 연습 문제 #4
+> 두 정수를 입력 받아 가장 큰 값/작은 값을 출력하는 함수를 작성하세요.
+
+## 📌 Javascript
