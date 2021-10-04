@@ -741,3 +741,40 @@ console.log(typeof list[2]);
 
 console.log(Object.getOwnPropertyDescriptors(obj));
 console.log(Object.getOwnPropertyDescriptors(list));
+
+// ========== (예제) Method ==========
+function hi_method() { console.log("hi_method"); }
+function bye_method() { console.log("bye_method"); }
+
+let obj_method = {
+  name: "john",
+  age: 26,
+  func: hi_method,
+}
+
+hi_method();                                      // hi_method
+obj_method.func();                                // hi_method
+console.log(hi_method == obj_method.func);        // true
+
+obj_method.func = bye_method;
+bye_method();                                     // bye_method
+obj_method.func();                                // bye_method
+console.log(hi_method == obj_method.func);        // false
+console.log(bye_method == obj_method.func);       // true
+
+// ========== (예제) Method_this ==========
+let user_this = { name: 'john' };
+let admin_this = { name: 'admin' };
+
+function this_func() {
+  console.log("hello, " + this.name);
+}
+
+user_this.func = this_func;     // 객체에 메서드 추가
+admin_this.func = this_func;    // 객체에 메서드 추가
+
+user_this.func();         // hello, john
+admin_this.func();        // hello, admin
+
+user_this["func"]();      // hello, john
+admin_this["func"]();     // hello, admin
