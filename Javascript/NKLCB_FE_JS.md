@@ -609,3 +609,53 @@ admin_this.func();        // hello, admin
 user_this["func"]();      // hello, john
 admin_this["func"]();     // hello, admin
 ```
+
+## 📌 Javascript Number type
+- Javascript에서 일반적인 Number type은 64bit 형식의 IEEE-754 표준 기반 형태로 저장되는 자료형.
+- 10진수 이외에 16진수, 2진수, 8진수 등 다양한 진수를 사용할 수 있다.
+  * 16진수(Hexadecimal): 0xFF
+  * 8진수(Octal): 0o71
+  * 2진수(Binary): 0b1101
+- 대표 상수 값
+  * `MAX_VALUE`, `MIN_VALUE`, `MAX_SAFE_INTEGER`, `MIN_SAFE_INTEGER`, `POSITIVE_INFINITY`, `NEGATIVE_INFINITY`, `NaN`
+- 대표 메서드
+  * `Number.toString()`: 문자열로 변환
+  * `Number.toFixed()`, `Number.toPrecision()`: 특정 자리수까지 제한해 숫자 표현.
+  * `Number.isNaN()`, `Number.isFinite()`: 타입 확인
+
+### 지수 표기법
+- 아주 큰 숫자나 아주 작은 숫자를 표기하기 위해 지수 표기법(e)으로 0의 개수를 대체 표기
+```javascript
+let billion_1 = 1000000000;
+let billion_2 = 1e9;
+let us = 1e-6;
+
+console.log(billion_1);
+console.log(billion_2);
+console.log(us);
+```
+
+### 진법 표기
+- `0x`, `0o`, `0b`로 N진수 표기 가능
+```javascript
+console.log(0x0f);        // 15
+console.log(0o17);        // 15
+console.log(0b1111);      // 15
+```
+
+### 상수값
+- `Number.MAX_VALUE`, `Number.MIN_VALUE`: 지수로 표기되는 양수 최대/최소 값
+- `Number.MAX_SAFE_INTEGER`, `Number.MIN_SAFE_INTEGER`: 안전하게 표기되는 최대 양수/최소 음수 값
+- `Number.POSITIVE_INFINITY`, `Number.NEGATIVE_INFINITY`: 무한대 양수/음수 값
+- `Number.NaN`: 부동 소수점 산술에서 정의되지 않거나 표현할 수 없는 값으로 해석될 수 있는 숫자 데이터 유형
+
+```javascript
+console.log(Number.MAX_VALUE);              // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);              // 5e-324
+console.log(Number.MAX_SAFE_INTEGER);       // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER);       // -9007199254740991
+console.log(Number.POSITIVE_INFINITY);      // Infinity
+console.log(Number.NEGATIVE_INFINITY);      // -Infinity
+console.log(Number.NaN);                    // NaN
+console.log(NaN);                           // NaN
+```
