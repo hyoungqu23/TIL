@@ -778,3 +778,27 @@ admin_this.func();        // hello, admin
 
 user_this["func"]();      // hello, john
 admin_this["func"]();     // hello, admin
+
+// ========== (예제) Number_Exponential Notation ==========
+let billion_1 = 1000000000;
+let billion_2 = 1e9;
+let us = 1e-6;
+
+console.log(billion_1);
+console.log(billion_2);
+console.log(us);            // 0.000001
+
+// ========== (예제) Number_Base ==========
+console.log(0x0f);        // 15
+console.log(0o17);        // 15
+console.log(0b1111);      // 15
+
+// ========== (예제) Number_Type_casting ==========
+console.log(Number.MAX_VALUE);              // 1.7976931348623157e+308
+console.log(Number.MIN_VALUE);              // 5e-324
+console.log(Number.MAX_SAFE_INTEGER);       // 9007199254740991
+console.log(Number.MIN_SAFE_INTEGER);       // -9007199254740991
+console.log(Number.POSITIVE_INFINITY);      // Infinity
+console.log(Number.NEGATIVE_INFINITY);      // -Infinity
+console.log(Number.NaN);                    // NaN
+console.log(NaN);                           // NaN
