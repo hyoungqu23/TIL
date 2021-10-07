@@ -659,3 +659,30 @@ console.log(Number.NEGATIVE_INFINITY);      // -Infinity
 console.log(Number.NaN);                    // NaN
 console.log(NaN);                           // NaN
 ```
+
+### Method
+- `Number.toString()`, `String(Number)`, `Number + ''`을 통해 형 변환 가능.
+```javascript
+
+```
+- `Number.toFixed(pos)`를 통해 소수의 자리 수 길이를 제한 가능.
+```javascript
+
+```
+- `Number.toPrecision(pos)`를 통해 정수와 소수의 자리수를 합한 길이로 제한 가능
+```javascript
+
+```
+
+## 📌 Javascript String type
+- 텍스트 길이에 상관없이 문자열 형태로 저장되는 자료형.
+- JavaScript에서는 글자 하나만 저장할 수 있는 `char` 자료형은 존재하지 않는다.
+- JavaScript의 `String`은 페이지 인코딩 방식과 관계 없이 항상 `utf-16` 형식을 따른다.
+- 대표 속성과 메서드
+  * `String.length`: 문자열의 길이
+  * `String.charAt(index)`, `String.charCodeAt(index)`: 문자열에 접근
+  * `String.indexOf()`, `String.lastIndexOf()`, `String.includes()`, `String.startsWith()`: 문자열 검색
+  * `String.toUpperCase()`, `String.toLowerCase()`: 문자열 변환
+  * `String.replace`: 문자열 치환
+  * `String.slice()`, `String.substring()`, `String.substr()`: 문자열 추출
+  * `String.split()`: 문자열 분할
