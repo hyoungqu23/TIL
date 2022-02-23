@@ -460,7 +460,7 @@ p {
   뒤에 작성된 코드의 스타일이 우선순위가 높다.
 
 ---
-## 🧱 Font-Property
+## 🧱 Font Property
 ### `color`
 [MDN](https://developer.mozilla.org/ko/docs/Web/CSS/color)
 - 요소(Element)의 텍스트 및 그 장식의 현재 색상을 설정하는 속성(property).
