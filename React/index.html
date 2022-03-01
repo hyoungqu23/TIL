@@ -80,14 +80,16 @@
   // 3. React State 이해 (2) Rerendering Trigger in React.JS(useState)
   const $root = document.getElementById("root");
   function App() {
-    const [counter, modifier] = React.useState(0); // data가 counter, 내부 배열의 f가 countUp() 함수를 대체한다.
+    let [counter, setCounter] = React.useState(0); // data가 counter, 내부 배열의 f가 countUp() 함수를 대체한다.
     // 배열 각 요소를 변수에 대입(ShortCut): const [var1, var2, ...] = Array;
-    console.log(data) // [undefined, f] * data가 undefined(초기값(0) 설정 가능), f는 data를 변경할 때 사용하는 함수
-
+    // [undefined, f] * data가 undefined(초기값(0) 설정 가능), f는 data를 변경할 때 사용하는 함수
+    const onClick = () => {
+      setCounter(counter++);   // Data의 값을 변경해주고 Component를 rerendering해준다.
+    }
     return (
       <div>
-        <h3>Total Clicks: 0</h3>
-        <button>Click</button>
+        <h3>Total Clicks: {counter}</h3>
+        <button onClick={onClick}>Click</button>
       </div>
     );
   }
