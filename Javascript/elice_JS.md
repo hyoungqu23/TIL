@@ -32,3 +32,122 @@ console.log(fruit_1);   // banana 출력
 2. 변수명은 최대한 자세히 작성하는 것이 좋다.
 3. 의미가 불명확한 단어들의 조합은 피하는 것이 좋다.
 
+# 03. JavaScript 데이터 타입
+변수에 전달되는 데이터 타입에도 여러 종류가 존재한다.
+![8type](img/8%20Data%20Type.jpg)
+## String
+"큰 따옴표", '작은 따옴표' 등의 안에 작성된 데이터
+두 따옴표를 혼용할 수 없고, 부득이한 경우 이스케이프 문자('\\')를 활용해 사용 가능하다.
+```javascript
+var str1 = "Hello World";
+var str2 = 'Nice to meet you';
+var str3 = "20";  // 숫자 아닌 문자열
+var str4 = "He's a boy.";
+var str5 = 'He\'s a boy.';
+```
+## Number
+별도의 기호 없이 숫자를 입력한 데이터
+```javascript
+var num1 = 10;    // 정수
+var num2 = -12;   // 음수
+var num3 = 3.14;  // 실수
+
+var str1 = "10";
+console.log(var1 === str1);    // false
+```
+## Function
+### 함수 생성
+`function` 키워드를 활용해 생성
+### 함수 호출
+해당 함수 내부의 코드를 실행시키기 위해 호출
+```javascript
+var func1 = function() {
+  console.log('Func 1');
+} // 함수 생성
+
+func1(); // 함수 호출
+
+function func2() {
+  console.log("Func 2");
+} // 함수 생성
+
+func2(); // 함수 호출
+```
+### 매개변수
+인자로부터 전달받은 값이 들어가는 통로로, 상황에 따라 생략 가능하다.
+### 인자
+함수에게 전달하는 데이터를 의미한다.
+### `return`
+함수 안에 데이터를 저장할 때 사용한다.
+```javascript
+var area = function(width, height) {  // 매개변수
+  return width * height;   // return
+}
+
+area(10, 20);   // 인자
+```
+
+## Array
+비슷한 성격을 가진 데이터를 하나의 변수 안에서 관리하는 데이터 타입
+```javascript
+var fruits = ["apple", "banana", "watermelon"];
+
+console.log(fruits);
+```
+### 배열의 데이터 추출
+데이터의 좌표 값(index)를 활용해 추출할 수 있다.
+첫 번째 좌표 값은 `0`이다.
+### 배열의 데이터 변경
+데이터의 좌표를 활용해 데이터에 접근 후 새로운 데이터를 대입할 수 있다.
+```javascript
+var fruits = ["apple", "banana", "watermelon"];
+
+console.log(fruits[0]);   // apple 출력
+
+fruits[1] = "grape";      // 배열 데이터 변경
+console.log(fruits[1]);   // grape 출력 
+```
+## Object
+Property(이름을 가지고 있는 데이터의 이름), Method(이름을 가지고 있는 함수들의 이름), Data로 구성되어, 여러 종류의 데이터 타입을 삽입할 수 있다.
+### 객체 데이터 작성
+`{ }` 내부에 `Property: Data` 혹은 `Method: Function` 방식으로 데이터를 삽입할 수 있다.
+### 객체 데이터 출력
+`objectName.propertyName` 혹은 `objectName["propertyName"]`을 통해 객체 데이터를 출력할 수 있다.
+### 객체 데이터 변경
+객체 데이터를 추출한 후 변경할 데이터를 대입하여 변경할 수 있다.
+```javascript
+var student = {
+  name: "James",    // Property: Data
+  age: 28,
+  skills: ["JavaScript", "React.JS", "HTML", "CSS"],
+  sum: function (num1, num2) {
+    return (num1 + num2 / 2)
+    } // Method: Function
+}
+
+console.log(student.name);    // `objectName.propertyName`
+console.log(student['name']); // `objectName["propertyName"]`
+
+student["name"] = "Smith";
+student.age = 29;
+console.log(student["name"]); // Smith 출력
+console.log(student.age); // 29 출력
+```
+## `undefined`, `null`
+### `undefined`
+변수 안에 데이터를 입력하지 않은(초기화 되지 않은) 상태(데이터가 없는 것)
+### `null`
+개발자가 임의로 변수 안에 빈 데이터를 삽입한 상태(빈 데이터를 지정한 것)
+```javascript
+var unde;
+console.log(unde); // undefined 출력
+
+var empty = null;
+console.log(empty); // null 출력
+```
+## Boolean
+참 또는 거짓 데이터가 들어가 있는 상태
+```javascript
+var t = true;
+var f = false;
+```
