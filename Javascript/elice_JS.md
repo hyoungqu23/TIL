@@ -151,3 +151,37 @@ console.log(empty); // null 출력
 var t = true;
 var f = false;
 ```
+
+# 04. JavaScript Property & Method
+[참고자료](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String)
+JavaScript에서 사용자를 위해 사전에 작성된 편의 기능을 의미
+## String Property & Method
+```javascript
+var str1 = "Hello World";
+
+str1.length;      // 문자열 길이(11 출력)
+str1.charAt(0);   // 해당 index의 문자 추출(H 출력)
+str1.split(" ");  // 공백 기준으로 문자를 나눈 후 배열로 출력([Hello, World] 출력)
+```
+## Array Property & Method
+```javascript
+var fruit = ["Apple", "Banana", "Orange"];
+
+fruit.length;             // 배열 길이(3 출력)
+fruit.push("Melon");      // 배열 뒤 데이터 삽입
+fruit.unshift("Lemon");   // 배열 앞 데이터 삽입
+fruit.pop();              // 마지막 데이터 제거
+fruit.shift();            // 첫 데이터 제거
+```
+## Math Library Method
+```javascript
+Math.abs(-3);       // 절대값(3 출력)
+Math.ceil(0.3);     // 올림(1 출력)
+Math.floor(10.9);   // 내림(10 출력)
+Math.random();      // 임의의 숫자 출력
+```
+## Number Method
+```javascript
+parseInt("20.6");     // 정수 형태의 숫자 20으로 변환(내림)
+parseFloat("20.6");   // 실수 형태의 숫자 20.6으로 변환
+```
