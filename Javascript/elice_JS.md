@@ -288,3 +288,32 @@ if (a !== b) {
   console.log("a와 b는 같다.");
 }
 ```
+## 03. 반복문
+### for 문
+> for (초기화한 변수 값; 조건; 증감 표시) { 동작문 }
+```javascript
+for (var i = 0; i < 10; i++) {
+  console.log(i);
+}
+```
+### while 문
+> while ( 조건 ) { 동작문 }
+```javascript
+var num = 0;
+
+while (num < 10) {
+  console.log(num);
+  num++;
+}
+```
+### do ~ while 문
+반드시 한 번은 실행시켜야 하는 반복문에서 사용한다.
+> do { 동작문 } while ( 조건 );
+```javascript
+var i = 12;
+
+do {
+  console.log(i);
+  i++;
+} while (i < 10);
+```
