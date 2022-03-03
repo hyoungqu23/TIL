@@ -188,3 +188,47 @@ parseFloat("20.6");   // 실수 형태의 숫자 20.6으로 변환
 ```
 
 # 2장 JavaScript 기초 문법 및 활용
+## 01. 연산자
+### 산술 연산자
+사칙연산(`+`, `-`, `*`, `/`)과 나머지(`%`) 연산자가 존재한다.
+숫자뿐만 아니라 문자열도 산술 연산자로 사용할 수 있다.
+```javascript
+console.log(20 + 10);   // 30 출력
+console.log(20 - 10);   // 10 출력
+console.log(20 * 10);   // 200 출력
+console.log(20 / 10);   // 2 출력
+console.log(20 % 10);   // 0 출력
+
+console.log("20" + "10");   // 2010 출력
+console.log("20" - "10");   // 10 출력
+console.log("20" * "10");   // 200 출력
+console.log("20" / "10");   // 2 출력
+console.log("20" % "10");   // 0 출력
+```
+### 증감 연산자
+```javascript
+var num = 10;
+
+console.log(++num);   // 1 더한 후 num 출력 (11 출력)
+console.log(--num);   // 1 뺀 후 num 출력 (10 출력)
+console.log(num++);   // num 출력 후 1 더하기 (10 출력)
+console.log(num--);   // num 출력 후 1 빼기 (11 출력)
+```
+### 비교 연산자
+`Boolean` 값을 반환한다.
+```javascript
+console.log(10 == 20);    // 값 비교(false 출력)
+console.log(10 === 20);   // 값과 데이터 타입 비교(false 출력)
+console.log(10 !== 20);   // 값 비교(true 출력)
+
+console.log(10 > 20);     // 값 비교(false 출력)
+console.log(10 >= 20);    // 값 비교(false 출력)
+console.log(10 < 20);     // 값 비교(true 출력)
+console.log(10 <= 20);    // 값 비교(true 출력)
+```
+### 논리 연산자
+```javascript
+console.log(10 === 10 && 20 === 30);    // 모두 참인 경우에만 true 반환(false 출력)
+console.log(10 === 10 || 20 === 30);    // 모두 거짓인 경우에만 false 반환(true 출력)
+```
+## 02. 조건문
