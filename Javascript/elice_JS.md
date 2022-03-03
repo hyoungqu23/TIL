@@ -317,3 +317,30 @@ do {
   i++;
 } while (i < 10);
 ```
+## 04. JavaScript 활용
+### 주사위
+```javascript
+var dice = Math.floor(Math.random() * 6) + 1;
+```
+### 소수
+```javascript
+function isPrime(n) {
+  var divisor = 2;
+  while (n > divisor) {
+    if (n % divisor === 0) {
+      return false;
+    } else {
+      divisor++;
+    }
+  } return true;
+}
+```
+### 문자열 뒤집기
+```javascript
+function reverse(str) {
+  var reverseStr = "";
+  for (var i = str.length - 1; i >=0; i--) {
+    reverseStr = reverseStr + str.charAt(i);
+  } return reverseStr;
+}
+```
