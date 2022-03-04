@@ -83,9 +83,12 @@
     let [counter, setCounter] = React.useState(0); // data가 counter, 내부 배열의 f가 countUp() 함수를 대체한다.
     // 배열 각 요소를 변수에 대입(ShortCut): const [var1, var2, ...] = Array;
     // [undefined, f] * data가 undefined(초기값(0) 설정 가능), f는 data를 변경할 때 사용하는 함수
+    // ** modifier 함수 즉, setCounter() 함수를 활용해 해당 Component의 state, 즉 데이터(여기서는 counter)의 값을 변경할 때 Component는 새로운 값을 바탕으로 rerendering하고 UI를 새로고침한다.
     const onClick = () => {
-      setCounter(counter++);   // Data의 값을 변경해주고 Component를 rerendering해준다.
-    }
+      // setCounter(counter++);   // Data의 값을 변경해주고 Component를 rerendering해준다.
+      // 새로운 값을 넣어 Next State의 `counter` 값을 설정하는 방식과 이전 `counter` 값을 활용해 현재 `counter` 값을 계산해 설정하는 방식
+      setCounter((current) => current + 1 );  // 더 안전한 방식(함수 사용. `current`가 현재 state의 값을 바탕으로 하게 된다.)
+    };
     return (
       <div>
         <h3>Total Clicks: {counter}</h3>
