@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unit Converter</title>
+</head>
+<body>
+  <div id="root"></div>
+</body>
+<!-- 1. CDN 링크(참고: https://ko.reactjs.org/docs/cdn-links.html) -->
+<script src="https://unpkg.com/react@17.0.2/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@17.0.2/umd/react-dom.development.js" crossorigin></script>
+<!-- Babel -->
+<script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+<script type="text/babel">
+  function App() {
+    return (
+      <div>
+        <h1 className="hello">Unit Converter</h1>
+        
+        {/* JSX와 HTML의 차이가 존재함(for -> htmlFor, class -> className 등 *JS에서 이미 지정된 단어이기 때문에 중복 사용 불가능) */} 
+        <label htmlFor="minutes">Minutes</label>
+        <input id="minutes" placeholder="Minutes" type="number" />
+        
+        <label htmlFor="hours">Hours</label>
+        <input id="hours" placeholder="Hours" type="number" />
+      </div>
+    );
+  }
+  const $root = document.getElementById("root");
+  ReactDOM.render(<App />, $root);
+</script>
+
+</html>
