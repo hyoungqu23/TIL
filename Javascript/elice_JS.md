@@ -389,3 +389,94 @@ function reverse(str) {
   } return reverseStr;
 }
 ```
+
+# 3장 JavaScript 문제 풀기
+## 01. 출력하기
+`console.log()`를 활용해 콘솔에 출력할 수 있다.
+이스케이프 문자 혹은 역슬래쉬를 사용하기 위해서는 `\`을 활용해야 한다.
+```javascript
+console.log("Hello, JavaScript!");
+console.log("(\\_/)\n(. . )\n|\\ /|")
+```
+
+## 02. 변수 다루기
+숫자형 변수는 `+`을 통해 사칙연산을 할 수 있고, 문자형 변수는 `+`을 통해 추가할 수 있다.
+```javascript
+var num = 1030;
+var string = 'hello, ';
+
+num = num + 204;
+string = string + "JavaScript!";
+
+console.log(num);
+console.log(string);
+```
+
+## 03. 값 입력 받기
+JavaScript에서는 콘솔을 통해 값을 입력받기 위해 `readline` 모듈을 이용할 수 있다. 우선 모듈을 하단 코드로 불러와야 한다.
+```javascript
+const readline = require("readline");
+```
+이후, `readline` 모듈을 이용해 입출력을 위한 인터페이스 객체를 만들어야 한다.
+```javascript
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+```
+생성한 `rl` 변수는 다음과 같이 활용한다.
+```javascript
+rl.on("line", (line) => {
+  console.log(line);  // 한 줄씩 입력받은 후 실행할 코드(-> 입력한 값을 그대로 콘솔에 출력하는 코드)
+  // 입력된 값은 line에 저장된다.
+  rl.close(); // close가 없으면 입력을 무한히 받는다.
+});
+
+rl.on('close', () => {
+  // 입력이 끝난 후 실행할 코드
+})
+```
+---
+#### 랜덤한 입력으로 만들어지는 배열에서 특정 조건을 만족하지 못하는 원소를 제거하기
+배열의 특정 값을 제거하기 위해 `filter`를 활용할 수 있다.
+```javascript
+Array.filter((element) => element !== '제거할 요소');
+```
+```javascript
+// fruits 배열을 만들어 과일들을 입력받고, fruits 배열에서 콩과 무를 제거하세요.
+// 과일이 아닌 것을 잘 제거했는지 console.log를 통해 배열을 출력해 확인해봅니다.
+var fruits = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+    input: process.stdin,
+    output: process.stdout,
+});
+
+rl.on("line", (line) => { 
+    fruits.push(line)// 한 줄씩 입력받은 후 실행할 코드
+    console.log(fruits)
+    // 입력된 값은 line에 저장된다.
+    rl.close(); // close가 없으면 입력을 무한히 받는다.
+});
+
+rl.on('close', () => {
+    // 입력이 끝난 후 실행할 코드
+})
+```
+
+## 04. 화살표 함수
+`function` 키워드 대신 `=>`(화살표)를 활용해 함수를 간편하게 생성할 수 있다.
+```javascript
+const arrowFunc = (x, y) => {
+  return x + y;
+}
+```
+```javascript
+const list = ["apple", "samsung", "LG"];
+
+list.map((e)=>{
+  return e.length;
+});
+```
