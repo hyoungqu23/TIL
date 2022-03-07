@@ -12,6 +12,37 @@ else:
 ### 아이슈타인 퍼즐
 객체 지향 프로그래밍(OOP, Object Oriented Programming)
 특정한 위치, 모자, 차를 가지고 있다는 하나의 공통된 특징을 가지고 있는 집단, 즉 "클래스"가 된다. 이 클래스의 특징들을 가진 하얀 토끼, 모자 장수, 하트 여왕을 "객체(Object)"가 된다.
+
+## 02. 논리적 사고
+### 케이크 문제
+#### 단순 반복(Iteration)을 통한 해결
+
+1. 자연수 3개를 받을 함수 solver를 만든 다음, 그 중 가장 작은 수 minimum을 찾는다.
+2. check_list가 minimum 이하일 때까지 while loop을 설정한다.
+3. possible_range로 구성 가능한지 체크해 볼 조합의 범위를 각 input들에 대해 num을 각각 input1, input2, input3으로 나눈 몫으로 둔다.2
+4. 기본적으로 구성 가능한지(feasibility)를 False로 두고, input1, input2, input3을 범위 내에서 조합하여 num을 구성할 수 있는지를 확인한다.
+5. 확인하여 구성 가능하다면 feasibility를 True로 두고, check_list에 넣는다.
+6. 모든 가능한 조합에서 num을 조합할 수 없다면 그대로 False로 두고, check_list를 비운다.3
+7. 다음 num의 크기를 1씩 더해주며 계속 while loop을 돌리고, check_list에 minimum 수만큼 채워지면 check_list의 첫 번째 수보다 1 작은 값을 답으로 리턴한다.
+#### 동적 계획법(DP, Dynamic Programming)
+
+위의 1번 코드는 생각하기는 쉽지만 연산 속도가 너무 오래 걸린다는 단점이 있습니다. 예를 들어 100이 구성 가능한지를 7, 11, 17의 조합으로 확인하려면 최대 14*9*5 = 630번의 연산을 해야 하고, 101, 102, 103... 언제 끝날 지 모르는 연산을 계속해서 해야 한다면 연산 수는 엄청나게 늘어나겠죠.
+​
+동적계획법(Dynamic Programming)을 사용한다면 더 쉽게 문제를 해결할 수 있습니다. 
+
+7, 11, 17의 경우, 0부터 17까지만 체크해서 구성 가능 여부를 기록해 둔 다음, 18부터는 -7, -11, -17을 해 보았을 때 구성가능했는지를 확인해보면 됩니다. 이 때 구성 가능하다면, 그 뺀 수를 한 번 더 사용하면 구성 가능하다는 의미니까요. 그리고 계속해서 기록해 나가면 됩니다.
+​
+이 경우, 17까지만 체크하고 나니 그 뒤에는 기록했던 것을 체크해 보고 다시 기록을 추가하기만 하면 되니 연산이 아주 빨라지게 되겠죠?
+​
+1. memoization_table을 만들고 True를 하나 넣어 놓는다. (왜냐하면 0은 항상 조합 가능)
+2. 1번 코드의 for문을 적용하여 세 개의 input 중 가장 큰 수까지 구성가능한지를 체크하며 memoization_table에 기록한다.
+3. check_list가 다 채워질 때까지 while문을 1번 코드처럼 적용하되, 구성가능한지를 memoization_table을 이용해 판단한다.
+*현재 num에서 input1 or input2 or input3를 뺀 수가memoization_table에서 구성 가능하다고 되어 있다면 거기서 input1or input2 or input3를 한 번 더 쓰면 현재 num이 나오므로 마찬가지로 구성 가능하다고 기록한다.
+4. 다음 num의 크기를 1씩 더해주며 계속 while loop을 돌리고, check_list에 minimum수만큼 채워지면 check_list의 첫 번째 수보다 1 작은 값을 답으로 리턴한다.
+
+### 달력 문제
+식을 이용한 완전탐색 (Brute Force)
+
 # 1장 JavaScript 소개
 ## 01. JavaScript 소개
 ### JavaScript
