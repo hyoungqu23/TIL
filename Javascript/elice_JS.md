@@ -701,4 +701,30 @@ rl.on("close", function () {
 });
 ```
 
+## 06. 숫자 출력
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+var num;
+var str = "";
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    num = parseInt(line);
+    
+    for (var cnt = 1; cnt <= num - 1; cnt++) {
+        str = str + cnt + ", " 
+    }
+    console.log(str + num);
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
 ```
