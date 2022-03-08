@@ -438,6 +438,7 @@ rl.on('close', () => {
 ```
 ---
 #### 랜덤한 입력으로 만들어지는 배열에서 특정 조건을 만족하지 못하는 원소를 제거하기
+[참고](https://7942yongdae.tistory.com/49) [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 배열의 특정 값을 제거하기 위해 `filter`를 활용할 수 있다.
 ```javascript
 Array.filter((element) => element !== '제거할 요소');
