@@ -664,4 +664,41 @@ rl.on("close", function () {
 });
 ```
 
+## 04. 입력, 배열, 반복문, 조건문
+약수 구하는 알고리즘과 조건에 맞는 출력 방식.
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
+```javascript
+var num;
+let i = 1;
+let list = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    num = parseInt(line);
+
+    while (i <= num) {
+        if (num % i == 0) {
+            list.push(i);
+        }
+        i++;
+    }
+    
+    console.log(list.splice(0, 10).join(" "));
+    console.log(list.join(" "));
+    
+    
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
+
 ```
