@@ -572,3 +572,32 @@ soldier = soldier.sort(function(a, b) {
 var count = 0;
 count = soldier.length;
 ```
+
+# 4장 JavaScript 연습 문제
+## 01. 입력과 조건문
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+var rate;
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    rate = parseInt(line);
+    if (rate >= 50) {
+        console.log("우산을 챙긴다.");
+    } else {
+        console.log("그냥 간다.");
+    }
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
+```
