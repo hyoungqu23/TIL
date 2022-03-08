@@ -600,4 +600,37 @@ rl.on("close", function () {
 
 });
 ```
+## 02. 입력과 다중 조건문
+`if ~ else if ~ else` 구문을 활용해 여러 조건을 걸 수 있다.
+```javascript
+// 터미널에 엘리스 토끼가 가진 금액을 입력할 수 있으며 입력된 금액에 따라 결과를 출력합니다.
+// 조건문을 이용해 문제를 해결할 수 있습니다.
+// 지시사항을 참고하여 코드를 작성하세요.
+var money;
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    money = parseInt(line);
+    if (money >= 1000) {
+        console.log("택시");
+    } else if (money >= 500) {
+        console.log("버스");
+    } else if (money >= 300) {
+        console.log("지하철");
+    } else {
+        console.log("도보");
+    }
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
 ```
