@@ -442,6 +442,7 @@ rl.on('close', () => {
 ```javascript
 Array.filter((element) => element !== '제거할 요소');
 ```
+
 ```javascript
 // fruits 배열을 만들어 과일들을 입력받고, fruits 배열에서 콩과 무를 제거하세요.
 // 과일이 아닌 것을 잘 제거했는지 console.log를 통해 배열을 출력해 확인해봅니다.
@@ -455,15 +456,61 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", (line) => { 
-    fruits.push(line)// 한 줄씩 입력받은 후 실행할 코드
-    console.log(fruits)
-    // 입력된 값은 line에 저장된다.
-    rl.close(); // close가 없으면 입력을 무한히 받는다.
+    fruits = line.split(' ').map(e => e);
+    fruits.filter((e) => e.length !== 1);
+    rl.close();
 });
 
 rl.on('close', () => {
-    // 입력이 끝난 후 실행할 코드
+  fruits.forEach(e => {
+    console.log(e);
+  })
 })
+```
+
+#### 한 번에 여러 입력 받기
+`split`을 활용해 한 번에 여러 입력을 받을 수 있다. 매개 변수로 지정한 문자가 입력의 구분 대상이 된다.
+```javascript
+var input = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    input = line.split(' ').map((e)=> parseInt(e));
+    rl.close();
+})
+
+rl.on("close", function () {
+    console.log(input[0]);
+    console.log(input[1]);
+    console.log(input[2]);
+});
+```
+이때 반드시 `map()`과 `parseInt()`을 통해 숫자 연산을 할 수 있도록 숫자형으로 변환해주어야 한다.
+```javascript
+// 여러 숫자를 입력 받도록 코드를 작성하여, 입력된 숫자의 평균을 구하세요.
+var input = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    input = line.split(' ').map((e)=> parseInt(e));
+    rl.close();
+})
+
+rl.on("close", function () {
+    console.log(Math.floor((input[0] + input[1] + input[2]) / 3));
+});
 ```
 
 ## 04. 화살표 함수
@@ -479,4 +526,48 @@ const list = ["apple", "samsung", "LG"];
 list.map((e)=>{
   return e.length;
 });
+```
+
+## 05. 문자열
+`split()`을 활용해 문자열을 나누어 배열로 반환할 수 있다.
+또한, 문자열을 `+` 연산자를 통해 붙일 수도 있다.
+```javascript
+var Array = money.split("500원");
+
+var Words = hangul[0] + hangul[47] + hangul[23];
+```
+
+## 06. 배열
+배열을 `splice()`를 활용해 특정 값을 제거할 수 있고, 이를 `join()`을 활용해 배열의 원소를 이어 붙여 문자열로 만들 수 있다.
+#### 정규표현식
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions)
+문자열에서 특정 문자의 개수를 세기 위해서는 `match`와 정규 표현식을 활용해야 한다.
+```javascript
+var words = ['i', 'have', 'a', 'pen', 'i', 'have', 'pineapple', 'i', 'have', 'an', 'apple', 'pen'];
+
+// 지시사항을 참고하여 코드를 작성하세요.
+words.splice(4, 2);
+words.splice(5, 3);
+
+const lyrics = words.join(' ');
+console.log(lyrics);
+
+const count = lyrics.match(/p/g);
+console.log(count.length);
+```
+
+#### 배열의 정렬
+`sort()` 함수 내에 정렬 함수를 매개변수로 하여 배열의 정렬을 실행할 수 있다.
+[참고](https://hianna.tistory.com/409), [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+```javascript
+var soldier = [12, 2, 5, 3, 7, 4, 10, 8, 1, 9, 13, 11, 6];
+
+// 정렬된 배열과 길이를 구하세요.
+
+soldier = soldier.sort(function(a, b) {
+    return a - b;
+});
+
+var count = 0;
+count = soldier.length;
 ```
