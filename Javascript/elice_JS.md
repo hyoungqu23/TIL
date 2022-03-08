@@ -633,4 +633,35 @@ rl.on("close", function () {
 
 });
 ```
+## 03. 입력, 연산자, 조건문
+논리 연산자(`and`, `or`) 와 관계 연산자(`>`, `<`, `<=`, `>=`)를 활용해 여러 조건을 만들 수 있다.
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+var pw = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    pw = line.split(' ').map((e) => parseInt(e));
+    const [a, b, c, d] = pw;
+    if (a <= b && a == d && b > c && c < 6) {
+        console.log(true);
+    } else if (a == b && a == c && a == d) {
+        console.log(true);
+    } else {
+        console.log(false);
+    }
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
+
 ```
