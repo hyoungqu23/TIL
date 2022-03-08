@@ -701,6 +701,20 @@ rl.on("close", function () {
 });
 ```
 
+## 05. 369게임
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
+```javascript
+// 반복문을 이용하여 3, 6, 9 게임을 만들어주세요!
+for (var i = 1; i<=30; i++) {
+    var str = String(i);
+    if (str.indexOf("3") !== -1 || str.indexOf("6") !== -1 || str.indexOf("9") !== -1) {
+        console.log("짝!");
+    } else {
+        console.log(i);
+    }
+}
+```
+
 ## 06. 숫자 출력
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
