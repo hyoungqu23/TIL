@@ -906,3 +906,32 @@ rl.on("close", function () {
 
 });
 ```
+
+## 11. 문자열과 유니코드
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    let str = line;
+    let newStr = '';
+    for (let i = 0; i <= str.length; i++) {
+        if (str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57) {
+            newStr += str.substr(i, 1);
+        }
+    }
+    console.log(newStr);
+});
+
+rl.on("close", function () {
+
+});
+```
