@@ -784,3 +784,29 @@ rl.on("close", function () {
 
 });
 ```
+
+## 08. 정규표현식과 `match()`
+[참고](https://curryyou.tistory.com/234)
+문자열 내 특정 문자가 포함되는지를 확인하기 위해서는 문자열.includes(확인할 문자)를 사용하면 됩니다.
+```javascript
+// "촉촉한 초코칩"이 몇 번 나오는지 확인해봅시다.
+let str = '';
+let matchArr = [];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    let matchArr = line.match(/촉촉한 초코칩/g);
+    console.log(matchArr.length);
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
