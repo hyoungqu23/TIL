@@ -573,6 +573,8 @@ var count = 0;
 count = soldier.length;
 ```
 
+## 07. 다중 입력
+
 # 4장 JavaScript 연습 문제
 ## 01. 입력과 조건문
 ```javascript
@@ -716,6 +718,7 @@ for (var i = 1; i<=30; i++) {
 ```
 
 ## 06. 숫자 출력
+반복문을 활용해 문자열을 이어 붙이는 방식.
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 var num;
@@ -735,6 +738,45 @@ rl.on("line", function (line) {
         str = str + cnt + ", " 
     }
     console.log(str + num);
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
+
+## 07. 피보나치 수열
+전혀 모르겠음
+
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+var num;
+var list = [0, 1];
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    num = parseInt(line);
+    
+    while (true) {
+        if (num === 1) {
+            const arr = [0];
+            console.log(arr);
+            break;
+        } else if (list[list.length-2] + list[list.length-1] >= num) {
+            console.log(list);
+            break;
+        } else {
+            list.push(list[list.length-2] + list[list.length-1]);
+        }
+    }
+    
     rl.close();
 })
 
