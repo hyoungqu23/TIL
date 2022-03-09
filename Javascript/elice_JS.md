@@ -839,3 +839,31 @@ rl.on("close", function () {
 
 });
 ```
+
+## 09. 정규표현식과 `replace()`
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    let str = line;
+    str = str.replace(/\s/g, "링디기디기\n");
+    str = str.replace(/\./g, "딩딩딩\n");
+    str = str.replace(/[나|는|베|짱|이]/g, "링딩동 ");
+    console.log(str);
+    rl.close();
+})
+
+rl.on("close", function () {
+
+});
+```
+
+});
+```
