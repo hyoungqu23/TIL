@@ -865,5 +865,44 @@ rl.on("close", function () {
 });
 ```
 
+## 10. 다중 입력과 `substr()`
+[참고자료(내림/올림)](https://deeplify.dev/front-end/js/decimal-point-control)
+[참고자료(문자열자르기)](https://gent.tistory.com/414)
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+var count = 0;
+var bat = 16;
+var hit = 6;
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+    if (count === 0) {
+        bat += parseInt(line);
+        count++;
+    } else if (count === 1) {
+        hit += parseInt(line);
+        count++;
+        let strBa = String(Math.floor((hit/bat * 1000))/1000);
+        if (strBa.substr(2, 1) !== '0') {
+            console.log(strBa.substr(2, 1) + "할");
+        }
+        if (strBa.substr(3, 1) !== '0') {
+            console.log(strBa.substr(3, 1) + "푼");
+        }
+        if (strBa.length === 5) {
+            console.log(strBa.substr(4, 1) + "리");
+        }
+        rl.close();
+    }
+})
+
+rl.on("close", function () {
+
 });
 ```
