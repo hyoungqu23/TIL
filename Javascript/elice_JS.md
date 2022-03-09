@@ -574,6 +574,35 @@ count = soldier.length;
 ```
 
 ## 07. 다중 입력
+```javascript
+// N줄에 걸쳐 주어지는 문자를 문자열로 만들어 출력하세요.
+var count = 0;
+var N = 0;
+var str = '';
+
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+rl.on("line", function (line) {
+  if (count === 0) {
+    N = parseInt(line);
+    count++;
+  } else if (count < N+1) {
+    str += line;
+    count++;
+  }
+  if (count === N+1) {
+    rl.close();
+  }
+}).on("close", function () {
+  console.log(str);
+  process.exit();
+});
+```
 
 # 4장 JavaScript 연습 문제
 ## 01. 입력과 조건문
