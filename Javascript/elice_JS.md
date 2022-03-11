@@ -392,28 +392,36 @@ function reverse(str) {
 
 # 3장 JavaScript 문제 풀기
 ## 01. 출력하기
-`console.log()`를 활용해 콘솔에 출력할 수 있다.
-이스케이프 문자 혹은 역슬래쉬를 사용하기 위해서는 `\`을 활용해야 한다.
+[`console.log()`](https://developer.mozilla.org/ko/docs/Web/API/console/log) Method를 활용해 [콘솔(Console)](https://ko.javascript.info/devtools)에 특정 메시지를 출력할 수 있다.
+[`Escape sequences`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String#%EC%9D%B4%EC%8A%A4%EC%BC%80%EC%9D%B4%ED%94%84_%ED%91%9C%ED%98%84)를 활용하면 일반적인 출력 문자 외의 특수 문자를 작성할 수 있다. ([참고](https://ko.javascript.info/string#ref-26))
+
 ```javascript
+// console.log() 출력
 console.log("Hello, JavaScript!");
-console.log("(\\_/)\n(. . )\n|\\ /|")
+
+// Escape sequences 활용
+console.log("(\\_/)\n(. . )\n|\\ /|");
 ```
 
-## 02. 변수 다루기
-숫자형 변수는 `+`을 통해 사칙연산을 할 수 있고, 문자형 변수는 `+`을 통해 추가할 수 있다.
+## 02. 변수와 연산자
+
+숫자 데이터 타입([Number](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Number), [Number](https://ko.javascript.info/number))은 [산술 연산자](https://ko.javascript.info/operators) `+`, `-`, `/`, `*`을 통해 사칙 연산을 할 수 있고, 문자 데이터 타입([String](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String), [String](https://ko.javascript.info/string))는 `+`을 통해 문자열을 추가할 수 있다.
+
 ```javascript
+// Number Operator
 var num = 1030;
-var string = 'hello, ';
-
 num = num + 204;
-string = string + "JavaScript!";
+console.log(num);         // 1234 출력
 
-console.log(num);
-console.log(string);
+// String Operator
+var string = 'hello, ';
+string = string + "JavaScript!";
+console.log(string);     // hello, JavaScript! 출력
 ```
 
 ## 03. 값 입력 받기
-JavaScript에서는 콘솔을 통해 값을 입력받기 위해 `readline` 모듈을 이용할 수 있다. 우선 모듈을 하단 코드로 불러와야 한다.
+[참고자료](https://bluehorn07.tistory.com/49)
+JavaScript에서는 콘솔을 통해 값을 입력받기 위해 `readline` 모듈을 활용해야 한다. 우선 모듈을 하단 코드로 불러와야 한다.
 ```javascript
 const readline = require("readline");
 ```
@@ -426,9 +434,8 @@ const rl = readline.createInterface({
 ```
 생성한 `rl` 변수는 다음과 같이 활용한다.
 ```javascript
-rl.on("line", (line) => {
+rl.on("line", (line) => {  // 입력된 값은 line에 저장된다.
   console.log(line);  // 한 줄씩 입력받은 후 실행할 코드(-> 입력한 값을 그대로 콘솔에 출력하는 코드)
-  // 입력된 값은 line에 저장된다.
   rl.close(); // close가 없으면 입력을 무한히 받는다.
 });
 
@@ -437,11 +444,26 @@ rl.on('close', () => {
 })
 ```
 ---
-#### 랜덤한 입력으로 만들어지는 배열에서 특정 조건을 만족하지 못하는 원소를 제거하기
-[참고](https://7942yongdae.tistory.com/49) [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
-배열의 특정 값을 제거하기 위해 `filter`를 활용할 수 있다.
+#### `filter()`, `forEach()`
+[참고자료](https://7942yongdae.tistory.com/49)
+[MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
+[JavaScript Info](https://ko.javascript.info/array-methods#ref-317)
+배열의 특정 값을 제거하기 위해 `filter()`를 활용할 수 있다. `filter()`를 사용해 여러 조건을 만족하는 요소를 찾을 수 있다. `filter()`는 `find()`와 문법이 유사하지만, 조건에 맞는 요소 전체를 담은 배열을 반환한다는 점에서 차이가 있다.
+> arr.filter(function(item, index, array) { });
 ```javascript
+// 배열의 특정 요소를 제거하기
 Array.filter((element) => element !== '제거할 요소');
+
+// 배열의 특정 id를 반환하기
+let users = [
+  {id: 1, name: "John"},
+  {id: 2, name: "Pete"},
+  {id: 3, name: "Mary"}
+];
+
+let someUsers = users.filter(item => item.id < 3);    // 앞쪽 사용자 두 명을 반환합니다.
+
+alert(someUsers.length); // 2
 ```
 
 ```javascript
@@ -457,20 +479,21 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", (line) => { 
-    fruits = line.split(' ').map(e => e);
-    fruits.filter((e) => e.length !== 1);
+    fruits = line.split(' ').map(e => e);   // 입력된 값을 띄어쓰기로 구분해 배열에 삽입.
+    fruits.filter((e) => e.length !== 1);   // 길이가 1인 것 제거.
     rl.close();
 });
 
 rl.on('close', () => {
-  fruits.forEach(e => {
+  fruits.forEach(e => {   // 주어진 함수를 배열 요소 각각에 대해 실행하는 Method
     console.log(e);
   })
 })
 ```
+[`forEach()`](https://ko.javascript.info/array-methods#ref-313) Method를 활용해 배열의 요소 각각에 특정 함수를 실행할 수 있다.
 
-#### 한 번에 여러 입력 받기
-`split`을 활용해 한 번에 여러 입력을 받을 수 있다. 매개 변수로 지정한 문자가 입력의 구분 대상이 된다.
+#### `split()`, `map()`, `parseInt()`
+[`split()`](https://ko.javascript.info/array-methods#ref-322)을 활용해 한 번에 여러 입력을 받을 수 있다. 매개 변수로 지정한 문자가 입력의 구분 대상이 된다.
 ```javascript
 var input = [];
 
@@ -482,7 +505,7 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", function (line) {
-    input = line.split(' ').map((e)=> parseInt(e));
+    input = line.split(' ').map((e)=> parseInt(e));   // 입력된 값을 띄어쓰기로 구분해 숫자로 배열에 삽입.
     rl.close();
 })
 
@@ -492,7 +515,7 @@ rl.on("close", function () {
     console.log(input[2]);
 });
 ```
-이때 반드시 `map()`과 `parseInt()`을 통해 숫자 연산을 할 수 있도록 숫자형으로 변환해주어야 한다.
+이때 반드시 [`map()`](https://ko.javascript.info/array-methods#ref-319)과 [`parseInt()`](https://ko.javascript.info/number#ref-232)을 통해 숫자 연산을 할 수 있도록 숫자형으로 변환해주어야 한다.
 ```javascript
 // 여러 숫자를 입력 받도록 코드를 작성하여, 입력된 숫자의 평균을 구하세요.
 var input = [];
@@ -505,7 +528,7 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", function (line) {
-    input = line.split(' ').map((e)=> parseInt(e));
+    input = line.split(' ').map((e)=> parseInt(e));   // 입력된 값을 띄어쓰기로 구분해 숫자로 배열에 삽입.
     rl.close();
 })
 
@@ -515,6 +538,7 @@ rl.on("close", function () {
 ```
 
 ## 04. 화살표 함수
+[JavaScript Info](https://ko.javascript.info/arrow-functions-basics)
 `function` 키워드 대신 `=>`(화살표)를 활용해 함수를 간편하게 생성할 수 있다.
 ```javascript
 const arrowFunc = (x, y) => {
@@ -530,8 +554,7 @@ list.map((e)=>{
 ```
 
 ## 05. 문자열
-`split()`을 활용해 문자열을 나누어 배열로 반환할 수 있다.
-또한, 문자열을 `+` 연산자를 통해 붙일 수도 있다.
+`split()`을 활용해 문자열을 나누어 배열로 반환할 수 있다. 또한, 문자열을 `+` 연산자를 통해 붙일 수도 있다.
 ```javascript
 var Array = money.split("500원");
 
@@ -819,8 +842,6 @@ rl.on("close", function () {
 문자열 내 특정 문자가 포함되는지를 확인하기 위해서는 문자열.includes(확인할 문자)를 사용하면 됩니다.
 ```javascript
 // "촉촉한 초코칩"이 몇 번 나오는지 확인해봅시다.
-let str = '';
-let matchArr = [];
 
 const readline = require("readline");
 
@@ -830,8 +851,11 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", function (line) {
-    let matchArr = line.match(/촉촉한 초코칩/g);
-    console.log(matchArr.length);
+    if (line.includes("촉촉한 초코칩")) {
+        console.log(line.match(/촉촉한 초코칩/g).length);
+    } else {
+        console.log("포함되지 않음")
+    }
     rl.close();
 })
 
@@ -842,6 +866,7 @@ rl.on("close", function () {
 
 ## 09. 정규표현식과 `replace()`
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
+[참고자료(정규표현식)](https://beomy.tistory.com/21)
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 const readline = require("readline");
@@ -855,7 +880,8 @@ rl.on("line", function (line) {
     let str = line;
     str = str.replace(/\s/g, "링디기디기\n");
     str = str.replace(/\./g, "딩딩딩\n");
-    str = str.replace(/[나|는|베|짱|이]/g, "링딩동 ");
+    str = str.replace(/[^링디기딩\n]/g, "링딩동 ");
+    
     console.log(str);
     rl.close();
 })
@@ -869,6 +895,7 @@ rl.on("close", function () {
 [참고자료(내림/올림)](https://deeplify.dev/front-end/js/decimal-point-control)
 [참고자료(문자열자르기)](https://gent.tistory.com/414)
 ```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
 // 지시사항을 참고하여 코드를 작성하세요.
 var count = 0;
 var bat = 16;
@@ -889,15 +916,21 @@ rl.on("line", function (line) {
         hit += parseInt(line);
         count++;
         let strBa = String(Math.floor((hit/bat * 1000))/1000);
-        if (strBa.substr(2, 1) !== '0') {
-            console.log(strBa.substr(2, 1) + "할");
+
+        
+        let arr = strBa.split('');
+
+        
+        if (arr[2] !== '0') {
+            console.log(arr[2] + '할');
         }
-        if (strBa.substr(3, 1) !== '0') {
-            console.log(strBa.substr(3, 1) + "푼");
+        if (arr[3] !== '0' && arr.length > 3) {
+            console.log(arr[3] + '푼');
         }
-        if (strBa.length === 5) {
-            console.log(strBa.substr(4, 1) + "리");
+        if (arr[4] !== '0' && arr.length > 4) {
+            console.log(arr[4] + '리');
         }
+
         rl.close();
     }
 })
@@ -955,4 +988,73 @@ function result() {
 }
 
 result();
+```
+
+## 13. 반복문과 조건문
+```javascript
+for (var i = 1; i <= 100; i++) {
+    if (i % 2 === 0) {
+        document.write(i);
+    }
+}
+```
+
+## 14. 배열, 반복문, 조건문
+[참고(writeln 줄바꿈)](https://dasima.xyz/javascript-output/)
+```javascript
+var foods = ["hamburger", "pasta", "curry", "chicken", "salad", "tteokbokki", "ramen", "pizza", "gimbap", "sushi"]
+
+document.write(foods.length);
+
+for (var i = 0; i <= foods.length -1; i++) {
+    if (i % 2 === 0) {
+        document.writeln('<br>', foods[i]);
+    }
+}
+```
+
+## 15. `indexOf()`
+```javascript
+const fruits = ['apple', 'banana', 'orange', 'blueberry', 'strawberry']
+var sum = 0; // b로 시작하는 과일의 개수를 저장하는 변수
+
+/*지시사항을 따라 작성해주세요*/
+for (var i = 0; i <= fruits.length -1; i++) {
+    if (fruits[i].indexOf('b') === 0) {
+        sum++;
+    }
+}
+
+document.write("b로 시작하는 과일은 ", sum, "개");
+```
+
+## 16. 객체 수정 및 조회
+[참고](https://hianna.tistory.com/453)
+```javascript
+/*지시사항에 따라 작성해주세요.*/
+const students = [
+  {
+      name: 'john',
+      studentId: 2020123456,
+      major: 'business'
+  },
+  {
+      name: 'elice',
+      studentId: 2015111111,
+      major: 'statistics'
+  },
+  {
+      name: 'jennifer',
+      studentId: 2017000000,
+      major: 'visual design'
+  }
+]
+
+/*1. elice를 찾아 전공을 'computer science'로 바꿔주세요.*/
+students[1]['major'] = 'computer science';
+
+/*2. 웹 화면에 students 정보를 출력해 제대로 수정되었는지 확인해보세요.*/
+document.writeln(students[0]['name'], '\'s major: ', students[0]['major'], '<br>');
+document.writeln(students[1]['name'], '\'s major: ', students[1]['major'], '<br>');
+document.writeln(students[2]['name'], '\'s major: ', students[2]['major']);
 ```
