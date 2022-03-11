@@ -444,7 +444,7 @@ rl.on('close', () => {
 })
 ```
 ---
-#### `filter()`, `forEach()`
+#### 배열 Method `filter()`, `forEach()`
 [참고자료](https://7942yongdae.tistory.com/49)
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/filter)
 [JavaScript Info](https://ko.javascript.info/array-methods#ref-317)
@@ -492,7 +492,7 @@ rl.on('close', () => {
 ```
 [`forEach()`](https://ko.javascript.info/array-methods#ref-313) Method를 활용해 배열의 요소 각각에 특정 함수를 실행할 수 있다.
 
-#### `split()`, `map()`, `parseInt()`
+#### 배열 Method `split()`, `map()`, 형 변환 함수 `parseInt()`
 [`split()`](https://ko.javascript.info/array-methods#ref-322)을 활용해 한 번에 여러 입력을 받을 수 있다. 매개 변수로 지정한 문자가 입력의 구분 대상이 된다.
 ```javascript
 var input = [];
@@ -515,7 +515,7 @@ rl.on("close", function () {
     console.log(input[2]);
 });
 ```
-이때 반드시 [`map()`](https://ko.javascript.info/array-methods#ref-319)과 [`parseInt()`](https://ko.javascript.info/number#ref-232)을 통해 숫자 연산을 할 수 있도록 숫자형으로 변환해주어야 한다.
+이때 반드시 배열 요소 전체를 대상으로 함수를 호출하고, 함수 호출 결과를 배열로 반환하는 Method인 [`map()`](https://ko.javascript.info/array-methods#ref-319)과 [`parseInt()`](https://ko.javascript.info/number#ref-232)을 통해 숫자 연산을 할 수 있도록 숫자형으로 변환해주어야 한다.
 ```javascript
 // 여러 숫자를 입력 받도록 코드를 작성하여, 입력된 숫자의 평균을 구하세요.
 var input = [];
@@ -548,24 +548,80 @@ const arrowFunc = (x, y) => {
 ```javascript
 const list = ["apple", "samsung", "LG"];
 
-list.map((e)=>{
+list.map((e)=>{     // 배열 요소 전체를 대상으로 함수를 호출하고, 함수 호출 결과를 배열로 반환.
   return e.length;
 });
 ```
 
-## 05. 문자열
+## 05. 문자열 나누기
 `split()`을 활용해 문자열을 나누어 배열로 반환할 수 있다. 또한, 문자열을 `+` 연산자를 통해 붙일 수도 있다.
 ```javascript
 var Array = money.split("500원");
+console.log(Array);     // ["5", "0", "0", "원"];
 
-var Words = hangul[0] + hangul[47] + hangul[23];
+const hangul = "가나다라마바사아자차카타파하"
+var Words = hangul[0] + hangul[10] + hangul[-1];
+console.log(Words);     // 가차하
 ```
 
-## 06. 배열
-배열을 `splice()`를 활용해 특정 값을 제거할 수 있고, 이를 `join()`을 활용해 배열의 원소를 이어 붙여 문자열로 만들 수 있다.
-#### 정규표현식
+## 06. 배열 Method `splice()`, `join()`, `sort()`
+배열을 [`splice()`](https://ko.javascript.info/array-methods#ref-310)를 활용해 특정 값을 제거할 수 있고, 이를 [`join()`](https://ko.javascript.info/array-methods#ref-310)을 활용해 배열의 원소를 이어 붙여 문자열로 만들 수 있다.
+> arr.splice(index[, deleteCount, elem1, ..., elemN]);
+```javascript
+let arr = ["I", "study", "JavaScript"];
+
+arr.splice(1, 1); // 인덱스 1부터 요소 한 개를 제거
+
+console.log(arr); // ["I", "JavaScript"]
+```
+```javascript
+let arr = ['Bilbo', 'Gandalf', 'Nazgul'];
+
+let str = arr.join(';'); // 배열 요소 모두를 ;를 사용해 하나의 문자열로 합칩니다.
+
+console.log( str ); // Bilbo;Gandalf;Nazgul
+```
+
+[`sort()`](https://ko.javascript.info/array-methods#ref-320) 함수 내에 정렬 함수를 매개변수로 하여 배열의 정렬을 실행할 수 있다. 이는 배열 자체를 변경하는 Method이다. 요소는 문자열로 취급되어 재정렬된다.
+[참고](https://hianna.tistory.com/409), [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
+```javascript
+let arr = [ 1, 2, 15 ];
+
+// arr 내부가 재정렬된다.
+arr.sort();
+
+alert( arr );  // 1, 15, 2
+```
+
+```javascript
+var soldier = [12, 2, 5, 3, 7, 4, 10, 8, 1, 9, 13, 11, 6];
+
+// 정렬된 배열과 길이를 구하세요.
+
+soldier = soldier.sort(function(a, b) {
+    return a - b;
+});
+
+var count = 0;
+count = soldier.length;
+```
+## 07. 정규표현식
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Guide/Regular_Expressions)
+[JavaScript Info](https://ko.javascript.info/regular-expressions)
 문자열에서 특정 문자의 개수를 세기 위해서는 `match`와 정규 표현식을 활용해야 한다.
+정규표현식(Regular Expression)은 문자 검색과 교체에 사용되는 패턴으로 강력한 기능을 제공한다. 패턴(pattern)과 선택적으로 사용할 수 있는 플래그(flag)로 구성된다.
+
+
+### Flag
+플래그([Flag](https://ko.javascript.info/regexp-introduction#ref-2))는 검색에 영향을 주는 6가지로 구성되어 있다.
+
+1. `i`: `i` 플래그가 붙으면 대·소문자 구분 없이 검색한다.
+2. `g`: `g` 플래그가 붙으면 패턴과 일치하는 모든 것들을 검색한다. 즉, `g` 플래그가 없으면 패턴과 일치하는 첫 번째 결과만 반환된다.
+3. `m`: 다중 행 모드(multiline mode)를 활성화하는 플래그.
+4. `s`: `.`이 개행 문자 `\n`도 포함하도록 ‘dotall’ 모드를 활성화하는 플래그.
+5. `u`: 유니코드 전체를 지원하는 플래그. 서로게이트 쌍(surrogate pair)을 올바르게 처리할 수 있다.
+6. `y`: 문자 내 특정 위치에서 검색을 진행하는 ‘sticky’ 모드를 활성화하는 플래그.
+
 ```javascript
 var words = ['i', 'have', 'a', 'pen', 'i', 'have', 'pineapple', 'i', 'have', 'an', 'apple', 'pen'];
 
@@ -580,21 +636,6 @@ const count = lyrics.match(/p/g);
 console.log(count.length);
 ```
 
-#### 배열의 정렬
-`sort()` 함수 내에 정렬 함수를 매개변수로 하여 배열의 정렬을 실행할 수 있다.
-[참고](https://hianna.tistory.com/409), [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/sort)
-```javascript
-var soldier = [12, 2, 5, 3, 7, 4, 10, 8, 1, 9, 13, 11, 6];
-
-// 정렬된 배열과 길이를 구하세요.
-
-soldier = soldier.sort(function(a, b) {
-    return a - b;
-});
-
-var count = 0;
-count = soldier.length;
-```
 
 ## 07. 다중 입력
 ```javascript
