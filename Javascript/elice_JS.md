@@ -622,6 +622,9 @@ count = soldier.length;
 5. `u`: 유니코드 전체를 지원하는 플래그. 서로게이트 쌍(surrogate pair)을 올바르게 처리할 수 있다.
 6. `y`: 문자 내 특정 위치에서 검색을 진행하는 ‘sticky’ 모드를 활성화하는 플래그.
 
+### Pattern
+
+
 ```javascript
 var words = ['i', 'have', 'a', 'pen', 'i', 'have', 'pineapple', 'i', 'have', 'an', 'apple', 'pen'];
 
@@ -632,16 +635,15 @@ words.splice(5, 3);
 const lyrics = words.join(' ');
 console.log(lyrics);
 
-const count = lyrics.match(/p/g);
+const count = lyrics.match(/p/g);     // p 를 찾는 방법.
 console.log(count.length);
 ```
-
 
 ## 07. 다중 입력
 ```javascript
 // N줄에 걸쳐 주어지는 문자를 문자열로 만들어 출력하세요.
-var count = 0;
-var N = 0;
+var count = 0;        // 입력된 문자의 숫자
+var N = 0;            // 총 입력 줄 수
 var str = '';
 
 const readline = require("readline");
