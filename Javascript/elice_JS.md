@@ -715,6 +715,7 @@ rl.on("line", function (line) {
 
 # 4장 JavaScript 연습 문제
 ## 01. 입력과 조건문
+입력받은 `line`은 문자열로 인식되기 때문에 `Number()`, [`parseInt()`](https://ko.javascript.info/number#ref-1739)를 통해 숫자형으로 변경해주어야 한다.
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 var rate;
@@ -741,7 +742,7 @@ rl.on("close", function () {
 });
 ```
 ## 02. 입력과 다중 조건문
-`if ~ else if ~ else` 구문을 활용해 여러 조건을 걸 수 있다.
+[`if ~ else if ~ else`](https://ko.javascript.info/ifelse) 구문을 활용해 여러 조건을 적용할 수 있다.
 ```javascript
 // 터미널에 엘리스 토끼가 가진 금액을 입력할 수 있으며 입력된 금액에 따라 결과를 출력합니다.
 // 조건문을 이용해 문제를 해결할 수 있습니다.
@@ -774,7 +775,7 @@ rl.on("close", function () {
 });
 ```
 ## 03. 입력, 연산자, 조건문
-논리 연산자(`and`, `or`) 와 관계 연산자(`>`, `<`, `<=`, `>=`)를 활용해 여러 조건을 만들 수 있다.
+[논리 연산자](https://ko.javascript.info/logical-operators)(`and`, `or`) 와 [비교 연산자](https://ko.javascript.info/comparison)(`>`, `<`, `<=`, `>=`)를 활용해 여러 조건을 만들 수 있다.
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 var pw = [];
@@ -805,7 +806,7 @@ rl.on("close", function () {
 ```
 
 ## 04. 입력, 배열, 반복문, 조건문
-약수 구하는 알고리즘과 조건에 맞는 출력 방식.
+약수 구하는 알고리즘과 조건에 맞는 출력 방식 구하기.
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/splice)
 ```javascript
 var num;
@@ -823,16 +824,14 @@ rl.on("line", function (line) {
     num = parseInt(line);
 
     while (i <= num) {
-        if (num % i == 0) {
+        if (num % i == 0) {     // 나누어 떨어지는(나머지가 0이 되는) 경우에 list 배열에 추가하기.
             list.push(i);
         }
         i++;
     }
     
-    console.log(list.splice(0, 10).join(" "));
+    console.log(list.splice(0, 10).join(" "));    // 한 줄에 10개씩 한칸씩 띄워 출력하기
     console.log(list.join(" "));
-    
-    
     rl.close();
 })
 
@@ -842,6 +841,7 @@ rl.on("close", function () {
 ```
 
 ## 05. 369게임
+숫자를 문자열로 변경한 후 [`indexOf()`](https://ko.javascript.info/string#ref-1774) Method를 활용해 `3`, `6`, `9`를 포함하고 있는 경우 `짝!`를 출력하는 방식으로 진행할 수 있다.
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
 ```javascript
 // 반복문을 이용하여 3, 6, 9 게임을 만들어주세요!
@@ -856,7 +856,7 @@ for (var i = 1; i<=30; i++) {
 ```
 
 ## 06. 숫자 출력
-반복문을 활용해 문자열을 이어 붙이는 방식.
+[반복문](https://ko.javascript.info/while-for)을 활용해 문자열을 이어 붙이는 방식으로 구현할 수 있다.
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 var num;
@@ -885,8 +885,12 @@ rl.on("close", function () {
 ```
 
 ## 07. 피보나치 수열
-전혀 모르겠음
-
+피보나치 수열은 피보나치 수(Fibonacci numbers)는 첫째 및 둘째 항이 `1`이며 그 뒤의 모든 항은 바로 앞 두 항의 합인 수열을 의미한다.
+이 문제에서는 첫 항을 `0`, 둘째 및 셋째 항이 `1`로 구성되어 있다고 가정한다.
+[`pop()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/pop)
+[`push()`](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/Array/push)
+[`push()`, `pop()`](https://ko.javascript.info/array#ref-1454)
+[`break()`](https://ko.javascript.info/while-for#ref-1598)
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 var num;
@@ -904,14 +908,14 @@ rl.on("line", function (line) {
     
     while (true) {
         if (num === 1) {
-            const arr = [0];
+            const arr = list.pop();                                       // `num`이 1인 경우 피보나치 수열의 첫째 항만 출력한다.
             console.log(arr);
             break;
-        } else if (list[list.length-2] + list[list.length-1] >= num) {
-            console.log(list);
+        } else if (list[list.length-2] + list[list.length-1] >= num) {    // 피보나치 수열에 마지막으로 추가될 항이 `num`보다 크거나 같은 경우
+            console.log(list);                                            // 피보나치 수열을 연장하지 않고 그대로 출력한다.
             break;
         } else {
-            list.push(list[list.length-2] + list[list.length-1]);
+            list.push(list[list.length-2] + list[list.length-1]);         // 마지막 2항을 더해 새로운 피보나치 수열을 추가한다.
         }
     }
     
