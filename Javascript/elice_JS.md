@@ -929,7 +929,9 @@ rl.on("close", function () {
 
 ## 08. 정규표현식과 `match()`
 [참고](https://curryyou.tistory.com/234)
-문자열 내 특정 문자가 포함되는지를 확인하기 위해서는 문자열.includes(확인할 문자)를 사용하면 됩니다.
+[정규표현식](https://ko.javascript.info/regular-expressions)
+문자열 내 특정 문자가 포함되는지를 확인하기 위해서는 [`문자열.includes("확인할 문자")`](https://ko.javascript.info/string#ref-1776)를 사용하면 된다.
+[`str.match(regexp)`](https://ko.javascript.info/regexp-introduction#ref-2133)을 통해 해당 정규표현식으로 표현되는 것을 검색하여 배열로 반환할 수 있다.
 ```javascript
 // "촉촉한 초코칩"이 몇 번 나오는지 확인해봅시다.
 
@@ -941,10 +943,10 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", function (line) {
-    if (line.includes("촉촉한 초코칩")) {
-        console.log(line.match(/촉촉한 초코칩/g).length);
+    if (line.includes("촉촉한 초코칩")) {                   // 해당 문구를 포함하고 있으면
+        console.log(line.match(/촉촉한 초코칩/g).length);   // 모든 문구를 배열로 반환한 후 해당 배열의 길이를 통해 몇 번 검색되었는지 파악할 수 있다.
     } else {
-        console.log("포함되지 않음")
+        console.log(0);     // 없는 경우 '0' 출력
     }
     rl.close();
 })
@@ -957,6 +959,7 @@ rl.on("close", function () {
 ## 09. 정규표현식과 `replace()`
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/replace)
 [참고자료(정규표현식)](https://beomy.tistory.com/21)
+[정규표현식](https://ko.javascript.info/regular-expressions)
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
 const readline = require("readline");
@@ -968,9 +971,9 @@ const rl = readline.createInterface({
 
 rl.on("line", function (line) {
     let str = line;
-    str = str.replace(/\s/g, "링디기디기\n");
-    str = str.replace(/\./g, "딩딩딩\n");
-    str = str.replace(/[^링디기딩\n]/g, "링딩동 ");
+    str = str.replace(/\s/g, "링디기디기\n");             // 공백을 "링디기디기"로
+    str = str.replace(/\./g, "딩딩딩\n");                 // 마침표를 "딩딩딩"으로
+    str = str.replace(/[^링디기딩\n]/g, "링딩동 ");       // 그 중 위에서 변환한 "링디기디기", "딩딩딩"이 아닌 다른 모든 문자를 "링딩동"으로
     
     console.log(str);
     rl.close();
@@ -985,8 +988,7 @@ rl.on("close", function () {
 [참고자료(내림/올림)](https://deeplify.dev/front-end/js/decimal-point-control)
 [참고자료(문자열자르기)](https://gent.tistory.com/414)
 ```javascript
-// 지시사항을 참고하여 코드를 작성하세요.
-// 지시사항을 참고하여 코드를 작성하세요.
+/// 지시사항을 참고하여 코드를 작성하세요.
 var count = 0;
 var bat = 16;
 var hit = 6;
@@ -999,26 +1001,25 @@ const rl = readline.createInterface({
 });
 
 rl.on("line", function (line) {
-    if (count === 0) {
-        bat += parseInt(line);
+    if (count === 0) {                  // 첫 번째 줄 입력이면
+        bat += parseInt(line);          // 타수에 추가하고
         count++;
-    } else if (count === 1) {
-        hit += parseInt(line);
+    } else if (count === 1) {           // 두 번째 줄 입력이면
+        hit += parseInt(line);          // 안타에 추가하고
         count++;
-        let strBa = String(Math.floor((hit/bat * 1000))/1000);
 
+        let strBa = String(Math.floor((hit/bat * 1000))/1000);      // 타율을 소수점 3자리까지 계산해서 문자열로 형 변환
         
-        let arr = strBa.split('');
-
+        let arr = strBa.split('');      // 형 변환한 문자열을 각각 배열로 분해
         
-        if (arr[2] !== '0') {
-            console.log(arr[2] + '할');
+        if (arr[2] !== '0') {                     // 소수 첫째자리가 존재하면
+            console.log(arr[2] + '할');           // X할
         }
-        if (arr[3] !== '0' && arr.length > 3) {
-            console.log(arr[3] + '푼');
+        if (arr[3] !== '0' && arr.length > 3) {   // 소수 둘째자리가 존재하고, 소수 셋째자리가 존재하지 않으면
+            console.log(arr[3] + '푼');           // X푼
         }
-        if (arr[4] !== '0' && arr.length > 4) {
-            console.log(arr[4] + '리');
+        if (arr[4] !== '0' && arr.length > 4) {   // 소수 셋째자리가 0이 아니고, 존재한다면
+            console.log(arr[4] + '리');           // X리
         }
 
         rl.close();
@@ -1029,12 +1030,31 @@ rl.on("close", function () {
 
 });
 ```
+> 참고 | 두 줄에 걸쳐 입력을 받을 때, 이러한 방법도 사용할 수 있다.
+> 입력되는 `line`을 배열에 추가하여, 배열의 길이가 `2`가 되면 `rl.close();`를 하는 방법.
+
 
 ## 11. 문자열과 유니코드
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/charCodeAt)
+[`substr()`](https://ko.javascript.info/string#ref-1777)은 시작 인덱스부터 반환할 문자의 개수를 설정할 수 있다. 끝 위치의 인덱스가 아니라 길이를 기준으로 문자열을 추출한다는 점에서 `substring()`, `slice()`와 차이를 보인다.
+```javascript
+let str = "stringify";
+console.log(str.substr(2, 4)); // ring, 두 번째부터 글자 네 개
+```
+```javascript
+let str = "stringify";
+
+// 동일한 부분 문자열을 반환합니다.
+console.log( str.substring(2, 6) ); // "ring"
+console.log( str.substring(6, 2) ); // "ring"
+
+// slice를 사용하면 결과가 다릅니다.
+console.log( str.slice(2, 6) ); // "ring" (같음)
+console.log( str.slice(6, 2) ); // "" (빈 문자열)
+```
+---
 ```javascript
 // 지시사항을 참고하여 코드를 작성하세요.
-
 
 const readline = require("readline");
 
@@ -1047,8 +1067,8 @@ rl.on("line", function (line) {
     let str = line;
     let newStr = '';
     for (let i = 0; i <= str.length; i++) {
-        if (str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57) {
-            newStr += str.substr(i, 1);
+        if (str.charCodeAt(i) >= 48 && str.charCodeAt(i) <= 57) {       // 유니코드 번호가 48 ~ 57인 문자가 바로 숫자 0 ~ 9이기 때문이다.
+            newStr += str.substr(i, 1);         // 해당 문자열만 잘라내기
         }
     }
     console.log(newStr);
@@ -1060,6 +1080,7 @@ rl.on("close", function () {
 ```
 
 ## 12. 객체
+[객체](https://ko.javascript.info/object)
 ```javascript
 var scores = {
     "kor": 55,
@@ -1068,9 +1089,9 @@ var scores = {
 }
 
 function result() {
-    if (scores.kor < 40 || scores.mat < 40 || scores.eng < 40) {
+    if (scores.kor < 40 || scores.mat < 40 || scores.eng < 40) {      // 한 과목이라도 40점 미만이면 과락
         document.write("fail");
-    } else if ((scores.kor+scores.mat+scores.eng)/3 < 60) {
+    } else if ((scores.kor+scores.mat+scores.eng)/3 < 60) {           // 평균 60점 미만이면 탈락
         document.write("fail");
     } else {
         document.write("pass");
@@ -1110,7 +1131,7 @@ var sum = 0; // b로 시작하는 과일의 개수를 저장하는 변수
 
 /*지시사항을 따라 작성해주세요*/
 for (var i = 0; i <= fruits.length -1; i++) {
-    if (fruits[i].indexOf('b') === 0) {
+    if (fruits[i].indexOf('b') === 0) {           // 'b'가 맨 첫 인덱스에 있는 문자열이면,
         sum++;
     }
 }
