@@ -421,24 +421,40 @@ console.log(string);     // hello, JavaScript! 출력
 
 ## 03. 값 입력 받기
 [참고자료](https://bluehorn07.tistory.com/49)
+#### `readline` 모듈 불러오기
+`readline` 모듈은 JavaScript에 내장된 모듈로 Readable 스트림에서 한 줄씩 입출력을 처리할 수 있도록 도와준다.
 JavaScript에서는 콘솔을 통해 값을 입력받기 위해 `readline` 모듈을 활용해야 한다. 우선 모듈을 하단 코드로 불러와야 한다.
 ```javascript
 const readline = require("readline");
 ```
+불러온 모듈은 `readline` 변수에 저장한다. 이때 `const`는 선언한 변수가 값을 변경할 수 없는 상수임을 나타낸다.
+
+#### `readline` 인터페이스 객체 만들기
 이후, `readline` 모듈을 이용해 입출력을 위한 인터페이스 객체를 만들어야 한다.
+우선, 정의한 변수(`rl`)에 `createInterface()` Method를 이용해 `readline` 인터페이스 객체를 하나 만들고 저장한다.
+`readline` 인터페이스 객체를 이용해 콘솔에서 표준 입출력을 처리할 수 있다.
 ```javascript
 const rl = readline.createInterface({
   input: process.stdin,
   output: process.stdout,
 });
 ```
-생성한 `rl` 변수는 다음과 같이 활용한다.
+#### `on` Method
+생성한 `rl` 객체로 입출력과 관련된 여러 이벤트를 처리할 수 있다.
+`on` Method를 이용해 이벤트가 발생할 때 실행할 동작을 지정할 수 있다.
+
+1. `line` 이벤트
+사용자가 콘솔에 입력할 때 발생하는 이벤트로, 입력 스트림에 줄바꿈을 나타내는 `\n`, `\r`, `\r\n` 등 제어문자가 나타나거나, 사용자가 `Enter` 또는 `Return`을 누를 때 발생한다.
 ```javascript
-rl.on("line", (line) => {  // 입력된 값은 line에 저장된다.
-  console.log(line);  // 한 줄씩 입력받은 후 실행할 코드(-> 입력한 값을 그대로 콘솔에 출력하는 코드)
+rl.on("line", (input) => {  // "line" 이벤트 발생 시 입력된 값은 변수 `input`에 저장된다.
+  console.log(input);  // 한 줄씩 입력받은 후 실행할 코드(-> 입력한 값을 `input`에 저장한 후 그대로 콘솔에 출력하는 코드)
   rl.close(); // close가 없으면 입력을 무한히 받는다.
 });
+```
 
+2. `close` 이벤트
+`close` 이벤트는 Readable 스트림 종료를 제어하는 이벤트로, 더 이상 입력 받을 것이 없는 경우에 `rl.close()`를 호출하여 발생시킬 수 있다.
+```javascript
 rl.on('close', () => {
   // 입력이 끝난 후 실행할 코드
 })
@@ -623,7 +639,13 @@ count = soldier.length;
 6. `y`: 문자 내 특정 위치에서 검색을 진행하는 ‘sticky’ 모드를 활성화하는 플래그.
 
 ### Pattern
-
+1. `\d` – 숫자
+2. `\D` – 숫자가 아닌 문자
+3. `\s` – 스페이스, 탭, 줄 바꿈 문자
+4. `\S` – `\s`를 제외한 모든 문자
+5. `\w` – 라틴 문자, 숫자, 밑줄 '_'
+6. `\W` – `\w`를 제외한 모든 문자
+7. `.` – 정규 표현식 's' 플래그가 있으면 모든 문자, 없으면 줄 바꿈 `\n`을 제외한 모든 문자
 
 ```javascript
 var words = ['i', 'have', 'a', 'pen', 'i', 'have', 'pineapple', 'i', 'have', 'an', 'apple', 'pen'];
@@ -640,6 +662,27 @@ console.log(count.length);
 ```
 
 ## 07. 다중 입력
+여러 줄의 입력을 처리해야 하는 경우 현재의 입력이 몇 번째 입력인지 변수를 만들어 조건문으로 처리할 수 있다.
+```javascript
+var count = 0; // 몇 번째 입력인지 기록
+rl.on("line", function (x) {
+  count += 1; // 입력 횟수가 증가
+
+  if (count === 1) {
+    // 첫 번째 입력인 경우 동작
+  } else if (count === 2) {
+    // 두 번째 입력인 경우 동작
+  } else if (count === 3) {
+    // 세 번째 입력인 경우 동작
+  } else {
+    // 네 번째 입력인 경우 동작
+    rl.close(); // 입력 종료
+  }
+}).on("close", function () {
+  // 입력 종료 후 동작할 코드
+});
+```
+다만, 주어지는 입력 줄 수가 일정하지 않은 경우 `N`을 통해 주어진 입력 줄 수를 확인할 수 있다.
 ```javascript
 // N줄에 걸쳐 주어지는 문자를 문자열로 만들어 출력하세요.
 var count = 0;        // 입력된 문자의 숫자
