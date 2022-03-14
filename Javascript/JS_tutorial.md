@@ -110,68 +110,76 @@ alert("some code");
 
 모던 JavaScript는 '클래스’와 '모듈’이라 불리는 진일보한 구조를 제공하고, 이를 활용하는 경우 `"use strict"`가 자동으로 적용된다.
 
+## JavaScript 변수와 상수
+### [변수(variables)](https://ko.javascript.info/variables#ref-1351)
 
-변수는 데이터를 저장할 때 사용되는 '이름이 붙은 저장소'이다. Javascript에서는 `let` 키워드를 활용해 변수를 생성할 수 있다.
+변수는 데이터를 저장할 때 사용되는 '이름이 붙은 저장소'이다. JavaScript에서는 `let` 키워드를 활용해 변수를 생성할 수 있다.
 
-```jsx
-let message;
+```javascript
+let message;		// 변수 선언하기
 ```
 
 할당 연산자 `=`을 활용해 변수 안에 데이터를 저장할 수 있다.
 
-```jsx
+```javascript
 message = 'Hello'; // 문자열 저장하기
 ```
 
-이렇게 문자열이 변수와 연결된 메모리 영역에 저장되었으므로, 변수명을 활용해 해당 문자열에 접근할 수도 있고, 한 줄에 여러 변수를 선언하여 데이터를 저장할 수 있으나, 가독성이 떨어질 수 있다. 또한 이미 선언한 변수에 할당한 값을 변경할 수 있다.
+이렇게 `Hello`라는 문자열이 `message` 변수와 연결된 메모리 영역에 저장되었으므로, 변수명을 활용해 해당 문자열에 접근할 수도 있다. 또한, 이미 선언한 변수에 할당한 값을 변경할 수 있으며, 한 줄에 여러 변수를 선언하여 데이터를 저장할 수 있으나, 이는 가독성이 떨어질 수 있으므로 한 줄에 한 개의 변수를 작성하는 것이 더 좋다.
 
-```jsx
+```javascript
 let message = "Hello";
-alert(message);
+console.log(message);
 
 let user = 'John', age = 25, height = '175cm', message = "Bye, Goodnight";
 ```
 
-#### 변수 명명 규칙
+동일한 이름의 변수를 두 번 이상 선언하면 에러가 발생한다. 따라서 변수는 딱 한 번만 선언하고, 선언한 변수를 참조할 때는 `let` 없이 변수명만 사용해 참조해야 한다.
+```javascript
+let message = "Hello";
+let message = "World!";			// 에러 발생(SyntaxError: 'message' has already been declared)
+```
 
-변수명을 작성할 때, 첫 글자는 숫자가 될 수 없고, 오직 문자와 숫자, 그리고 기호 `$`, `_`만 들어갈 수 있다.
+### [변수 명명 규칙](https://ko.javascript.info/variables#ref-1353)
 
-또한, 대소문자를 구별하고, 기존에 설정되어 있는 예약어 목록에 있는 단어는 사용할 수 없다.
+변수명을 작성할 때, 첫 글자는 숫자가 될 수 없고, 오직 문자와 숫자, 그리고 기호 `$`, `_`만 들어갈 수 있다. 또한, 대소문자를 구별하고, 기존에 설정되어 있는 [예약어 목록](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Lexical_grammar#keywords)에 있는 단어(예: `let`, `class`, `function`, `return` 등)는 사용할 수 없다.
 
-```jsx
+여러 단어를 조합해 변수명을 만드는 경우에는 보통 [camelCase](https://en.wikipedia.org/wiki/Camel_case)가 활용된다.
+
+```javascript
 // 올바른 변수명
-let userName; // camelCase
+let userName; 				// camelCase
 let test_1;
 let $word;
-let $; // 가능
-let _; // 가능
+let $; 								// 변수명으로 활용 가능
+let _; 								// 변수명으로 활용 가능
 
 // 올바르지 않은 변수명
-let 2021list; // 숫자로 시작할 수 없다.
-let my-name; // `-` 사용할 수 없다.
+let 2021list; 				// 숫자로 시작할 수 없다.
+let my-name; 					// `-` 사용할 수 없다.
 
-let let = 5; // 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
-let return = 7; // 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
-let class = 13; // 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
+let let = 5; 					// 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
+let return = 7; 			// 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
+let class = 13; 			// 예약어(reserved name)이므로 변수명으로 사용할 수 없다.
 ```
 
-변수는 엄격 모드에서 정의되어 있지 않은 상태로 사용하는 경우, `a is not defined` 에러를 발생시키기 때문에, 정의되어 있는 경우에 사용하는 방식을 활용하는 습관이 더 좋다.
+참고로 과거에는 `let` 없이도 단순히 값을 할당해 변수를 생성하는 것이 가능했다. 엄격 모드를 쓰지 않는 경우 호환성을 유지할 수 있기 때문에 이러한 방식으로도 변수를 생성할 수 있다. 다만, 변수는 엄격 모드에서 정의되어 있지 않은 상태로 사용하는 경우, `a is not defined` 에러를 발생시키기 때문에, 정의되어 있는 경우에 사용하는 방식을 활용하는 습관이 더 좋다.
 
-#### 상수(constants)
+### [상수(constants)](https://ko.javascript.info/variables#ref-1354)
 
-변화하지 않는 변수를 선언할 때에는 `let`이 아니라 `const`를 사용한다.
+변화하지 않는 변수를 선언할 때에는 `let`이 아니라 `const`를 사용한다. 이렇게 `const`로 선언된 변수를 상수라고 하는데, 이는 재할당할 수 없으므로, 값을 변경하고자 하면 에러가 발생한다. 즉, 변수값이 절대 변경되지 않을 것이라 확신한다면, 값이 변경되는 것을 방지하고 다른 개발자들이 이를 상수라고 인지하기 위해 `const`를 활용해 변수를 선언해야 한다.
 
-이렇게 `const`로 선언된 변수를 상수라고 하는데, 이는 재할당할 수 없으므로, 값을 변경하려고 하면 에러가 발생한다.
+상수의 경우 2가지 의미로 활용되는데, (1) 변수의 값이 코드 실행 이전부터 결정되어 변하지 않는 값이 있고, (2) 런타임 과정에서 계산되지만, 최초 할당 이후에 값이 변하지 않는 상수도 있다.
 
-```jsx
+```javascript
 const myBirthday = '2000.01.01';
 
-myBirthday = '1999.12.31'; // TypeError: Assignment to constant variable.
+myBirthday = '1999.12.31'; // 에러 발생(TypeError: Assignment to constant variable.)
 ```
 
-기억하기 힘든 값을 변수에 할당해 별칭으로 사용하는 것은 널리 사용되는 관습이다. 이러한 상수는 보통 대문자와 `_`로 구성된 변수명을 활용한다.
+기억하기 힘든 값을 변수에 할당해 별칭으로 사용하는 것은 널리 사용되는 관습이다. 이러한 상수는 보통 **대문자와 `_`로 구성된 변수명**을 활용한다.
 
-```jsx
+```javascript
 const COLOR_RED = '#F00';
 const COLOR_GREEN = '#0F0';
 const COLOR_BLUE = '#00F';
@@ -180,16 +188,15 @@ const COLOR_ORANGE = '#FF7F00';
 const BIRTHDAY = '2000.01.01';
 ```
 
-상수의 경우 2가지 의미로 활용되는데, 변수의 값이 코드 실행 이전부터 결정되어 변하지 않는 값이 있고, 런타임 과정에서 계산되지만, 최초 할당 이후에 값이 변하지 않는 상수도 있다.
-
-#### 바람직한 변수명
+### [바람직한 변수명](https://ko.javascript.info/variables#ref-1356)
 
 변수명은 간결하고 명확해야 하며, 변수가 담고 있는 것이 무엇인지 잘 설명할 수 있어야 한다.
 
-- 사람이 읽을 수 있는 명칭을 사용하기
-- 줄임말이나 `a`, `b`, `c` 등 알파벳 명칭은 지양하기
-- 최대한 서술적이고 간결하게 명명하기
-- 팀의 규칙에 따라 명칭을 작성하기
+1. 사람이 읽을 수 있는 명칭을 사용하기
+2. 줄임말이나 `a`, `b`, `c` 등 알파벳 명칭은 지양하기
+3. 최대한 서술적이고 간결하게 명명하기
+4. 팀의 규칙에 따라 명칭을 작성하기
+5. 재사용하기보다 새로운 변수를 추가하기
 
 ### 자료형(Data Type)
 
