@@ -289,41 +289,41 @@ typeof null // "object"(null은 하위 호환성을 유지를 위해 객체가 �
 typeof alert // "function"(피연산자가 함수면 "function"을 반환한다.)
 ```
 
-### 대화 상자를 활용한 상호작용
+## JavaScript 대화 상자
 
-브라우저에서 사용자와 상호작용할 수 있는 사용자 인터페이스 기능으로 `alert`, `prompt`, `confirm`이 있다.
+브라우저에서 사용자와 상호작용할 수 있는 사용자 인터페이스 기능으로 `alert`, `prompt`, `confirm`이 있다. 다만, 모두 모달 창을 활용하기 때문에 브라우저에 의해 결정된 위치와 모양만 가능하고, 수정할 수 없다는 것이 단점이다.
 
-#### `alert`
+### [`alert`](https://ko.javascript.info/types#type-typeof)
 
-alert 함수를 활용하면 사용자가 '확인' 버튼을 누를 때까지 메시지를 보여주는 모달 창(modal window)이 계속 떠 있게 된다. 모달 창(modal window)이기 때문에 페이지의 나머지 부분과 상호작용이 불가능하게 된다. 즉, 모달 창이 떠 있는 동안에는 스크립트의 실행이 일시 중단되고, 사용자가 창을 닫기 전까지 나머지 페이지와 상호작용이 불가능하다.
+> `alert("Contents");
 
-```jsx
+`alert` 함수를 활용하면 사용자가 '확인' 버튼을 누를 때까지 메시지를 보여주는 모달 창(modal window)이 계속 떠 있게 된다. 모달 창(modal window)이기 때문에 페이지의 나머지 부분과 상호작용이 불가능하게 된다. 즉, 모달 창이 떠 있는 동안에는 스크립트의 실행이 일시 중단되고, 사용자가 창을 닫기 전까지 나머지 페이지와 상호작용이 불가능하다.
+
+```javascript
 alert("확인 버튼을 눌러야 다른 상호작용을 할 수 있습니다.");
 ```
 
-#### `prompt`
+### [`prompt`](https://ko.javascript.info/alert-prompt-confirm#ref-1415)
 
 > `prompt(title, [default]);`
 
-`prompt` 함수는 두 가지 인수를 받아, 텍스트 메시지와 입력 필드, 그리고 확인과 취소 버튼이 존재하는 모달 창(modal window)을 띄워 준다.
-
-`title`은 사용자에게 보여줄 텍스트 메시지를 의미하고, `default`는 입력 필드의 초기 값을 의미한다.
+`prompt` 함수는 두 가지 인수를 받아, 텍스트 메시지와 입력 필드, 그리고 확인과 취소 버튼이 존재하는 모달 창(modal window)을 띄워 준다. `title`은 사용자에게 보여줄 텍스트 메시지를 의미하고, `default`는 입력 필드의 초기 값을 의미한다.
 
 사용자는 대화상자의 입력 필드에 원하는 값을 입력하고, 확인 버튼을 누를 수 있고, 값을 입력하기를 원하지 않으면 취소 버튼이나 `ESC`를 눌러 빠져나갈 수 있다. 이때, `prompt` 함수는 사용자가 입력한 문자열을 반환하는데, 입력을 취소한 경우 `null`을 반환한다.
 
-```jsx
-let age = prompt('나이를 입력해주세요.', 100);
+```javascript
+let age = prompt('나이를 입력해주세요.', 100);			// 사용자가 입력한 값을 반환한다.
 
 alert(`당신의 나이는 ${age}세 입니다.`)
 ```
 
-#### `confirm`
+### [`confirm`](https://ko.javascript.info/alert-prompt-confirm#ref-1416)
 
 > `confirm(question);`
 
 `confirm` 함수는 매개 변수로 받은 `question`과 확인, 취소 버튼이 있는 모달 창(modal window)을 띄워 준다. 사용자가 확인 버튼을 누르면 `true`를 반환하고, 그 외의 경우에는 `false`를 반환한다.
 
-```jsx
+```javascript
 let isBoss = confirm("당신이 보스인가요?");
 
 alert( isBoss ); // 확인 버튼을 누르면 true가 출력된다.
