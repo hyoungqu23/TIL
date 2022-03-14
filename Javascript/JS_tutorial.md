@@ -17,10 +17,10 @@ Javascript는 웹 페이지에 생동감을 불어 넣기 위해 만들어진 �
 ---
 
 # Chapter 002. *Javascript 기본*
+## JavaScript 연결
+### [`<script>`](https://ko.javascript.info/hello-world#ref-1920)
 
-### `<script>`
-
-`<script>`를 사용하면, HTML 문서 대부분의 위치에 삽입할 수 있다. 직접 태그 내에 코드를 작성해도 되고, 새로운 파일로 만들어 `src` 속성(~~path~~)으로 연결할 수 있다. 다만, `src`속성과 내부 코드를 동시에 가지지는 못한다.
+`<script>`를 사용하면, HTML 문서 대부분의 위치에 삽입할 수 있다. 직접 태그 내에 코드를 작성해도 되고, 새로운 파일로 만들어 `src` 속성(~~path~~)으로 연결할 수 있다. 다만, `src`속성과 내부 코드를 동시에 가지지는 못한다. 또한, 과거 필수적이었던 `type` 속성과 `language` 속성은 더는 사용하지 않아도 된다.
 
 ```js
 <script>
@@ -28,8 +28,12 @@ Javascript는 웹 페이지에 생동감을 불어 넣기 위해 만들어진 �
 </script>
 ```
 
-```jsx
+JavaScript 코드의 양이 많거나 기능별로 나누어야 하는 경우 파일로 소분하여 저장할 수 있다. 특히, HTML 안에 직접 스크립트를 작성하는 방식은 대개 JavaScript 코드가 아주 간단할 때만 사용하고, JavaScript 코드가 길어지면 별개의 분리된 파일로 만들어 저장하는 것이 좋다. 이렇게 소분한 JavaScript 파일은 `src` 속성을 활용해 HTML 문서에 삽입할 수 있다.
+
+```html
 <script src='path/to/alert.js'></script>
+<script src='path/to/input.js'></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 ```
 
 ### 문(statement)
