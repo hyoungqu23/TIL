@@ -1091,7 +1091,7 @@ var scores = {
 function result() {
     if (scores.kor < 40 || scores.mat < 40 || scores.eng < 40) {      // 한 과목이라도 40점 미만이면 과락
         document.write("fail");
-    } else if ((scores.kor+scores.mat+scores.eng)/3 < 60) {           // 평균 60점 미만이면 탈락
+    } else if ((scores.kor + scores.mat + scores.eng)/3 < 60) {           // 평균 60점 미만이면 탈락
         document.write("fail");
     } else {
         document.write("pass");
@@ -1125,6 +1125,7 @@ for (var i = 0; i <= foods.length -1; i++) {
 ```
 
 ## 15. `indexOf()`
+[`indexOf()`](https://ko.javascript.info/string#ref-1774)
 ```javascript
 const fruits = ['apple', 'banana', 'orange', 'blueberry', 'strawberry']
 var sum = 0; // b로 시작하는 과일의 개수를 저장하는 변수
