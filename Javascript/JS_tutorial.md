@@ -198,92 +198,93 @@ const BIRTHDAY = '2000.01.01';
 4. 팀의 규칙에 따라 명칭을 작성하기
 5. 재사용하기보다 새로운 변수를 추가하기
 
-### 자료형(Data Type)
+## JavaScript 자료형(Data Type)
 
 Javascript의 값(value)는 항상 문자열, 숫자형 등 총 8가지의 특정한 자료형(Data Type)에 속한다. 하나의 변수는 어떤 순간에는 문자열이고, 다른 순간에는 숫자형이 될 수 있다. 이를 변수에 저장되는 값의 타입을 언제든지 바꿀 수 있는 언어인 동적 타입 언어(dynamically typed language)라고 한다.
 
-```jsx
-let message = "Hello";  // String
-message = 123456;  // Number
+```javascript
+let message = "Hello";  		// String
+message = 123456;  					// Number
 ```
 
-#### Number
+### [Number](https://ko.javascript.info/types#ref-1343)
 
 숫자형(Number)은 정수 및 부동소수점 숫자(floating point number)를 의미한다. 사칙연산(`+`, `-`, `*`, `/`)이 가능하고, 일반적인 숫자 이외의 `Infinity`, `-Infinity`, `NaN`과 같은 특수 숫자 값을 포함한다.
 
-```jsx
+```javascript
 let inf1 = 1 / 0;  // 어떤 숫자든 0으로 나누면 무한대를 얻을 수 있다.
 let inf2 = Infinity;  // 직접 선언
 
 let notANumber = "숫자가 아닌 값" / 2;  // NaN
 ```
 
-#### BigInt
+### [BigInt](https://ko.javascript.info/types#ref-1344)
 
-Javascript에서는 `±(2^53-1)` 범위를 벗어나는 숫자는 숫자형(Number)로 표현할 수 없다. 이는 암호 관련 작업 등에서 매우 큰 숫자를 필요로 하는 상황이나 매우 정밀한 작업에서 사용될 수 있는데, 정수 리터럴 끝에 `n`을 추가해 만들 수 있다.
+Javascript에서는 `±(2^53-1)` 범위를 벗어나는 숫자는 숫자형(Number)로 표현할 수 없다. 이는 암호 관련 작업 등에서 매우 큰 숫자를 필요로 하는 상황이나 매우 정밀한 작업에서 사용될 수 있는데, 정수 리터럴 끝에 `n`을 추가해 만들 수 있다. BigInt 값은 표준으로 채택된 지 얼마 안되었고, 길이에 상관없이 정수를 나타낼 수 있따.
 
-```jsx
+```javascript
 const bigInt = 12341231242141211251243123123123123n;
 ```
 
-#### String
+### [String](https://ko.javascript.info/types#ref-1345)
 
-문자열(String) 자료형은 세 종류의 따옴표로 묶는 텍스트를 의미한다. 다만, 큰 따옴표(`" "`)와 작은 따옴표(`' '`)의 경우 단순 문자열이지만, 역 따옴표(`` ``, backtick)를 활용하는 경우 내부에 원하는 변수, 표현식을 문자열 중간에 손쉽게 삽입할 수 있다.
+문자열(String) 자료형은 세 종류의 따옴표로 묶는 텍스트를 의미한다. 다만, 큰 따옴표(`" "`)와 작은 따옴표(`' '`)의 경우 단순 문자열이지만, 역 따옴표(`` ``, backtick)를 활용하는 경우 내부에 원하는 변수, 표현식을 `${  }`를 활용해 문자열 중간에 손쉽게 삽입할 수 있다.
 
-```jsx
+```javascript
 let name = "James";
 let score = 'C+';
 
 let result = `${name} lose. Your Grade is ${score}`;
+let cal = `${1 + 2 / 3}`			// 변수는 물론 수학 표현식도 가능함.
 ```
 
-#### Boolean
+### [Boolean](https://ko.javascript.info/types#ref-1346)
 
-논리 타입(Boolean)은 true, false 두 가지 값을 가진다.
+논리 타입(Boolean)은 `true`, `false` 두 가지 값을 가진다.
 
-```jsx
+```javascript
 let nameFieldChecked = true;
 let ageFieldChecked = false;
 
 let isGreater = 5 > 3;  // true
 ```
 
-#### `null`
+### [`null`](https://ko.javascript.info/types#ref-1347)
 
-Javascript의 `null`은 존재하지 않는 값(nothing), 비어있는 값(empty), 알 수 없는 값(unknown)을 의미한다.
+JavaScript의 `null`은 존재하지 않는 값(nothing), 비어있는 값(empty), 알 수 없는 값(unknown)을 의미한다.
 
-```jsx
+```javascript
 let age = null;
 ```
 
-#### `undefined`
+### [`undefined`](https://ko.javascript.info/types#ref-1348)
 
-Javascript의 `undefined`는 값이 할당되지 않은 상태를 나타낼 때 사용한다. 즉, 변수를 선언했지만, 해당 변수에 값을 할당하지 않은 경우, 해당 변수에 `undefined`가 자동으로 할당된다. 물론 명시적으로 할당하는 것도 가능하지만, `null`을 사용하는 것을 추천한다.
+JavaScript의 `undefined`는 값이 할당되지 않은 상태를 나타낼 때 사용한다. 즉, 변수를 선언했지만, 해당 변수에 값을 할당하지 않은 경우, 해당 변수에 `undefined`가 자동으로 할당된다. 물론 명시적으로 할당하는 것도 가능하지만, `null`을 사용하는 것을 추천한다.
 
-```jsx
+```javascript
 let age;
 
 console.log(age);  // undefined
 ```
 
-#### Object, Symbol
+### [Object, Symbol](https://ko.javascript.info/types#ref-1349)
 
 객체(Object)는 특수한 자료형이다. 객체 이외의 다른 자료형은 한 가지만 표현할 수 있는 원시(primitive) 자료형이지만, 객체는 데이터 모음이나 복잡한 개체를 표현할 수 있다.
 
 심볼(Symbol)은 객체의 고유한 식별자(unique identifier)를 만들 때 사용된다.
 
-#### `typeof` 연산자
+### [`typeof`](https://ko.javascript.info/types#type-typeof)
 
 `typeof`는 인수의 자료형을 반환하는데, 두 가지 형태의 문법을 지원한다. 연산자(`typeof x`)로 활용할 수도 있고, 함수(`typeof(x)`)로 사용할 수도 있다.
 
-```jsx
+```javascript
 typeof undefined // "undefined"
 typeof 0 // "number"
 typeof 10n // "bigint"
 typeof true // "boolean"
 typeof "foo" // "string"
 typeof Symbol("id") // "symbol"
-typeof Math // "object"
+typeof Math // "object"(수학 연산을 제공하는 내장 객체)
 typeof null // "object"(null은 하위 호환성을 유지를 위해 객체가 아니지만, "object"를 반환한다.)
 typeof alert // "function"(피연산자가 함수면 "function"을 반환한다.)
 ```
