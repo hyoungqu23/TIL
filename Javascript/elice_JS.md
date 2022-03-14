@@ -840,6 +840,43 @@ rl.on("close", function () {
 });
 ```
 
+```javascript
+// 지시사항을 참고하여 코드를 작성하세요.
+const readline = require("readline");
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout,
+});
+
+var input;
+
+rl.on("line", function (line) {
+  input = parseInt(line);
+  rl.close();
+}).on("close", function () {
+  var i = 1;
+  var total = 0;
+  var count = 0;
+
+  var result = '';
+  
+  while (input >= i) {
+    if (input % i == 0) {
+      if (count % 10 == 0) {
+        console.log(result);
+        result = [];
+      }
+      result += i;
+      result += ' ';
+      count += 1;
+    }
+  i += 1;
+  }
+  console.log(result);
+});
+```
+
 ## 05. 369게임
 숫자를 문자열로 변경한 후 [`indexOf()`](https://ko.javascript.info/string#ref-1774) Method를 활용해 `3`, `6`, `9`를 포함하고 있는 경우 `짝!`를 출력하는 방식으로 진행할 수 있다.
 [MDN](https://developer.mozilla.org/ko/docs/Web/JavaScript/Reference/Global_Objects/String/indexOf)
@@ -852,6 +889,17 @@ for (var i = 1; i<=30; i++) {
     } else {
         console.log(i);
     }
+}
+```
+```javascript
+for (var i = 1; i <= 30; i++) {
+  if ((i % 10) % 3 == 0 && (i % 10) != 0) {
+    console.log('짝!');
+  } else if (Math.floor((i / 10) % 3) == 0 && Math.floor(i / 10) != 0) {
+    console.log('짝!');
+  } else {
+    console.log(i);
+  }
 }
 ```
 
