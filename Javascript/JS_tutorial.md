@@ -36,13 +36,30 @@ JavaScript 코드의 양이 많거나 기능별로 나누어야 하는 경우 �
 <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.11/lodash.js"></script>
 ```
 
-### 문(statement)
+JavaScript 코드를 별도의 파일에 작성하면 브라우저가 해당 코드를 다운받아 캐시(cache)에 저장하기 때문에, 성능상의 이점이 있다. 여러 페이지에서 동일한 JavaScript 코드를 사용하는 경우, 브라우저는 페이지가 바뀔 때마다 JavaScript 코드를 새로 다운받지 않고 캐시로부터 가져와 사용하게 되어 트래픽이 절약되고 웹 페이지의 실제 속도가 빨라지게 된다.
 
-문(statement)은 어떤 작업을 수행하는 문법 구조와 명령어를 의미한다. 이때, 서로 다른 문은 세미콜론(`;`)으로 구분한다.(보통 가독성을 위해 서로 다른 줄에 작성하는 것이 더 일반적이다.)
+다만, `src` 속성이 있는 경우, `<script>` 내부 코드는 무시된다.
+```html
+<script src="file.js">
+	console.log("실행되는 코드일까?");		// src 속성이 존재해 실행되지 않는다.
+</script>
+```
 
-줄바꿈이 있는 경우에는 세미콜론(`;`)을 생략할 수 있다. 줄바꿈을 암시적 세미콜론으로 해석하기 때문이다.([참고](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion))
+## JavaScript 코드의 구조
+### [문(statement)](https://ko.javascript.info/structure#ref-1920)
 
-반면, 세미콜론(`;`)이 필요하나, Javascript가 이를 추정하지 못하는 경우도 있다. 따라서, 줄바꿈으로 문을 구분했더라도, 세미콜론(`;`)을 작성하는 것이 좋다.
+문(statement)은 어떤 작업을 수행하는 **문법 구조**와 **명령어**를 의미한다. 이때, 서로 다른 문은 세미콜론(`;`)으로 구분한다.(보통 가독성을 위해 서로 다른 줄에 작성하는 것이 더 일반적이다.)
+```javascript
+console.log("Hello");
+console.log("JavaScript");
+```
+
+줄바꿈이 있는 경우에는 세미콜론(`;`)을 생략할 수 있다. 줄바꿈을 암시적 세미콜론으로 해석하기 때문이다.([세미콜론 자동 삽입](https://tc39.es/ecma262/#sec-automatic-semicolon-insertion))
+
+```javascript
+console.log("Hello")
+console.log("JavaScript")
+```
 
 ### 주석(comment)
 
