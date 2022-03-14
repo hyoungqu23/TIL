@@ -329,17 +329,17 @@ let isBoss = confirm("당신이 보스인가요?");
 alert( isBoss ); // 확인 버튼을 누르면 true가 출력된다.
 ```
 
-### 형 변환(type conversion)
+## JavaScript 자료형 변환(type conversion)
 
-함수와 연산자에 전달되는 값은 대부분 적절한 자료형으로 자동 변환되는 데, 이를 형 변환(type conversion)이라고 한다. 이 외에 전달받은 값을 원하는 타입으로 변환하는 것도 형 변환이라고 한다.
+함수와 연산자에 전달되는 값은 대부분 적절한 자료형으로 자동 변환되는데, 이를 형 변환(type conversion)이라고 한다. 이 외에 전달받은 값을 원하는 타입으로 변환하는 것도 형 변환이라고 한다.
 
-#### 문자열로 변환
+### [문자열로 변환](https://ko.javascript.info/type-conversions#ref-2433)
 
 > `String(value)`
 
-`String(value)` 함수를 활용해 `value` 값을 문자열로 변환할 수 있다.
+`String(value)` 함수를 활용해 `value` 값을 문자열로 변환할 수 있다. 참고로 `alert()` Method도 매개변수로 문자열을 받기 때문에 다른 값을 받으면 자동으로 문자열로 변환한다.
 
-```jsx
+```javascript
 let value = true;
 console.log(typeof value);  // boolean
 
@@ -347,11 +347,11 @@ value = String(value);
 console.log(typeof value);  // string
 ```
 
-#### 숫자형으로 변환
+### [숫자형으로 변환](https://ko.javascript.info/type-conversions#ref-2434)
 
 수학과 관련된 함수와 표현식에서 자동으로 숫자형을 변환이 일어난다.
 
-```jsx
+```javascript
 console.log("6" / 2);  // 3
 ```
 
@@ -359,7 +359,7 @@ console.log("6" / 2);  // 3
 
 `Number(value)` 함수를 활용해 `value` 값을 숫자형으로 변환할 수 있다.
 
-```jsx
+```javascript
 let str = "123";
 console.log(typeof str);  // string
 
@@ -367,9 +367,9 @@ let num = Number(str);
 console.log(typeof num);  // number
 ```
 
-다만, 숫자 이외의 글자가 들어가 있는 문자열을 숫자형으로 명시적 변환을 하면, `NaN`을 반환한다.
+다만, 숫자 이외의 글자가 들어가 있는 문자열을 숫자형으로 명시적 변환을 하면, `NaN`을 반환한다. 이때, 문자열을 `Number()`로 형 변환하는 경우 좌우 공백 제거 후 숫자만 있다면 해당 숫자로 변환되고, 남은 문자열이 없다면 `0`, 문자열이 남아 형 변환에 실패하면 `NaN`을 반환한다.
 
-```jsx
+```javascript
 let age = Number("문자열이 있는 숫자 123");
 console.log(age);  // NaN
 ```
@@ -381,23 +381,21 @@ console.log(age);  // NaN
 |true|1|
 |false|0|
 
-
-#### 논리형으로 변환
+### [논리형으로 변환](https://ko.javascript.info/type-conversions#ref-2435)
 
 > `Boolean(value)`
 
-`Boolean(value)` 함수를 활용해 `value` 값을 논리 자료형으로 변환할 수 있다.
+`Boolean(value)` 함수를 활용해 논리 자료형으로 변환할 수 있다. 참고로 문자열 `"0"`과 `" "`(공백)은 `true`로 변환된다.
 
 |형 변환할 값 | 형 변환 후 반환 값|
 |:-:|:-:|
 |0, "", null, undefined, NaN|false|
 |그 외의 값|true|
 
-```jsx
+```javascript
 console.log(Boolea(1));  // true
 console.log(Boolea(0));  // false
 console.log(Boolea("Hello"));  // true
 console.log(Boolea(""));  // false
 ```
 
-참고로, 문자열 `"0"`은 `true`이다. 비어있지 않은 문자열이기 때문이다.
