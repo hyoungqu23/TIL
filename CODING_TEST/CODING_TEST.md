@@ -383,3 +383,25 @@ function solution(n) {
 }
 ```
 
+### 013. [문자열을 정수로 바꾸기](https://programmers.co.kr/learn/courses/30/lessons/12925)
+```javascript
+function solution(s) {
+  var answer = 0;
+  answer = Number(s);    
+  return answer;
+}
+```
+```javascript
+function solution(s) {
+  var answer = 0;
+  answer = +s;    
+  return answer;
+}
+```
+```javascript
+function solution(s) {
+  var answer = 0;
+  answer = s / 1;    
+  return answer;
+}
+```
