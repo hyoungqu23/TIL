@@ -237,3 +237,51 @@ function solution(strings, n) {
   // n번째 문자가 같으면, 해당 단어를 비교하고, 다르면 그 문자를 비교한다.
 }
 ```
+
+### 007. [문자열 내 p와 y의 개수](https://programmers.co.kr/learn/courses/30/lessons/12916)
+`match()`와 정규표현식
+런타임 초과 발생
+```javascript
+function solution(s){
+  var answer = true;
+  if (s.match(/p/gi).length !== s.match(/y/gi).length) {
+      answer = false;
+  }
+  return answer;
+}
+```
+`includes()`
+```javascript
+function solution(s){
+  var answer = true;
+  var pCount = 0;
+  var yCount = 0;
+  
+  for (let i = 0; i < s.length; i++) {
+    if (s.toLowerCase()[i].includes("p")) {
+      pCount++;
+    }
+  }
+  
+  for (let j = 0; j < s.length; j++) {
+    if (s.toLowerCase()[j].includes("y")) {
+      yCount++;
+    }
+  }
+  
+  if (pCount !== yCount) {
+    answer = false;
+  }
+
+  return answer;
+}
+```
+
+
+```javascript
+function solution(s){
+  // 함수를 완성하세요
+  return s.toUpperCase().split("P").length === s.toUpperCase().split("Y").length;
+  // 해당 문자를 기준으로 나누면, ["", "", "OOOYY"], ["PPOOO", "", ""] 로 구분된다.
+}
+```
