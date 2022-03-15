@@ -92,3 +92,30 @@ function solution(a, b) {
 }
 ```
 
+### 002. [가운데 글자 가져오기](https://programmers.co.kr/learn/courses/30/lessons/12903)
+```javascript
+function solution(s) {
+  var answer = '';
+  
+  if (s.length % 2 === 1) {
+    let idx = Math.floor(s.length / 2);
+    answer = s.slice(idx, idx + 1);
+  } else if (s.length % 2 === 0) {
+    let idx = (s.length / 2) - 1;
+    answer = s.slice(idx, idx + 2);
+  }
+  
+  return answer;
+}
+```
+
+`substr()`
+`ceil()`
+`?`
+
+```javascript
+function solution(s) {
+  return s.substr(Math.ceil(s.length / 2) - 1, s.length % 2 === 0 ? 2 : 1);
+}
+```
+
