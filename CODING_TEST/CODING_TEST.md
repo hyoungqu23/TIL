@@ -187,3 +187,27 @@ function solution(arr, divisor) {
 }
 ```
 
+### 005. [두 정수 사이의 합](https://programmers.co.kr/learn/courses/30/lessons/12912)
+```javascript
+function solution(a, b) {
+  var answer = 0;
+  
+  if (a <= b) {
+    answer += (a + b) * (b - a + 1) * 0.5;
+  } else {
+    answer += (a + b) * (a - b + 1) * 0.5;
+  }
+  
+  return answer;
+}
+```
+
+`Math.abs()`
+```javascript
+function solution(a, b) {
+  var answer = 0;
+
+  return (a + b) * (Math.abs(a - b) + 1) * 0.5;
+}
+```
+
