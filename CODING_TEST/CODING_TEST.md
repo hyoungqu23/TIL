@@ -316,4 +316,28 @@ function solution(s) {
 }
 ```
 
+### 009. 문자열 다루기 기본
+
+```javascript
+function solution(s) {
+  var answer = true;
+  var arr = s.split("");
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].charCodeAt() >= 65) {
+      answer = false;
+    }
+  }
+  if (arr.length !== 4 && arr.length !== 6) {
+    answer = false;
+  }
+  return answer;
+}
+```
+
+정규표현식과 `regex.test()`
+```javascript
+function alpha_string46(s){
+  var regex = /^\d{6}$|^\d{4}$/;
+  return regex.test(s);
+}
 ```
