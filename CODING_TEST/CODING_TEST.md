@@ -364,4 +364,22 @@ function findKim(seoul){
   var idx = seoul.indexOf('Kim');
   return "김서방은 " + idx + "에 있다";
 }
+``````javascript
+function solution(n) {
+    var answer = '';
+    
+    for (let i = 0; i < n; i++) {
+        (i % 2 === 0) ? answer += "수" : answer += "박";
+    }
+    
+    return answer;
+}
 ```
+
+`repeat()`
+```javascript
+function solution(n) {
+  return "수박".repeat(n).slice(0, n);
+}
+```
+
