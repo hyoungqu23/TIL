@@ -277,11 +277,43 @@ function solution(s){
 }
 ```
 
-
+`split()`
 ```javascript
 function solution(s){
   // 함수를 완성하세요
   return s.toUpperCase().split("P").length === s.toUpperCase().split("Y").length;
   // 해당 문자를 기준으로 나누면, ["", "", "OOOYY"], ["PPOOO", "", ""] 로 구분된다.
 }
+```
+
+### 008. [문자열 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12917)
+
+`split()`
+`reverse()`
+`join()`
+
+```javascript
+function solution(s) {
+    var answer = '';
+    
+    let arr = s.split("");
+
+    arr.sort((a, b) => a.charCodeAt() - b.charCodeAt());    // (a, b) => a - b 와의 차이는 무엇이길래 이건 안되는가? 왜 arr.sort()는 되는가
+    
+    answer = arr.reverse().join("");
+    
+    return answer;
+}
+```
+
+```javascript
+function solution(s) {
+  return s
+    .split("")
+    .sort()
+    .reverse()
+    .join("");
+}
+```
+
 ```
