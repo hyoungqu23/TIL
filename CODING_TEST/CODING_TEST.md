@@ -119,3 +119,29 @@ function solution(s) {
 }
 ```
 
+### 003. [같은 숫자는 싫어](https://programmers.co.kr/learn/courses/30/lessons/12906)
+```javascript
+function solution(arr) {
+    var answer = [];
+    answer.push(arr[0]);
+    
+    for (var i = 1; i < arr.length; i++) {
+        
+        if (arr[i] !== arr[i-1]) {
+            answer.push(arr[i]);
+        }
+    }
+    
+    return answer;
+}
+```
+
+`filter()`
+
+```javascript
+function solution(arr)
+{
+    return arr.filter((val,index) => val != arr[index+1]);
+}
+```
+
