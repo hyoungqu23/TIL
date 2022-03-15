@@ -211,3 +211,29 @@ function solution(a, b) {
 }
 ```
 
+### 006. [문자열 내 마음대로 정렬하기](https://programmers.co.kr/learn/courses/30/lessons/12915)
+```javascript
+function solution(strings, n) {
+  var answer = [];
+
+  answer = strings.sort((a, b) => {
+    if (a[n] !== b[n]) {
+      return a.charCodeAt(n) - b.charCodeAt(n);
+    } else {
+      return a.localeCompare(b);
+    }
+  });
+
+  return answer;
+}
+```
+
+`localeCompare()`
+```javascript
+function solution(strings, n) {
+  // strings 배열
+  // n 번째 문자열 비교
+  return strings.sort((s1, s2) => s1[n] === s2[n] ? s1.localeCompare(s2) : s1[n].localeCompare(s2[n]));
+  // n번째 문자가 같으면, 해당 단어를 비교하고, 다르면 그 문자를 비교한다.
+}
+```
