@@ -393,9 +393,121 @@ console.log(age);  // NaN
 |그 외의 값|true|
 
 ```javascript
-console.log(Boolea(1));  // true
-console.log(Boolea(0));  // false
-console.log(Boolea("Hello"));  // true
-console.log(Boolea(""));  // false
+console.log(Boolean(1));  // true
+console.log(Boolean(0));  // false
+console.log(Boolean("Hello"));  // true
+console.log(Boolean(""));  // false
 ```
 
+## JavaScript 기본 연산자와 수학
+### [수학 연산자](https://ko.javascript.info/operators#ref-1412)
+`+`, `-`, `*`, `/`, `%`(나머지), `**`(제곱) 연산자가 수학 연산자로 활용된다.
+```javascript
+console.log(5 % 2);				// 1 출력
+console.log(8 % 3);				// 2 출력
+
+console.log(2 ** 2);			// 4 출력
+console.log(2 ** 4);			// 16 출력
+console.log(4 ** (1/2));	// 2 출력(제곱근 계산 가능)
+console.log(16 ** (1/4));	// 2 출력(제곱근 계산 가능)
+```
+
+### [덧셈 연산자](https://ko.javascript.info/operators#ref-1415)
+덧셈 연산자 `+`는 보통 숫자를 더한 결과를 반환하지만, 피연산자로 문자열이 전달되면 문자열을 병합(연결)한 결과를 반환한다. 이때, 피연산자 중 하나만 문자열이라도 문자열로 변환된다는 점에 유의해야 한다. 
+```javascript
+let str = "my" + "string";
+console.log(str);					// mystring 출력
+
+console.log("2" + 1);			// "21" 출력
+console.log(2 + "1");			// "21" 출력
+
+console.log(2 + 2 + "1");	// "41" 출력
+console.log("2" + 2 + 1); // "23" 출력
+```
+참고로, `-`, `/` 연산자의 경우 피연산자가 문자열이더라도 숫자로 변환된 후 사칙연산이 진행된다.
+
+또한, [단항 연산자](https://ko.javascript.info/operators#ref-1416)로 덧셈 연산자를 사용하면, `Number()`와 동일한 결과를 반환한다.
+```javascript
+console.log(+true);				// 1 출력
+console.log(+"");					// 0 출력
+
+let num1 = "1";
+let num2 = "2";
+
+console.log(num1 + num2);				// 12 출력
+console.log(+num1 + +num2);			// 3 출력
+```
+### [연산자 우선순위](https://ko.javascript.info/operators#ref-1417)
+[우선순위 테이블](https://developer.mozilla.org/en/JavaScript/Reference/operators/operator_precedence)을 참고하면 된다. 특히, 단항 연산자가 이항 연산자보다 높다.
+
+### [할당 연산자](https://ko.javascript.info/operators#ref-1418)
+할당(assignment) 연산자 `=`는 우선순위가 낮아 연산이 모두 된 이후에 값이 할당될 수 있게 된다.
+```javascript
+let a = 1;
+let b = 2;
+let c = 3 - (a = b + 1);
+
+console.log(c);						// 0 출력
+
+let d, e, f;
+
+d = e = f = 2 + 1;
+
+console.log(d);						// 3 출력
+console.log(e);						// 3 출력
+console.log(f);						// 3 출력
+```
+
+### [복합 할당 연산자](https://ko.javascript.info/operators#ref-1421)
+산술 연산자와 할당 연산자를 동시에 활용하여 더 짧은 문법을 구현할 수 있다.
+```javascript
+let n = 2;
+n += 5;
+console.log(n);						// 7 출력
+
+n *= 2;
+console.log(n);						// 14 출력
+
+n /= 3 + 4;
+console.log(n);						// 2 출력(우측이 먼저 연산되기 때문에 이는 `n /= 7`과 동일하다.)
+```
+
+### [증감 연산자](https://ko.javascript.info/operators#ref-1422)
+숫자를 하나 증가시키거나 감소시키는 데 활용되는 연산자이다. 다만, 이는 변수에만 활용할 수 있다.
+```javascript
+let counter = 1;
+
+counter++;
+console.log(counter);			// 2 출력
+
+counter--;
+console.log(counter);			// 1 출력
+```
+전위형 증감 연산자를 사용하는 경우 증감 이후 값을 반환하지만, 후위형 증감 연산자를 사용하면 증감 이전의 값을 반환하게 된다.
+```javascript
+let counter = 1;
+let a = ++counter;
+let b = counter++;
+
+console.log(a);						// 2 출력
+console.log(b);						// 1 출력
+```
+
+### [비트 연산자](https://ko.javascript.info/operators#ref-1423)
+[MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators)
+비트 연산자(bitwise operator)는 인수를 32비트 정수로 변환하여 이진 연산을 수행한다.
+- 비트 AND (`&`)
+- 비트 OR (`|`)
+- 비트 XOR (`^`)
+- 비트 NOT (`~`)
+- 왼쪽 시프트(LEFT SHIFT) (`<<`)
+- 오른쪽 시프트(RIGHT SHIFT) (`>>`)
+- 부호 없는 오른쪽 시프트(ZERO-FILL RIGHT SHIFT) (`>>>`)
+
+### [쉼표 연산자](https://ko.javascript.info/operators#ref-1424)
+쉼표 연산자는 여러 표현식을 코드 한 줄에서 평가할 수 있게 해주지만, 마지막 표현식의 평가 결과만 반환된다.
+```javascript
+let a = (1 + 2, 3 + 4);
+
+console.log(a);						// 7 출력
+```
