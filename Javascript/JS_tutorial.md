@@ -511,3 +511,7 @@ let a = (1 + 2, 3 + 4);
 
 console.log(a);						// 7 출력
 ```
+
+## JavaScript 비교 연산자
+비교 연산자는 `true` 혹은 `false`를 반환한다.
+### [문자열의 비교](https://ko.javascript.info/comparison#ref-441)
