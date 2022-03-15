@@ -1,18 +1,94 @@
 # Coding Test
 > 👍 *기초를 탄탄하게🧱, 발목 잡히지 않도록.*
 
-## 개요
-### 코딩 테스트를 보는 이유
-*문제 해결 능력* + *구현 능력*을 평가하기 위함.
+## [프로그래머스](https://programmers.co.kr/)
+### 001. [2016년](https://programmers.co.kr/learn/courses/30/lessons/12901)
+#### 첫 번째 답안
+```javascript
+function solution(a, b) {
+  var answer = '';
+  var dayNum = 0;
+  
+  for (var i = 1; i < a; i++) {
+    if (i === 1 || i === 3 || i === 5 || i === 7 || i === 8 || i === 10 || i === 12 )   {
+      dayNum += 31;
+    } else if (i === 2) {
+      dayNum += 29;
+    } else if (i === 4 || i === 6 || i === 9 || i === 11) {
+      dayNum += 30;
+    } else if (i === 0) {
+      dayNum += 0;
+    }
+  }
+  
+  dayNum += b;
+  
+  switch (dayNum % 7) {
+    case 0:
+      answer = "THU";
+      break;
+    case 1:
+      answer = "FRI";
+      break;
+    case 2:
+      answer = "SAT";
+      break;
+    case 3:
+      answer = "SUN";
+      break;
+    case 4:
+      answer = "MON";
+      break;
+    case 5:
+      answer = "TUE";
+      break;
+    case 6:
+      answer = "WED";
+      break;
+  }
+      
+  return answer;
+}
+```
+배열을 활용한 방법
+```javascript
+function solution(a, b) { 
+  var answer = "";
+  var MONTH = [31, 29, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+  var WEEK = ["FRI", "SAT", "SUN", "MON", "TUE", "WED", "THU"];
+  var sum = 0;
+  
+  for (var i = 1; i < a; i++) {
+    sum += MONTH[i-1];
+  }
 
-### 문제 유형
-**탐욕적 기법**, **DFS**, **BFS**, Hash, Binary Search, Graph, Priority Queue, **구현**, DP, Trie 등이 출제된다.
+  answer = WEEK[(sum + b - 1) % 7];
 
-#### 구현
-#### 완전 탐색(DFS, BFS)
-#### 탐욕 알고리즘
+  return answer;
+}
+```
 
-### 참고 사이트
-[백준](https://www.acmicpc.net/)
-[프로그래머스](https://programmers.co.kr/)
+Date 객체를 활용한 방법
+
+`new`
+`Date()`
+`toString()`
+`slice()`
+`toUpperCase()`
+`getDay()`
+
+```javascript
+function solution(a, b) {
+  var date = new Date(2016, a - 1, b);
+  return date.toString().slice(0, 3).toUpperCase();
+}
+```
+```javascript
+function solution(a, b) {
+  var WEEK = ["SUN", "MON", "TUE", "WED", "THU", "FRI", "SAT"];
+  var date = new Date(`2016-${a}-${b}`);
+  var day = date.getDay();
+  return WEEK[day];
+}
+```
 
