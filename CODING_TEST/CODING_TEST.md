@@ -316,7 +316,7 @@ function solution(s) {
 }
 ```
 
-### 009. 문자열 다루기 기본
+### 009. [문자열 다루기 기본](https://programmers.co.kr/learn/courses/30/lessons/12918)
 
 ```javascript
 function solution(s) {
@@ -339,5 +339,29 @@ function solution(s) {
 function alpha_string46(s){
   var regex = /^\d{6}$|^\d{4}$/;
   return regex.test(s);
+}
+```
+
+### 010. [서울에서 김서방 찾기](https://programmers.co.kr/learn/courses/30/lessons/12919)
+```javascript
+function solution(seoul) {
+  var answer = '';
+  
+  for (let i = 0; i < seoul.length; i++) {
+    if (seoul[i] === "Kim") {
+      answer = `김서방은 ${i}에 있다`
+    }
+  }
+  
+  return answer;
+}
+```
+
+
+`indexOf()` 배열 활용
+```javascript
+function findKim(seoul){
+  var idx = seoul.indexOf('Kim');
+  return "김서방은 " + idx + "에 있다";
 }
 ```
