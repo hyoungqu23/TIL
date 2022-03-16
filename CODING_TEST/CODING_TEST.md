@@ -429,4 +429,47 @@ function solution(s) {
   return answer;
 }
 ```
+### 014. [시저 암호](https://programmers.co.kr/learn/courses/30/lessons/12926)
+(실패)
+```javascript
+function solution(s, n) {
+  var answer = '';
+  
+  answer = s.split("").map((value) => {
+    if (value === " ") return value;
+    
+    // 대문자: 65 ~ 90 소문자: 97 ~ 122
+    if (value.charCodeAt() + n <= 90 || (value.charCodeAt() + n <= 122 && value.charCodeAt() >= 97)) {
+      return String.fromCharCode(value.charCodeAt() + n)
+    } else {
+      return String.fromCharCode(value.charCodeAt() + n - 26);
+    }
+  }).join("");
+  
+  return answer;
+}
+```
+
+`indexOf()`, `includes()`를 활용해 기존에 작성한 배열을 확인하기
+```javascript
+function solution(s, n) {
+  var upper = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  var lower = "abcdefghijklmnopqrstuvwxyz";
+  var answer= '';
+
+  for(var i =0; i <s.length; i++){
+    var text = s[i];
+    if(text == ' ') {
+      answer += ' '; 
+      continue;
+    }
+    var textArr = upper.includes(text) ? upper : lower;
+    var index = textArr.indexOf(text)+n;
+    if(index >= textArr.length) index -= textArr.length;
+    answer += textArr[index];
+  }
+  return answer;
+}
+```
+
 ```
