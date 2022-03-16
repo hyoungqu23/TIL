@@ -387,6 +387,8 @@ function solution(n) {
 }
 ```
 
+### 012. [수박수박수박수박수박수?](https://programmers.co.kr/learn/courses/30/lessons/12922)
+```javascript
 function solution(n) {
     var answer = '';
     
@@ -426,4 +428,5 @@ function solution(s) {
   answer = s / 1;    
   return answer;
 }
+```
 ```
