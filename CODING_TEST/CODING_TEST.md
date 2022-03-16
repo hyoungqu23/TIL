@@ -429,6 +429,7 @@ function solution(s) {
   return answer;
 }
 ```
+
 ### 014. [시저 암호](https://programmers.co.kr/learn/courses/30/lessons/12926)
 (실패)
 ```javascript
@@ -468,6 +469,19 @@ function solution(s, n) {
     if(index >= textArr.length) index -= textArr.length;
     answer += textArr[index];
   }
+  return answer;
+}
+```
+
+### 015. [약수의 합](https://programmers.co.kr/learn/courses/30/lessons/12928)
+```javascript
+function solution(n) {
+  var answer = 0;
+  
+  for (let i = 1; i <= n; i++) {
+    (n % i === 0) ? answer += i : answer += 0;
+  }
+  
   return answer;
 }
 ```
