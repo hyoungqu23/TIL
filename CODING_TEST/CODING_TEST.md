@@ -364,7 +364,29 @@ function findKim(seoul){
   var idx = seoul.indexOf('Kim');
   return "김서방은 " + idx + "에 있다";
 }
-``````javascript
+```
+
+### 011. [소수 찾기](https://programmers.co.kr/learn/courses/30/lessons/12921)
+[참고](https://velog.io/@jakeseo_me/%EC%9E%90%EB%B0%94%EC%8A%A4%ED%81%AC%EB%A6%BD%ED%8A%B8%EB%A1%9C-%EC%95%8C%EA%B3%A0%EB%A6%AC%EC%A6%98-%EC%A0%95%EB%A6%AC%ED%95%98%EA%B8%B0-7-%EC%88%98%ED%95%99-%EC%86%8C%EC%88%98-%ED%8C%A9%ED%86%A0%EB%A6%AC%EC%96%BC)
+(실패)
+
+```javascript
+function solution(n) {
+    let range = new Array(n+1).fill(true);
+    range[0] = false;
+    range[1] = false;
+    
+    for (let i = 2; i <= n; i++) {
+        if (range[i]) {
+            for (let j = i*i; j <= n; j += i) {
+                range[j] = false;
+            }
+        }
+    }
+    return range.filter(e => e != false).length
+}
+```
+
 function solution(n) {
     var answer = '';
     
