@@ -516,4 +516,36 @@ function toWeirdCase(s){
 }
 ```
 
+### 017. [자릿수 더하기](https://programmers.co.kr/learn/courses/30/lessons/12931)
+```javascript
+function solution(n) {
+  var answer = 0;
+  
+  for (let i = 0; i < String(n).length; i++) {
+    answer += Number(String(n)[i]);
+  }
+
+  return answer;
+}
+```
+
+`reduce()` 사용
+```javascript
+function solution(n){
+    // 쉬운방법
+    return (n+"").split("").reduce((acc, curr) => acc + parseInt(curr), 0)
+}
+```
+`forEach()` 사용
+```javascript
+function solution(n) {
+    var arr = n.toString().split('');
+    var sum = 0;
+    arr.forEach(element => {
+        sum += parseInt(element);
+    });
+    return sum;
+}
+```
+
 ```
