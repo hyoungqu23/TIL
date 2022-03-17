@@ -548,4 +548,33 @@ function solution(n) {
 }
 ```
 
+### 018. [자연수 뒤집어 배열로 만들기](https://programmers.co.kr/learn/courses/30/lessons/12932)
+```javascript
+function solution(n) {
+    var answer = [];
+    
+    answer = (n + "").split("").reverse().map(value => Number(value));
+    
+    return answer;
+}
+```
+
+숫자로 풀이하는 방법
+```javascript
+function solution(n) {
+    // 문자풀이
+    // return (n+"").split("").reverse().map(v => parseInt(v));
+
+    // 숫자풀이
+    var arr = [];
+
+    do {
+        arr.push(n%10);
+        n = Math.floor(n/10);
+    } while (n>0);
+
+    return arr;
+}
+```
+
 ```
