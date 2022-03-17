@@ -589,4 +589,35 @@ function solution(n) {
 }
 ```
 
+### 020. [정수 제곱근 판별](https://programmers.co.kr/learn/courses/30/lessons/12934)
+```javascript
+function solution(n) {
+  var answer = 0;
+  
+  for (let i = 1; i <= n; i++) {
+    if (i === Math.sqrt(n)) {
+      answer = ((i + 1) ** 2);
+      break;
+    } else {
+      answer = -1;
+    }
+  }
+  
+  return answer;
+}
+```
+
+다른 방법
+```javascript
+function nextSqaure(n){
+  //함수를 완성하세요
+  switch(n % Math.sqrt(n)){
+    case 0:
+      return Math.pow(Math.sqrt(n) + 1, 2);
+    default:
+      return "no"
+  }
+}
+```
+
 ```
