@@ -577,4 +577,16 @@ function solution(n) {
 }
 ```
 
+### 019. [정수 내림차순으로 배치하기](https://programmers.co.kr/learn/courses/30/lessons/12933)
+```javascript
+function solution(n) {
+  var answer = 0;
+  
+  answer = parseInt((n+"").split("").sort((a, b) => b - a).join(""));
+  // answer = parseInt((n+"").split("").sort().reverse().join(""));
+  
+  return answer;
+}
+```
+
 ```
