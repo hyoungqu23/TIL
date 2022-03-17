@@ -486,4 +486,34 @@ function solution(n) {
 }
 ```
 
+### 016. [이상한 문자 만들기](https://programmers.co.kr/learn/courses/30/lessons/12930)
+(실패)
+```javascript
+function solution(s) {
+    return s.split(' ').map(word => {
+        let result = '';
+        for (let i = 0; i < word.length; i++) {
+            if (i % 2) {
+                result += word[i].toLowerCase();
+            } else {
+                result += word[i].toUpperCase();
+            }
+        }
+        return result;
+    }).join(' ');
+}
+```
+정규표현식 활용
+```javascript
+function toWeirdCase(s){
+  //함수를 완성해주세요
+  return s.toUpperCase().replace(/(\w)(\w)/g, function(a){return a[0].toUpperCase()+a[1].toLowerCase();})
+```
+
+```javascript
+function toWeirdCase(s){
+  return s.split(' ').map(i => i.split('').map((j, key) => key % 2 === 0 ? j.toUpperCase() : j).join('')).join(' ')
+}
+```
+
 ```
