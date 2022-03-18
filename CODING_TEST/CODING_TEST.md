@@ -639,4 +639,13 @@ function solution(arr) {
 }
 ```
 
+### 022. [짝수와 홀수](https://programmers.co.kr/learn/courses/30/lessons/12937)
+```javascript
+function solution(num) {
+    var answer = '';
+    (num % 2 === 0) ? answer = "Even": answer = "Odd";
+    return answer;
+}
+```
+
 ```
