@@ -648,4 +648,43 @@ function solution(num) {
 }
 ```
 
+### 023. [최대공약수와 최소공배수](https://programmers.co.kr/learn/courses/30/lessons/12940)
+❓❓❓
+[참고](https://velog.io/@devjade/JavaScript%EB%A1%9C-%EC%B5%9C%EB%8C%80%EA%B3%B5%EC%95%BD%EC%88%98GCD-%EC%B5%9C%EC%86%8C%EA%B3%B5%EB%B0%B0%EC%88%98LCM-%EA%B5%AC%ED%95%98%EA%B8%B0#%EB%AC%B8%EC%A0%9C)
+```javascript
+function solution(n, m) {
+    var answer = [];
+    let num1 = n;
+    let num2 = m;
+    let gcd = 0;
+    let lcm = 0;
+    
+    // 2 ~ 두 수 중 더 작은 수까지 나누어 떨어지는 최대의 수 구하기(최대공약수)
+    // for (let i = 2; i <= Math.min(n, m); i++) {
+    //     (n % i === 0 && m % i === 0) ? gcd = i : gcd = 1;
+    // }
+    // 유클리드 호제법 최대공약수
+    while(num2 > 0){
+        let r = num1 % num2;
+        num1 = num2;
+        num2 = r;
+    } 
+    gcd = num1;
+    
+    // 최소공배수
+    lcm = n * m / gcd;
+    
+    answer.push(gcd, lcm);
+    return answer;
+}
+```
+
+```javascript
+function solution(a, b) {
+  var r;
+  for (var ab = a * b ; r = a % b ; a = b, b = r) { }
+  return [b, ab/b];
+}
+```
+
 ```
