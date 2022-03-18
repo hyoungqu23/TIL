@@ -687,4 +687,43 @@ function solution(a, b) {
 }
 ```
 
+### 024. [콜라스 추측](https://programmers.co.kr/learn/courses/30/lessons/12943)
+```javascript
+function solution(num) {
+  var answer = 0;
+  var cnt = 0;
+  
+  while (num !== 1) {
+    cnt++;
+      
+    if (cnt >= 500) {
+      answer = -1;
+      break;
+    }
+
+    answer = cnt;
+
+    if (num % 2) {
+      num = (num * 3) + 1;
+    } else {
+      num = num / 2;
+    }
+  }
+  
+  return answer;
+}
+```
+
+삼항연산자 활용
+```javascript
+function collatz(num) {
+    var answer = 0;
+    while(num !=1 && answer !=500){
+        num%2==0 ? num = num/2 : num = num*3 +1;
+    answer++;
+  }
+    return num == 1 ? answer : -1;
+}
+```
+
 ```
