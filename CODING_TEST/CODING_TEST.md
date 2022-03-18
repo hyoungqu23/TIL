@@ -744,4 +744,17 @@ function average(array){
 }
 ```
 
+### 026. [하샤드 수](https://programmers.co.kr/learn/courses/30/lessons/12947)
+```javascript
+function solution(x) {
+    var answer = true;
+    
+    let div = (x + "").split("").reduce((a, b) => +a + +b);
+    
+    (x % div === 0) ? answer = true : answer = false;
+    
+    return answer;
+}
+```
+
 ```
