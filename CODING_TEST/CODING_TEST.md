@@ -620,4 +620,23 @@ function nextSqaure(n){
 }
 ```
 
+### 021. [제일 작은 수 제거하기](https://programmers.co.kr/learn/courses/30/lessons/12935)
+
+`...`
+`splice()`
+`Math.min()`
+```javascript
+function solution(arr) {
+    var answer = [];
+    
+    if (arr.length === 1) {
+        return [-1];
+    } else {
+        arr.splice(arr.indexOf(Math.min(...arr)), 1);   // 배열의 얕은 복사(Shallow Copy)
+    }
+    answer = arr;
+    return answer;
+}
+```
+
 ```
