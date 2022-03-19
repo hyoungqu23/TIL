@@ -781,4 +781,23 @@ function solution(arr1, arr2) {
 }
 ```
 
+### 029. [x만큼 간격이 있는 n개의 숫자](https://programmers.co.kr/learn/courses/30/lessons/12954)
+```javascript
+function solution(x, n) {
+    var answer = [];
+    
+    for (let i = 0; i < n; i++) {
+        answer.push(x + (i * x));
+    }
+    
+    return answer;
+}
+```
+
+```javascript
+function solution(x, n) {
+    return Array(n).fill(x).map((v, i) => (i + 1) * v)
+}
+```
+
 ```
