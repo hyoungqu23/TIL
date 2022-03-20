@@ -883,4 +883,28 @@ function solution(sizes) {
 }
 ```
 
+### 032. [나머지가 1이 되는 수 찾기](https://programmers.co.kr/learn/courses/30/lessons/87389)
+```javascript
+function solution(n) {
+    var answer = 0;
+    for (let x = 1; x < n; x++) {
+        if (n % x === 1) {
+            answer += x;
+            break;
+        }
+    }
+    return answer;
+}
+```
+다른 사람의 풀이
+```javascript
+function solution(n, x = 1) {    
+    while (x++) {
+        if (n % x === 1) {
+            return x;
+        }
+    }    
+}
+```
+
 ```
