@@ -907,4 +907,27 @@ function solution(n, x = 1) {
 }
 ```
 
+### 033. [부족한 금액 계산하기](https://programmers.co.kr/learn/courses/30/lessons/82612)
+```javascript
+function solution(price, money, count) {
+    var answer = -1;
+    let sum = 0;
+    
+    for (let i = 1; i <= count; i++) {
+        sum += price * i;
+    }
+    
+    (sum <= money) ? answer = 0 : answer = sum - money
+    
+    return answer;
+}
+```
+다른 사람의 풀이 - 가우스 공식(1/2 * 항수 * (첫항 + 끝항))
+```javascript
+function solution(price, money, count) {
+    const tmp = price * count * (count + 1) / 2 - money;
+    return tmp > 0 ? tmp : 0;
+}
+```
+
 ```
