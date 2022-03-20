@@ -831,3 +831,56 @@ process.stdin.on('data', data => {
 
 });
 ```
+
+### 031. [최소 직사각형](https://programmers.co.kr/learn/courses/30/lessons/86491)
+```javascript
+function solution(sizes) {
+    var answer = 0;
+    let wArr = [];
+    let hArr = [];
+    var sortArr = sizes.map((e) => e.sort((a, b) => a - b));
+    
+    for (let i = 0; i < sizes.length; i++) {
+        hArr.push(sortArr[i][0]);
+        wArr.push(sortArr[i][1]);
+    }
+    
+    answer = wArr.sort((a, b) => a - b).pop() * hArr.sort((a, b) => a - b).pop();
+    
+    return answer;
+}
+```
+```javascript
+function solution(sizes) {
+    const [hor, ver] = sizes.reduce(([h, v], [a, b]) => [Math.max(h, Math.max(a, b)), Math.max(v, Math.min(a, b))], [0, 0])
+    return hor * ver;
+}
+```
+다른 사람의 풀이
+```javascript
+function solution(sizes) {
+    let w = 0;
+    let h = 0;
+    sizes.forEach(s => {
+        const [a, b] = s.sort((a,b) => a-b);
+        if (a > h) h = a;
+        if (b > w) w = b;
+    });
+
+    return w * h;
+}
+```
+```javascript
+function solution(sizes) {
+    const rotated = sizes.map(([w, h]) => w < h ? [h, w] : [w, h]);
+
+    let maxSize = [0, 0];
+    rotated.forEach(([w, h]) => {
+        if (w > maxSize[0]) maxSize[0] = w;
+        if (h > maxSize[1]) maxSize[1] = h;
+    })
+    return maxSize[0]*maxSize[1];
+}
+```
+
+```
