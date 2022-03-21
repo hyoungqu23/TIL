@@ -990,3 +990,26 @@ function solution(left, right) {
 }
 ```
 
+### 037. [내적](https://programmers.co.kr/learn/courses/30/lessons/70128)
+```javascript
+function solution(a, b) {
+    let sum = 0;
+    for (let i = 0; i < a.length; i++) {
+        sum += a[i] * b[i]
+    }
+    return sum;
+}
+```
+다른 사람의 풀이 - reduce() 활용
+```javascript
+function solution(a, b) {
+    return a.reduce((acc, _, i) => acc += a[i] * b[i], 0);
+}
+```
+```javascript
+function solution(a, b) {
+    var answer = a.reduce((acc, cur, idx) => acc += cur*b[idx], 0)
+    return answer;
+}
+```
+
