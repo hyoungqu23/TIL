@@ -978,3 +978,15 @@ const solution = (n) => {
 }
 ```
 
+### 036. [약수의 개수와 덧셈](https://programmers.co.kr/learn/courses/30/lessons/77884)
+```javascript
+function solution(left, right) {
+    var answer = 0;
+    // 제곱수인 경우 약수의 개수가 홀수이다.
+    for (let i = left; i <= right; i++) {
+        Number.isInteger(Math.sqrt(i)) ? answer -= i : answer += i
+    }
+    return answer;
+}
+```
+
