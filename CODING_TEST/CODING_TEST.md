@@ -1038,3 +1038,20 @@ function solution(absolutes, signs) {
     return answer;
 }
 ```
+### 039. [없는 숫자 더하기](https://programmers.co.kr/learn/courses/30/lessons/86051)
+```javascript
+function solution(numbers) {
+    var answer = 0;
+    
+    for (let i = 0; i < 10; i++) {
+        if (!numbers.includes(i)) answer += i;
+    }
+    return answer;
+}
+```
+다른 사람의 풀이 - 전체합 활용
+```javascript
+function solution(numbers) {
+    return 45 - numbers.reduce((cur, acc) => cur + acc, 0);
+}
+```
