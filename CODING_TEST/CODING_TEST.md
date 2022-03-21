@@ -962,3 +962,19 @@ function solution(numbers) {
 ```
 
 ### 035. [3진법 뒤집기](https://programmers.co.kr/learn/courses/30/lessons/68935)
+```javascript
+function solution(n) {
+    var answer = 0;
+    let temp = parseInt(n.toString(3).split("").reverse().join(""), 3);
+    answer = parseInt(temp, 10);
+    return answer;
+}
+```
+
+다른 사람의 풀이
+```javascript
+const solution = (n) => {
+    return parseInt([...n.toString(3)].reverse().join(""), 3);
+}
+```
+
