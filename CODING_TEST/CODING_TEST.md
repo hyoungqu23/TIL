@@ -930,4 +930,35 @@ function solution(price, money, count) {
 }
 ```
 
+### 034. [두 개 뽑아서 더하기](https://programmers.co.kr/learn/courses/30/lessons/68644)
+```javascript
+function solution(numbers) {
+    var answer = [];
+    
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = 0; j < numbers.length; j++) {
+            if (answer.includes(numbers[i] + numbers[j])) continue;
+            if (i !== j) answer.push(numbers[i] + numbers[j]);
+        }
+    }
+    return answer.sort((a, b) => a - b);
+}
 ```
+다른 사람의 풀이 - Set() 활용
+```javascript
+function solution(numbers) {
+    const temp = []
+
+    for (let i = 0; i < numbers.length; i++) {
+        for (let j = i + 1; j < numbers.length; j++) {
+            temp.push(numbers[i] + numbers[j])
+        }
+    }
+
+    const answer = [...new Set(temp)]
+
+    return answer.sort((a, b) => a - b)
+}
+```
+
+### 035. [3진법 뒤집기](https://programmers.co.kr/learn/courses/30/lessons/68935)
