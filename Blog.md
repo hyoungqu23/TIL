@@ -134,3 +134,59 @@ function gcd(a, b) {
   return a;
 }
 ```
+
+## 005. 블로그 만들기 (2022.03.25) +Blog+
+### 블로그 선택하기
+1. 네이버 블로그 & 티스토리 블로그
+   원하는 대로 커스텀 할 수 없다는 점에서 제외.
+2. 브런치
+   글을 작성하는 것 이외의 것이 불편하여 제외.
+3. Hexo
+   JavaScript 기반이라는 점이 굉장히 매력적이고 유용한 플러그인과 테마가 많다는 점이 커스텀을 원하는 입장에서 고민을 하게 했다.
+4. Jekyll
+   Ruby 기반이라 문제가 생겼을 때 대처하기 어렵다는 점으로 인해 제외.
+5. Gatsby
+   
+### Gatsby를 선택한 이유
+Jekyll은 Ruby 기반이지만, Gatsby는 React.js를 기반으로 한 정적 사이트 생성기라는 점.
+여러 군데에서 글을 작성하는 경우가 많고, 여러 기기로 작성한 이후에도 Gatsby를 사용해 GraphQL이라는 일관된 API를 통해 조회가 가능해지므로 어디서든 블로그 사이트로 변환할 수 있다는 점.
+React.js 기반임에도 빌드 시 미리 렌더링하기 때문에 SEO에 능하다는 점.
+React.js와 GraphQL를 배울 수 있다는 점.
+JAM Stack을 통해 기존 방식에 비해 더 안전하고 빠르다는 점.
+문서화가 잘 되어 있어 쉽게 문제를 해결할 수 있다는 점.
+단지 끌렸다는 점.
+
+### Background Knowledge
+HTML/CSS, JavaScript, React, GraphQL, Node, Git
+[CMD 참고자료](https://www.lifewire.com/how-to-open-command-prompt-2618089)
+
+### 개발 환경 구축
+React.js를 실행하기 위해 JavaScript 런타임 Node.js와 패키지 매니저 Yarn을 설치해야 한다.
+#### Git 설치
+[참고](https://www.atlassian.com/git/tutorials/install-git#windows)
+
+#### Node.js 설치
+1. [https://nodejs.org/en/](https://nodejs.org/en/)에서 다운로드할 수 있다.
+   최신 버전을 다운로드할 수 있지만, 검증된 LTS 버전을 설치하는 것을 추천한다.
+2. 다운로드를 완료한 후에는 CMD 창을 열어 확인한다.
+   ```
+   node -v
+   ```
+[참고](https://docs.npmjs.com/resolving-eacces-permissions-errors-when-installing-packages-globally)
+
+#### yarn 설치
+1. CMD 창을 열어 아래 명령어로 yarn을 설치한다.
+   ```
+   npm install --global yarn
+   ```
+2. 설치한 후에는 정상적으로 설치되었는지 확인한다.
+   ```
+   yarn --version
+   ```
+
+#### Gatsby CLI(Command Line Interface) 설치
+새로운 Gatsby 기반 사이트를 빠르게 만들고, 개발하기 위한 명령을 실행할 수 있는 도구인 Gatsby CLI를 설치해야 한다.
+
+#### TypeScript 설치
+
+#### ESLint와 Prettier 설정하기
