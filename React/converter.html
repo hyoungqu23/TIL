@@ -16,30 +16,41 @@
 <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
 <script type="text/babel">
-  function App() {
-    {/* state 만들기 */}
-    const [minutes, setMinutes] = React.useState();
+  function MinutesToHours() {
+    {/* state 작성하고 설정하기 */}
+    const [amount, setAmount] = React.useState(0);
+    const [inverted, setInverted] = React.useState(false);
+    
+    {/* state를 바탕으로 UI를 변경하는 것이 더 유용하다. */}
     const onChange = (event) => {
-      setMinutes(event.target.value);
+      setAmount(event.target.value);        // input에 입력된 값을 State에 전달하는 함수
     };
     const reset = () => {
-      setMinutes(0);
+      setAmount(0);
     }
+    const invert = () => {
+      // 새로운 값을 만들어 State를 작동시키는 것이 더 안전하다.
+      // setInverted(!inverted);       // inverted ? inverted = false : inverted = true;와 동일한 효과
+      setInverted((current) => !current);
+      reset();        // invert 되는 경우, amount에 입력된 값이 옮겨지기 때문에 0으로 초기화하는 과정이 필요함.
+    }
+
     return (
-      <div>
-        <h1 className="hello">Unit Converter</h1>
-        
+      <div>        
         {/* JSX와 HTML의 차이가 존재함(for -> htmlFor, class -> className 등 *JS에서 이미 지정된 단어이기 때문에 중복 사용 불가능) */} 
         <div>
           <label htmlFor="minutes">Minutes</label>
-          <input value={minutes} id="minutes" placeholder="Minutes" type="number" onChange={onChange} />
+          <input value={inverted ? amount * 60 : amount} id="minutes" placeholder="Minutes" type="number" onChange={onChange} disabled={inverted === true} />
         </div>
-        
+          
+        {/* JSX를 활용하기 때문에 JS의 조건문 사용 가능(`inverted === true`의 참/거짓 값에 따라 `disabled` 속성 활용 -> 간단히 `!inverted`로 활용 가능) */} 
         <div>
           <label htmlFor="hours">Hours</label>
-          <input value={Math.round(minutes/60)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled />
+          <input value={inverted ? amount : Math.round(amount / 60)} id="hours" placeholder="Hours" type="number" onChange={onChange} disabled={!inverted} />
         </div>
+
         <button onClick={reset}>Reset</button>
+        <button onClick={invert}>{inverted ? "Turn back" : "Invert"}</button> {/* 태그 내에서도 변수 활용 가능 */}
       </div>
     );
   }
