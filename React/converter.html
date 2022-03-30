@@ -56,8 +56,35 @@
   }
   
   function KiloToMiles() {
-    return (
+    const [length, setLength] = React.useState(0);
+    const [inverted, setInverted] = React.useState(false);
+    const onChange = (event) => {
+      setLength(event.target.value);
+    };
+    const reset = () => {
+      setLength(0);
+    }
+    const invert = () => {
+      setInverted(!inverted);
+      reset();                // ✔ 변환 시 값 초기화
+    }
 
+    // ✔ label 태그 활용, `htmlFor` 속성
+    return (
+      <div>
+        <div>
+          <label htmlFor="Kilometer">Kilometers</label>
+          <input value={inverted ? length * 1.609 : length} type="number" placeholder="Kilometers" name="Kilometers" onChange={onChange} disabled={inverted}/>
+        </div>
+        <div>
+          <label htmlFor="Miles">Miles</label>
+          <input value={inverted ? length : Math.round(length / 1.609)} type="number" placeholder="Miles" name="Miles" onChange={onChange} disabled={!inverted}/>
+        </div>
+        <div>
+          <button onClick={reset}>Reset</button>
+          <button onClick={invert}>{inverted ? "Turn back" : "Invert"}</button>
+        </div>
+      </div>
     )
   }
 
