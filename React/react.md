@@ -183,3 +183,44 @@ Button.propTypes = {
   text: PropTypes.string.isRequired,
 }
 ```
+또 다른 유용성으로는 Style 적용에 있어 효율적이라는 점이다. 기존에는 `style.css`을 통해 CSS를 작성한 후 이를 `index.js` 파일에 `import "./style.css";`하여 적용했다. 다만, 페이지 내에 여러 버튼이 존재하고, 각 버튼마다 다른 Style을 부여하고자 하면 각각 className을 설정해주는 등 번거롭게 된다.
+>style.css
+```CSS
+button {
+  color: white;
+  background-color: lightgreen;
+}
+```
+이와 달리 `style prop`을 활용해 직접적으로 Style을 설정할 수도 있다. 다만 이러한 방식은 모든 Component에 각각 Style을 직접 설정해야 하기 때문에 비효율적이다.
+> Button.js
+```javascript
+function Button({text}) {
+  return (
+    <button style={{ backgroundColor: 'skyblue', color: 'white' }}>
+      {text}
+    </button>
+  );
+}
+```
+
+따라서 CSS를 활용하면서, 기존처럼 모든 CSS를 적용하지 않는 방식으로 CSS module을 사용할 수 있다. 우선, `Button.module.css` 파일을 생성한 후 내부에 `btn` 클래스의 Style을 생성한다. 이를 `index.js`에 연결하는 것이 아니라, `Button.js`에 연결한 후 원하는 태그에 `className`을 지정해 사용할 수 있다.
+> Button.module.css
+```css
+.btn {
+  color: white;
+  background-color: lightgreen;
+}
+```
+> Button.js
+```javascript
+import styles from "./Button.module.css"
+
+function Button({text}) {
+  return (
+    <button className={styles.btn}>
+      {text}
+    </button>
+  );
+}
+```
+CRA(Create-React-App)은 CSS 코드를 JavaScript 객체(`styles`)로 변환시켜 준다. 이 `styles` 객체 내부에는 `btn`과 그 Style이 존재한다. 이때 이러한 `className`은 CRA에서 자동으로 랜덤하게 부여하므로, 특정 이름을 외우는 등의 수고로움은 필요하지 않다.
