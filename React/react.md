@@ -165,5 +165,21 @@ npm start
 1. `App.js`, `index.js`의 불필요한 코드 제거
 2. `App.css`, `App.test.js`, `index.css`, `logo.svg`, `reportWebVitals.js`, `setupTests.js` 파일을 삭제
 
-`Node.js`로 작업하기 때문에 파일을 각각 분리할 수 있고, 더 조직적으로 구성하여 하나의 파일로 Component를 구성하고 이를 `import` 하는 방식으로 만들 수 있다.
+```javascript
+import Button from './Button';
+```
+`Node.js`로 작업하기 때문에 파일을 각각 분리할 수 있고, 더 조직적으로 구성하여 하나의 파일로 Component를 구성하고 이를 `import` 하는 방식으로 만들 수 있다. 이때 Component Rendering 방식, `props` 활용 방식 등은 모두 동일하게 활용할 수 있다.
 
+다음 명령어를 활용해 `PropsType`을 설치할 수 있다.
+```
+npm i prop-types
+```
+
+이후 `PropTypes`를 `import`한 후 React.js와 동일하게 활용할 수 있다.
+```javascript
+import PropTypes from "propTypes";
+
+Button.propTypes = {
+  text: PropTypes.string.isRequired,
+}
+```
