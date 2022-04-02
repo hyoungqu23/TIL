@@ -224,3 +224,11 @@ function Button({text}) {
 }
 ```
 CRA(Create-React-App)은 CSS 코드를 JavaScript 객체(`styles`)로 변환시켜 준다. 이 `styles` 객체 내부에는 `btn`과 그 Style이 존재한다. 이때 이러한 `className`은 CRA에서 자동으로 랜덤하게 부여하므로, 특정 이름을 외우는 등의 수고로움은 필요하지 않다.
+
+CRA를 활용하고 있기 때문에 React를 코드에 작성할 필요가 없다.
+```javascript
+const [counter, setValue] = useState();
+```
+
+## React 18 에러
+[참고](https://dev.to/osmanforhad/react-js-warning-reactdomrender-is-no-longer-supported-in-react-18-use-createroot-instead-until-you-switch-to-the-new-api-1jhh)
