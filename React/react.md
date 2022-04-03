@@ -1,6 +1,47 @@
 const [data, modifierFunction] = React.useState();
 `modifierFunction` 함수를 실행하면 모든 Component가 다시 렌더링 된다.
 
+## 005. React.js Movie Web Service(2022.03.28) +REACT+
+### THE BASICS OF REACT
+JavaScript만으로 구현할 수 있지만, 더 쉽고 간편하게 React.js를 활용해 구현할 수 있다.
+1. 어려운 방법(React의 이해: React가 직접 결과물인 HTML을 업데이트할 수 있다. 즉, 유저에게 보여질 내용을 제어할 수 있다.)
+```javascript
+  const $root = document.getElementById("root");
+  const $h3 = React.createElement("h3", {
+    id: "cnt-span",
+    style: {
+      color: "blue"
+    },
+    onMouseEnter: () => console.log("Entered!"), // event listener 등록
+  }, "Total Clicks: 0");  // Create React Element  (❕) (HTML tag, {Properties}, Contents)
+  const $btn = React.createElement("button", {
+    onClick: () => console.log("Clicked!"), // event listener 등록
+  }, "Click!");
+  const $container = React.createElement("div", null, [$h3, $btn]);
+  ReactDOM.render($container, $root);
+  // ReactDOM.render($h3, $root); // Put React Element in HTML
+  // ReactDOM.render($btn, $root); // Put React Element in HTML
+```
+
+2. JSX를 활용한 React Element 만들기 => Babel 등을 활용해 위의 코드로 변경해주어야 한다.
+```javascript
+  const $root = document.getElementById("root");
+  function Title() {
+    return (
+      <h3 id="title" onMouseEnter = {() => console.log("Entered 2")}>Click Count: 0</h3>
+    );
+  }
+  const Title = () => (<h3 id="title" onMouseEnter = {() => console.log("Entered 2")}>Click Count: 0</h3>);
+  
+  const Button = () => (<button style={{backgroundColor: "red",}} onClick = {() => console.log("Clicked 2")}>Click Me</button>);
+
+  JSX에서의 Render 방식(해당 HTML 태그를 함수화하여 이를 Render할 태그 내에 호출(닫힌 태그를 활용)하는 방식 *대문자 작성 필수 **HTML 요소의 경우 소문자 작성)
+  const Container = () => (<div>
+    <Title />
+    <Button />
+  </div>);
+  ReactDOM.render(<Container />, $root);
+```
 
 ## React `props`
 각각의 Component를 만들어 재사용하는 것은 효율성을 높일 수 있다.
