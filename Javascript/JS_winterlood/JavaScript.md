@@ -307,6 +307,7 @@ const readerList = ["James", "Smith", "Tom", "Jerry"];
 const listenerList = ["Ria", "Keith", "Charlie", "Larry", "Jin", "Carry"];
 
 const participantList = [...readerList, ...listenerList];
+```
 
 <hr />
 
@@ -315,4 +316,191 @@ const participantList = [...readerList, ...listenerList];
 - [W3S Spread Operator](https://www.w3schools.com/react/react_es6_spread.asp)
 - [Spread Operator](https://www.programiz.com/javascript/spread-operator)
 
+## 동기와 비동기
+### JavaScript의 Single Thread 작업 수행 방식
+JavaScript는 코드가 작성된 순서대로 작업을 처리한다. 이때, 이전 작업이 진행 중인 경우에는 다음 작업을 수행하지 않고 기다리게 되어, 먼저 작성된 코드가 다 실행된 후에 뒤에 작성된 코드를 실행하게 된다. 이를, **동기 방식의 처리**라고 한다.
 
+또한, 이처럼 하나의 Thread에서 하나의 작업이 실행되고 있을 때 다른 작업을 동시에 실행할 수 없는 방식을 **블로킹 방식**이라고도 한다.
+
+하지만 이러한 동기적인 처리 방식의 경우 하나의 작업이 긴 수행 시간을 가지는 경우 문제가 된다. 즉, 모든 작업이 종료되기 위해서는 긴 수행 시간을 가지는 그 작업이 종료되기 전까지 모두 대기하기 때문에 전반적인 작업 흐름이 느려진다는 성능 상의 문제점을 갖는다. JavaScript는 웹 사이트에서 동작을 제어하며, 사용자의 행동에 맞는 상호작용을 위해 사용되는데, 만약 웹 사이트에서 버튼을 하나 클릭할 때, 링크를 하나 클릭할 때 20 ~ 30초씩 걸린다고 생각하면 왜 문제가 되는 지 알 수 있다.
+
+이를 해결하기 위해 Thread를 추가할 수 있다. 즉, Multi Thread 방식으로 JavaScript를 작동시키면 작업을 분할하여 수행할 수 있어 이러한 문제를 해결할 수 있다. 다만, JavaScript는 Single Thread 방식으로만 동작하기 때문에 이렇게 작업을 분할 수행하는 것은 불가능하다.
+
+결국, JavaScript의 Single Thread 방식을 사용하면서 동기적 처리 방식의 문제를 해결하기 위해서는 여러 개의 작업을 동시에 실행시키는 **비동기적 처리 방식**을 택할 수 밖에 없다. 즉, 먼저 작성된 코드의 결과를 기다리지 않고 다음 코드를 바로 실행하는 방식으로 JavaScript를 동작시키는 것이다. 또한, 이처럼 하나의 작업이 Thread를 온전히 점유하지 않는, 다른 작업을 수행하지 못하게 막지 않는 방식을 **논 블로킹 방식**이라고도 한다.
+
+다만, 이러한 비동기적 처리 방식의 경우 작업의 종료 시기와, 이러한 결과 값을 정확히 파악하기 어렵다는 문제가 있다. 따라서 JavaScript에서는 이러한 문제를 해결하기 위해 작업 결과를 전달하는 **콜백 함수**를 비동기적으로 실행되는 함수에 추가하여 전달한다. 즉, 콜백 함수가 해당 작업이 끝난 이후 호출되어 그 결과 값을 사용할 수 있도록 만들어 줄 수 있다.
+
+#### 동기적 방식
+```javascript
+function taskA() {
+  console.log("taskA is done.");
+}
+
+taskA();
+console.log("Code is done");
+```
+
+#### 비동기적 방식
+JavaScript에서는 내장된 비동기 함수 `setTimeout()`이 존재한다. 콜백 함수와 지연 시간을 입력받아 지연 시간이 지난 후 콜백 함수가 실행되는 대표적인 비동기 방식으로 작업이 실행되는 함수이다. 이때 지연 시간은 `ms` 단위로 입력된다.
+```javascript
+function taskA() {
+  setTimeout(() => {
+    console.log("taskA is done.");
+  }, 1000);
+}
+
+taskA();
+console.log("Code is done");
+```
+`taskA()` 함수가 먼저 호출되고, 이후에 `console.log()`가 작성된 것을 확인할 수 있다. 그러나, `setTimeout()`에 의해 1초 후 실행되는 `taskA()`를 기다리지 않고, `console.log()`가 먼저 실행되는 것을 볼 수 있다. 이렇게 먼저 작성된 코드가 종료되기까지 기다리지 않고, 다음 코드를 바로 실행하는 방식을 비동기 방식이라고 한다.
+```javascript
+function taskB(a, b) {
+  setTimeout(() => {
+    const result = a + b;
+  }, 3000);
+}
+
+taskB(3, 4);
+console.log(result);              // ReferenceError
+console.log("Code is done.");
+```
+`taskB()` 함수의 경우 똑같이 비동기적으로 동작하는데, 이때 두 인자를 받아 더한 값을 `result` 변수에 할당한다. 이때 `const`로 선언된 `result` 변수는 Block Scope임을 알고 있어야 한다. 따라서 해당 함수 종료 이후에 `result` 변수를 활용하면 `ReferenceError: result is not defined`를 반환하게 된다.
+
+따라서, 해당 함수의 결과 값을 함수 종료 이후에 사용하기 위해서는 **결과 값을 인자로 받는 콜백 함수**를 활용해야 한다.
+```javascript
+function taskB(a, b, callback) {
+  setTimeout(() => {
+    const result = a + b;
+    callback(result);
+  }, 3000);
+}
+
+taskB(3, 4, (result) => {console.log(result)});
+console.log(result);              // ReferenceError
+console.log("Code is done.");
+```
+즉, 비동기 처리의 결과 값을 활용하기 위해서는 콜백 함수를 전달해야 한다. 다음과 같은 경우에는 `taskC()`가 `tackB()`보다 먼저 실행이 완료되는 것을 확인할 수 있다.
+```javascript
+function taskB(a, b, callback) {
+  setTimeout(() => {
+    const result = a + b;
+    callback(result);
+  }, 3000);
+}
+
+function taskC(a, callback) {
+  setTimeout(() => {
+    const result = a * 2;
+    callback(result);
+  }, 1000);
+}
+
+taskB(3, 4, (result) => {
+  console.log(result);
+});
+
+taskC(7, (result) => {
+  console.log(result);
+});
+
+console.log("Code is done.");
+```
+
+### JavaScript Engine
+JavaScript로 작성된 코드는 웹 브라우저 등에 탑재된 JavaScript Engine을 이용해 해석되고 실행된다. JavaScript Engine은 Heap과 Call Stack 두 가지로 구성된다. **Heap**은 변수나 상수에 사용되는 메모리를 저장하는 데 사용되고, **Call Stack**은 코드를 실행함에 따라서 호출 스택을 쌓는 영역이다.
+
+#### 동기적 방식
+```javascript
+function first() {
+  return 1;
+}
+
+function second() {
+  return first() + 1;
+}
+
+function third() {
+  return second() + 1;
+}
+
+console.log(third());
+```
+JavaScript 코드가 실행되면, Call Stack에 최상위 문맥인 Main Context가 추가된다. 따라서, Main Context가 추가되는 순간이 JavaScript 코드가 실행되는 시점이고, Call Stack에서 Main Context가 제거되는 시점이 JavaScript 코드의 실행이 종료되는 시점이다.
+
+JavaScript 코드의 실행이 시작된 시점 이후, 첫 번째 코드가 실행되는데, 함수의 경우 생성되고 넘어가며, 실제로 실행되는 코드는 `console.log()` 코드가 실행된다. 이때 `console.log()`의 인자인 `third()` 함수가 실행되어 결과 값을 반환받아 출력해야 하기 때문에 Call Stack에는 `third()` 함수가 추가된다.
+
+`third()` 함수의 결과 값을 받기 위해 실행하면, 내부에 `second()`가 호출된다. 따라서 `second()` 함수가 Call Stack에 추가되고, 동일한 방식으로 `first()`함수도 Call Stack에 추가된다. 
+
+이때 `first()` 함수는 `1`을 결과 값으로 반환하고 바로 종료된다. 결국, `first()`는 Call Stack에서 바로 제거된다. 이후, `first()` 함수의 결과 값을 받아 `second()` 함수가 `2`를 결과 값으로 반환하고 종료되어 Call Stack에서 제거된다. 같은 방식으로 `third()`도 `3`을 반환하고 종료되어 Call Stack에서 제거되고, Console에 `3`이 출력되고 JavaScript 코드가 종료된다. 마지막으로, JavaScript 코드의 실행이 종료되었으므로, Call Stack에서 Main Context도 제거된다.
+
+JavaScript의 Thread는 Call Stack 하나만을 담당하며, Call Stack의 작동 방식대로 명령을 처리하는데, JavaScript Engine은 Call Stack이 하나만 존재하기 때문에 Single Thread로 동작하는 것이다.
+
+#### 비동기적 방식
+```javascript
+function asyncAdd(a, b, callback) {
+  setTimeout(() => {
+    const result = a + b;
+    callback(result);
+  }, 3000);
+}
+
+asyncAdd(10, 20, (result) => {
+  console.log("asyncAdd RESULT: ", result);
+})
+```
+Web APIs, Callback Queue, Event Loop는 JavaScript Engine 외부에서 웹 브라우저와의 상호작용 등을 처리하기 위해 존재하는데, 대표적으로 비동기 방식의 작업을 처리하기 위함이다.
+
+JavaScript 코드가 실행되어 Main Context가 Call Stack에 추가되고, `asyncAdd()` 함수가 실행되며 Call Stack에 추가된다. 이후 `asyncAdd()` 함수를 실행하면 내부에서 `setTimeout()` 비동기 함수를 호출하고 있다. `setTimeout()` 내부에는 `callback()` 함수를 포함하고 있다.
+
+다만, 비동기 함수인 `setTimeout()`은 지연 시간 이후 실행되므로 Call Stack이 하나이기 때문에 그대로 수행하면, 블로킹 방식처럼 지연 시간이 지난 후 다음 코드가 실행되게 된다. 따라서 JavaScript Engine은 비동기 함수를 Web APIs로 넘긴다. 이렇게 넘겨진 `setTimeout()` 함수는 지연 시간을 보내게 된다.
+
+따라서 Call Stack에서는 `asyncAdd()` 함수가 종료되어 제거되고, `setTimeout()` 함수의 지연 시간이 지나면 Web APIs에 존재하는 `setTimeout()` 함수가 제거되고 내부의 `callback()` 함수는 실행되기 위해서 Callback Queue로 이동한다. 이렇게 Callback Queue로 이동된 콜백 함수는 Event Loop에 의해 Call Stack으로 다시 옮겨진다.
+
+Event Loop는 Call Stack에서 Main Context를 제외한 함수들의 존재 여부를 확인하며, Main Context를 제외하고 Call Stack에 다른 함수가 없으면 콜백 함수를 실행할 수 있다고 판단해 `callback()` 함수를 Call Stack에 넘겨준다. 결국 `callback()` 함수가 실행된 후, 종료되면 Call Stack에서 제거한다. 이에 따라 결과 값이 반환되고, JavaScript 코드가 종료되면 Call Stack에서 Main Context가 제거되며 비동기 작업을 포함한 JavaScript 프로그램이 마무리된다.
+
+비동기 함수의 결과 값을 또다른 비동기 함수의 인자로 활용하는 경우도 존재한다.
+```javascript
+function taskB(a, b, callback) {
+  setTimeout(() => {
+    const result = a + b;
+    callback(result);
+  }, 3000);
+}
+
+function taskC(a, callback) {
+  setTimeout(() => {
+    const result = a * 2;
+    callback(result);
+  }, 1000);
+}
+
+function taskD(a, callback) {
+  setTimeout(() => {
+    const result = a * -1;
+    callback(result);
+  }, 1000);
+}
+
+taskB(4, 5, (resultB) => {
+  console.log(resultB);
+  taskC(resultB, (resultC) => {
+    console.log(resultC);
+    taskD(resultC, (resultD) => {
+      console.log(resultD);
+    });
+  });
+});
+
+console.log("Code is done.");
+```
+다만, 계속해서 결과 값을 비동기 함수의 인자로 활용하면 콜백 지옥에 빠지게 된다. 콜백 지옥을 해결하기 위해서는 Promise 객체를 활용해야 한다.
+
+<hr />
+
+- [[한입 크기로 잘라 먹는 리액트(React.js) : 기초부터 실전까지] by 이정환 Winterlood, JavaScript 응용편](https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%EB%A6%AC%EC%95%A1%ED%8A%B8/dashboard)
+- [Event Loop, Call Stack이 작동하는 방법](https://velog.io/@sugyinbrs/Event-Loop-Call-Stack-%EC%9D%B4-%EC%9E%91%EB%8F%99%ED%95%98%EB%8A%94-%EB%B2%95)
+- [Event loop와 call stack 은 어떻게 작동하나?](https://www.youtube.com/watch?v=zi-IG6VHBh8)
+- [Event loop and the rise of Async programming](https://blog.sessionstack.com/how-javascript-works-event-loop-and-the-rise-of-async-programming-5-ways-to-better-coding-with-2f077c4438b5)
+- [비동기 처리에 대하여](https://velog.io/@change/JavaScript-asyncawait%EC%97%90-%EB%8C%80%ED%95%B4%EC%84%9C)
+- [MDN Call Stack](https://developer.mozilla.org/ko/docs/Glossary/Call_stack)
+- [MDN Event Loop](https://developer.mozilla.org/ko/docs/Web/JavaScript/EventLoop)
