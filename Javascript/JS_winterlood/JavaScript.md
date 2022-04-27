@@ -696,3 +696,57 @@ taskB(5, 1)
 <hr />
 
 - [[한입 크기로 잘라 먹는 리액트(React.js) : 기초부터 실전까지] by 이정환 Winterlood, JavaScript 응용편](https://www.inflearn.com/course/%ED%95%9C%EC%9E%85-%EB%A6%AC%EC%95%A1%ED%8A%B8/dashboard)
+
+## Promise, async, await으로 직관적인 비동기 처리 코드 작성하기
+
+### `async`
+
+`async` 키워드를 활용해 해당 함수가 Promise를 반환하게끔 만든다. 즉, 해당 함수의 반환 값이 비동기 작업을 하는 `Promise` 객체의 `resolve` 결과 값이 된다.
+
+```javascript
+// async
+function hello() {
+  return "hello";
+}
+
+// 기본
+async function helloAsync() {
+  // async: 옵션처럼 붙여 함수가 Promise를 반환케 함
+  return "hello, async"; // 비동기 작업 객체 Promise의 resolve 결과 값이 된다.
+}
+
+helloAsync().then((result) => {
+  console.log(result); // hello, async
+});
+```
+
+이때 추가적으로 비동기 함수를 구현하여 활용할 수 있다.
+
+```javascript
+function delay(ms) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+}
+
+// delay 함수 추가
+async function helloAsync() {
+  // async: 옵션처럼 붙여 함수가 Promise를 반환케 함
+  return delay(3000).then(() => {
+    return "hello, async"; // 비동기 작업 객체 Promise의 resolve 결과 값이 된다.
+  });
+}
+```
+
+### `await`
+
+`await` 키워드를 활용하면 더 간단하게 표현할 수 있다. `await`는 `async` 함수 내부에서만 활용할 수 있으며, 비동기 함수 앞에 붙어 해당 함수를 동기적인 함수로 작동하게끔 만든다. 즉, `await` 함수가 종료되기 전까지는 이후 코드가 실행되지 않는다.
+
+```javascript
+// await 추가
+async function helloAsync() {
+  // await은 async 함수 내부에서만 활용 가능
+  await delay(3000); // 비동기 함수 앞에 붙여 동기적인 함수처럼 작동하게 한다. 즉, await 함수가 끝나기 전까지 이후 코드가 실행되지 아니한다.
+  return "hello, async";
+}
+```
