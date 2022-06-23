@@ -2,24 +2,35 @@ import { createStore } from 'redux';
 
 const initialState = {
   counter: 0,
+  isCounterShown: true,
 };
 
 const counterReducer = (state, action) => {
   if (action.type === 'INC') {
     return {
-      counter: state.counter + 1,
+      ...state,
+      counter: state.counter + action.step,
     };
   }
 
   if (action.type === 'DEC') {
     return {
-      counter: state.counter - 1,
+      ...state,
+      counter: state.counter - action.step,
     };
   }
 
   if (action.type === 'RESET') {
     return {
+      ...state,
       counter: 0,
+    };
+  }
+
+  if (action.type === 'TOGGLE') {
+    return {
+      ...state,
+      isCounterShown: !state.isCounterShown,
     };
   }
 
