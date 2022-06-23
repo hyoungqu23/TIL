@@ -5,8 +5,8 @@ import classes from './Counter.module.css';
 
 const Counter = () => {
   const dispatch = useDispatch();
-  const counter = useSelector((state) => state.counter);
-  const isCounterShown = useSelector((state) => state.isCounterShown);
+  const counter = useSelector((state) => state.counter.counter);
+  const isCounterShown = useSelector((state) => state.counter.isCounterShown);
 
   const handlePlusButton = () => {
     // dispatch({ type: 'INC', step: 1 });
