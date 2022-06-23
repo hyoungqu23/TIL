@@ -1,6 +1,6 @@
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
-const initialState = {
+const initialCounterState = {
   counter: 0,
   isCounterShown: true,
 };
@@ -11,7 +11,7 @@ const counterSlice = createSlice({
   name: 'counter',
 
   // 초기 State 설정
-  initialState,
+  initialState: initialCounterState,
 
   // Reducer 설정
   reducers: {
@@ -65,15 +65,38 @@ const counterSlice = createSlice({
 //   return state;
 // };
 
+const initialAuthState = {
+  isAuthenticated: false,
+};
+
+// Redux-toolkit: Multi Slice
+const authSlice = createSlice({
+  name: 'authentication',
+  initialState: initialAuthState,
+  reducers: {
+    login(state) {
+      state.isAuthenticated = true;
+    },
+
+    logout(state) {
+      state.isAuthenticated = false;
+    },
+  },
+});
+
 // const store = createStore(counterReducer, initialState);
 
 // Redux Toolkit: configureStore()
 const store = configureStore({
-  reducer: counterSlice.reducer,
+  reducer: {
+    counter: counterSlice.reducer,
+    auth: authSlice.reducer,
+  },
 });
 
 // Action Creator
 export const counterActions = counterSlice.actions;
+export const authActions = authSlice.actions;
 export default store;
 
 // const counterSubscriber = () => {
