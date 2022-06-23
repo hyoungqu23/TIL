@@ -10,22 +10,26 @@ const Counter = () => {
 
   const handlePlusButton = () => {
     // dispatch({ type: 'INC', step: 1 });
-    dispatch(counterActions.increment());
+    dispatch(counterActions.increment(1));
   };
 
   const handlePlus5Button = () => {
     // dispatch({ type: 'INC', step: 5 });
-    dispatch(counterActions.decrement({ amount: 5 }));
+    dispatch(counterActions.increment(5));
   };
 
   const handleMinusButton = () => {
     // dispatch({ type: 'DEC', step: 1 });
-    // dispatch(counterActions.reset());
+    dispatch(counterActions.decrement(1));
   };
 
-  const toggleCounterHandler = () => {
+  const handleToggleButton = () => {
     // dispatch({ type: 'TOGGLE' });
     dispatch(counterActions.toggle());
+  };
+
+  const handleResetButton = () => {
+    dispatch(counterActions.reset());
   };
 
   return (
@@ -37,7 +41,8 @@ const Counter = () => {
         <button onClick={handlePlus5Button}>+ 5</button>
         <button onClick={handleMinusButton}>-</button>
       </div>
-      <button onClick={toggleCounterHandler}>Toggle Counter</button>
+      <button onClick={handleToggleButton}>Toggle Counter</button>
+      <button onClick={handleResetButton}>Reset Counter</button>
     </main>
   );
 };

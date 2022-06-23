@@ -1,4 +1,3 @@
-import { createStore } from 'redux';
 import { createSlice, configureStore } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -17,16 +16,19 @@ const counterSlice = createSlice({
   // Reducer 설정
   reducers: {
     increment(state, action) {
-      return state.counter + action.amount;
+      state.counter += action.payload;
     },
+
     decrement(state, action) {
-      return state.counter - action.amount;
+      state.counter -= action.payload;
     },
+
     reset(state) {
       state.counter = 0;
     },
+
     toggle(state) {
-      return !state.isCounterShown;
+      state.isCounterShown = !state.isCounterShown;
     },
   },
 });
@@ -70,6 +72,7 @@ const store = configureStore({
   reducer: counterSlice.reducer,
 });
 
+// Action Creator
 export const counterActions = counterSlice.actions;
 export default store;
 
