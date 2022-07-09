@@ -11,6 +11,7 @@ const NavBar = () => {
         <a
           style={{
             backgroundColor: router.pathname === '/' ? 'skyblue' : 'gray',
+            marginRight: '1em',
           }}
         >
           Home
@@ -20,19 +21,20 @@ const NavBar = () => {
         <a
           style={{
             backgroundColor: router.pathname === '/about' ? 'skyblue' : 'gray',
+            marginRight: '1em',
           }}
         >
           About
         </a>
       </Link>
-      <Link href="/contact">
+      <Link href="/pokemon">
         <a
           style={{
             backgroundColor:
-              router.pathname === '/contact' ? 'skyblue' : 'gray',
+              router.pathname === '/pokemon' ? 'skyblue' : 'gray',
           }}
         >
-          Contact
+          Pokemon
         </a>
       </Link>
     </nav>
