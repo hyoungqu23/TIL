@@ -134,6 +134,12 @@ const coffeeReducer = (state = initialCoffeeState, action) => {
         ...state,
         numberOfCoffees: state.numberOfCoffees + action.payload,
       };
+    case SNACK_ORDERED:
+      return {
+        // 불변 상태 유지
+        ...state,
+        numberOfCoffees: state.numberOfCoffees - 1,
+      };
     default: {
       return state;
     }
