@@ -2,7 +2,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 // Set Initial State
-const initialState = { numeberOfSnacks: 10 };
+const initialState = { numberOfSnacks: 10 };
 
 // Create a Slice, which will automatically generate Action Creator
 const snackSlice = createSlice({
@@ -10,10 +10,10 @@ const snackSlice = createSlice({
   initialState,
   reducers: {
     ordered: (state, action) => {
-      state.numeberOfSnacks -= action.payload;
+      state.numberOfSnacks -= action.payload;
     },
     restocked: (state, action) => {
-      state.numeberOfSnacks += action.payload;
+      state.numberOfSnacks += action.payload;
     },
   },
 });
