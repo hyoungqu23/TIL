@@ -8,13 +8,13 @@ const initialState = {
   error: '',
 };
 
-// createAsyncThunk 함수는 Action Type, Payload Creator를 인자로 받는다.
-// createAsyncThunk 함수는 자동적으로 반환된 Promise를 기반으로 한 Pending, Fulfilled, Rejected Action Type을 생성하므로, 이를 Reducer 함수에서 활용해 State 업데이트를 실행할 수 있다.
+// createAsyncThunk 함수는 Action Type, Payload Creator 함수(Promise를 반환하는 함수)를 인자로 받는다.
+// createAsyncThunk 함수는 자동적으로 반환된 Promise를 기반으로 한 Pending, Fulfilled, Rejected Action Type을 생성하므로, 이를 dispatch하여 Reducer 함수에서 활용해 State 업데이트를 실행할 수 있다.
 // Slice 외부에서 생성되므로, extraReducers로 추가되어야 한다.
 export const fetchUsers = createAsyncThunk('user/fetchUsers', () => {
   return axios
     .get('https://jsonplaceholder.typicode.com/users')
-    .then((response) => response.data.map((user) => user.id));
+    .then((response) => response.data);
   // catch는 추가적인 기능으로 인해 불필요하다.
 });
 
