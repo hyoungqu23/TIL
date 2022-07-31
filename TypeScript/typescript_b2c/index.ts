@@ -73,3 +73,25 @@ const playerReadonlyMaker = (name: string): PlayerReadonlyType => ({
 const smith = playerReadonlyMaker('smith');
 smith.name = 'john';
 // 읽기 전용 속성이므로 'name'에 할당할 수 없습니다.
+smith.age = 20;
+
+const readonlyNumbers: readonly number[] = [1, 2, 3];
+readonlyNumbers.push(4);
+// 'readonly number[]' 형식에 'push' 속성이 없습니다.
+
+// Tuple
+const tuple: [number, string, boolean] = [1, 'hello', true];
+
+const tuple2: [number, string, boolean] = [1, 'hello'];
+// '[number, string]' 형식은 '[number, string, boolean]' 형식에 할당할 수 없습니다. 소스에 2개 요소가 있지만, 대상에 3개가 필요합니다.
+
+tuple[0] = 'hello';
+// 'string' 형식은 'number' 형식에 할당할 수 없습니다.
+
+// undefined, null
+const u: undefined = undefined;
+const n: null = null;
+
+// any -> escape type checking, disable TypeScript
+let anyValue: any = 'hello';
+anyValue = 1;
