@@ -59,3 +59,17 @@ james.age = 33;
 const playerArrowMaker = (name: string): PlayerType => ({
   name,
 });
+
+// readonly
+type PlayerReadonlyType = {
+  readonly name: string;
+  age?: number;
+};
+
+const playerReadonlyMaker = (name: string): PlayerReadonlyType => ({
+  name,
+});
+
+const smith = playerReadonlyMaker('smith');
+smith.name = 'john';
+// 읽기 전용 속성이므로 'name'에 할당할 수 없습니다.
