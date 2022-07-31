@@ -132,3 +132,10 @@ function neverFunc(name: string | number) {
     console.log(name);
   }
 }
+
+// Call Signature: describe type before function implementation
+type MyFunc = (a: number, b: number) => number;
+
+const myAddFunc: MyFunc = (a, b) => a + b;
+const mySubFunc: MyFunc = (a, b) => a - b;
+const myMultiFunc: MyFunc = (a, b) => a * b;
