@@ -95,3 +95,40 @@ const n: null = null;
 // any -> escape type checking, disable TypeScript
 let anyValue: any = 'hello';
 anyValue = 1;
+
+// unknown
+let unknownValue: unknown;
+
+if (typeof unknownValue === 'string') {
+  console.log(unknownValue.toLowerCase());
+}
+
+if (typeof unknownValue === 'number') {
+  console.log(unknownValue.toFixed(2));
+}
+
+// void => function의 반환 값이 없음
+function voidFunc(): void {
+  console.log('void');
+}
+
+voidFunc().toFixed(2);
+// 'void' 형식에 'toFixed' 속성이 없습니다.
+
+// never
+function error(): never {
+  throw new Error();
+}
+
+function neverFunc(name: string | number) {
+  if (typeof name === 'string') {
+    // name: string
+    return name.toUpperCase();
+  } else if (typeof name === 'number') {
+    // name: number
+    return name.toFixed(2);
+  } else {
+    // name: never
+    console.log(name);
+  }
+}
