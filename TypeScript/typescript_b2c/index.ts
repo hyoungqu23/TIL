@@ -168,3 +168,31 @@ const myAddFunc2: MyFunc2 = (a, b, c?: number) => {
   if (c) return a + b + c;
   return a + b;
 };
+
+// Polymorphism: 다양한 형태의 객체를 사용할 수 있다.
+type MyFunc3 = {
+  (a: number[]): void;
+  (a: boolean[]): void;
+};
+
+const myLogFunc: MyFunc3 = (arr) => {
+  arr.forEach((i) => console.log(i));
+};
+
+myLogFunc([1, 2, 3]);
+myLogFunc([true, false, true, false]);
+myLogFunc(['hello', 'world']);
+// 이 호출과 일치하는 오버로드가 없습니다.
+
+// 계속해서 Overloading을 추가해주는 것은 비효율적이다. 따라서, Generic을 활용해 여러 형태를 사용할 수 있도록 하는 것이 좋다.
+type MyFunc4 = {
+  <T>(a: T[]): void;
+};
+const myLogFunc2: MyFunc4 = (arr) => {
+  arr.forEach((i) => console.log(i));
+};
+
+myLogFunc2([1, 2, 3]);
+myLogFunc2([true, false, true, false]);
+myLogFunc2(['hello', 'world']);
+myLogFunc2([1, true, 'hello', 'world']);
