@@ -196,3 +196,29 @@ myLogFunc2([1, 2, 3]);
 myLogFunc2([true, false, true, false]);
 myLogFunc2(['hello', 'world']);
 myLogFunc2([1, true, 'hello', 'world']);
+
+function myLogFunc3<T>(arr: T[]): T {
+  return arr[0];
+}
+
+const resultOfLogFunc1 = myLogFunc3([1, 2, 3]);
+const resultOfLogFunc2 = myLogFunc3([true, false, true, false]);
+const resultOfLogFunc3 = myLogFunc3(['hello', 'world']);
+const resultOfLogFunc4 = myLogFunc3([1, true, 'hello', 'world']);
+
+type User<E> = {
+  name: string;
+  extraInfo: E;
+};
+
+type UserFavColor = User<{ favColor: string }>;
+
+const user1: UserFavColor = {
+  name: 'smith',
+  extraInfo: { favColor: 'gray' },
+};
+
+const user2: User<null> = {
+  name: 'james',
+  extraInfo: null,
+};
