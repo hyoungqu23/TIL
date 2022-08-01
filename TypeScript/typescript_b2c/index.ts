@@ -401,3 +401,64 @@ makeStudent({
     return `${this.firstName} ${this.lastName}`;
   },
 });
+
+// Difference between Type, Interface, Class
+type TypeItem = {
+  name: string;
+  price: number;
+};
+
+type TypeItemShop = TypeItem & {
+  shopName: string;
+  address?: string;
+};
+
+const typeItem: TypeItem = {
+  name: 'iPad',
+  price: 1293000,
+};
+
+const typeItemShop: TypeItemShop = {
+  name: 'iPad',
+  price: 1293000,
+  shopName: 'alpha shop',
+  address: '서울시 용산구 용산동',
+};
+
+interface InterfaceItem {
+  name: string;
+}
+interface InterfaceItem {
+  price: number;
+}
+
+interface InterfaceItem {
+  shopName: string;
+  address?: string;
+}
+
+const interfaceItem: InterfaceItem = {
+  name: 'iPad',
+  price: 1293000,
+  shopName: 'alpha shop',
+  address: '서울시 용산구 용산동',
+};
+
+// Type Alias와 Interface 모두 abstract Class를 대체할 수 있다.
+class ClassItemWithType implements TypeItemShop {
+  constructor(
+    public name: string,
+    public price: number,
+    public shopName: string,
+    public address?: string,
+  ) {}
+}
+
+class ClassItemWithInterface implements InterfaceItem {
+  constructor(
+    public name: string,
+    public price: number,
+    public shopName: string,
+    public address?: string,
+  ) {}
+}
