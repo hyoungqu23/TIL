@@ -290,3 +290,48 @@ const water = new Word('water', '물');
 const dict = new Dict();
 dict.add(water);
 dict.def('water');
+
+// 특정 값을 가지게 Type을 설정할 수 있다.
+type Team = 'red' | 'blue' | 'green';
+type Health = 'healthy' | 'sick' | 'dead';
+type Score = 1 | 5 | 10;
+
+type AppUser = {
+  nickname: string;
+  team: Team;
+  health: Health;
+  score: Score;
+};
+
+const appUser1: AppUser = {
+  nickname: 'james',
+  team: 'red',
+  health: 'healthy',
+  score: 10,
+};
+
+// Interface: Object의 형태를 정의.
+interface InterfaceAppUser {
+  nickname: string;
+  team: Team;
+  health: Health;
+  score: Score;
+}
+
+const appUser2: InterfaceAppUser = {
+  nickname: 'smith',
+  team: 'blue',
+  health: 'sick',
+  score: 1,
+};
+
+interface WaitingUser {
+  name: string;
+}
+interface WaitingUser {
+  isWaiting: boolean;
+}
+
+interface CurrentUser extends WaitingUser {}
+
+const kelly: CurrentUser = { name: 'kelly', isWaiting: false };
