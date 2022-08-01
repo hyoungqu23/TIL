@@ -222,3 +222,38 @@ const user2: User<null> = {
   name: 'james',
   extraInfo: null,
 };
+
+// Class
+class Player {
+  constructor(
+    private firstName: string,
+    private lastName: string,
+    public nickname: string,
+  ) {}
+}
+
+const john = new Player('john', 'smith', 'jsm_developer');
+john.firstName;
+// 'firstName' 속성은 private이며 'Player' 클래스 내에서만 액세스할 수 있습니다.
+
+// abstract class: 상속은 가능하나, 인스턴스를 생성할 수 없다.
+abstract class UserForPlayer {
+  constructor(
+    protected firstName: string,
+    protected lastName: string,
+    public nickname: string,
+  ) {}
+  abstract getNickname(): void;
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  }
+}
+
+class PlayerWithUser extends UserForPlayer {
+  getNickname() {
+    this.getFullName();
+    return `${this.nickname}`;
+  }
+}
+const tom = new PlayerWithUser('tom', 'james', 'tj_developer');
+tom.getNickname();
