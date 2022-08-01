@@ -335,3 +335,69 @@ interface WaitingUser {
 interface CurrentUser extends WaitingUser {}
 
 const kelly: CurrentUser = { name: 'kelly', isWaiting: false };
+
+// Combine Class with Interface
+// Abstract Class의 경우, Type 청사진에 불과하지만 JavaScript로 컴파일된다. Interface의 경우에는 컴파일되지 않는다.
+abstract class ClassPerson {
+  constructor(protected firstName: string, protected lastName: string) {}
+  abstract sayHi(name: string): string;
+  abstract getFullName(): string;
+}
+
+class ClassStudent extends ClassPerson {
+  getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  sayHi(name: string): string {
+    return `Hello ${name}`;
+  }
+}
+
+const javier = new ClassStudent('javier', 'smith');
+const fullName = javier.getFullName();
+javier.sayHi(fullName);
+
+interface InterfacePerson {
+  firstName: string;
+  lastName: string;
+  sayHi(name: string): string;
+  getFullName(): string;
+}
+
+interface InterfaceHuman {
+  health: number;
+}
+
+// public만 가능하다.
+class InterfaceStudent implements InterfacePerson, InterfaceHuman {
+  constructor(
+    public firstName: string,
+    public lastName: string,
+    public health: number,
+  ) {}
+  getFullName(): string {
+    return `${this.firstName} ${this.lastName}`;
+  }
+  sayHi(name: string): string {
+    return `Hello ${name}`;
+  }
+}
+
+const micheal = new InterfaceStudent('micheal', 'anderson', 10);
+const fullName2 = micheal.getFullName();
+micheal.sayHi(fullName);
+
+function makeStudent(person: InterfacePerson) {
+  return 'hi';
+}
+
+makeStudent({
+  firstName: 'james',
+  lastName: 'smith',
+  sayHi(name: string): string {
+    return `Hello ${name}`;
+  },
+  getFullName() {
+    return `${this.firstName} ${this.lastName}`;
+  },
+});
