@@ -257,3 +257,36 @@ class PlayerWithUser extends UserForPlayer {
 }
 const tom = new PlayerWithUser('tom', 'james', 'tj_developer');
 tom.getNickname();
+
+type Words = {
+  [key: string]: string; // object의 key와 value의 Type이 모두 String, 즉, key의 값은 모르지만, Type을 설정할 때 활용한다.
+};
+
+class Dict {
+  private words: Words;
+  constructor() {
+    this.words = {};
+  }
+  add(word: Word) {
+    // parameter가 Word class의 instance이기를 원할 때 class를 Type으로 사용할 수 있다.
+    if (this.words[word.term] === undefined) {
+      this.words[word.term] = word.definition;
+    }
+  }
+  def(term: string) {
+    return this.words[term];
+  }
+}
+
+class Word {
+  constructor(
+    public readonly term: string,
+    public readonly definition: string,
+  ) {}
+}
+
+const water = new Word('water', '물');
+
+const dict = new Dict();
+dict.add(water);
+dict.def('water');
