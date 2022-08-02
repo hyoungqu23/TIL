@@ -4,3 +4,8 @@ class Block {
     return 'Hello';
   }
 }
+
+import { init, exit } from 'myPackage';
+
+init({ url: 'http://localhost:3000' });
+exit(404);
