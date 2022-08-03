@@ -5,7 +5,7 @@ class Block {
   }
 }
 
-import { init, exit } from 'myPackage';
+import { init, exit } from './myPackage';
 
 init({ url: 'http://localhost:3000' });
 exit(404);
