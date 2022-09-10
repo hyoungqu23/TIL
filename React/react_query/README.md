@@ -161,3 +161,30 @@ queryClient.invalidateQueries(); // Query Key 생략 시 모든 Query를 의미
 
 queryClient.invalidateQueries('todos');
 ```
+
+### Caching과 Synchronization
+
+Caching과 Synchronization을 위해 Options에서 `cacheTime`, `staleTime`, `refetchOnWindowFocus`, `refetchOnMount` 등의 옵션이 존재한다.
+
+React Query는 HTTP Cache-Control Extensions for Stale Content인 **RFC 5861**에 있는 stale-while-revalidate의 아이디어를 차용했다. 백그라운드에서 stale response를 revalidate하는 동안 캐시가 가진 stale response를 반환하는 개념이다. 즉, 데이터를 조회하는 경우 Loader 등이 아닌 이전의 stale data를 보여주고, 그동안 백그라운드에서 refetch하면서, 설정된 시간이 종료되기 전에 다시 받아온 데이터를 보여주는 방식이다.
+
+이러한 방식을 메모리 캐시에도 적용한 것이 React Query, SWR 등의 라이브러리이다.
+
+- `cacheTime`: 메모리에 얼마동안 있을 건지 여부를 결정하는 옵션(해당 시간이 지난 이후 GC(Garbage Collector)에 의해 처리되고, default 값은 `600`, 5분이다.)
+- `staleTime`: 얼마의 시간이 흐른 후에 데이터를 stale data로 취급할 것인지를 결정하는 옵션(default 값은 `0`)
+- `refetchOnMount`, `refetchOnWindowFocus`, `refetchOnReconnect`: Mount, Window focus, reconnect 시점에 data가 stale이라고 판단되면 모두 refetch하는 옵션(default 값은 `true`)
+
+데이터의 최신성이 중요한 부분에서는 많이 사용하지 않는다.
+
+![이미지](./query.png)
+![이미지](./query2.png)
+
+### Zero-Config
+
+다만 일부 옵션의 기본 값은 알고 있어야 편리하게 사용할 수 있다.
+
+- staleTime: `0`
+- cacheTime: `60 x 5 x 1000`
+- refetchOnMount, refetchOnWindowFocus, refetchOnReconnect: `true`
+- retry: `3`
+- retryDelay: exponential backoff function
